@@ -6,7 +6,6 @@ import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
-import uk.ac.ucl.coursework.model.CinemaLogger;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
@@ -23,7 +22,7 @@ public class CinemaMain extends Application {
 		thestage = primaryStage;
 
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("viewCustomer/LoginScreen.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("view/LoginScreen.fxml"));
 
 			scene1 = new Scene(root, 480, 300);
 			primaryStage.setTitle("Cinema Login");

@@ -1,5 +1,6 @@
-package uk.ac.ucl.coursework.viewEmployee;
+package uk.ac.ucl.coursework.control;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -11,7 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import uk.ac.ucl.coursework.CinemaMain;
-import uk.ac.ucl.coursework.model.Films;
+import uk.ac.ucl.coursework.Films;
 
 public class EmployeeHomeController implements Initializable {
 	
@@ -23,14 +24,14 @@ public class EmployeeHomeController implements Initializable {
 	@FXML
 	private void addFilm(ActionEvent event) {
 		
-		
+	
 		
 	}
 	
 	@FXML
 	private void goToWhatsOn(ActionEvent event) {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("WhatsOn2.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("../view/WhatsOnEmployee.fxml"));
 			scene5 = new Scene(root, 690, 850);
 			CinemaMain.thestage.setTitle("What's On");
 			CinemaMain.thestage.setScene(scene5);

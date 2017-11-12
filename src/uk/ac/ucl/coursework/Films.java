@@ -1,4 +1,4 @@
-package uk.ac.ucl.coursework.model;
+package uk.ac.ucl.coursework;
 
 public class Films {
 	

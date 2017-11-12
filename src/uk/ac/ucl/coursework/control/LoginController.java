@@ -1,4 +1,4 @@
-package uk.ac.ucl.coursework.viewCustomer;
+package uk.ac.ucl.coursework.control;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -25,7 +25,7 @@ public class LoginController implements Initializable {
 		if (username.getText().equals("customer")) {
 
 			try {
-				Parent root = FXMLLoader.load(getClass().getResource("CustomerHome.fxml"));
+				Parent root = FXMLLoader.load(getClass().getResource("../view/CustomerHome.fxml"));
 
 				scene2 = new Scene(root, 690, 850);
 				CinemaMain.thestage.setTitle("Customer Home");
@@ -33,10 +33,11 @@ public class LoginController implements Initializable {
 				CinemaMain.thestage.show();
 			} catch (Exception e) {
 				CinemaMain.LOGGER.warning("Couldn't load Customer Home");
+				e.printStackTrace();
 			}
 		} else if (username.getText().equals("employee")) {
 			try {
-				Parent root = FXMLLoader.load(getClass().getResource("../viewEmployee/EmployeeHome.fxml"));
+				Parent root = FXMLLoader.load(getClass().getResource("../view/EmployeeHome.fxml"));
 
 				scene3 = new Scene(root, 850, 800);
 				CinemaMain.thestage.setTitle("Employee Home");
@@ -44,6 +45,7 @@ public class LoginController implements Initializable {
 				CinemaMain.thestage.show();
 			} catch (Exception e) {
 				CinemaMain.LOGGER.warning("Couldn't load Employee Home");
+				e.printStackTrace();
 			}
 		}
 	}

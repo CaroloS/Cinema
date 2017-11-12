@@ -9,7 +9,8 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" 
 minWidth="-Infinity" prefHeight="577.0" prefWidth="600.0" 
-xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1"
+fx:controller="uk.ac.ucl.coursework.control.WhatsOnEmpController">
    <top>
       <AnchorPane prefHeight="90.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>

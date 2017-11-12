@@ -1,4 +1,4 @@
-package uk.ac.ucl.coursework.viewCustomer;
+package uk.ac.ucl.coursework.control;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -20,7 +20,7 @@ public class CustomerHomeController implements Initializable {
 	private void loadfilms(ActionEvent event) {
 
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("WhatsOn.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("../view/WhatsOnCustomer.fxml"));
 
 			scene4 = new Scene(root, 690, 850);
 			CinemaMain.thestage.setTitle("What's On");
