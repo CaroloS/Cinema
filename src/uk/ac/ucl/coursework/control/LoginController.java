@@ -15,6 +15,7 @@ import uk.ac.ucl.coursework.CinemaMain;;
 public class LoginController implements Initializable {
 
 	public Scene scene2, scene3;
+	
 	@FXML
 	private TextField username;
 
