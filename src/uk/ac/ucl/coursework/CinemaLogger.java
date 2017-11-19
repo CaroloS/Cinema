@@ -12,11 +12,13 @@ public class CinemaLogger {
 
 	static public void setup() throws IOException {
 
-		// get the global logger to configure it
+		//GETS THE GLOBAL LOGGER
 		Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
+		//SETS THE LOGGER LEVEL TO 'INFO' FOR THE PROJECT
 		logger.setLevel(Level.INFO);
 
+		//CREATES NEW FILEHANDLER TO HANDLE THE LOG FILES
 		if (fileTxt == null) {
 			fileTxt = new FileHandler("Logging.txt");
 			formatterTxt = new SimpleFormatter();

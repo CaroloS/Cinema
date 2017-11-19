@@ -13,9 +13,15 @@ import javafx.scene.control.TextField;
 import uk.ac.ucl.coursework.CinemaMain;
 import uk.ac.ucl.coursework.xml.CreateEditFilmXML;
 
+/**
+ * 
+ * @author carolinesmith daianabassi
+ *
+ */
+
 public class EmployeeHomeController implements Initializable {
 
-	// DECLARES THE FXML TEXTFIELD VARIABLES
+	// DECLARES THE FXML TEXTFIELD VARIABLES TO COLLECT THE INPUT FROM
 	@FXML
 	private TextField filmTitle, filmDate, filmStart, filmEnd, filmGenre, filmDescription;
 
@@ -31,6 +37,7 @@ public class EmployeeHomeController implements Initializable {
 	@FXML
 	private void addFilm(ActionEvent event) {
 
+		//GETS THE USER INPUT FROM TEXTFIELDS AND SETS IT TO THE VARIABLES IN 'CreateEditFilmXML' CLASS
 		CreateEditFilmXML.setTitle(filmTitle.getText());
 		CreateEditFilmXML.setDescription(filmDescription.getText());
 		CreateEditFilmXML.setGenre(filmGenre.getText());
@@ -38,18 +45,21 @@ public class EmployeeHomeController implements Initializable {
 		CreateEditFilmXML.setEnd(filmEnd.getText());
 		CreateEditFilmXML.setDate(filmDate.getText());
 
+		//CALLS THE 'createsFilm' METHOD TO WRITE THE NEW FILM INFORMATION TO 'film.XML' FILE
 		CreateEditFilmXML.createsFilm();
 	}
 
 	/**
 	 * Takes the employee to the 'What's On' page. Sets a new scene (5) to
-	 * 'thestage'
+	 * 'thestage'.
 	 * 
 	 * @param event
 	 *            : event created by clicking menu-bar item
 	 */
 	@FXML
 	private void goToWhatsOn(ActionEvent event) {
+		
+		//TAKES USER TO 'WhatsOnEmployee' PAGE WHEN 'WHATS ON' MENU ITEM CLICKED
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("../view/WhatsOnEmployee.fxml"));
 			scene5 = new Scene(root, 690, 850);
@@ -63,8 +73,16 @@ public class EmployeeHomeController implements Initializable {
 
 	}
 	
+	/**
+	 * Takes the employee back to the 'Cinema Login' page.
+	 * 
+	 * @param event
+	 *            : event created by clicking menu-bar item
+	 */
 	@FXML 
 	private void logsOut(ActionEvent event) {
+		
+		//TAKES USER BACK TO 'Cinema Login' PAGE WHEN 'LOG OUT' MENU ITEM CLICKED
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("../view/LoginScreen.fxml"));
 			scene5 = new Scene(root, 480, 300);

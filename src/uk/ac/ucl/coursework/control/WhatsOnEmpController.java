@@ -29,9 +29,11 @@ public class WhatsOnEmpController implements Initializable {
 	@FXML
 	public VBox centreAnchor;
 	
+	//DECALRES FILM VARIABLES TO STORE VALUES FROM XML PARSING
 	Attribute filmID;
 	String filmTitle, filmGenre, filmDescription, filmStart, filmEnd, filmDate;
 
+	//USES THE INITIALIZE METHOD TO PARSE XML AND LAYOUT THE FILMS CURRENTLY IN THE XML FILE WHEN PAGE IS LOADED  
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
@@ -39,11 +41,13 @@ public class WhatsOnEmpController implements Initializable {
 		File xmlFile = new File("film.xml");
 
 		try {
-
+			
+			//GETS THE LIST OF 'FILM' ELEMENTS IN THE XML FROM THE ROOT NODE
 			Document document = (Document) builder.build(xmlFile);
 			Element rootNode = document.getRootElement();
 			List list = rootNode.getChildren("film");
 
+			//ITERATES THROUGH THE 'FILM' LIST, GETS ELEMENT/ATTRIBUTES AND PASSES IT TO FILM VARIABLES
 			for (int i = 0; i < list.size(); i++) {
 
 				Element node = (Element) list.get(i);
@@ -60,12 +64,12 @@ public class WhatsOnEmpController implements Initializable {
 				// " + description + " " + startTime + " " + endTime + " " +
 				// date);
 				
+				
+				//CREATES A NEW GRIDPANE AND LABELS WITH THE FILM INFORMATION 
 				GridPane gridPane = new GridPane();
 				
 				Image dummyPic = new Image("images/greencamera.png");
 				ImageView viewPic = new ImageView(dummyPic);
-				
-
 				Label title = new Label(filmTitle);
 				Label genre = new Label(filmGenre);
 				Label description = new Label(filmDescription);
@@ -73,11 +77,14 @@ public class WhatsOnEmpController implements Initializable {
 				Label dateTime = new Label(dateTimeInfo);
 				Label moreInfo = new Label("more info..");
 				
+				//BOOKING BUTTON WITH A 'buttonHandler' EVENTHANDLER
 				Button book = new Button("Book");
 				book.setOnAction(buttonHandler);
 				
+				//COMBOBOX TO POPULATE WITH LIST OF FILM DATES
 				ComboBox dateList = new ComboBox();
 				
+				//ADDS ALL NODES (LABELS/BUTTON) TO THE GRIDPANE
 				gridPane.add(viewPic, 0, 1, 1, 4);
 				gridPane.add(title, 1, 1, 2, 1);
 				gridPane.add(genre, 1, 2, 2, 1);
@@ -87,6 +94,7 @@ public class WhatsOnEmpController implements Initializable {
 				gridPane.add(book, 4, 3, 1, 1);
 				gridPane.add(dateList, 4, 1, 1, 1);
 				
+				//ADDS THE GRIDPANE TO THE CENTRAL VBOX 'centreAnchor'
 				centreAnchor.getChildren().add(gridPane);
 			}
 		} catch (IOException io) {
@@ -98,7 +106,7 @@ public class WhatsOnEmpController implements Initializable {
 	}
 	
 	
-	
+	//EVENTHANDLER FOR THE BOOKNG BUTTON - WILL TAKE YOU TO THE BOOKING PAGE
 	final static public EventHandler<ActionEvent> buttonHandler = new EventHandler<ActionEvent>(){
 
         @Override

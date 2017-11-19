@@ -22,7 +22,8 @@ public class LoginController implements Initializable {
 
 	@FXML
 	private void loginPressed(ActionEvent event) {
-
+		
+		//IF USER TYPES 'customer' LOADS CUSTOMER HOME PAGE, ELSE IF USER TYPES 'employee' LOADS EMPLOYEE HOME PAGE
 		if (username.getText().equals("customer")) {
 
 			try {

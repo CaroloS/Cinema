@@ -18,7 +18,8 @@ public class CustomerHomeController implements Initializable {
 	@FXML
 
 	private void loadfilms(ActionEvent event) {
-
+		
+		//TAKES YOU TO 'WhatsOn' PAGE WHEN 'ALL FILM' BUTTON OR 'WHATS ON' MENU ITEM PRESSED
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("../view/WhatsOnCustomer.fxml"));
 
