@@ -40,7 +40,7 @@ public class LoginController implements Initializable {
 			try {
 				Parent root = FXMLLoader.load(getClass().getResource("../view/EmployeeHome.fxml"));
 
-				scene3 = new Scene(root, 850, 800);
+				scene3 = new Scene(root, 690, 850);
 				CinemaMain.thestage.setTitle("Employee Home");
 				CinemaMain.thestage.setScene(scene3);
 				CinemaMain.thestage.show();

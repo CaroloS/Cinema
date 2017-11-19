@@ -11,6 +11,8 @@ import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 
 public class ReadXMLFile {
+	
+	/*
 	public static void main(String[] args) {
 
 	  SAXBuilder builder = new SAXBuilder();
@@ -44,4 +46,6 @@ public class ReadXMLFile {
 		System.out.println(jdomex.getMessage());
 	  }
 	}
+	
+	*/
 }

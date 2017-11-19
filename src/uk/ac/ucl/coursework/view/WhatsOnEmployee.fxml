@@ -5,30 +5,32 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" 
-minWidth="-Infinity" prefHeight="577.0" prefWidth="600.0" 
-xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1"
-fx:controller="uk.ac.ucl.coursework.control.WhatsOnEmpController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="713.0" prefWidth="660.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.ucl.coursework.control.WhatsOnEmpController">
    <top>
-      <AnchorPane prefHeight="90.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="99.0" prefWidth="614.0" BorderPane.alignment="CENTER">
          <children>
             <MenuBar layoutX="1.0" layoutY="47.0" prefHeight="40.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
               <menus>
-                <Menu mnemonicParsing="false" text="File">
+                <Menu mnemonicParsing="false" text="HOME">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Close" />
+                    <MenuItem mnemonicParsing="false" text="HOME" />
                   </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Edit">
+                <Menu mnemonicParsing="false" text="WHAT'S ON">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Delete" />
+                    <MenuItem mnemonicParsing="false" text="WHAT'S ON" />
                   </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Help">
+                 <Menu mnemonicParsing="false" text="                                                                                            ">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="About" />
+                    <MenuItem mnemonicParsing="false" text="                                                                                          " />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="LOG OUT">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="LOG OUT" />
                   </items>
                 </Menu>
               </menus>
@@ -36,7 +38,7 @@ fx:controller="uk.ac.ucl.coursework.control.WhatsOnEmpController">
          </children>
       </AnchorPane>
    </top>
-   <center>
-      <AnchorPane fx:id="centreAnchor" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-   </center>
+   <left>
+      <VBox fx:id="centreAnchor" prefHeight="614.0" prefWidth="672.0" BorderPane.alignment="CENTER" />
+   </left>
 </BorderPane>

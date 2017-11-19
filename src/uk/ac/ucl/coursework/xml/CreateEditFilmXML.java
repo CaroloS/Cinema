@@ -15,8 +15,68 @@ import org.jdom2.input.SAXBuilder;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
+import uk.ac.ucl.coursework.CinemaMain;
+
 public class CreateEditFilmXML {
-	public static void main(String[] args) {
+	
+	//STATIC FILM VARIABLES TO PASS TO 'createsFilm()' METHOD
+	private static String title, genre, description, start, end, date; 
+	
+	//GETTERS AND SETTERS FOR THE PRIVATE VARIABLES
+	public static String getTitle() {
+		return title;
+	}
+
+	public static void setTitle(String title) {
+		CreateEditFilmXML.title = title;
+	}
+
+	public static String getGenre() {
+		return genre;
+	}
+
+	public static void setGenre(String genre) {
+		CreateEditFilmXML.genre = genre;
+	}
+
+	public static String getDescription() {
+		return description;
+	}
+
+	public static void setDescription(String description) {
+		CreateEditFilmXML.description = description;
+	}
+
+	public static String getStart() {
+		return start;
+	}
+
+	public static void setStart(String start) {
+		CreateEditFilmXML.start = start;
+	}
+
+	public static String getEnd() {
+		return end;
+	}
+
+	public static void setEnd(String end) {
+		CreateEditFilmXML.end = end;
+	}
+
+	public static String getDate() {
+		return date;
+	}
+
+	public static void setDate(String date) {
+		CreateEditFilmXML.date = date;
+	}
+	
+	/**METHOD TO PASS TO THE 'ADD' BUTTON ON EMPLOYEE HOME PAGE
+	 * LOADS/PARSES 'film.XML' IF EXISTS OR CREATES NEW XML FILE
+	 * ADDS A FILM ELEMENT TO THE ROOT AND PASSES THE FILM VARIABLES AS THE CHILD ELEMENTS
+	 * @exception 
+	 */
+	public static void createsFilm() {
 
 		// CHECK IF 'film.xml' EXISTS
 		Document document = null;
@@ -41,11 +101,10 @@ public class CreateEditFilmXML {
 					document = sb.build(fis);
 				}
 				catch (JDOMException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
+					CinemaMain.LOGGER.warning("Couldn't create document from FileInputStream using film.XML");;
 				}
 				catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 
@@ -55,12 +114,10 @@ public class CreateEditFilmXML {
 					fis.close();
 				}
 				catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
 			catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
@@ -78,12 +135,12 @@ public class CreateEditFilmXML {
 
 		Element film = new Element("film");
 		film.setAttribute(new Attribute("id", Integer.toString(n)));
-		film.addContent(new Element("title").setText("Scary Movie"));
-		film.addContent(new Element("genre").setText("Thriller"));
-		film.addContent(new Element("description").setText("A year after disposing of the body of a man they accidentally killed, a group of dumb teenagers are stalked by a bumbling serial killer."));
-		film.addContent(new Element("start").setText("07:00 pm"));
-		film.addContent(new Element("end").setText("9:00 pm"));
-		film.addContent(new Element("date").setText("20-11-2017"));
+		film.addContent(new Element("title").setText(title));
+		film.addContent(new Element("genre").setText(genre));
+		film.addContent(new Element("description").setText(description));
+		film.addContent(new Element("start").setText(start));
+		film.addContent(new Element("end").setText(end));
+		film.addContent(new Element("date").setText(date));
 		root.addContent(film);
 		document.setContent(root);
 
