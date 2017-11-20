@@ -38,7 +38,7 @@
          </children>
       </AnchorPane>
    </top>
-   <left>
-      <VBox fx:id="centreAnchor" prefHeight="614.0" prefWidth="672.0" BorderPane.alignment="CENTER" />
-   </left>
+   <center>
+      <VBox fx:id="centreAnchor" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+   </center>
 </BorderPane>

@@ -1,27 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <films>
-  <film id="67">
-    <title>Scary Movie</title>
-    <genre>Thriller</genre>
-    <description>A year after disposing of the body of a man they accidentally killed, a group of dumb teenagers are stalked by a bumbling serial killer.</description>
-    <start>07:00 pm</start>
-    <end>9:00 pm</end>
-    <date>20-11-2017</date>
-  </film>
-  <film id="482">
-    <title>Scary Movie 2</title>
-    <genre>Comedy</genre>
-    <description>A year after disposing of the body of a man they accidentally killed, a group of dumb teenagers are stalked by a bumbling serial killer.</description>
-    <start>05: 00 pm</start>
-    <end>07: 00 pm</end>
-    <date>12-11-2017</date>
-  </film>
-  <film id="886">
-    <title>Another movie</title>
-    <genre>Comedy</genre>
-    <description>A year after disposing of the body of a man they accidentally killed, a group of dumb teenagers are stalked by a bumbling serial killer.</description>
+  <film id="36">
+    <title>movie 3</title>
+    <genre>drama</genre>
+    <description>a good movie</description>
     <start>0700</start>
     <end>0900</end>
-    <date>19-11-2017</date>
+    <date>091117</date>
+  </film>
+  <film id="133">
+    <title>movie 1</title>
+    <genre>horror</genre>
+    <description>a good movie</description>
+    <start>0700</start>
+    <end>0900</end>
+    <date>191117</date>
   </film>
 </films>
