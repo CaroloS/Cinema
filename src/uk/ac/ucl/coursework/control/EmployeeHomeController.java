@@ -11,7 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import uk.ac.ucl.coursework.CinemaMain;
-import uk.ac.ucl.coursework.xml.CreateEditFilmXML;
+import uk.ac.ucl.coursework.xml.CreateXML;
 
 /**
  * 
@@ -29,7 +29,8 @@ public class EmployeeHomeController implements Initializable {
 
 	/**
 	 * Adds a film to the 'film.XML' file Uses the employee input to text-fields
-	 * to set the film variables. Calls 'createFilm' method from 'CreateEditFilmXML' class
+	 * to set the film variables. Calls 'createFilm' method from
+	 * 'CreateEditFilmXML' class
 	 * 
 	 * @param event
 	 *            : event created from button click
@@ -37,16 +38,22 @@ public class EmployeeHomeController implements Initializable {
 	@FXML
 	private void addFilm(ActionEvent event) {
 
-		//GETS THE USER INPUT FROM TEXTFIELDS AND SETS IT TO THE VARIABLES IN 'CreateEditFilmXML' CLASS
-		CreateEditFilmXML.setTitle(filmTitle.getText());
-		CreateEditFilmXML.setDescription(filmDescription.getText());
-		CreateEditFilmXML.setGenre(filmGenre.getText());
-		CreateEditFilmXML.setStart(filmStart.getText());
-		CreateEditFilmXML.setEnd(filmEnd.getText());
-		CreateEditFilmXML.setDate(filmDate.getText());
+		// CREATES AN INSTANCE OF 'CreateXML'
+		CreateXML filmXML = new CreateXML("film.xml", "films");
 
-		//CALLS THE 'createsFilm' METHOD TO WRITE THE NEW FILM INFORMATION TO 'film.XML' FILE
-		CreateEditFilmXML.createsFilm();
+		// GETS THE USER INPUT FROM TEXTFIELDS AND SETS INSTANCE VARIABLES OF
+		// 'filmXML' WITH IT
+		filmXML.setTitle(filmTitle.getText());
+		filmXML.setDescription(filmDescription.getText());
+		filmXML.setGenre(filmGenre.getText());
+		filmXML.setStart(filmStart.getText());
+		filmXML.setEnd(filmEnd.getText());
+		filmXML.setDate(filmDate.getText());
+
+		// CALLS THE 'getsRoot' AND 'createsFilm' METHODS TO WRITE THE NEW FILM
+		// INFORMATION TO 'film.XML' FILE
+		filmXML.getsRoot();
+		filmXML.createsFilm();
 	}
 
 	/**
@@ -58,8 +65,9 @@ public class EmployeeHomeController implements Initializable {
 	 */
 	@FXML
 	private void goToWhatsOn(ActionEvent event) {
-		
-		//TAKES USER TO 'WhatsOnEmployee' PAGE WHEN 'WHATS ON' MENU ITEM CLICKED
+
+		// TAKES USER TO 'WhatsOnEmployee' PAGE WHEN 'WHATS ON' MENU ITEM
+		// CLICKED
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("../view/WhatsOnEmployee.fxml"));
 			scene5 = new Scene(root, 690, 850);
@@ -72,17 +80,18 @@ public class EmployeeHomeController implements Initializable {
 		}
 
 	}
-	
+
 	/**
 	 * Takes the employee back to the 'Cinema Login' page.
 	 * 
 	 * @param event
 	 *            : event created by clicking menu-bar item
 	 */
-	@FXML 
+	@FXML
 	private void logsOut(ActionEvent event) {
-		
-		//TAKES USER BACK TO 'Cinema Login' PAGE WHEN 'LOG OUT' MENU ITEM CLICKED
+
+		// TAKES USER BACK TO 'Cinema Login' PAGE WHEN 'LOG OUT' MENU ITEM
+		// CLICKED
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("../view/LoginScreen.fxml"));
 			scene5 = new Scene(root, 480, 300);

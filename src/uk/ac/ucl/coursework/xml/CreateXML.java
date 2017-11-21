@@ -17,71 +17,80 @@ import org.jdom2.output.XMLOutputter;
 
 import uk.ac.ucl.coursework.CinemaMain;
 
-public class CreateEditFilmXML {
-	
-	//STATIC FILM VARIABLES TO PASS TO 'createsFilm()' METHOD
-	private static String title, genre, description, start, end, date; 
-	
-	//GETTERS AND SETTERS FOR THE PRIVATE VARIABLES
-	public static String getTitle() {
+public class CreateXML {
+
+	// STATIC FILM VARIABLES TO PASS TO 'createsFilm()' METHOD
+	private String title, genre, description, start, end, date;
+	protected String inputFile;
+	protected String rootElement;
+
+	public CreateXML(String inputFile, String rootElement) {
+		this.inputFile = inputFile;
+		this.rootElement = rootElement;
+	}
+
+	// GETTERS AND SETTERS FOR THE PRIVATE VARIABLES
+	public String getTitle() {
 		return title;
 	}
 
-	public static void setTitle(String title) {
-		CreateEditFilmXML.title = title;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
-	public static String getGenre() {
+	public String getGenre() {
 		return genre;
 	}
 
-	public static void setGenre(String genre) {
-		CreateEditFilmXML.genre = genre;
+	public void setGenre(String genre) {
+		this.genre = genre;
 	}
 
-	public static String getDescription() {
+	public String getDescription() {
 		return description;
 	}
 
-	public static void setDescription(String description) {
-		CreateEditFilmXML.description = description;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-	public static String getStart() {
+	public String getStart() {
 		return start;
 	}
 
-	public static void setStart(String start) {
-		CreateEditFilmXML.start = start;
+	public void setStart(String start) {
+		this.start = start;
 	}
 
-	public static String getEnd() {
+	public String getEnd() {
 		return end;
 	}
 
-	public static void setEnd(String end) {
-		CreateEditFilmXML.end = end;
+	public void setEnd(String end) {
+		this.end = end;
 	}
 
-	public static String getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public static void setDate(String date) {
-		CreateEditFilmXML.date = date;
+	public void setDate(String date) {
+		this.date = date;
 	}
-	
-	/**METHOD TO PASS TO THE 'ADD' BUTTON ON EMPLOYEE HOME PAGE
-	 * LOADS/PARSES 'film.XML' IF EXISTS OR CREATES NEW XML FILE
-	 * ADDS A FILM ELEMENT TO THE ROOT AND PASSES THE FILM VARIABLES AS THE CHILD ELEMENTS
-	 * @exception 
+
+	/**
+	 * METHOD TO PASS TO THE 'ADD' BUTTON ON EMPLOYEE HOME PAGE LOADS/PARSES
+	 * 'film.XML' IF EXISTS OR CREATES NEW XML FILE ADDS A FILM ELEMENT TO THE
+	 * ROOT AND PASSES THE FILM VARIABLES AS THE CHILD ELEMENTS @exception
 	 */
-	public static void createsFilm() {
+
+	Element root = null;
+	Document document = null;
+
+	public void getsRoot() {
 
 		// CHECK IF 'film.xml' EXISTS
-		Document document = null;
-		Element root = null;
-		File xmlFile = new File("film.xml");
+		File xmlFile = new File(inputFile);
 
 		if (xmlFile.exists()) {
 
@@ -95,16 +104,15 @@ public class CreateEditFilmXML {
 				// USES SAXBuilder TO PARSE THE FILE, IF IT EXISTS
 				SAXBuilder sb = new SAXBuilder();
 
-				// PARSE THE XML CONTENT PROVIDED BY THE FILE INPUT STREAM AND CREATE A DOCUMENT
-				// OBJECT
+				// PARSE THE XML CONTENT PROVIDED BY THE FILE INPUT STREAM AND
+				// CREATE A DOCUMENT OBJECT
 				try {
 					document = sb.build(fis);
-				}
-				catch (JDOMException e) {
+				} catch (JDOMException e) {
 					e.printStackTrace();
-					CinemaMain.LOGGER.warning("Couldn't create document from FileInputStream using film.XML");;
-				}
-				catch (IOException e) {
+					CinemaMain.LOGGER.warning("Couldn't create document from FileInputStream");
+					;
+				} catch (IOException e) {
 					e.printStackTrace();
 				}
 
@@ -112,22 +120,25 @@ public class CreateEditFilmXML {
 				root = document.getRootElement();
 				try {
 					fis.close();
-				}
-				catch (IOException e) {
+				} catch (IOException e) {
 					e.printStackTrace();
 				}
-			}
-			catch (FileNotFoundException e) {
+			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
 
 		}
 
 		else {
-			// IF THE FILE 'film.xml' DOES NOT EXIST CREATE A NEW DOCUMENT AND NEW ROOT
+			// IF THE FILE 'film.xml' DOES NOT EXIST CREATE A NEW DOCUMENT AND
+			// NEW ROOT
 			document = new Document();
-			root = new Element("films");
+			root = new Element(rootElement);
 		}
+
+	}
+
+	public void createsFilm() {
 
 		// GENERATE RANDOM NUMBER FOR FILM ID
 		Random rand = new Random();
@@ -145,7 +156,7 @@ public class CreateEditFilmXML {
 		document.setContent(root);
 
 		try {
-			FileWriter writer = new FileWriter("film.xml");
+			FileWriter writer = new FileWriter(inputFile);
 			XMLOutputter outputter = new XMLOutputter();
 
 			outputter.setFormat(Format.getPrettyFormat());
@@ -155,8 +166,7 @@ public class CreateEditFilmXML {
 			// CLOSE FILE 'film.xml'
 			writer.close();
 
-		}
-		catch (IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
