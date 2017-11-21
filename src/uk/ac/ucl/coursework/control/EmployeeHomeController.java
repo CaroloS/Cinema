@@ -11,13 +11,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import uk.ac.ucl.coursework.CinemaMain;
-import uk.ac.ucl.coursework.xml.CreateXML;
+import uk.ac.ucl.coursework.xml.CreateFilmXML;
 
-/**
- * 
- * @author carolinesmith daianabassi
- *
- */
 
 public class EmployeeHomeController implements Initializable {
 
@@ -39,7 +34,7 @@ public class EmployeeHomeController implements Initializable {
 	private void addFilm(ActionEvent event) {
 
 		// CREATES AN INSTANCE OF 'CreateXML'
-		CreateXML filmXML = new CreateXML("film.xml", "films");
+		CreateFilmXML filmXML = new CreateFilmXML("film.xml", "films");
 
 		// GETS THE USER INPUT FROM TEXTFIELDS AND SETS INSTANCE VARIABLES OF
 		// 'filmXML' WITH IT

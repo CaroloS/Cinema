@@ -40,12 +40,4 @@
     <end>0700 pm</end>
     <date>25-11-17</date>
   </film>
-  <film id="350">
-    <title>new</title>
-    <genre>new</genre>
-    <description>new</description>
-    <start>new</start>
-    <end>new</end>
-    <date>new</date>
-  </film>
 </films>
