@@ -17,7 +17,20 @@ public class CinemaMain extends Application {
 	
 	//DECLARE PUBLIC STAGE SO SCENES IN OTHER CLASSES CAN SET THE STAGE 
 	public static Stage thestage;
-	public Scene scene1;
+	
+	public void goToNextPage (String pathToFXML, String pageTitle) {
+		try {
+			Parent root = FXMLLoader.load(getClass().getResource(pathToFXML));
+
+			Scene scene = new Scene(root, 690, 850);
+			thestage.setTitle(pageTitle);
+			thestage.setScene(scene);
+			thestage.show();
+		} catch (Exception e) {
+			LOGGER.warning("Couldn't load that page");
+			e.printStackTrace();
+		}
+	}
 	
 	/**
 	 * Starting method for the program launched from 'main'
@@ -31,17 +44,20 @@ public class CinemaMain extends Application {
 		thestage = primaryStage;
 
 		//LOADS 'LoginScreen.fxml' AND SETS THIS AS THE FIRST SCENE
+		
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("view/LoginScreen.fxml"));
 
-			scene1 = new Scene(root, 480, 300);
+			Scene scene = new Scene(root, 480, 300);
 			primaryStage.setTitle("Cinema Login");
-			primaryStage.setScene(scene1);
+			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch (Exception e) {
 			LOGGER.warning("Couldn't load scene1");
 			e.printStackTrace();
 		}
+		
+		
 	}
 
 	public static void main(String[] args) {

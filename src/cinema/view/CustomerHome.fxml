@@ -14,8 +14,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.shape.Line?>
 
-<BorderPane prefHeight="736.0" prefWidth="685.0" xmlns="http://javafx.com/javafx/8.0.141" 
-xmlns:fx="http://javafx.com/fxml/1" fx:controller="cinema.control.CustomerHomeController">
+<BorderPane prefHeight="736.0" prefWidth="685.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cinema.control.CustomerHomeController">
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -64,7 +63,7 @@ xmlns:fx="http://javafx.com/fxml/1" fx:controller="cinema.control.CustomerHomeCo
                   </items>
                 </Menu>
                 
-                <Menu mnemonicParsing="false" text="LOG OUT">
+                <Menu fx:id="logOut" mnemonicParsing="false" onAction="#logsOut" text="LOG OUT">
                   <items>
                     <MenuItem mnemonicParsing="false" text="LOG OUT" />
                   </items>

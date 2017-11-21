@@ -8,15 +8,13 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="713.0" 
-prefWidth="660.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" 
-fx:controller="cinema.control.WhatsOnEmpController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="713.0" prefWidth="660.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cinema.control.WhatsOnEmpController">
    <top>
       <AnchorPane prefHeight="99.0" prefWidth="614.0" BorderPane.alignment="CENTER">
          <children>
             <MenuBar layoutX="1.0" layoutY="47.0" prefHeight="40.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
               <menus>
-                <Menu mnemonicParsing="false" text="HOME">
+                <Menu fx:id="backHome" mnemonicParsing="false" onAction="#goBackHome" text="HOME">
                   <items>
                     <MenuItem mnemonicParsing="false" text="HOME" />
                   </items>
@@ -31,9 +29,9 @@ fx:controller="cinema.control.WhatsOnEmpController">
                     <MenuItem mnemonicParsing="false" text="                                                                                          " />
                   </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="LOG OUT">
+                <Menu fx:id="logOut" mnemonicParsing="false" onAction="#logsOut" text="LOG OUT">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="LOG OUT" />
+                    <MenuItem fx:id="logOut" mnemonicParsing="false" onAction="#logsOut" text="LOG OUT" />
                   </items>
                 </Menu>
               </menus>

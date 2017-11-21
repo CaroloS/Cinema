@@ -14,7 +14,10 @@ import cinema.XML.ReadXMLFile;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -34,13 +37,28 @@ public class WhatsOnEmpController implements Initializable {
 	String filmTitle, filmGenre, filmDescription, filmStart, filmEnd, filmDate;
 	
 
+	// TAKES USER BACK TO 'Cinema Login' PAGE WHEN 'LOG OUT' MENU ITEM CLICKED
+	@FXML
+	private void logsOut(ActionEvent event) {
+		CinemaMain main = new CinemaMain();
+		main.goToNextPage("view/LoginScreen.fxml", "Cinema Login");
+	}
+
+	// TAKES USER BACK TO 'Cinema Login' PAGE WHEN 'LOG OUT' MENU ITEM CLICKED
+	@FXML
+	private void goBackHome(ActionEvent event) {
+		CinemaMain main = new CinemaMain();
+		main.goToNextPage("view/EmployeeHome.fxml", "Employee Home");
+	}
 	
+
 	// USES THE INITIALIZE METHOD TO PARSE XML AND LAYOUT THE FILMS CURRENTLY IN
 	// THE XML FILE WHEN PAGE IS LOADED
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		//CREATES INSTANCE OF 'ReadXMLFile', PRASES 'film.XML' AND RETURNS THE ROOT NODE 
+		// CREATES INSTANCE OF 'ReadXMLFile', PRASES 'film.XML' AND RETURNS THE
+		// ROOT NODE
 		try {
 			ReadXMLFile read = new ReadXMLFile("film.xml");
 			root = read.readsXML();
@@ -48,10 +66,9 @@ public class WhatsOnEmpController implements Initializable {
 			CinemaMain.LOGGER.warning("Couldn't parse film.XML");
 		}
 
-		
 		// ITERATES THROUGH THE 'FILM' LIST, GETS ELEMENT/ATTRIBUTES AND
 		// PASSES IT TO FILM VARIABLES
-		
+
 		List list = root.getChildren("film");
 		for (int i = 0; i < list.size(); i++) {
 
@@ -64,7 +81,6 @@ public class WhatsOnEmpController implements Initializable {
 			filmStart = node.getChildText("start");
 			filmEnd = node.getChildText("end");
 			filmDate = node.getChildText("date");
-
 
 			// CREATES A NEW GRIDPANE AND LABELS WITH THE FILM INFORMATION
 			GridPane gridPane = new GridPane();

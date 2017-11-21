@@ -14,23 +14,20 @@ import javafx.scene.control.TextField;
 
 public class CustomerHomeController implements Initializable {
 
-	public Scene scene4;
 	@FXML
-
 	private void loadfilms(ActionEvent event) {
-		
 		//TAKES YOU TO 'WhatsOn' PAGE WHEN 'ALL FILM' BUTTON OR 'WHATS ON' MENU ITEM PRESSED
-		try {
-			Parent root = FXMLLoader.load(getClass().getResource("../view/WhatsOnCustomer.fxml"));
-
-			scene4 = new Scene(root, 690, 850);
-			CinemaMain.thestage.setTitle("What's On");
-			CinemaMain.thestage.setScene(scene4);
-			CinemaMain.thestage.show();
-		} catch (Exception e) {
-			CinemaMain.LOGGER.warning("Couldn't load film list window");
-		}
+		CinemaMain main = new CinemaMain();
+		main.goToNextPage("view/WhatsOnCustomer.fxml", "What's On");
 	}
+	
+	@FXML
+	private void logsOut(ActionEvent event) {
+		//TAKES YOU TO 'WhatsOn' PAGE WHEN 'ALL FILM' BUTTON OR 'WHATS ON' MENU ITEM PRESSED
+		CinemaMain main = new CinemaMain();
+		main.goToNextPage("view/LoginScreen.fxml", "CinemaLogin");
+	}
+	
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

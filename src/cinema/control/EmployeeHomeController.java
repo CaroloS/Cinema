@@ -13,14 +13,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 
-
 public class EmployeeHomeController implements Initializable {
 
 	// DECLARES THE FXML TEXTFIELD VARIABLES TO COLLECT THE INPUT FROM
 	@FXML
 	private TextField filmTitle, filmDate, filmStart, filmEnd, filmGenre, filmDescription;
-
-	public Scene scene5;
 
 	/**
 	 * Adds a film to the 'film.XML' file Uses the employee input to text-fields
@@ -51,51 +48,24 @@ public class EmployeeHomeController implements Initializable {
 		filmXML.createsFilm();
 	}
 
-	/**
-	 * Takes the employee to the 'What's On' page. Sets a new scene (5) to
-	 * 'thestage'.
-	 * 
-	 * @param event
-	 *            : event created by clicking menu-bar item
-	 */
+	
 	@FXML
 	private void goToWhatsOn(ActionEvent event) {
 
 		// TAKES USER TO 'WhatsOnEmployee' PAGE WHEN 'WHATS ON' MENU ITEM
 		// CLICKED
-		try {
-			Parent root = FXMLLoader.load(getClass().getResource("../view/WhatsOnEmployee.fxml"));
-			scene5 = new Scene(root, 690, 850);
-			CinemaMain.thestage.setTitle("What's On");
-			CinemaMain.thestage.setScene(scene5);
-			CinemaMain.thestage.show();
-		} catch (Exception e) {
-			CinemaMain.LOGGER.warning("Couldn't load What's On");
-			e.printStackTrace();
-		}
-
+		CinemaMain main = new CinemaMain();
+		main.goToNextPage("view/WhatsOnEmployee.fxml", "What's On");
 	}
 
-	/**
-	 * Takes the employee back to the 'Cinema Login' page.
-	 * 
-	 * @param event
-	 *            : event created by clicking menu-bar item
-	 */
 	@FXML
 	private void logsOut(ActionEvent event) {
 
 		// TAKES USER BACK TO 'Cinema Login' PAGE WHEN 'LOG OUT' MENU ITEM
 		// CLICKED
-		try {
-			Parent root = FXMLLoader.load(getClass().getResource("../view/LoginScreen.fxml"));
-			scene5 = new Scene(root, 480, 300);
-			CinemaMain.thestage.setTitle("Cinema Login");
-			CinemaMain.thestage.setScene(scene5);
-			CinemaMain.thestage.show();
-		} catch (Exception e) {
-			CinemaMain.LOGGER.warning("Problem logging out");
-		}
+		CinemaMain main = new CinemaMain();
+		main.goToNextPage("view/LoginScreen.fxml", "Cinema Login");
+
 	}
 
 	@Override

@@ -11,10 +11,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" 
-minWidth="-Infinity" prefHeight="643.0" prefWidth="615.0" 
-xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" 
-fx:controller="cinema.control.EmployeeHomeController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="643.0" prefWidth="615.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cinema.control.EmployeeHomeController">
    <top>
       <AnchorPane prefHeight="79.0" prefWidth="615.0" BorderPane.alignment="CENTER">
          <children>
@@ -37,7 +34,7 @@ fx:controller="cinema.control.EmployeeHomeController">
                 </Menu>
                 <Menu fx:id="logOut" mnemonicParsing="false" onAction="#logsOut" text="LOG OUT">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="LOG OUT" />
+                    <MenuItem fx:id="logOut" mnemonicParsing="false" onAction="#logsOut" text="LOG OUT" />
                   </items>
                 </Menu>
               </menus>
