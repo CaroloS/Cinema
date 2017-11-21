@@ -1,4 +1,4 @@
-package uk.ac.ucl.coursework.control;
+package cinema.control;
 
 import java.io.IOException;
 import java.net.URL;
@@ -9,6 +9,8 @@ import org.jdom2.Attribute;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
 
+import cinema.CinemaMain;
+import cinema.XML.ReadXMLFile;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -20,8 +22,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-import uk.ac.ucl.coursework.CinemaMain;
-import uk.ac.ucl.coursework.xml.ReadXMLFile;
 
 public class WhatsOnEmpController implements Initializable {
 

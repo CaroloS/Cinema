@@ -1,4 +1,4 @@
-package uk.ac.ucl.coursework.xml;
+package cinema.XML;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -10,7 +10,7 @@ import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 
-import uk.ac.ucl.coursework.CinemaMain;
+import cinema.CinemaMain;
 
 public class CreateXML {
 

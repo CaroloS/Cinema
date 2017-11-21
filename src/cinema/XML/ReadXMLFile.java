@@ -1,4 +1,4 @@
-package uk.ac.ucl.coursework.xml;
+package cinema.XML;
 
 import java.io.File;
 import java.io.IOException;
