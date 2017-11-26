@@ -40,4 +40,12 @@
     <end>0700 pm</end>
     <date>25-11-17</date>
   </film>
+  <film id="247">
+    <title>Shrek</title>
+    <genre>Animated</genre>
+    <description>Shrek animated movie</description>
+    <start>07:00</start>
+    <end>09:00</end>
+    <date>15-12-2017</date>
+  </film>
 </films>

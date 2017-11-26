@@ -24,8 +24,8 @@ public class CreateXML {
 		this.rootElement = rootElement;
 	}
 	
-	Element root = null;
-	Document document = null;
+	protected Element root = null;
+	protected Document document = null;
 	
 	public void getsRoot() {
 

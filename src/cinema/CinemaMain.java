@@ -3,6 +3,7 @@ package cinema;
 import java.io.IOException;
 import java.util.logging.Logger;
 
+import Users.CreateUsersXML;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;

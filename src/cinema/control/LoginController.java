@@ -10,12 +10,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TextField;;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import Users.UserAddController;
 
 public class LoginController implements Initializable {
 
 	@FXML
 	private TextField username;
+
+	@FXML
+	private Button signUp;
 
 	@FXML
 	private void loginPressed(ActionEvent event) {
@@ -28,9 +33,17 @@ public class LoginController implements Initializable {
 			main.goToNextPage("view/CustomerHome.fxml", "Customer Home");
 
 		} else if (username.getText().equals("employee")) {
-			
+
 			CinemaMain main = new CinemaMain();
 			main.goToNextPage("view/EmployeeHome.fxml", "Employee Home");
+		}
+	}
+
+	@FXML
+	public void onButtonClicked(ActionEvent e) {
+		if (e.getSource().equals(signUp)) {
+			CinemaMain main = new CinemaMain();
+			main.goToNextPage("view/SignUpPage.fxml", "Sign Up Page");
 		}
 	}
 
