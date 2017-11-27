@@ -4,40 +4,40 @@
     <title>Scary Movie</title>
     <genre>Horror</genre>
     <description>Six friends - Cindy Campbell, Bobby Prinze, Buffy Gilmore, Greg Phillipe, Ray Wilkins, and Brenda Meeks - are being stalked by a serial killer.</description>
-    <start>0700 pm</start>
-    <end>0900 pm</end>
+    <start>1900</start>
+    <end>2100</end>
     <date>09-11-17</date>
   </film>
   <film id="133">
     <title>BladeRunner</title>
     <genre>Drama</genre>
     <description>Rick Deckard, an ex-cop, is a "Blade Runner". Blade runners are people assigned to assassinate "replicants". ...</description>
-    <start>0700 pm</start>
-    <end>0900 pm</end>
+    <start>1900</start>
+    <end>2100</end>
     <date>19-11-17</date>
   </film>
   <film id="543">
     <title>Paddington</title>
     <genre>Children's</genre>
     <description>The film tells the story of the titular character Paddington, an anthropomorphic bear who migrates from the jungles of darkest Peru to the streets of London, where he is adopted by the Brown family. ...</description>
-    <start>0500 pm</start>
-    <end>0700 pm</end>
+    <start>1700</start>
+    <end>1900</end>
     <date>25-11-17</date>
   </film>
   <film id="543">
     <title>Paddington</title>
     <genre>Children's</genre>
     <description>The film tells the story of the titular character Paddington, an anthropomorphic bear who migrates from the jungles of darkest Peru to the streets of London, where he is adopted by the Brown family. ...</description>
-    <start>0500 pm</start>
-    <end>0700 pm</end>
+    <start>1700</start>
+    <end>1900</end>
     <date>25-11-17</date>
   </film>
   <film id="543">
     <title>Paddington</title>
     <genre>Children's</genre>
     <description>The film tells the story of the titular character Paddington, an anthropomorphic bear who migrates from the jungles of darkest Peru to the streets of London, where he is adopted by the Brown family. ...</description>
-    <start>0500 pm</start>
-    <end>0700 pm</end>
+    <start>1700</start>
+    <end>1900</end>
     <date>25-11-17</date>
   </film>
 </films>

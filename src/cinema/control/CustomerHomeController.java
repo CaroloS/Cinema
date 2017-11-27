@@ -18,7 +18,7 @@ public class CustomerHomeController implements Initializable {
 	private void loadfilms(ActionEvent event) {
 		//TAKES YOU TO 'WhatsOn' PAGE WHEN 'ALL FILM' BUTTON OR 'WHATS ON' MENU ITEM PRESSED
 		CinemaMain main = new CinemaMain();
-		main.goToNextPage("view/WhatsOnCustomer.fxml", "What's On");
+		main.goToNextPage("view/WhatsOn.fxml", "What's On");
 	}
 	
 	@FXML
