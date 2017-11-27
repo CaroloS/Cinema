@@ -42,7 +42,7 @@
       </AnchorPane>
    </top>
    <center>
-      <ScrollPane fx:id="scrollPane" prefHeight="200.0" prefWidth="500.0" BorderPane.alignment="CENTER">
+      <ScrollPane fx:id="scrollPane" prefHeight="200.0" prefWidth="480.0" BorderPane.alignment="CENTER">
          <content>
             <VBox fx:id="centreAnchor" prefHeight="611.0" prefWidth="700.0" />
          </content>

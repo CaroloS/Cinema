@@ -1,8 +1,6 @@
 package cinema.control;
 
-import java.awt.Desktop;
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -12,6 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -28,39 +27,20 @@ public class EmployeeHomeController implements Initializable {
 	private Label pictureLabel;
 	@FXML
 	private DatePicker datePicker;
+	@FXML
+	private ComboBox filmRating;
 	
+	String fileName;
+	String imageRelPath;
 	
 	@FXML
 	private void selectImage(ActionEvent event) {
+		
 		final FileChooser fileChooser = new FileChooser();
-		Desktop desktop = Desktop.getDesktop();
 		File file = fileChooser.showOpenDialog(CinemaMain.thestage);
 
-	/*	
-		try {
-			desktop.open(file);
-		} catch (IOException ex) {
-			System.out.println("can't open file");
-			;
-		}
-	*/
-		String path = file.getPath();
-		String relPath = null;
-		
-		try {
-			relPath = file.getCanonicalPath();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		String fullPath = file.getAbsolutePath(); 
-		
-		pictureLabel.setText(fullPath);
-		
-		System.out.println(fullPath);
-		System.out.println(relPath);
-		System.out.println(path);
-		
+		fileName = file.getName();
+		pictureLabel.setText("images/" + fileName);
 	}
 
 	/**
@@ -73,6 +53,8 @@ public class EmployeeHomeController implements Initializable {
 	 */
 	@FXML
 	private void addFilm(ActionEvent event) {
+		
+		//NEED TO ADD CODE TO CHECK IF ALL THE BOXES ARE FILLED IN ... 
 
 		// CREATES AN INSTANCE OF 'CreateXML'
 		CreateFilmXML filmXML = new CreateFilmXML("film.xml", "films");
@@ -85,6 +67,10 @@ public class EmployeeHomeController implements Initializable {
 		filmXML.setStart(filmStart.getText());
 		filmXML.setEnd(filmEnd.getText());
 		filmXML.setDate(filmDate.getText());
+		filmXML.setImage(pictureLabel.getText());
+		
+		String rating = (String) filmRating.getSelectionModel().getSelectedItem();
+		filmXML.setRating(rating);
 
 		// CALLS THE 'getsRoot' AND 'createsFilm' METHODS TO WRITE THE NEW FILM
 		// INFORMATION TO 'film.XML' FILE
@@ -114,6 +100,7 @@ public class EmployeeHomeController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+	    filmRating.getItems().addAll("U", "PG", "12", "15", "18");
 
 	}
 

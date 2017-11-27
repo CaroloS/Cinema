@@ -9,20 +9,19 @@ import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
-
 public class CinemaMain extends Application {
-	
-	//GET THE GLOBAL LOGGER 
+
+	// GET THE GLOBAL LOGGER
 	public final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
-	
-	//DECLARE PUBLIC STAGE SO SCENES IN OTHER CLASSES CAN SET THE STAGE 
+
+	// DECLARE PUBLIC STAGE SO SCENES IN OTHER CLASSES CAN SET THE STAGE
 	public static Stage thestage;
-	
-	public void goToNextPage (String pathToFXML, String pageTitle) {
+
+	public void goToNextPage(String pathToFXML, String pageTitle) {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource(pathToFXML));
 
-			Scene scene = new Scene(root, 730, 850);
+			Scene scene = new Scene(root, 760, 850);
 			thestage.setTitle(pageTitle);
 			thestage.setScene(scene);
 			thestage.show();
@@ -31,20 +30,18 @@ public class CinemaMain extends Application {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
-	 * Starting method for the program launched from 'main'
-	 * Sets the stage to scene1 - Login Screen
-	 * @param primaryStage 
-	 * @exception 
+	 * Starting method for the program launched from 'main' Sets the stage to
+	 * scene1 - Login Screen @param primaryStage @exception
 	 */
 	@Override
 	public void start(Stage primaryStage) {
-		
+
 		thestage = primaryStage;
 
-		//LOADS 'LoginScreen.fxml' AND SETS THIS AS THE FIRST SCENE
-		
+		// LOADS 'LoginScreen.fxml' AND SETS THIS AS THE FIRST SCENE
+
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("view/LoginScreen.fxml"));
 
@@ -56,20 +53,18 @@ public class CinemaMain extends Application {
 			LOGGER.warning("Couldn't load scene1");
 			e.printStackTrace();
 		}
-		
-		
 	}
 
 	public static void main(String[] args) {
-		
-		//SETS UP THE LOGGER FROM 'CinemaLogger.java'
+
+		// SETS UP THE LOGGER FROM 'CinemaLogger.java'
 		try {
-	         CinemaLogger.setup();
-	     } catch (IOException e) {
-	         e.printStackTrace();
-	         throw new RuntimeException("Problems with creating the log files");
-	     }
-		
+			CinemaLogger.setup();
+		} catch (IOException e) {
+			e.printStackTrace();
+			throw new RuntimeException("Problems with creating the log files");
+		}
+
 		launch(args);
 	}
 }
