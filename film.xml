@@ -1,44 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <films>
-  <film id="36">
+  <film id="999">
     <title>Scary Movie</title>
+    <genre>horror</genre>
+    <description>A year after disposing of the body of a man they accidentally killed, a group of dumb teenagers are stalked by a bumbling serial killer.</description>
+    <start>1700</start>
+    <length>1 hour</length>
+    <date>27/11/2017</date>
+    <image>images/ScaryMovie.png</image>
+    <rating>12</rating>
+  </film>
+  <film id="831">
+    <title>Paddington 2</title>
+    <genre>Children's</genre>
+    <description>Paddington, now happily settled with the Brown family and a popular member of the local community, picks up a series of odd jobs to buy the perfect present for his Aunt Lucy's 100th birthday, only for the gift to be stolen.</description>
+    <start>1700</start>
+    <length>1 hour</length>
+    <date>21/11/2017</date>
+    <image>images/Paddington.png</image>
+    <rating>PG</rating>
+  </film>
+  <film id="826">
+    <title>Bladrunner 2049</title>
+    <genre>Action</genre>
+    <description>A young blade runner's discovery of a long-buried secret leads him to track down former blade runner Rick Deckard, who's been missing for thirty years.</description>
+    <start>1900</start>
+    <length>1 hour</length>
+    <date>23/11/2018</date>
+    <image>images/BladeRunner.png</image>
+    <rating>15</rating>
+  </film>
+  <film id="901">
+    <title>Wonder Woman</title>
+    <genre>Action</genre>
+    <description>When a pilot crashes and tells of conflict in the outside world, Diana, an Amazonian warrior in training, leaves home to fight a war, discovering her full powers and true destiny.</description>
+    <start>1900</start>
+    <length>1 hour</length>
+    <date>30/11/2018</date>
+    <image>images/WonderWoman.png</image>
+    <rating>12</rating>
+  </film>
+  <film id="150">
+    <title>I.T.</title>
     <genre>Horror</genre>
-    <description>Six friends - Cindy Campbell, Bobby Prinze, Buffy Gilmore, Greg Phillipe, Ray Wilkins, and Brenda Meeks - are being stalked by a serial killer.</description>
-    <start>0700 pm</start>
-    <end>0900 pm</end>
-    <date>09-11-17</date>
-  </film>
-  <film id="133">
-    <title>BladeRunner</title>
-    <genre>Drama</genre>
-    <description>Rick Deckard, an ex-cop, is a "Blade Runner". Blade runners are people assigned to assassinate "replicants". ...</description>
-    <start>0700 pm</start>
-    <end>0900 pm</end>
-    <date>19-11-17</date>
-  </film>
-  <film id="543">
-    <title>Paddington</title>
-    <genre>Children's</genre>
-    <description>The film tells the story of the titular character Paddington, an anthropomorphic bear who migrates from the jungles of darkest Peru to the streets of London, where he is adopted by the Brown family. ...</description>
-    <start>0500 pm</start>
-    <end>0700 pm</end>
-    <date>25-11-17</date>
-  </film>
-  <film id="543">
-    <title>Paddington</title>
-    <genre>Children's</genre>
-    <description>The film tells the story of the titular character Paddington, an anthropomorphic bear who migrates from the jungles of darkest Peru to the streets of London, where he is adopted by the Brown family. ...</description>
-    <start>0500 pm</start>
-    <end>0700 pm</end>
-    <date>25-11-17</date>
-  </film>
-  <film id="543">
-    <title>Paddington</title>
-    <genre>Children's</genre>
-    <description>The film tells the story of the titular character Paddington, an anthropomorphic bear who migrates from the jungles of darkest Peru to the streets of London, where he is adopted by the Brown family. ...</description>
-    <start>0500 pm</start>
-    <end>0700 pm</end>
-    <date>25-11-17</date>
+    <description>A group of bullied kids band together when a shapeshifting monster, taking the appearance of a clown, begins hunting children.</description>
+    <start>1200</start>
+    <length>1 hour</length>
+    <date>20/12/17</date>
+    <image>images/IT.png</image>
+    <rating>15</rating>
   </film>
   <film id="247">
     <title>Shrek</title>

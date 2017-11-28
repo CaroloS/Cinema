@@ -19,9 +19,9 @@
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <Label layoutX="68.0" layoutY="37.0" text="NOW SHOWING" textFill="#c92222" />
-            <ImageView fitHeight="161.0" fitWidth="453.0" layoutX="129.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="204.0" fitWidth="543.0" layoutX="77.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../images/586fc4213817baaba563b408.png" />
+                  <Image url="@../../images/586fc4213817baaba563b408.png" />
                </image>
             </ImageView>
             <Label layoutX="68.0" layoutY="312.0" prefHeight="17.0" prefWidth="95.0" text="PICK A DATE" textFill="#c92222" />
@@ -75,22 +75,22 @@
             </MenuBar>
             <ImageView fitHeight="23.0" fitWidth="24.0" layoutX="613.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../images/58e91965eb97430e819064f5.png" />
+                  <Image url="@../../images/58e91965eb97430e819064f5.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="23.0" fitWidth="20.0" layoutX="643.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../images/580b57fcd9996e24bc43c521.png" />
+                  <Image url="@../../images/580b57fcd9996e24bc43c521.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="28.0" fitWidth="23.0" layoutX="663.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../images/580b57fcd9996e24bc43c53e.png" />
+                  <Image url="@../../images/580b57fcd9996e24bc43c53e.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="36.0" fitWidth="46.0" layoutX="14.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../images/580b57fbd9996e24bc43c00b.png" />
+                  <Image url="@../../images/580b57fbd9996e24bc43c00b.png" />
                </image>
             </ImageView>
          </children>
