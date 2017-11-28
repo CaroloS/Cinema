@@ -2,6 +2,7 @@ package cinema.control;
 
 import java.io.File;
 import java.net.URL;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 import cinema.CinemaMain;
@@ -18,21 +19,30 @@ import javafx.stage.FileChooser;
 
 public class EmployeeHomeController implements Initializable {
 
-	// DECLARES THE FXML TEXTFIELD VARIABLES TO COLLECT THE INPUT FROM
+	// DECLARES THE FXML VARIABLES TO COLLECT THE INPUT FROM
 	@FXML
-	private TextField filmTitle, filmDate, filmStart, filmEnd, filmGenre, filmDescription;
+	private TextField filmTitle, filmStart, filmGenre, filmDescription;
 	@FXML
 	private Button imageButton;
 	@FXML
-	private Label pictureLabel;
+	private Label pictureLabel, date1, date2, date3;
 	@FXML
 	private DatePicker datePicker;
 	@FXML
 	private ComboBox filmRating;
 	
 	String fileName;
-	String imageRelPath;
 	
+	//FUNCTION FOR ADDING DATES FROM DATEPICKER TO A LABEL TO WRITE TO XML
+	@FXML
+	private void addsDate(ActionEvent event) {
+		
+		String date = datePicker.getValue().format(DateTimeFormatter.ofPattern("dd-MM-YY"));
+		date1.setWrapText(true);
+		date1.setText(date1.getText() + " " + date);
+	}
+	
+	//FUNCTION FOR OPENING FILECHOOSER TO PICK AN IMAGE, WRITES RELATIVE PATH TO A LABEL TO WRITE TO XML
 	@FXML
 	private void selectImage(ActionEvent event) {
 		
@@ -54,19 +64,15 @@ public class EmployeeHomeController implements Initializable {
 	@FXML
 	private void addFilm(ActionEvent event) {
 		
-		//NEED TO ADD CODE TO CHECK IF ALL THE BOXES ARE FILLED IN ... 
-
 		// CREATES AN INSTANCE OF 'CreateXML'
 		CreateFilmXML filmXML = new CreateFilmXML("film.xml", "films");
 
-		// GETS THE USER INPUT FROM TEXTFIELDS AND SETS INSTANCE VARIABLES OF
-		// 'filmXML' WITH IT
+		// GETS THE USER INPUT AND SETS INSTANCE VARIABLES OF 'filmXML' WITH IT
 		filmXML.setTitle(filmTitle.getText());
 		filmXML.setDescription(filmDescription.getText());
 		filmXML.setGenre(filmGenre.getText());
 		filmXML.setStart(filmStart.getText());
-		filmXML.setEnd(filmEnd.getText());
-		filmXML.setDate(filmDate.getText());
+		filmXML.setDate(date1.getText());
 		filmXML.setImage(pictureLabel.getText());
 		
 		String rating = (String) filmRating.getSelectionModel().getSelectedItem();
@@ -77,7 +83,6 @@ public class EmployeeHomeController implements Initializable {
 		filmXML.getsRoot();
 		filmXML.createsFilm();
 	}
-
 	
 	@FXML
 	private void goToWhatsOn(ActionEvent event) {
@@ -100,6 +105,8 @@ public class EmployeeHomeController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
+		//POPULATES THE RATINGS COMBOBOX WITH VALUES ON PAGE INITIALISATION
 	    filmRating.getItems().addAll("U", "PG", "12", "15", "18");
 
 	}

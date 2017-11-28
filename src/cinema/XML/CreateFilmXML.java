@@ -12,7 +12,7 @@ import org.jdom2.output.XMLOutputter;
 public class CreateFilmXML extends CreateXML {
 
 	//DECLARES INSTANCE VARIABLES TO WRITE TO XML
-	private String title, genre, description, start, end, date, image, rating;
+	private String title, genre, description, start, length, date, image, rating;
 
 
 	//CALLS THE PARENT CONSTRUCTOR 
@@ -53,12 +53,12 @@ public class CreateFilmXML extends CreateXML {
 		this.start = start;
 	}
 
-	public String getEnd() {
-		return end;
+	public String getLength() {
+		return length;
 	}
 
-	public void setEnd(String end) {
-		this.end = end;
+	public void setLength(String end) {
+		this.length = length;
 	}
 
 	public String getDate() {
@@ -98,7 +98,7 @@ public class CreateFilmXML extends CreateXML {
 		film.addContent(new Element("genre").setText(genre));
 		film.addContent(new Element("description").setText(description));
 		film.addContent(new Element("start").setText(start));
-		film.addContent(new Element("end").setText(end));
+		film.addContent(new Element("length").setText("1 hour"));
 		film.addContent(new Element("date").setText(date));
 		film.addContent(new Element("image").setText(image));
 		film.addContent(new Element("rating").setText(rating));

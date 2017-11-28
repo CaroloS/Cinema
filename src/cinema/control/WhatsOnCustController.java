@@ -1,6 +1,7 @@
 package cinema.control;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -9,11 +10,17 @@ import org.jdom2.Element;
 
 import cinema.CinemaMain;
 import cinema.XML.ReadXMLFile;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.HPos;
+import javafx.geometry.Pos;
+import javafx.geometry.VPos;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -32,9 +39,8 @@ public class WhatsOnCustController implements Initializable {
 
 	// DECALRES FILM VARIABLES TO STORE VALUES FROM XML PARSING
 	Attribute filmID;
-	String filmTitle, filmGenre, filmDescription, filmStart, filmEnd, filmDate, filmRating, filmImage;
+	String filmTitle, filmGenre, filmDescription, filmStart, filmLength, filmDates, filmRating, filmImage;
 
-	
 	// TAKES USER BACK TO 'Cinema Login' PAGE WHEN 'LOG OUT' MENU ITEM CLICKED
 	@FXML
 	private void logsOut(ActionEvent event) {
@@ -42,7 +48,7 @@ public class WhatsOnCustController implements Initializable {
 		main.goToNextPage("view/LoginScreen.fxml", "Cinema Login");
 	}
 
-	// TAKES USER BACK TO 'Cinema Login' PAGE WHEN 'LOG OUT' MENU ITEM CLICKED
+	// TAKES USER BACK TO 'Customer Home' PAGE WHEN 'HOME' MENU ITEM CLICKED
 	@FXML
 	private void goBackHome(ActionEvent event) {
 		CinemaMain main = new CinemaMain();
@@ -63,9 +69,8 @@ public class WhatsOnCustController implements Initializable {
 			CinemaMain.LOGGER.warning("Couldn't parse film.XML");
 		}
 
-		// ITERATES THROUGH THE 'FILM' LIST, GETS ELEMENT/ATTRIBUTES AND
-		// PASSES IT TO FILM VARIABLES
-
+		// PARSES XML: ITERATES THROUGH THE 'FILM' LIST, GETS ELEMENT/ATTRIBUTES
+		// AND PASSES IT TO FILM VARIABLES
 		List list = root.getChildren("film");
 		for (int i = 0; i < list.size(); i++) {
 
@@ -76,12 +81,11 @@ public class WhatsOnCustController implements Initializable {
 			filmGenre = node.getChildText("genre");
 			filmDescription = node.getChildText("description");
 			filmStart = node.getChildText("start");
-			filmEnd = node.getChildText("end");
-			filmDate = node.getChildText("date");
-			filmRating = node.getChildText("rating");
+			// filmRating = node.getChildText("rating");
 			filmImage = node.getChildText("image");
 
-			// CREATES A NEW GRIDPANE AND LABELS WITH THE FILM INFORMATION
+			// CREATES A NEW GRIDPANE AND POPULATES IT WITH THE FILM INFORMATION
+			// FROM THE XML PARSING
 			GridPane gridPane = new GridPane();
 			gridPane.setPrefSize(680, 800);
 
@@ -90,42 +94,58 @@ public class WhatsOnCustController implements Initializable {
 
 			Label title = new Label(filmTitle);
 			Label genre = new Label(filmGenre);
+			Label startTime = new Label(filmStart + "  length: 1 hour");
+			startTime.setWrapText(true);
+
 			Label description = new Label(filmDescription);
-			
 			description.setWrapText(true);
-			String dateTimeInfo = filmDate + ", " + filmStart + " - " + filmEnd;
-			Label dateTime = new Label(dateTimeInfo);
-			dateTime.setWrapText(true);
+
 			Label moreInfo = new Label("more info..");
 			Label blank = new Label(" ");
+
+			// SPLITS THE FILMDATES FROM XML AND FILLS A COMBOBOX WITH LIST OF
+			// DATES
+			filmDates = node.getChildText("date");
+			String[] splitDates = filmDates.split(" ");
+
+			List<String> dateList2 = new ArrayList<String>();
+			for (int a = 0; a < splitDates.length; a++) {
+				dateList2.add(splitDates[a]);
+			}
+			ObservableList<String> obList = FXCollections.observableList(dateList2);
+
+			ComboBox dateList = new ComboBox();
+			dateList.getItems().clear();
+			dateList.setItems(obList);
+			dateList.setPromptText("Pick a Date");
 
 			// BOOKING BUTTON WITH A 'buttonHandler' EVENTHANDLER
 			Button book = new Button("Book");
 			book.setOnAction(buttonHandler);
 			book.setPrefSize(120, 20);
 
-			// COMBOBOX TO POPULATE WITH LIST OF FILM DATES
-			// ComboBox dateList = new ComboBox();
-
-			// ADDS ALL NODES (LABELS/BUTTON) TO THE GRIDPANE
+			// ADDS ALL NODES (LABELS/BUTTON/COMBOBOX) TO THE GRIDPANE
 			gridPane.add(viewPic, 0, 1, 1, 4);
 			gridPane.add(title, 1, 1, 2, 1);
 			gridPane.add(genre, 1, 2, 2, 1);
-			gridPane.add(dateTime, 1, 3, 2, 1);
+			gridPane.add(startTime, 1, 3, 2, 1);
 			gridPane.add(description, 1, 4, 2, 1);
-			gridPane.add(moreInfo, 4, 1, 1, 1);
-			gridPane.add(book, 4, 3, 1, 1);
-			gridPane.add(blank, 0, 5, 1, 1);
-			// gridPane.add(dateList, 4, 1, 1, 1);
-			// gridPane.gridLinesVisibleProperty().set(true);
 
+			gridPane.add(moreInfo, 1, 4, 2, 1);
+			gridPane.setValignment(moreInfo, VPos.BOTTOM);
+			gridPane.setHalignment(moreInfo, HPos.RIGHT);
+
+			gridPane.add(dateList, 4, 3, 1, 1);
+			gridPane.add(book, 4, 4, 1, 1);
+			gridPane.add(blank, 0, 5, 1, 1);
+
+			// SETS SOME COLUMN WIDTH CONSTRAINTS FOR PROPER LAYOUT
 			ColumnConstraints col1 = new ColumnConstraints();
 			ColumnConstraints col2 = new ColumnConstraints();
 			ColumnConstraints col3 = new ColumnConstraints();
 			col1.setPercentWidth(2);
 			col2.setPercentWidth(2);
 			col3.setPercentWidth(2);
-		
 			gridPane.getColumnConstraints().addAll(col1, col2, col3);
 
 			// ADDS THE GRIDPANE TO THE CENTRAL VBOX 'centreAnchor'
