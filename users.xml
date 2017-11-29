@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<users>
+  <User id="298">
+    <FirstName>Daiana</FirstName>
+    <LastName>Bassi</LastName>
+    <EmailAddress>email@email.com</EmailAddress>
+    <PhoneNeumber>5558201</PhoneNeumber>
+    <Password>password</Password>
+  </User>
+  <User id="724">
+    <FirstName>Daiana</FirstName>
+    <LastName>Bassi</LastName>
+    <EmailAddress>email@email.com</EmailAddress>
+    <PhoneNeumber>5558201</PhoneNeumber>
+    <Password>password</Password>
+  </User>
+  <User id="258">
+    <FirstName>Daiana</FirstName>
+    <LastName>Bassi</LastName>
+    <EmailAddress>email@email.com</EmailAddress>
+    <PhoneNeumber>5558201</PhoneNeumber>
+    <Password>password</Password>
+  </User>
+  <User id="354">
+    <FirstName>Daiana</FirstName>
+    <LastName>Bassi</LastName>
+    <EmailAddress>email@email.com</EmailAddress>
+    <PhoneNeumber>5558201</PhoneNeumber>
+    <Password>password</Password>
+  </User>
+  <User id="386">
+    <FirstName>Daiana</FirstName>
+    <LastName>Bassi</LastName>
+    <EmailAddress>email@email.com</EmailAddress>
+    <PhoneNeumber>5558201</PhoneNeumber>
+    <Password>password</Password>
+  </User>
+  <User id="653">
+    <FirstName>Daiana</FirstName>
+    <LastName>Bassi</LastName>
+    <EmailAddress>email@email.com</EmailAddress>
+    <PhoneNeumber>5558201</PhoneNeumber>
+    <Password>password</Password>
+  </User>
+  <User id="192">
+    <FirstName>Daiana</FirstName>
+    <LastName>Bassi</LastName>
+    <EmailAddress>email@email.com</EmailAddress>
+    <PhoneNeumber>5558201</PhoneNeumber>
+    <Password>password</Password>
+  </User>
+  <User id="532">
+    <FirstName>John</FirstName>
+    <LastName>Doe</LastName>
+    <EmailAddress>john.doe@email.com</EmailAddress>
+    <PhoneNeumber>5551423</PhoneNeumber>
+    <Password>password</Password>
+  </User>
+  <User id="101">
+    <FirstName>Mary</FirstName>
+    <LastName>Jane</LastName>
+    <EmailAddress>maryjane@hotmail.com</EmailAddress>
+    <PhoneNeumber>5558625</PhoneNeumber>
+    <Password>password</Password>
+  </User>
+</users>
