@@ -22,7 +22,7 @@ public class CinemaMain extends Application {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource(pathToFXML));
 
-			Scene scene = new Scene(root, 760, 850);
+			Scene scene = new Scene(root, 760, 810);
 			thestage.setTitle(pageTitle);
 			thestage.setScene(scene);
 			thestage.show();
