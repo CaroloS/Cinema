@@ -3,9 +3,11 @@ package cinema.control;
 import java.io.File;
 import java.net.URL;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import cinema.CinemaMain;
+import cinema.XML.CreateBookingsXML;
 import cinema.XML.CreateFilmXML;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -32,6 +34,7 @@ public class EmployeeHomeController implements Initializable {
 	private ComboBox filmRating;
 	
 	String fileName;
+	ArrayList<String> dates = new ArrayList<String>();
 	
 	//FUNCTION FOR ADDING DATES FROM DATEPICKER TO A LABEL TO WRITE TO XML
 	@FXML
@@ -40,7 +43,12 @@ public class EmployeeHomeController implements Initializable {
 		String date = datePicker.getValue().format(DateTimeFormatter.ofPattern("dd-MM-YY"));
 		date1.setWrapText(true);
 		date1.setText(date1.getText() + " " + date);
+		dates.add(date);
+		
+		System.out.println(dates);
 	}
+	
+ 
 	
 	//FUNCTION FOR OPENING FILECHOOSER TO PICK AN IMAGE, WRITES RELATIVE PATH TO A LABEL TO WRITE TO XML
 	@FXML
@@ -82,6 +90,19 @@ public class EmployeeHomeController implements Initializable {
 		// INFORMATION TO 'film.XML' FILE
 		filmXML.getsRoot();
 		filmXML.createsFilm();
+		
+		CreateBookingsXML bookingsXML = new CreateBookingsXML("filmBookings.xml", "bookings");
+		
+		for (int i=0; i < dates.size(); i ++) {
+			String attribute = filmTitle.getText() + " " + dates.get(i) + " " + filmStart.getText();
+			bookingsXML.setBookingAttribute(attribute);
+			bookingsXML.setBookedSeats("");
+			bookingsXML.setBookedNumber("0");
+			bookingsXML.setUnBookedNumber("36");
+			
+			bookingsXML.getsRoot();
+			bookingsXML.createsBookings();
+		}
 	}
 	
 	@FXML

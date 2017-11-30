@@ -1,0 +1,20 @@
+<userBookings>
+    <booking id="same id as user.xml>
+        <filmName>Scary Movie</filmName>
+        <filmDate>27-11-17</filmDate>
+        <filmTime>1700</filmTime>
+        <seatBooked>A2</seatBooked>
+    </booking>
+     <booking user="Caroline">
+        <filmName>Paddington 2</filmName>
+        <filmDate>21-11-17</filmDate>
+        <filmTime>1700</filmTime>
+        <seatBooked>A2</seatBooked>
+    </booking>
+     <booking user="Caroline">
+        <filmName>Bladrunner 2049</filmName>
+        <filmDate>23-11-17</filmDate>
+        <filmTime>1900</filmTime>
+        <seatBooked>A3</seatBooked>
+    </booking>
+  </userBookings>

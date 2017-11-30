@@ -34,7 +34,8 @@ public class CinemaMain extends Application {
 
 	/**
 	 * Starting method for the program launched from 'main' Sets the stage to
-	 * scene1 - Login Screen @param primaryStage @exception
+	 * scene1 - Login Screen 
+	 * @param primaryStage 
 	 */
 	@Override
 	public void start(Stage primaryStage) {

@@ -3,6 +3,7 @@ package cinema.control;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 import org.jdom2.Attribute;
@@ -36,10 +37,14 @@ public class WhatsOnCustController implements Initializable {
 
 	// DECALRES THE ROOT ELEMENT TO BE SET BY PARSING film.XML
 	Element root;
+	List list;
 
 	// DECALRES FILM VARIABLES TO STORE VALUES FROM XML PARSING
 	Attribute filmID;
 	String filmTitle, filmGenre, filmDescription, filmStart, filmLength, filmDates, filmRating, filmImage;
+	
+	ArrayList<String> filmIDs = new ArrayList<String>();
+	//ArrayList<Attribute> filmIDs = new ArrayList<Attribute>();
 
 	// TAKES USER BACK TO 'Cinema Login' PAGE WHEN 'LOG OUT' MENU ITEM CLICKED
 	@FXML
@@ -71,12 +76,17 @@ public class WhatsOnCustController implements Initializable {
 
 		// PARSES XML: ITERATES THROUGH THE 'FILM' LIST, GETS ELEMENT/ATTRIBUTES
 		// AND PASSES IT TO FILM VARIABLES
-		List list = root.getChildren("film");
+		list = root.getChildren("film");
+		
 		for (int i = 0; i < list.size(); i++) {
 
 			Element node = (Element) list.get(i);
 
 			filmID = node.getAttribute("id");
+			String ID = filmID.toString();
+			String IDs[] = ID.split("\"");
+			filmIDs.add(IDs[1]);
+			
 			filmTitle = node.getChildText("title");
 			filmGenre = node.getChildText("genre");
 			filmDescription = node.getChildText("description");
