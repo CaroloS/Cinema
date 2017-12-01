@@ -51,7 +51,7 @@ public class CreateXML {
 				} catch (JDOMException e) {
 					e.printStackTrace();
 					CinemaMain.LOGGER.warning("Couldn't create document from FileInputStream");
-					;
+					
 				} catch (IOException e) {
 					e.printStackTrace();
 				}

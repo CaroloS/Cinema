@@ -21,6 +21,11 @@ public class LoginController implements Initializable {
 
 	@FXML
 	private Button signUp;
+	
+	public static String loggedInUser = null;
+	
+	public static String userID = "999";
+	public static String usersName = "Daiana";
 
 	@FXML
 	private void loginPressed(ActionEvent event) {
@@ -29,11 +34,14 @@ public class LoginController implements Initializable {
 		// 'employee' LOADS EMPLOYEE HOME PAGE
 		if (username.getText().equals("customer")) {
 
+			loggedInUser = "customer";
 			CinemaMain main = new CinemaMain();
 			main.goToNextPage("view/CustomerHome.fxml", "Customer Home");
+			
 
 		} else if (username.getText().equals("employee")) {
 
+			loggedInUser = "employee";
 			CinemaMain main = new CinemaMain();
 			main.goToNextPage("view/EmployeeHome.fxml", "Employee Home");
 		}

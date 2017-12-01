@@ -21,7 +21,7 @@ public class WhatsOnEmpController extends WhatsOnCustController {
 	@FXML
 	public VBox centreAnchor;
 	
-	public static String pageTitle;
+	//public static String pageTitle;
 
 	// TAKES USER BACK TO 'Employee Home' PAGE WHEN 'HOME' MENU ITEM CLICKED
 	@FXML
@@ -47,7 +47,7 @@ public class WhatsOnEmpController extends WhatsOnCustController {
 			bookingInfo.setId(filmIDs.get(i));
 			
 			
-			bookingInfo.setOnAction(buttonHandler);
+			bookingInfo.setOnAction(super.buttonHandler);
 			bookingInfo.setPrefSize(120, 20);
 
 			grid.add(bookingInfo, 4, 4, 1, 1);
@@ -55,29 +55,5 @@ public class WhatsOnEmpController extends WhatsOnCustController {
 
 	}
 
-	// EVENTHANDLER FOR THE BOOKNG INFO BUTTON - WILL TAKE YOU TO THE BOOKING INFO PAGE
-	final EventHandler<ActionEvent> buttonHandler = new EventHandler<ActionEvent>() {
-
-		@Override
-		public void handle(final ActionEvent event) {
-			
-			
-			Button btn = (Button) event.getSource();
-			String btnID = btn.getId();
-			GridPane grid = (GridPane) btn.getParent();
-			List childList = grid.getChildren();
-			
-			Label a = (Label) childList.get(1);
-			Label b = (Label) childList.get(3);
-			String[] times = b.getText().split(" ");
-			ComboBox<String> c = (ComboBox) childList.get(6);
-			
-			pageTitle = a.getText() + " " + c.getSelectionModel().getSelectedItem() + " " +  times[0];
-			
-			CinemaMain main = new CinemaMain();
-			main.goToNextPage("view/BookingPage.fxml", pageTitle);
-
-		}
-	};
-
+	
 }

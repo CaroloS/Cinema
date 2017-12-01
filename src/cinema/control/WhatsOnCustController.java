@@ -38,6 +38,8 @@ public class WhatsOnCustController implements Initializable {
 	// DECALRES THE ROOT ELEMENT TO BE SET BY PARSING film.XML
 	Element root;
 	List list;
+	
+	public static String pageTitle;
 
 	// DECALRES FILM VARIABLES TO STORE VALUES FROM XML PARSING
 	Attribute filmID;
@@ -169,7 +171,20 @@ public class WhatsOnCustController implements Initializable {
 
 		@Override
 		public void handle(final ActionEvent event) {
-
+			Button btn = (Button) event.getSource();
+			String btnID = btn.getId();
+			GridPane grid = (GridPane) btn.getParent();
+			List childList = grid.getChildren();
+			
+			Label a = (Label) childList.get(1);
+			Label b = (Label) childList.get(3);
+			String[] times = b.getText().split(" ");
+			ComboBox<String> c = (ComboBox) childList.get(6);
+			
+			pageTitle = a.getText() + " " + c.getSelectionModel().getSelectedItem() + " " +  times[0];
+			
+			CinemaMain main = new CinemaMain();
+			main.goToNextPage("view/BookingPage.fxml", pageTitle);
 		}
 	};
 
