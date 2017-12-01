@@ -28,40 +28,33 @@ public class EmpBookingController extends WhatsOnEmpController implements Initia
 	@FXML
 	protected AnchorPane seatAnchor;
 	@FXML
-	protected Label filmSelection, bookingPrompt, confirmLabel, bookingInfo1, bookingInfo2, bookingInfo3, bookingInfo4;
+	protected Label filmSelection, bookingPrompt, confirmLabel1, confirmLabel2, bookingInfo1, bookingInfo2, bookingInfo3, bookingInfo4;
 	
+	//THE PAGE TITLE IS UNIQUE FOR EACH FILM/DATE/TIME. IT WAS SET IN THE BUTTON HANDLER 
+	//METHOD IN THE WHATS ON PAGE WHEN A USER SELECTS A DATE AND FILM. 
 	protected String strPageTitle = WhatsOnCustController.pageTitle;
 	
-	String bookedSeats = null;
-	String totalBooked = null;
-	String totalUnBooked = null;
+	//DECLARES STATIC VARIABLES TO BE SET WHEN THE 'filmBookings.xml' FILE IS READ 
+	//THESE ARE ALTERED WHEN A USER BOOKS A SEAT AND TO 'EditBookingsXML.editsBookingXML' METHOD TO EDIT THE XML
+	public static String  bookedSeats = null;
+	public static String totalBooked = null;
+	public static String totalUnBooked = null;
 	
-	String[] confirmInfo = null;
-	String confirmTime = null;
-	String confirmDate = null; 
-	StringBuffer confirmName = new StringBuffer("");
-	String seatNumber = null;
 	
-	public static String newBookedSeats = null;
-	public static String newTotalBooked = null;
-	public static String newTotalUnBooked = null;
-	
-	 
-	// DECALRES THE ROOT ELEMENT TO BE SET BY PARSING film.XML
+	// DECALRES THE ROOT ELEMENT TO BE SET BY PARSING 'filmBookings.xml'
 	Element root;
 	List list;
-	public static Element selectedFilmNode = null;
 
+	
+	//ON INITIALIZATION ALL SEATS ARE ALLOCATED AN EMPTY SEAT ICON
+	//THEN 'filmBookings.xml' IS PARSED AND ANY BOOKED SEATS ARE SET TO AN ORANGE ICON
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		System.out.println(LoginController.loggedInUser);
 		filmSelection.setText(strPageTitle);
 		Image emptyChair = new Image("images/emptychair.png", 20, 20, true, true);
 
-		// ON PAGE LOADING ITERATES THROUGH ALL THE BUTTON CHILDREN OF THE
-		// CENTRAL ANCHORPANE
-		// AND ADDS AN EMPTY CHAIR IMAGE TO THE BUTTON
+		// ITERATES THROUGH ALL THE BUTTONs AND ADDS AN EMPTY CHAIR ICON
 		for (int i = 4; i < (seatAnchor.getChildren().size()); i++) {
 
 			Button btn = (Button) seatAnchor.getChildren().get(i);
@@ -94,13 +87,11 @@ public class EmpBookingController extends WhatsOnEmpController implements Initia
 				totalBooked = node.getChildText("bookedNumber");
 				totalUnBooked = node.getChildText("unBookedNumber");
 				
-				selectedFilmNode = node;
 			}
 		}
 
 
-		//SPLITS THE SEATS BOOKED INTO AN ARRAY TO GET A LIST OF SEATS BOOKED
-		//ITERATES THROUGH THE SEATS BOOKED AND THE SEATS ON THE PAGE 
+		//ITERATES THROUGH A LIST OF SEATS BOOKED AND THE SEATS IN THE CINEMA LAYOUT 
 		//WHERE THE SEAT BOOKED MATCHES THE SEAT ID - CHANGES THE SEAT IMAGE TO ORANGE CHAIR
 		if (bookedSeats != null) {
 			String[] arrBookedSeats = bookedSeats.split(" ");
@@ -120,18 +111,19 @@ public class EmpBookingController extends WhatsOnEmpController implements Initia
 			}
 		}
 
-		
+		//IF THE LOGGED IN USER IS AN EMPLOYEE DISPLAYS INFORMATION ABOUT THE BOOKINGS
 		if (LoginController.loggedInUser.equalsIgnoreCase("employee")) {
 			//PRINTS THE SEAT BOOKING INFORMATION TO THE LABELS IN THE VBOX BELOW THE CINEMA LAYOUT
 			if (bookedSeats != null)
 				bookingInfo1.setText("Seats Booked: " + bookedSeats);
 			else
-				bookingInfo1.setText("Seats Booked: none yet!");
+				bookingInfo1.setText("Seats Booked: None yet!");
 			bookingInfo2.setText("Total seats booked: " + totalBooked);
 			bookingInfo3.setText("Total seats unbooked: " + totalUnBooked);
+			bookingInfo4.setText("Booking Information for this film:");
 		}
 		
-		
+		//IF USER IS A CUSTOMER DISPLAYS A PROMPT TO PICK A SEAT
 		if (LoginController.loggedInUser.equalsIgnoreCase("customer")) {
 			bookingPrompt.setText("Come see this film! Click on a seat to book ...");
 		}
@@ -139,50 +131,52 @@ public class EmpBookingController extends WhatsOnEmpController implements Initia
 		
 	}
 	
-
-	
-	
+	//METHOD FOR BOOKING A SEAT - ONLY APPLIES TO CUSTOMERS
 	public void seatSelected(ActionEvent event) {
-		System.out.println(bookedSeats);
-		System.out.println(totalBooked);
-		System.out.println(totalUnBooked);
 		
 		if (LoginController.loggedInUser.equalsIgnoreCase("customer")) {
 			
+			//GETS INFORMATION ABOUT THE SEAT SELECTED
 			Button btn2 = (Button) event.getSource();
-			seatNumber = btn2.getId();
+			String seatNumber = btn2.getId();
 			ImageView selectedChair = (ImageView) btn2.getGraphic();
 			String chairType = selectedChair.getId();
 			
+			//IF SEAT IS BOOKED (ORANGE) ALERT TO SAY PICK ANOTHER SEAT
 			if (chairType.equalsIgnoreCase("orange")) {
 				Alert alert = new Alert(AlertType.WARNING);
 				alert.setTitle("Warning");
 				alert.setHeaderText("Sorry that seat is taken!");
-				alert.setContentText("There's no sitting on other customer's laps at this cinema! So best pick another seat!");
+				alert.setContentText("No sitting on each other laps at this cinema! Best pick another seat!");
 				alert.showAndWait();
 			}
 			else {
 				
-				confirmInfo = strPageTitle.split(" ");
-				confirmTime = confirmInfo[confirmInfo.length -1]; 
-				confirmDate = confirmInfo[confirmInfo.length -2]; 
+				//SETS THE FILM INFORMATION TO USE IN THE CONFIRMATION ALERT USING THE UNIQUE PAGE TITLE
+				String[] confirmInfo = strPageTitle.split(" ");
+				StringBuffer confirmName = new StringBuffer("");
+				String confirmTime = confirmInfo[confirmInfo.length -1]; 
+				String confirmDate = confirmInfo[confirmInfo.length -2]; 
 				
 				for (int i = 0; i < confirmInfo.length -2; i++)
 					confirmName.append(confirmInfo[i] + " "); 
 				
-			
+				//PRESENTS AN ALERT TO ASK THEM TO CONFIRM THEIR BOOKING OR CANCEL
 				Alert alert = new Alert(AlertType.CONFIRMATION);
 				alert.setTitle("Confirmation");
 				alert.setHeaderText("Great choice, that seat is free - go ahead and book!");
 				alert.setContentText("By cicking OK you will be confirmed for " + confirmName + " on " + 
 						confirmDate + " at " + confirmTime + " in seat " + seatNumber + ". Or click cancel and pick another seat. \n\n "
 								+ "ARE YOU SURE YOU WANT TO BOOK?");
-				//alert.showAndWait();
 				
 				
+				//IF THEY SELECT OK - ADDS THE USER'S BOOKING TO THE 'userBookings.xml' FILE
+				//AND EDITS THE 'filmBookings.xml' FILE WITH THE NEW VALUES AFTER BOOKING A SEAT
 				Optional<ButtonType> result = alert.showAndWait();
 				if (result.get() == ButtonType.OK){
 				    
+					//CREATES A NEW ENTRY IN 'userBookings.xml' FOR THE LOGGED IN USER
+					//SETS THE CHILD ELEMENTS TO THE INFORMATION FOR THE FILM THEY BOOKED
 					CreateUserBookingsXML newBooking = new CreateUserBookingsXML("userBookings.xml", "userBookings");
 					newBooking.setFilmName(confirmName.toString());
 					newBooking.setFilmDate(confirmDate);
@@ -192,31 +186,38 @@ public class EmpBookingController extends WhatsOnEmpController implements Initia
 					newBooking.getsRoot();
 					newBooking.CreateUserBooking();
 					
-					
+					//UPDATES 'filmBookingXML' WITH NEW TOTALS FOR BOOKED AND UNBOOKED
+					//AND APPENDS THE SEAT NUMBER TO THE SEATS BOOKED ELEMENT
 					int booked = Integer.parseInt(totalBooked);
-					newTotalBooked = Integer.toString(++booked);
+					totalBooked = Integer.toString(++booked);
+					
 					int unbooked = Integer.parseInt(totalUnBooked);
-					newTotalUnBooked = Integer.toString(--unbooked);
+					totalUnBooked = Integer.toString(--unbooked);
 					
 					StringBuffer sb = new StringBuffer("");
 					sb.append(bookedSeats);
 					sb.append(" " + seatNumber);
-					newBookedSeats = sb.toString();
+					bookedSeats = sb.toString();
 					
 					EditBookingsXML alter = new EditBookingsXML("filmBookings.xml", "bookings");
 					alter.editsBookingXML();
 					
+					//CHANGES THE CHAIR TO ORANGE ON CONFIRMATION OF BOOKING
 					Image orangeChair = new Image("images/orangechair.png", 20, 20, true, true);
 					ImageView bookedChair = new ImageView(orangeChair);
 					bookedChair.setId("orange");
 					btn2.setGraphic(bookedChair);
 					
 					
+					confirmLabel1.setText("Thanks " + LoginController.usersName + " you're all booked!");
+					confirmLabel2.setText("Your ticket will be sent to you by email");
+					bookingInfo4.setText("Your film details:");
+					bookingInfo1.setText(confirmName + " on " + confirmDate + " at " + confirmTime);
+					bookingInfo2.setText("Seat: " + seatNumber);
 					
 				} else {
 				    // ... user chose CANCEL or closed the dialog
 				}
-				
 			}
 			
 			

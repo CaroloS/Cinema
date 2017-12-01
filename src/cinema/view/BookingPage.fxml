@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" 
-minWidth="-Infinity" prefHeight="707.0" prefWidth="638.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cinema.control.EmpBookingController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="707.0" prefWidth="638.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cinema.control.EmpBookingController">
    <top>
       <AnchorPane prefHeight="72.0" prefWidth="638.0" BorderPane.alignment="CENTER">
          <children>
@@ -18,12 +17,12 @@ minWidth="-Infinity" prefHeight="707.0" prefWidth="638.0" xmlns="http://javafx.c
    <center>
     <AnchorPane fx:id="cinemaLayout" minHeight="0.0" minWidth="0.0" prefHeight="544.0" prefWidth="638.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox fx:id="bookingBox" layoutX="169.0" layoutY="359.0" prefHeight="165.0" prefWidth="346.0">
+            <VBox fx:id="bookingBox" layoutX="335.0" layoutY="359.0" prefHeight="172.0" prefWidth="282.0">
                <children>
-                  <Label fx:id="bookingInfo1" prefHeight="33.0" prefWidth="330.0" />
+                  <Label fx:id="bookingInfo4" prefHeight="33.0" prefWidth="325.0" />
+                  <Label fx:id="bookingInfo1" prefHeight="55.0" prefWidth="284.0" />
                   <Label fx:id="bookingInfo2" prefHeight="33.0" prefWidth="325.0" />
                   <Label fx:id="bookingInfo3" prefHeight="33.0" prefWidth="327.0" />
-                  <Label fx:id="bookingInfo4" prefHeight="33.0" prefWidth="337.0" />
                </children>
             </VBox>
             <Label fx:id="filmSelection" layoutX="43.0" layoutY="14.0" prefHeight="37.0" prefWidth="409.0" />
@@ -72,7 +71,8 @@ minWidth="-Infinity" prefHeight="707.0" prefWidth="638.0" xmlns="http://javafx.c
                </children>
             </AnchorPane>
             <Label fx:id="bookingPrompt" layoutX="43.0" layoutY="49.0" prefHeight="37.0" prefWidth="409.0" />
-            <Label fx:id="confirmLabel" layoutX="14.0" layoutY="359.0" prefHeight="28.0" prefWidth="130.0" />
+            <Label fx:id="confirmLabel1" layoutX="14.0" layoutY="359.0" prefHeight="42.0" prefWidth="320.0" />
+            <Label fx:id="confirmLabel2" layoutX="14.0" layoutY="401.0" prefHeight="42.0" prefWidth="320.0" />
          </children>
       </AnchorPane>
    </center>

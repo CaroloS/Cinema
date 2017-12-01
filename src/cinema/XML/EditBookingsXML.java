@@ -34,7 +34,6 @@ public class EditBookingsXML {
 	protected Element root = null;
 	protected Document document = null;
 
-	public static Element selectedFilmNode = null;
 
 	public void editsBookingXML() {
 
@@ -77,12 +76,11 @@ public class EditBookingsXML {
 
 				Element node = (Element) list.get(i);
 
-				// node.getAttributeValue("name")
 
 				if (node.getAttributeValue("name").equalsIgnoreCase(WhatsOnCustController.pageTitle)) {
-					node.getChild("bookedSeats").setText(EmpBookingController.newBookedSeats);
-					node.getChild("bookedNumber").setText(EmpBookingController.newTotalBooked);
-					node.getChild("unBookedNumber").setText(EmpBookingController.newTotalUnBooked);
+					node.getChild("bookedSeats").setText(EmpBookingController.bookedSeats);
+					node.getChild("bookedNumber").setText(EmpBookingController.totalBooked);
+					node.getChild("unBookedNumber").setText(EmpBookingController.totalUnBooked);
 
 				}
 			}
