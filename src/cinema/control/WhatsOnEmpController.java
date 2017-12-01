@@ -10,6 +10,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
@@ -21,8 +22,11 @@ public class WhatsOnEmpController extends WhatsOnCustController {
 	@FXML
 	public VBox centreAnchor;
 	
-	//public static String pageTitle;
-
+	@FXML
+	public DatePicker filterDates;
+	public ComboBox filterGenre;
+	public Button allFilms;
+	
 	// TAKES USER BACK TO 'Employee Home' PAGE WHEN 'HOME' MENU ITEM CLICKED
 	@FXML
 	private void goBackHome(ActionEvent event) {
@@ -41,11 +45,13 @@ public class WhatsOnEmpController extends WhatsOnCustController {
 		for (int i = 0; i < super.centreAnchor.getChildren().size(); i++) {
 
 			GridPane grid = (GridPane) super.centreAnchor.getChildren().get(i);
+			
+			System.out.println(grid.getChildren());
+			
 			grid.getChildren().remove(7);
 
 			bookingInfo = new Button("Booking Info");
 			bookingInfo.setId(filmIDs.get(i));
-			
 			
 			bookingInfo.setOnAction(super.buttonHandler);
 			bookingInfo.setPrefSize(120, 20);

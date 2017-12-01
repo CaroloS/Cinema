@@ -208,7 +208,7 @@ public class EmpBookingController extends WhatsOnEmpController implements Initia
 					bookedChair.setId("orange");
 					btn2.setGraphic(bookedChair);
 					
-					
+					//SETS SOME TEXT CONFIRMING BOOKINGS DETAILS UNDER THE CINEMA LAYOUT
 					confirmLabel1.setText("Thanks " + LoginController.usersName + " you're all booked!");
 					confirmLabel2.setText("Your ticket will be sent to you by email");
 					bookingInfo4.setText("Your film details:");

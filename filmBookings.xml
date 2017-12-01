@@ -26,8 +26,8 @@
     <unBookedNumber>34</unBookedNumber>
   </filmBooking>
   <filmBooking name="I.T. 25-12-17 1200">
-    <bookedSeats />
-    <bookedNumber>0</bookedNumber>
-    <unBookedNumber>36</unBookedNumber>
+    <bookedSeats>D4</bookedSeats>
+    <bookedNumber>1</bookedNumber>
+    <unBookedNumber>35</unBookedNumber>
   </filmBooking>
 </bookings>
