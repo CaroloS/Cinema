@@ -93,7 +93,7 @@ public class EmpBookingController extends WhatsOnEmpController implements Initia
 
 		//ITERATES THROUGH A LIST OF SEATS BOOKED AND THE SEATS IN THE CINEMA LAYOUT 
 		//WHERE THE SEAT BOOKED MATCHES THE SEAT ID - CHANGES THE SEAT IMAGE TO ORANGE CHAIR
-		if (bookedSeats != null) {
+		if (bookedSeats.length() > 0)  {
 			String[] arrBookedSeats = bookedSeats.split(" ");
 
 			for (int a = 0; a < arrBookedSeats.length; a++) {
@@ -114,7 +114,7 @@ public class EmpBookingController extends WhatsOnEmpController implements Initia
 		//IF THE LOGGED IN USER IS AN EMPLOYEE DISPLAYS INFORMATION ABOUT THE BOOKINGS
 		if (LoginController.loggedInUser.equalsIgnoreCase("employee")) {
 			//PRINTS THE SEAT BOOKING INFORMATION TO THE LABELS IN THE VBOX BELOW THE CINEMA LAYOUT
-			if (bookedSeats != null)
+			if (bookedSeats.length() > 0)
 				bookingInfo1.setText("Seats Booked: " + bookedSeats);
 			else
 				bookingInfo1.setText("Seats Booked: None yet!");

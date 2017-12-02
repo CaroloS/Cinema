@@ -12,7 +12,7 @@ import org.jdom2.output.XMLOutputter;
 public class CreateFilmXML extends CreateXML {
 
 	//DECLARES INSTANCE VARIABLES TO WRITE TO XML
-	private String title, genre, description, start, length, date, image, rating;
+	private String title, genre, description, start, length, dateTimes, image, rating;
 
 
 	//CALLS THE PARENT CONSTRUCTOR 
@@ -45,28 +45,12 @@ public class CreateFilmXML extends CreateXML {
 		this.description = description;
 	}
 
-	public String getStart() {
-		return start;
+	public String getDateTimes() {
+		return dateTimes;
 	}
 
-	public void setStart(String start) {
-		this.start = start;
-	}
-
-	public String getLength() {
-		return length;
-	}
-
-	public void setLength(String end) {
-		this.length = length;
-	}
-
-	public String getDate() {
-		return date;
-	}
-
-	public void setDate(String date) {
-		this.date = date;
+	public void setDateTimes(String dateTimes) {
+		this.dateTimes = dateTimes;
 	}
 	
 	public String getImage() {
@@ -97,9 +81,9 @@ public class CreateFilmXML extends CreateXML {
 		film.addContent(new Element("title").setText(title));
 		film.addContent(new Element("genre").setText(genre));
 		film.addContent(new Element("description").setText(description));
-		film.addContent(new Element("start").setText(start));
+		//film.addContent(new Element("start").setText(start));
 		film.addContent(new Element("length").setText("1 hour"));
-		film.addContent(new Element("date").setText(date));
+		film.addContent(new Element("dateTimes").setText(dateTimes));
 		film.addContent(new Element("image").setText(image));
 		film.addContent(new Element("rating").setText(rating));
 		root.addContent(film);

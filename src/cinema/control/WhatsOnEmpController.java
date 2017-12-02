@@ -46,7 +46,7 @@ public class WhatsOnEmpController extends WhatsOnCustController {
 
 			GridPane grid = (GridPane) super.centreAnchor.getChildren().get(i);
 			
-			System.out.println(grid.getChildren());
+			//System.out.println(grid.getChildren());
 			
 			grid.getChildren().remove(7);
 

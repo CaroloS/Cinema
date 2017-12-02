@@ -54,9 +54,10 @@ public class WhatsOnCustController implements Initializable {
 
 	// DECALRES FILM VARIABLES TO STORE VALUES FROM XML PARSING
 	// Attribute filmID;
-	String filmID, filmTitle, filmGenre, filmDescription, filmStart, filmLength, filmDates, filmRating, filmImage;
+	String filmID, filmTitle, filmGenre, filmDescription, filmStart, filmLength, filmDateTimes, filmRating, filmImage;
 
 	ArrayList<String> filmIDs = new ArrayList<String>();
+	
 
 	// USES THE INITIALIZE METHOD TO PARSE XML AND LAYOUT THE FILMS CURRENTLY IN
 	// THE XML FILE WHEN PAGE IS LOADED
@@ -64,12 +65,10 @@ public class WhatsOnCustController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 
 		// SETS UP THE GENRE COMBOBOX
-		List<String> Genres = new ArrayList<String>();
-		Genres.addAll(Arrays.asList("Horror", "Comedy", "Children's", "Action", "Love"));
-		ObservableList<String> obList1 = FXCollections.observableList(Genres);
-		filterGenre.getItems().clear();
-		filterGenre.setItems(obList1);
-
+	//	List<String> Genres = new ArrayList<String>();
+		
+		filterGenre.getItems().addAll("Horror", "Comedy", "Children's", "Action", "Love");
+		
 		// CREATES INSTANCE OF 'ReadXMLFile', PARSES 'film.XML' AND RETURNS THE
 		// ROOT NODE
 		try {
@@ -89,11 +88,15 @@ public class WhatsOnCustController implements Initializable {
 
 			// SPLITS THE FILMDATES FROM XML AND CREATES AN ARRAYLIST TO PASS TO
 			// COMBOBOX
-			filmDates = node.getChildText("date");
+			filmDateTimes = node.getChildText("dateTimes");
+		
+			ArrayList<String> datesForCombo = new ArrayList<String>();
 			List<String> allDates = new ArrayList<String>();
 
-			for (String element : filmDates.split(" ")) {
-				allDates.add(element);
+			for (String element : filmDateTimes.split(",")) {
+				datesForCombo.add(element);
+				String date = element.substring(0, 8);
+				allDates.add(date);
 			}
 
 			// COMPARES THE DATES OF THIS FILM TO THE CURRENT DATE, REMOVING
@@ -127,7 +130,6 @@ public class WhatsOnCustController implements Initializable {
 				filmTitle = node.getChildText("title");
 				filmGenre = node.getChildText("genre");
 				filmDescription = node.getChildText("description");
-				filmStart = node.getChildText("start");
 				// filmRating = node.getChildText("rating");
 				filmImage = node.getChildText("image");
 
@@ -142,8 +144,8 @@ public class WhatsOnCustController implements Initializable {
 
 				Label title = new Label(filmTitle);
 				Label genre = new Label(filmGenre);
-				Label startTime = new Label(filmStart + "  length: 1 hour");
-				startTime.setWrapText(true);
+				Label runningTime = new Label("Running Time: 1 hour");
+				runningTime.setWrapText(true);
 
 				Label description = new Label(filmDescription);
 				description.setWrapText(true);
@@ -151,8 +153,8 @@ public class WhatsOnCustController implements Initializable {
 				Label moreInfo = new Label("more info..");
 				Label blank = new Label(" ");
 
-				ObservableList<String> obList = FXCollections.observableList(allDates);
-
+				
+				ObservableList<String> obList = FXCollections.observableList(datesForCombo);
 				ComboBox dateList = new ComboBox();
 				dateList.getItems().clear();
 				dateList.setItems(obList);
@@ -167,7 +169,7 @@ public class WhatsOnCustController implements Initializable {
 				gridPane.add(viewPic, 0, 1, 1, 4);
 				gridPane.add(title, 1, 1, 2, 1);
 				gridPane.add(genre, 1, 2, 2, 1);
-				gridPane.add(startTime, 1, 3, 2, 1);
+				gridPane.add(runningTime, 1, 3, 2, 1);
 				gridPane.add(description, 1, 4, 2, 1);
 
 				gridPane.add(moreInfo, 1, 4, 2, 1);
@@ -201,15 +203,19 @@ public class WhatsOnCustController implements Initializable {
 		for (int i = 0; i < centreAnchor.getChildren().size(); i++) {
 
 			GridPane grid = (GridPane) centreAnchor.getChildren().get(i);
-			ComboBox filmDates = (ComboBox) grid.getChildren().get(6);
-			ObservableList<String> obList3 = FXCollections.observableList(filmDates.getItems());
-
+			ComboBox filmDateTimes = (ComboBox) grid.getChildren().get(6);
+			
+			ObservableList<String> obList3 = FXCollections.observableList(filmDateTimes.getItems());
+			ArrayList<String> arrJustDates = new ArrayList<String>();
+			
 			int a = 0;
-			for (String element : obList3) {
-				if (selectedDate.equalsIgnoreCase(element)) {
-					a = 1;
-				}
+			for (String element: obList3) {
+				String justDate = element.substring(0, 8);
+				arrJustDates.add(justDate);
+				if (selectedDate.equalsIgnoreCase(justDate)) 
+					a=1;
 			}
+			
 			if (a == 0) {
 				grid.setVisible(false);
 			}
@@ -227,8 +233,6 @@ public class WhatsOnCustController implements Initializable {
 			Label filmGenre = (Label) grid.getChildren().get(2);
 			
 			String labels = filmGenre.getText();
-			System.out.println(labels);
-			System.out.println(selectedGenre);
 
 			if  (!filmGenre.getText().equalsIgnoreCase(selectedGenre)) 
 				grid.setVisible(false);
@@ -237,7 +241,10 @@ public class WhatsOnCustController implements Initializable {
 	}
 
 	public void backtoAllFilms() {
-
+		for (int i = 0; i < centreAnchor.getChildren().size(); i++) {
+			GridPane grid = (GridPane) centreAnchor.getChildren().get(i);
+			grid.setVisible(true);
+		}
 	}
 
 	// EVENTHANDLER FOR THE BOOKNG BUTTON - WILL TAKE YOU TO THE BOOKING PAGE
@@ -250,19 +257,19 @@ public class WhatsOnCustController implements Initializable {
 			List childList = grid.getChildren();
 
 			Label selectedName = (Label) childList.get(1);
-			Label timeAndLength = (Label) childList.get(3);
-			String[] selectedTime = timeAndLength.getText().split(" ");
+		//	Label timeAndLength = (Label) childList.get(3);
+		//	String[] selectedTime = timeAndLength.getText().split(" ");
 			ComboBox<String> c = (ComboBox) childList.get(6);
-			String selectedDate = c.getSelectionModel().getSelectedItem();
+			String selectedDateTime = c.getSelectionModel().getSelectedItem();
 
-			if (selectedDate == null) {
+			if (selectedDateTime == null) {
 				Alert alert = new Alert(AlertType.WARNING);
 				alert.setTitle("Warning");
 				alert.setHeaderText("Date not selected!");
-				alert.setContentText("Please select a date for this film");
+				alert.setContentText("Please select a date/time for this film");
 				alert.showAndWait();
 			} else {
-				pageTitle = selectedName.getText() + " " + selectedDate + " " + selectedTime[0];
+				pageTitle = selectedName.getText() + " " + selectedDateTime;
 				CinemaMain main = new CinemaMain();
 				main.goToNextPage("view/BookingPage.fxml", pageTitle);
 			}
