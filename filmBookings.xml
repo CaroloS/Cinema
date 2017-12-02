@@ -26,9 +26,9 @@
     <unBookedNumber>35</unBookedNumber>
   </filmBooking>
   <filmBooking name="Paddington 2 26-12-17 1800">
-    <bookedSeats>C1</bookedSeats>
-    <bookedNumber>1</bookedNumber>
-    <unBookedNumber>35</unBookedNumber>
+    <bookedSeats>C1 C8 B7</bookedSeats>
+    <bookedNumber>3</bookedNumber>
+    <unBookedNumber>33</unBookedNumber>
   </filmBooking>
   <filmBooking name="Paddington 2 26-12-17 1600">
     <bookedSeats>B8</bookedSeats>

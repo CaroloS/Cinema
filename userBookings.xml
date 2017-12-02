@@ -96,4 +96,16 @@
     <filmTime>1900</filmTime>
     <seatBooked>D6</seatBooked>
   </booking>
+  <booking userID="999">
+    <filmName>Paddington 2</filmName>
+    <filmDate>26-12-17</filmDate>
+    <filmTime>1800</filmTime>
+    <seatBooked>C8</seatBooked>
+  </booking>
+  <booking userID="999">
+    <filmName>Paddington 2</filmName>
+    <filmDate>26-12-17</filmDate>
+    <filmTime>1800</filmTime>
+    <seatBooked>B7</seatBooked>
+  </booking>
 </userBookings>
