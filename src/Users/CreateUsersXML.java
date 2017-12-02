@@ -15,7 +15,7 @@ import cinema.XML.CreateXML;
 public class CreateUsersXML extends CreateXML{
 	
 	//DECLARES INSTANCE VARIABLES TO WRITE TO XML
-	private String firstName, lastName, emailAddress, phoneNumber, password;
+	private String firstName, lastName, emailAddress, phoneNumber, userProfile, userName, password;
 
 //	CALLS THE PARENT CONSTRUCTOR 
 	public CreateUsersXML (String inputFile, String rootElement) {
@@ -65,6 +65,23 @@ public class CreateUsersXML extends CreateXML{
 		this.password = password;
 	}
 	
+
+	public String getUserProfile() {
+		return userProfile;
+	}
+
+	public void setUserProfile(String userProfile) {
+		this.userProfile = userProfile;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	
 	public void createUser() {
 
 		// GENERATE RANDOM NUMBER FOR FILM ID
@@ -77,7 +94,9 @@ public class CreateUsersXML extends CreateXML{
 		user.addContent(new Element("FirstName").setText(firstName));
 		user.addContent(new Element("LastName").setText(lastName));
 		user.addContent(new Element("EmailAddress").setText(emailAddress));
-		user.addContent(new Element("PhoneNeumber").setText(phoneNumber));
+		user.addContent(new Element("PhoneNumber").setText(phoneNumber));
+		user.addContent(new Element("UserProfile").setText(userProfile));
+		user.addContent(new Element("UserName").setText(userName));
 		user.addContent(new Element("Password").setText(password));
 		root.addContent(user);
 		document.setContent(root);
@@ -91,13 +110,12 @@ public class CreateUsersXML extends CreateXML{
 			outputter.output(document, writer);
 			// outputter.output(document, System.out);
 
-			// CLOSE FILE 'film.xml'
+			// CLOSE FILE 'users.xml'
 			writer.close();
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-	
 
 }

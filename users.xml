@@ -4,77 +4,27 @@
     <FirstName>Daiana</FirstName>
     <LastName>Bassi</LastName>
     <EmailAddress>email@email.com</EmailAddress>
-    <PhoneNeumber>5558201</PhoneNeumber>
+    <PhoneNumber>5558201</PhoneNumber>
+    <UserProfile>customer</UserProfile>
+    <UserName>daianab</UserName>
     <Password>password</Password>
   </User>
-  <User id="724">
+  <User id="294">
+    <FirstName>Daiana2</FirstName>
+    <LastName>Bassi2</LastName>
+    <EmailAddress>email@email.com</EmailAddress>
+    <PhoneNumber>123456</PhoneNumber>
+    <UserProfile>employee</UserProfile>
+    <UserName>daianab2</UserName>
+    <Password>123456</Password>
+  </User>
+  <User id="326">
     <FirstName>Daiana</FirstName>
     <LastName>Bassi</LastName>
-    <EmailAddress>email@email.com</EmailAddress>
-    <PhoneNeumber>5558201</PhoneNeumber>
-    <Password>password</Password>
-  </User>
-  <User id="258">
-    <FirstName>Daiana</FirstName>
-    <LastName>Bassi</LastName>
-    <EmailAddress>email@email.com</EmailAddress>
-    <PhoneNeumber>5558201</PhoneNeumber>
-    <Password>password</Password>
-  </User>
-  <User id="354">
-    <FirstName>Daiana</FirstName>
-    <LastName>Bassi</LastName>
-    <EmailAddress>email@email.com</EmailAddress>
-    <PhoneNeumber>5558201</PhoneNeumber>
-    <Password>password</Password>
-  </User>
-  <User id="386">
-    <FirstName>Daiana</FirstName>
-    <LastName>Bassi</LastName>
-    <EmailAddress>email@email.com</EmailAddress>
-    <PhoneNeumber>5558201</PhoneNeumber>
-    <Password>password</Password>
-  </User>
-  <User id="653">
-    <FirstName>Daiana</FirstName>
-    <LastName>Bassi</LastName>
-    <EmailAddress>email@email.com</EmailAddress>
-    <PhoneNeumber>5558201</PhoneNeumber>
-    <Password>password</Password>
-  </User>
-  <User id="192">
-    <FirstName>Daiana</FirstName>
-    <LastName>Bassi</LastName>
-    <EmailAddress>email@email.com</EmailAddress>
-    <PhoneNeumber>5558201</PhoneNeumber>
-    <Password>password</Password>
-  </User>
-  <User id="532">
-    <FirstName>John</FirstName>
-    <LastName>Doe</LastName>
-    <EmailAddress>john.doe@email.com</EmailAddress>
-    <PhoneNeumber>5551423</PhoneNeumber>
-    <Password>password</Password>
-  </User>
-  <User id="101">
-    <FirstName>Mary</FirstName>
-    <LastName>Jane</LastName>
-    <EmailAddress>maryjane@hotmail.com</EmailAddress>
-    <PhoneNeumber>5558625</PhoneNeumber>
-    <Password>password</Password>
-  </User>
-  <User id="810">
-    <FirstName />
-    <LastName />
-    <EmailAddress />
-    <PhoneNeumber />
-    <Password />
-  </User>
-  <User id="237">
-    <FirstName />
-    <LastName />
-    <EmailAddress />
-    <PhoneNeumber />
-    <Password />
+    <EmailAddress>daianabassi@email.com</EmailAddress>
+    <PhoneNumber>123456</PhoneNumber>
+    <UserProfile>customer</UserProfile>
+    <UserName>daianab3</UserName>
+    <Password>123456</Password>
   </User>
 </users>
