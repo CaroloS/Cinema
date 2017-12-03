@@ -51,7 +51,7 @@
                     <MenuItem mnemonicParsing="false" text="WHAT'S ON" />
                   </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="MY ACCOUNT">
+                <Menu fx:id="myAccountMenu" mnemonicParsing="false" onAction="#goToMyAccount" text="MY ACCOUNT">
                   <items>
                     <MenuItem mnemonicParsing="false" text="MY ACCOUNT" />
                   </items>

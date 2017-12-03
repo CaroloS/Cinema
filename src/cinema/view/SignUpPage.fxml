@@ -40,7 +40,15 @@
          <children>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="2">
                <children>
-                  <Label text="Welcome to our sign up page" textFill="#d38a3b" />
+                  <Label text="Welcome to our sign up page" textFill="#d38a3b">
+                     <HBox.margin>
+                        <Insets left="220.0" />
+                     </HBox.margin></Label>
+                  <Button fx:id="cancel" cancelButton="true" mnemonicParsing="false" onAction="#cancelsSignUp" text="Cancel">
+                     <HBox.margin>
+                        <Insets left="230.0" />
+                     </HBox.margin>
+                  </Button>
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="1">

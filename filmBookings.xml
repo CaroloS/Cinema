@@ -31,6 +31,21 @@
     <unBookedNumber>33</unBookedNumber>
   </filmBooking>
   <filmBooking name="Paddington 2 26-12-17 1600">
+    <bookedSeats>B8 B7</bookedSeats>
+    <bookedNumber>2</bookedNumber>
+    <unBookedNumber>34</unBookedNumber>
+  </filmBooking>
+  <filmBooking name="Paddington 2 26-12-16 1600">
+    <bookedSeats>B8</bookedSeats>
+    <bookedNumber>10</bookedNumber>
+    <unBookedNumber>26</unBookedNumber>
+  </filmBooking>
+  <filmBooking name="Paddington 2 26-12-16 1600">
+    <bookedSeats>B8</bookedSeats>
+    <bookedNumber>35</bookedNumber>
+    <unBookedNumber>1</unBookedNumber>
+  </filmBooking>
+  <filmBooking name="Paddington 2 26-12-16 1600">
     <bookedSeats>B8</bookedSeats>
     <bookedNumber>1</bookedNumber>
     <unBookedNumber>35</unBookedNumber>

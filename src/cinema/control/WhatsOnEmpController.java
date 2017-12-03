@@ -34,6 +34,16 @@ public class WhatsOnEmpController extends WhatsOnCustController {
 		main.goToNextPage("view/EmployeeHome.fxml", "Employee Home");
 	}
 
+	@FXML
+	private void goToAllBookings(ActionEvent event) {
+
+		// TAKES USER TO ALL BOOKINGS PAGE FROM MENU ITEM
+		CinemaMain main = new CinemaMain();
+		main.goToNextPage("view/AllBookings.fxml", "All Bookings");
+
+	}
+	
+	
 	public void initialize(URL location, ResourceBundle resources) {
 
 		// CALLS THE PARENT INITIALSE METHOD (FROM 'WhatsOnCustController' CLASS)

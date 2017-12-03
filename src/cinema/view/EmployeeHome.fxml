@@ -29,7 +29,12 @@
                     <MenuItem mnemonicParsing="false" text="WHAT'S ON" />
                   </items>
                 </Menu>
-                  <Menu mnemonicParsing="false" text="                                                                                            ">
+                  <Menu fx:id="allBookings" mnemonicParsing="false" onAction="#goToAllBookings" text="ALL BOOKINGS">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="ALL BOOKINGS" />
+                     </items>
+                  </Menu>
+                  <Menu disable="true" mnemonicParsing="false" text="                                                              ">
                   <items>
                     <MenuItem mnemonicParsing="false" text="                                                                                          " />
                   </items>

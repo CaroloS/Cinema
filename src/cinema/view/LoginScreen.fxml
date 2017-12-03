@@ -50,7 +50,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <PasswordField GridPane.rowIndex="1">
+      <PasswordField fx:id="password" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets left="120.0" top="40.0" />
          </GridPane.margin>
@@ -65,7 +65,7 @@
             <Insets bottom="30.0" left="120.0" />
          </GridPane.margin>
       </TextField>
-      <Button fx:id="signUp" mnemonicParsing="false" onAction="#onButtonClicked" prefHeight="27.0" prefWidth="77.0" text="Sign Up" GridPane.rowIndex="2">
+      <Button fx:id="signUp" mnemonicParsing="false" onAction="#goToSignUp" prefHeight="27.0" prefWidth="77.0" text="Sign Up" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets left="25.0" />
          </GridPane.margin>

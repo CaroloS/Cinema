@@ -5,7 +5,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -29,18 +28,22 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-//import sun.awt.CGraphicsDevice;
 
 public class WhatsOnCustController implements Initializable {
 
 	// DECALRES THE FXML ELEMENT TO SET THE NEW FILMS TO
 	@FXML
 	public VBox centreAnchor;
+	@FXML
+	public VBox outerAnchor;
+	@FXML
+	public ScrollPane scrollPane;
 	@FXML
 	public DatePicker filterDates;
 	public ComboBox filterGenre;
@@ -50,25 +53,28 @@ public class WhatsOnCustController implements Initializable {
 	Element root;
 	List list;
 
-	public static String pageTitle;
-
 	// DECALRES FILM VARIABLES TO STORE VALUES FROM XML PARSING
 	// Attribute filmID;
+	public static String pageTitle;
 	String filmID, filmTitle, filmGenre, filmDescription, filmStart, filmLength, filmDateTimes, filmRating, filmImage;
 
 	ArrayList<String> filmIDs = new ArrayList<String>();
 	
+	List<GridPane> gridList ;
+	List<GridPane> genreList ;
+	List<GridPane> dateList ;
 
+	
 	// USES THE INITIALIZE METHOD TO PARSE XML AND LAYOUT THE FILMS CURRENTLY IN
 	// THE XML FILE WHEN PAGE IS LOADED
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
+		gridList = new ArrayList<>();
 
 		// SETS UP THE GENRE COMBOBOX
-	//	List<String> Genres = new ArrayList<String>();
-		
-		filterGenre.getItems().addAll("Horror", "Comedy", "Children's", "Action", "Love");
-		
+		filterGenre.getItems().addAll("", "Horror", "Comedy", "Children's", "Action", "Love");
+
 		// CREATES INSTANCE OF 'ReadXMLFile', PARSES 'film.XML' AND RETURNS THE
 		// ROOT NODE
 		try {
@@ -89,7 +95,7 @@ public class WhatsOnCustController implements Initializable {
 			// SPLITS THE FILMDATES FROM XML AND CREATES AN ARRAYLIST TO PASS TO
 			// COMBOBOX
 			filmDateTimes = node.getChildText("dateTimes");
-		
+
 			ArrayList<String> datesForCombo = new ArrayList<String>();
 			List<String> allDates = new ArrayList<String>();
 
@@ -153,7 +159,6 @@ public class WhatsOnCustController implements Initializable {
 				Label moreInfo = new Label("more info..");
 				Label blank = new Label(" ");
 
-				
 				ObservableList<String> obList = FXCollections.observableList(datesForCombo);
 				ComboBox dateList = new ComboBox();
 				dateList.getItems().clear();
@@ -189,62 +194,66 @@ public class WhatsOnCustController implements Initializable {
 				col3.setPercentWidth(2);
 				gridPane.getColumnConstraints().addAll(col1, col2, col3);
 
-				// ADDS THE GRIDPANE TO THE CENTRAL VBOX 'centreAnchor'
-				centreAnchor.getChildren().add(gridPane);
+				gridList.add(gridPane);
 			}
 		}
+		
+		//System.out.println(gridList.toString());
+		centreAnchor.getChildren().setAll(gridList);
 
 	}
 
 	public void filtersDates() {
 
 		String selectedDate = filterDates.getValue().format(DateTimeFormatter.ofPattern("dd-MM-YY"));
-
-		for (int i = 0; i < centreAnchor.getChildren().size(); i++) {
-
-			GridPane grid = (GridPane) centreAnchor.getChildren().get(i);
+		dateList = new ArrayList<>();
+		
+		for (int i = 0; i < gridList.size(); i++) {
+			GridPane grid = gridList.get(i);
 			ComboBox filmDateTimes = (ComboBox) grid.getChildren().get(6);
 			
 			ObservableList<String> obList3 = FXCollections.observableList(filmDateTimes.getItems());
 			ArrayList<String> arrJustDates = new ArrayList<String>();
 			
-			int a = 0;
-			for (String element: obList3) {
+			for (String element : obList3) {
 				String justDate = element.substring(0, 8);
 				arrJustDates.add(justDate);
-				if (selectedDate.equalsIgnoreCase(justDate)) 
-					a=1;
-			}
-			
-			if (a == 0) {
-				grid.setVisible(false);
+				if (selectedDate.equalsIgnoreCase(justDate))
+					dateList.add(grid);
 			}
 		}
-
+		
+		centreAnchor.getChildren().clear();
+		centreAnchor.getChildren().setAll(dateList);
+		
 	}
+	
 
 	public void filtersGenre() {
-		
+
 		String selectedGenre = filterGenre.getSelectionModel().getSelectedItem().toString();
-
-		for (int i = 0; i < centreAnchor.getChildren().size(); i++) {
-
-			GridPane grid = (GridPane) centreAnchor.getChildren().get(i);
+		genreList = new ArrayList<>();
+		
+		for (int i = 0; i < gridList.size(); i++) {
+			GridPane grid = gridList.get(i);
 			Label filmGenre = (Label) grid.getChildren().get(2);
 			
-			String labels = filmGenre.getText();
-
-			if  (!filmGenre.getText().equalsIgnoreCase(selectedGenre)) 
-				grid.setVisible(false);
+			if (filmGenre.getText().equalsIgnoreCase(selectedGenre)) {
+				genreList.add(grid);
+			}
 		}
+		centreAnchor.getChildren().clear();
+		centreAnchor.getChildren().setAll(genreList);
 		
+
 	}
 
+	
 	public void backtoAllFilms() {
-		for (int i = 0; i < centreAnchor.getChildren().size(); i++) {
-			GridPane grid = (GridPane) centreAnchor.getChildren().get(i);
-			grid.setVisible(true);
-		}
+		
+		centreAnchor.getChildren().clear();
+		centreAnchor.getChildren().setAll(gridList);
+		
 	}
 
 	// EVENTHANDLER FOR THE BOOKNG BUTTON - WILL TAKE YOU TO THE BOOKING PAGE
@@ -257,8 +266,6 @@ public class WhatsOnCustController implements Initializable {
 			List childList = grid.getChildren();
 
 			Label selectedName = (Label) childList.get(1);
-		//	Label timeAndLength = (Label) childList.get(3);
-		//	String[] selectedTime = timeAndLength.getText().split(" ");
 			ComboBox<String> c = (ComboBox) childList.get(6);
 			String selectedDateTime = c.getSelectionModel().getSelectedItem();
 
@@ -291,6 +298,12 @@ public class WhatsOnCustController implements Initializable {
 	private void goBackHome(ActionEvent event) {
 		CinemaMain main = new CinemaMain();
 		main.goToNextPage("view/CustomerHome.fxml", "Customer Home");
+	}
+	
+	@FXML 
+	private void goToMyAccount() {
+		CinemaMain main = new CinemaMain();
+		main.goToNextPage("view/CustomerAccount.fxml", "My Account");
 	}
 
 }

@@ -5,7 +5,6 @@ import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -75,14 +74,19 @@ public class EmployeeHomeController implements Initializable {
 
 		StringBuffer sb = new StringBuffer("");
 
-		for (int i = 0; i < list.size(); i++) {
-			Element node = (Element) list.get(i);
-			String[] dT = node.getChildText("dateTimes").split(",");
+		int a = 0;
+		
+		if (list != null) {
 
-			for (String element : dT) {
-				if (element.equalsIgnoreCase(dateTime))
-					x = 2;
-				sb.append(element + "\n");
+			for (int i = 0; i < list.size(); i++) {
+				Element node = (Element) list.get(i);
+				String[] dT = node.getChildText("dateTimes").split(",");
+
+				for (String element : dT) {
+					if (element.equalsIgnoreCase(dateTime))
+						x = 2;
+					sb.append(element + "\n");
+				}
 			}
 		}
 
@@ -130,28 +134,34 @@ public class EmployeeHomeController implements Initializable {
 	 */
 	@FXML
 	private void addFilm(ActionEvent event) {
-		
+
 		System.out.println(filmTitle.getText().length());
 		System.out.println(genrePicker.getSelectionModel().getSelectedItem());
 		System.out.println(date1.getText().length());
 		System.out.println(filmDescription.getText().length());
 		System.out.println(filmRating.getSelectionModel().getSelectedItem());
 		System.out.println(pictureLabel.getText().length());
-		
+
 		int b = 0;
-		for (int i = 0; i < list.size(); i++) {
-			Element node = (Element) list.get(i);
-			if (node.getChildText("title").equalsIgnoreCase(filmTitle.getText())) {
-				b = 1;
+
+		if (list != null) {
+
+			for (int i = 0; i < list.size(); i++) {
+				Element node = (Element) list.get(i);
+				if (node.getChildText("title").equalsIgnoreCase(filmTitle.getText())) {
+					b = 1;
+				}
 			}
+
+			if (filmTitle.getText().length() == 0 || genrePicker.getSelectionModel().getSelectedItem() == null
+					|| date1.getText().length() == 0 || filmDescription.getText().length() == 0
+					|| pictureLabel.getText().length() == 0
+					|| filmRating.getSelectionModel().getSelectedItem() == null) {
+				b = 2;
+			}
+
 		}
 
-		if (filmTitle.getText().length() == 0 || genrePicker.getSelectionModel().getSelectedItem() == null || date1.getText().length() == 0
-				|| filmDescription.getText().length() == 0 || pictureLabel.getText().length() == 0
-				|| filmRating.getSelectionModel().getSelectedItem() == null) {
-			b = 2;
-		}
-		
 		switch (b) {
 		case (1):
 			alert.setTitle("Warning");
@@ -199,7 +209,6 @@ public class EmployeeHomeController implements Initializable {
 				bookingsXML.getsRoot();
 				bookingsXML.createsBookings();
 			}
-
 		}
 
 	}
@@ -222,6 +231,15 @@ public class EmployeeHomeController implements Initializable {
 		main.goToNextPage("view/LoginScreen.fxml", "Cinema Login");
 
 	}
+	
+	@FXML
+	private void goToAllBookings(ActionEvent event) {
+
+		// TAKES USER TO ALL BOOKINGS PAGE FROM MENU ITEM
+		CinemaMain main = new CinemaMain();
+		main.goToNextPage("view/AllBookings.fxml", "All Bookings");
+
+	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -232,15 +250,20 @@ public class EmployeeHomeController implements Initializable {
 		timePicker.getItems().addAll("1200", "1300", "1400", "1500", "1600", "1700", "1800", "1900", "2000");
 
 		genrePicker.getItems().addAll("Horror", "Comedy", "Children's", "Action", "Love");
-		
-		try {
-			ReadXMLFile read = new ReadXMLFile("film.xml");
-			root = read.readsXML();
-		} catch (Exception e) {
-			CinemaMain.LOGGER.warning("Couldn't parse film.XML");
+
+		File xmlFile = new File("film.xml");
+
+		if (xmlFile.exists()) {
+			try {
+				ReadXMLFile read = new ReadXMLFile("film.xml");
+				root = read.readsXML();
+			} catch (Exception e) {
+				CinemaMain.LOGGER.warning("Couldn't parse film.XML");
+			}
+			list = root.getChildren("film");
 		}
-		list = root.getChildren("film");
-		// catch null pointer exception here
+
 	}
 
+	
 }

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+
+<BorderPane prefHeight="810.0" prefWidth="760.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141" fx:controller="cinema.control.CustAccountController">
+   <top>
+      <AnchorPane prefHeight="76.0" prefWidth="760.0" BorderPane.alignment="CENTER">
+         <children>
+            <MenuBar layoutY="48.0" prefHeight="29.0" prefWidth="760.0">
+               <menus>
+                  <Menu mnemonicParsing="false" onAction="#goToHome" text="HOME">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="HOME" />
+                     </items>
+                  </Menu>
+                  <Menu fx:id="whatsonLabel" mnemonicParsing="false" onAction="#goToWhatsOn" text="WHAT'S ON">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="WHAT'S ON" />
+                     </items>
+                  </Menu>
+                  <Menu fx:id="myAccountMenu" mnemonicParsing="false" text="MY ACCOUNT">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="MY ACCOUNT" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="                                                                                                    ">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="                                                                                       " />
+                     </items>
+                  </Menu>
+                  <Menu fx:id="logOut" mnemonicParsing="false" onAction="#logsOut" text="LOG OUT">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="LOG OUT" />
+                     </items>
+                  </Menu>
+               </menus>
+               <cursor>
+                  <Cursor fx:constant="CLOSED_HAND" />
+               </cursor>
+            </MenuBar>
+         </children>
+      </AnchorPane>
+   </top>
+</BorderPane>

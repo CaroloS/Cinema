@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="810.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cinema.control.AllBookingsController">
+   <top>
+      <AnchorPane prefHeight="83.0" prefWidth="615.0" BorderPane.alignment="CENTER">
+         <children>
+            <MenuBar layoutY="46.0" prefHeight="36.0" prefWidth="760.0">
+               <menus>
+                  <Menu fx:id="home" mnemonicParsing="false" onAction="#goToHome" text="HOME">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="HOME" />
+                     </items>
+                  </Menu>
+                  <Menu fx:id="whatsOn" mnemonicParsing="false" onAction="#goToWhatsOn" text="WHAT'S ON">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="WHAT'S ON" />
+                     </items>
+                  </Menu>
+                  <Menu fx:id="allBookings" mnemonicParsing="false" text="ALL BOOKINGS">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="ALL BOOKINGS" />
+                     </items>
+                  </Menu>
+                  <Menu disable="true" mnemonicParsing="false" text="                                                                                              ">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="                                                                                          " />
+                     </items>
+                  </Menu>
+                  <Menu fx:id="logOut" mnemonicParsing="false" onAction="#logsOut" text="LOG OUT">
+                     <items>
+                        <MenuItem fx:id="logOut" mnemonicParsing="false" onAction="#logsOut" text="LOG OUT" />
+                     </items>
+                  </Menu>
+               </menus>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </MenuBar>
+         </children>
+      </AnchorPane>
+   </top>
+   <center>
+      <ScrollPane prefHeight="614.0" prefWidth="643.0" BorderPane.alignment="CENTER">
+         <content>
+            <AnchorPane prefHeight="724.0" prefWidth="758.0">
+               <children>
+                  <Label fx:id="pastBookingLabel" layoutX="131.0" layoutY="602.0" prefHeight="68.0" prefWidth="208.0" wrapText="true" />
+                  <AnchorPane fx:id="pastPieAnchor" layoutY="64.0" prefHeight="407.0" prefWidth="417.0" />
+                  <AnchorPane fx:id="futurePieAnchor" layoutX="303.0" layoutY="65.0" prefHeight="406.0" prefWidth="455.0" />
+                  <Button fx:id="pastExportButton" layoutX="131.0" layoutY="519.0" mnemonicParsing="false" onAction="#exportsPastBookings" prefHeight="54.0" prefWidth="156.0" text="Export all past film booking details" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="futureExportButton" layoutX="437.0" layoutY="519.0" mnemonicParsing="false" onAction="#exportsFutureBookings" prefHeight="54.0" prefWidth="160.0" text="Export all future film booking details" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Label fx:id="futureBookingLabel" layoutX="440.0" layoutY="600.0" prefHeight="72.0" prefWidth="217.0" wrapText="true" />
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+   </center>
+</BorderPane>

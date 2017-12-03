@@ -27,4 +27,23 @@
     <UserName>daianab3</UserName>
     <Password>123456</Password>
   </User>
+  <User id="68">
+    <FirstName>Caroline</FirstName>
+    <LastName>Smith</LastName>
+    <EmailAddress>smith.caroline87@gmail.com</EmailAddress>
+    <PhoneNumber>07791366277</PhoneNumber>
+    <UserProfile>customer</UserProfile>
+    <UserName>smith2</UserName>
+    <Password>123456</Password>
+  </User>
+  <User id="467">
+    <FirstName>Caroline</FirstName>
+    <LastName>Smith</LastName>
+    <EmailAddress>smith.caroline87@gmailcom</EmailAddress>
+    <PhoneNumber>07791366277</PhoneNumber>
+    <UserProfile>employee</UserProfile>
+    <UserName>smith1</UserName>
+    <Password>123456</Password>
+  </User>
+  
 </users>

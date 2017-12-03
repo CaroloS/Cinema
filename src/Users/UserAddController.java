@@ -13,11 +13,13 @@ import cinema.XML.ReadXMLFile;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.HPos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
 
 public class UserAddController implements Initializable {
 
@@ -26,7 +28,7 @@ public class UserAddController implements Initializable {
 	private TextField firstName, lastName, emailAddress, phoneNumber, userName, password, confirmPassword;
 
 	@FXML
-	private Button addUserButton;
+	private Button addUserButton, cancel;
 
 	@FXML
 	private RadioButton customerProfile;
@@ -45,8 +47,9 @@ public class UserAddController implements Initializable {
 	List list;
 
 	/**
-	 * Adds a user to the 'user.XML' file uses the user input to text-fields to set
-	 * the user variables. Calls 'createsUser' method from 'CreateUserXML' class
+	 * Adds a user to the 'user.XML' file uses the user input to text-fields to
+	 * set the user variables. Calls 'createsUser' method from 'CreateUserXML'
+	 * class
 	 * 
 	 * @param event
 	 *            : event created from button click
@@ -65,7 +68,8 @@ public class UserAddController implements Initializable {
 			// CREATES AN INSTANCE OF 'CreateXML'
 			CreateUsersXML usersXML = new CreateUsersXML("users.xml", "users");
 
-			// GETS THE USER INPUT FROM TEXTFIELDS AND SETS INSTANCE VARIABLES OF
+			// GETS THE USER INPUT FROM TEXTFIELDS AND SETS INSTANCE VARIABLES
+			// OF
 			// 'CreateUsersXML' WITH IT
 
 			int x = 0;
@@ -119,32 +123,25 @@ public class UserAddController implements Initializable {
 					CinemaMain.LOGGER.warning("Couldn't parse users.XML");
 				}
 				list = root.getChildren("User");
-//				System.out.println(list.size());
+				// System.out.println(list.size());
 			}
 
-			if (!userName.getText().trim().isEmpty()) 
-			{
-				if (userName.getText().length() > 4) 
-				{
-					if (list != null) 
-					{
-						for (int i = 0; i < list.size(); i++) 
-							{	
-								Element node = (Element) list.get(i);
-								String xmlusername = node.getChildText("UserName");
-//								System.out.println(xmlusername);
-								
-									if (xmlusername.equals(userName.getText())) 
-									{
-										x = 2;
-										alert.setTitle("Username");
-										alert.setHeaderText("Invalid Username");
-										alert.setContentText("Username already exists!");
-										alert.showAndWait();
-									} else {
-										usersXML.setUserName(userName.getText());
-									}
+			if (!userName.getText().trim().isEmpty()) {
+				if (userName.getText().length() > 4) {
+					if (list != null) {
+						for (int i = 0; i < list.size(); i++) {
+							Element node = (Element) list.get(i);
+							String xmlusername = node.getChildText("UserName");
+							// System.out.println(xmlusername);
+
+							if (xmlusername.equals(userName.getText())) {
+								x = 2;
+								alert.setTitle("Username");
+								alert.setHeaderText("Invalid Username");
+								alert.setContentText("Username already exists!");
+								alert.showAndWait();
 							}
+						}
 					}
 				} else {
 					x = 2;
@@ -153,9 +150,12 @@ public class UserAddController implements Initializable {
 					alert.setContentText("Ensure to enter a username that is larger than 5 digits!");
 					alert.showAndWait();
 				}
+				
+				usersXML.setUserName(userName.getText());
 			} else {
 				x = 1;
 			}
+
 
 			if (customerProfile.isSelected()) {
 				usersXML.setUserProfile("customer");
@@ -194,32 +194,40 @@ public class UserAddController implements Initializable {
 				alert.showAndWait();
 				break;
 			case (0):
-				// CALLS THE 'getsRoot' AND 'createsUser' METHODS TO WRITE THE NEW FILM
-				// INFORMATION TO 'film.XML' FILE
+				// CALLS THE 'getsRoot' AND 'createsUser' METHODS TO WRITE THE
+				// NEW USER INFORMATION TO 'users.XML' FILE. 
 				usersXML.getsRoot();
 				usersXML.createUser();
-				loadfilms();
+				backToLogin();
 			}
 
 		}
 
 	}
+	
+	@FXML
+	private void backToLogin() {
+		
+		// TAKES YOU BACK TO LOGIN PAGE WHEN SIGN UP COMPLETED
+		CinemaMain main = new CinemaMain();
+		main.goToNextPage("view/LoginScreen.fxml", "Cinema Login");
+	}
+	
+	@FXML
+	private void cancelsSignUp() {
+		
+		// TAKES YOU BACK TO LOGIN PAGE WHEN CANCEL PRESSED
+		CinemaMain main = new CinemaMain();
+		main.goToNextPage("view/LoginScreen.fxml", "Cinema Login");
+	}
+	
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 	}
 
-	@FXML
-	private void loadfilms() {
-		// TAKES YOU TO 'WhatsOn' PAGE WHEN 'ALL FILM' BUTTON OR 'WHATS ON' MENU ITEM
-		// PRESSED
-		CinemaMain main = new CinemaMain();
-		main.goToNextPage("view/WhatsOn.fxml", "What's On");
-	}
+	
 
-	// Send user ID to next page when user completes login
-	// private int userID() {
-	//
-	// }
+	
 
 }

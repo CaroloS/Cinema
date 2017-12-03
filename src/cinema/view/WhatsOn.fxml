@@ -30,7 +30,12 @@
                     <MenuItem mnemonicParsing="false" text="WHAT'S ON" />
                   </items>
                 </Menu>
-                 <Menu mnemonicParsing="false" text="                                                                                            ">
+                  <Menu fx:id="myAccountMenu" mnemonicParsing="false" onAction="#goToMyAccount" text="MY ACCOUNT">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="MY ACCOUNT" />
+                     </items>
+                  </Menu>
+                 <Menu mnemonicParsing="false" text="                                                                          ">
                   <items>
                     <MenuItem mnemonicParsing="false" text="                                                                                          " />
                   </items>
@@ -48,7 +53,7 @@
    <center>
       <ScrollPane fx:id="scrollPane" prefHeight="200.0" prefWidth="480.0" BorderPane.alignment="CENTER">
          <content>
-            <VBox prefHeight="610.0" prefWidth="705.0">
+            <VBox fx:id="outerAnchor" prefHeight="610.0" prefWidth="705.0">
                <children>
                   <HBox prefHeight="34.0" prefWidth="705.0">
                      <children>

@@ -1,0 +1,15 @@
+[
+
+Scary Movie 21-12-17 1900: Seats Booked: A1 A2 B1 C5 D1 D2 D6 Number Booked: 10 Number Available: 26, 
+
+Scary Movie 22-12-17 1700: Seats Booked:  Number Booked: 0 Number Available: 36, 
+
+Bladerunner 2049 23-12-17 2000: Seats Booked: A3 A1 Number Booked: 2 Number Available: 34, 
+
+Wonder Woman 24-12-17 1900: Seats Booked: A3 B8 Number Booked: 2 Number Available: 34, 
+
+I.T. 25-12-17 1200: Seats Booked: D4 Number Booked: 1 Number Available: 35, 
+
+Paddington 2 26-12-17 1800: Seats Booked: C1 C8 B7 Number Booked: 3 Number Available: 33, 
+
+Paddington 2 26-12-17 1600: Seats Booked: B8 Number Booked: 1 Number Available: 35]
