@@ -35,7 +35,7 @@ public class CustAccountController implements Initializable {
 	private void logsOut(ActionEvent event) {
 		//TAKES YOU TO 'WhatsOn' PAGE WHEN 'ALL FILM' BUTTON OR 'WHATS ON' MENU ITEM PRESSED
 		CinemaMain main = new CinemaMain();
-		main.goToNextPage("shared_view/LoginScreen.fxml", "Cinema Login");
+		main.goToLoginPage("shared_view/LoginScreen.fxml", "Cinema Login");
 	}
 	
 	@FXML 

@@ -211,7 +211,7 @@ public class SignUpController implements Initializable {
 		
 		// TAKES YOU BACK TO LOGIN PAGE WHEN SIGN UP COMPLETED
 		CinemaMain main = new CinemaMain();
-		main.goToNextPage("shared_view/LoginScreen.fxml", "Cinema Login");
+		main.goToLoginPage("shared_view/LoginScreen.fxml", "Cinema Login");
 	}
 	
 	@FXML
@@ -219,7 +219,7 @@ public class SignUpController implements Initializable {
 		
 		// TAKES YOU BACK TO LOGIN PAGE WHEN CANCEL PRESSED
 		CinemaMain main = new CinemaMain();
-		main.goToNextPage("shared_view/LoginScreen.fxml", "Cinema Login");
+		main.goToLoginPage("shared_view/LoginScreen.fxml", "Cinema Login");
 	}
 	
 

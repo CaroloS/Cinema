@@ -57,7 +57,7 @@
                   </items>
                 </Menu>
       
-                <Menu mnemonicParsing="false" text="                                                                                                   ">
+                <Menu disable="true" mnemonicParsing="false" text="                                                                                                   ">
                   <items>
                     <MenuItem mnemonicParsing="false" text="                                                                                       " />
                   </items>

@@ -135,13 +135,6 @@ public class EmployeeHomeController implements Initializable {
 	@FXML
 	private void addFilm(ActionEvent event) {
 
-		System.out.println(filmTitle.getText().length());
-		System.out.println(genrePicker.getSelectionModel().getSelectedItem());
-		System.out.println(date1.getText().length());
-		System.out.println(filmDescription.getText().length());
-		System.out.println(filmRating.getSelectionModel().getSelectedItem());
-		System.out.println(pictureLabel.getText().length());
-
 		int b = 0;
 
 		if (list != null) {
@@ -209,6 +202,12 @@ public class EmployeeHomeController implements Initializable {
 				bookingsXML.getsRoot();
 				bookingsXML.createsBookings();
 			}
+			Alert alert2 = new Alert(AlertType.CONFIRMATION);
+			alert2.setTitle("Film Added!");
+			alert2.setHeaderText("Your film has been added");
+			alert2.setContentText("Check 'what's on' to see the listing");
+			alert2.showAndWait();
+			
 		}
 
 	}
@@ -228,7 +227,7 @@ public class EmployeeHomeController implements Initializable {
 		// TAKES USER BACK TO 'Cinema Login' PAGE WHEN 'LOG OUT' MENU ITEM
 		// CLICKED
 		CinemaMain main = new CinemaMain();
-		main.goToNextPage("shared_view/LoginScreen.fxml", "Cinema Login");
+		main.goToLoginPage("shared_view/LoginScreen.fxml", "Cinema Login");
 
 	}
 	

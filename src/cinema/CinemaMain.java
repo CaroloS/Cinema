@@ -31,6 +31,22 @@ public class CinemaMain extends Application {
 			e.printStackTrace();
 		}
 	}
+	
+	public void goToLoginPage(String pathToFXML, String pageTitle) {
+		try {
+			Parent root = FXMLLoader.load(getClass().getResource(pathToFXML));
+
+			Scene scene = new Scene(root,480, 300);
+			thestage.setTitle(pageTitle);
+			thestage.setScene(scene);
+			thestage.show();
+		} catch (Exception e) {
+			LOGGER.warning("Couldn't load that page");
+			e.printStackTrace();
+		}
+	}
+	
+	
 
 	/**
 	 * Starting method for the program launched from 'main' Sets the stage to
@@ -41,20 +57,10 @@ public class CinemaMain extends Application {
 	public void start(Stage primaryStage) {
 
 		thestage = primaryStage;
-
+		
 		// LOADS 'LoginScreen.fxml' AND SETS THIS AS THE FIRST SCENE
-
-		try {
-			Parent root = FXMLLoader.load(getClass().getResource("shared_view/LoginScreen.fxml"));
-
-			Scene scene = new Scene(root, 480, 300);
-			primaryStage.setTitle("Cinema Login");
-			primaryStage.setScene(scene);
-			primaryStage.show();
-		} catch (Exception e) {
-			LOGGER.warning("Couldn't load scene1");
-			e.printStackTrace();
-		}
+		goToLoginPage("shared_view/LoginScreen.fxml", "CinemaLogin");
+		
 	}
 
 	public static void main(String[] args) {

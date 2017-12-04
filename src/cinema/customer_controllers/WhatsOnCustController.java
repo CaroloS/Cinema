@@ -23,6 +23,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -34,6 +35,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 public class WhatsOnCustController implements Initializable {
 
@@ -129,7 +134,6 @@ public class WhatsOnCustController implements Initializable {
 				// THE
 				// DATES ARE TODAY OR FUTURE
 				// i.e. DOESN'T DISPLAY FILMS WITH WHERE ALL DATES HAVE PASSED
-				// if (count != allDates.size()) {
 				if (allDates.size() > 0) {
 
 					filmID = node.getAttributeValue("id");
@@ -158,7 +162,12 @@ public class WhatsOnCustController implements Initializable {
 					Label description = new Label(filmDescription);
 					description.setWrapText(true);
 
-					Label moreInfo = new Label("more info..");
+					Button moreInfo = new Button("more info..");
+					moreInfo.setId("trailer");
+					moreInfo.setOnAction(buttonHandler);
+
+					// moreInfo.setStyle(value);
+					// Label moreInfo = new Label("more info..");
 					Label blank = new Label(" ");
 
 					ObservableList<String> obList = FXCollections.observableList(datesForCombo);
@@ -169,6 +178,7 @@ public class WhatsOnCustController implements Initializable {
 
 					// BOOKING BUTTON WITH A 'buttonHandler' EVENTHANDLER
 					Button book = new Button("Book");
+					book.setId("book");
 					book.setOnAction(buttonHandler);
 					book.setPrefSize(120, 20);
 
@@ -202,7 +212,7 @@ public class WhatsOnCustController implements Initializable {
 
 			// System.out.println(gridList.toString());
 			centreAnchor.getChildren().setAll(gridList);
-			
+
 		} else {
 			Label labelNoFilms = new Label();
 			labelNoFilms.setText("No films scheduled yet!");
@@ -272,27 +282,60 @@ public class WhatsOnCustController implements Initializable {
 
 		@Override
 		public void handle(final ActionEvent event) {
+
 			Button btn = (Button) event.getSource();
-			GridPane grid = (GridPane) btn.getParent();
-			List childList = grid.getChildren();
 
-			Label selectedName = (Label) childList.get(1);
-			ComboBox<String> c = (ComboBox) childList.get(6);
-			String selectedDateTime = c.getSelectionModel().getSelectedItem();
+			if (btn.getId().equalsIgnoreCase("book")) {
 
-			if (selectedDateTime == null) {
-				Alert alert = new Alert(AlertType.WARNING);
-				alert.setTitle("Warning");
-				alert.setHeaderText("Date not selected!");
-				alert.setContentText("Please select a date/time for this film");
-				alert.showAndWait();
-			} else {
-				pageTitle = selectedName.getText() + " " + selectedDateTime;
-				CinemaMain main = new CinemaMain();
-				main.goToNextPage("shared_view/BookingPage.fxml", pageTitle);
+				GridPane grid = (GridPane) btn.getParent();
+				List childList = grid.getChildren();
+
+				Label selectedName = (Label) childList.get(1);
+				ComboBox<String> c = (ComboBox) childList.get(6);
+				String selectedDateTime = c.getSelectionModel().getSelectedItem();
+
+				if (selectedDateTime == null) {
+					Alert alert = new Alert(AlertType.WARNING);
+					alert.setTitle("Warning");
+					alert.setHeaderText("Date not selected!");
+					alert.setContentText("Please select a date/time for this film");
+					alert.showAndWait();
+				} else {
+					pageTitle = selectedName.getText() + " " + selectedDateTime;
+					CinemaMain main = new CinemaMain();
+					main.goToNextPage("shared_view/BookingPage.fxml", pageTitle);
+				}
+			}
+
+			else if (btn.getId().equalsIgnoreCase("trailer")) {
+
+				final Stage dialog = new Stage();
+				dialog.initModality(Modality.APPLICATION_MODAL);
+				dialog.initOwner(CinemaMain.thestage);
+				VBox dialogVbox = new VBox();
+
+				//String content_Url = "<iframe width=\"560\" height=\"315\" src=\"http://www.youtube.com/embed/9bZkp7q19f0\" frameborder=\"0\" allowfullscreen></iframe>";
+
+				
+				String content_Url = "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/52x5HJ9H8DM\" frameborder=\"0\" allowfullscreen></iframe>";
+				
+				WebView webView = new WebView();
+				WebEngine webEngine = webView.getEngine();
+				webEngine.loadContent(content_Url);
+
+				webView.prefWidthProperty().bind(dialogVbox.widthProperty());
+				webView.prefHeightProperty().bind(dialogVbox.heightProperty());
+
+				dialogVbox.getChildren().add(webView);
+
+				Scene dialogScene = new Scene(dialogVbox, 650, 380);
+				dialog.setScene(dialogScene);
+				dialog.show();
+
 			}
 
 		}
+
 	};
 
 	/////////// NAVIGATION FUNCTIONS ////////////
@@ -301,7 +344,7 @@ public class WhatsOnCustController implements Initializable {
 	@FXML
 	private void logsOut(ActionEvent event) {
 		CinemaMain main = new CinemaMain();
-		main.goToNextPage("shared_view/LoginScreen.fxml", "Cinema Login");
+		main.goToLoginPage("shared_view/LoginScreen.fxml", "Cinema Login");
 	}
 
 	// TAKES USER BACK TO 'Customer Home' PAGE WHEN 'HOME' MENU ITEM CLICKED

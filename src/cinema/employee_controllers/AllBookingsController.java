@@ -240,7 +240,7 @@ public class AllBookingsController implements Initializable {
 		// TAKES USER BACK TO 'Cinema Login' PAGE WHEN 'LOG OUT' MENU ITEM
 		// CLICKED
 		CinemaMain main = new CinemaMain();
-		main.goToNextPage("shared_view/LoginScreen.fxml", "Cinema Login");
+		main.goToLoginPage("shared_view/LoginScreen.fxml", "Cinema Login");
 
 	}
 
