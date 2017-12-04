@@ -1,4 +1,4 @@
-package cinema.control;
+package cinema.shared_controllers;
 
 import java.io.File;
 import java.net.URL;
@@ -93,12 +93,12 @@ public class LoginController implements Initializable {
 			if (loggedInUser.equals("customer")) {
 
 				CinemaMain main = new CinemaMain();
-				main.goToNextPage("view/CustomerHome.fxml", "Customer Home");
+				main.goToNextPage("customer_view/CustomerHome.fxml", "Customer Home");
 
 			} else if (loggedInUser.equals("employee")) {
 
 				CinemaMain main = new CinemaMain();
-				main.goToNextPage("view/EmployeeHome.fxml", "Employee Home");
+				main.goToNextPage("employee_view/EmployeeHome.fxml", "Employee Home");
 			}
 		}
 
@@ -108,7 +108,7 @@ public class LoginController implements Initializable {
 	public void goToSignUp(ActionEvent e) {
 		if (e.getSource().equals(signUp)) {
 			CinemaMain main = new CinemaMain();
-			main.goToNextPage("view/SignUpPage.fxml", "Sign Up Page");
+			main.goToNextPage("shared_view/SignUpPage.fxml", "Sign Up Page");
 		}
 	}
 

@@ -15,8 +15,8 @@ import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
 import cinema.CinemaMain;
-import cinema.control.EmpBookingController;
-import cinema.control.WhatsOnCustController;
+import cinema.customer_controllers.WhatsOnCustController;
+import cinema.shared_controllers.BookingController;
 
 public class EditBookingsXML {
 
@@ -78,9 +78,9 @@ public class EditBookingsXML {
 
 
 				if (node.getAttributeValue("name").equalsIgnoreCase(WhatsOnCustController.pageTitle)) {
-					node.getChild("bookedSeats").setText(EmpBookingController.bookedSeats);
-					node.getChild("bookedNumber").setText(EmpBookingController.totalBooked);
-					node.getChild("unBookedNumber").setText(EmpBookingController.totalUnBooked);
+					node.getChild("bookedSeats").setText(BookingController.bookedSeats);
+					node.getChild("bookedNumber").setText(BookingController.totalBooked);
+					node.getChild("unBookedNumber").setText(BookingController.totalUnBooked);
 
 				}
 			}

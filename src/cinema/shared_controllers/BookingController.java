@@ -1,4 +1,4 @@
-package cinema.control;
+package cinema.shared_controllers;
 
 import java.net.URL;
 import java.util.List;
@@ -7,10 +7,12 @@ import java.util.ResourceBundle;
 
 import org.jdom2.Element;
 
-import Users.CreateUserBookingsXML;
 import cinema.CinemaMain;
+import cinema.XML.CreateUserBookingsXML;
 import cinema.XML.EditBookingsXML;
 import cinema.XML.ReadXMLFile;
+import cinema.customer_controllers.WhatsOnCustController;
+import cinema.employee_controllers.WhatsOnEmpController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -23,7 +25,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
-public class EmpBookingController extends WhatsOnEmpController implements Initializable {
+public class BookingController extends WhatsOnEmpController implements Initializable {
 
 	@FXML
 	protected AnchorPane seatAnchor;
@@ -227,7 +229,7 @@ public class EmpBookingController extends WhatsOnEmpController implements Initia
 	//TAKES EMPLOYEE BACK TO THE WHATS ON PAGE
 	public void goesBack(ActionEvent event) {
 		CinemaMain main = new CinemaMain();
-		main.goToNextPage("view/WhatsOnEmployee.fxml", "What's On");
+		main.goToNextPage("employee_view/WhatsOnEmployee.fxml", "What's On");
 	}
 
 }

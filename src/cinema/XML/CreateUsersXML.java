@@ -1,4 +1,4 @@
-package Users;
+package cinema.XML;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -8,8 +8,6 @@ import org.jdom2.Attribute;
 import org.jdom2.Element;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
-
-import cinema.XML.CreateXML;
 
 
 public class CreateUsersXML extends CreateXML{

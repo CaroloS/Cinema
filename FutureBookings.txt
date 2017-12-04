@@ -12,4 +12,4 @@ I.T. 25-12-17 1200: Seats Booked: D4 Number Booked: 1 Number Available: 35,
 
 Paddington 2 26-12-17 1800: Seats Booked: C1 C8 B7 Number Booked: 3 Number Available: 33, 
 
-Paddington 2 26-12-17 1600: Seats Booked: B8 Number Booked: 1 Number Available: 35]
+Paddington 2 26-12-17 1600: Seats Booked: B8 B7 Number Booked: 2 Number Available: 34]

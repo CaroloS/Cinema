@@ -1,10 +1,11 @@
-package cinema.control;
+package cinema.employee_controllers;
 
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
 import cinema.CinemaMain;
+import cinema.customer_controllers.WhatsOnCustController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -31,7 +32,7 @@ public class WhatsOnEmpController extends WhatsOnCustController {
 	@FXML
 	private void goBackHome(ActionEvent event) {
 		CinemaMain main = new CinemaMain();
-		main.goToNextPage("view/EmployeeHome.fxml", "Employee Home");
+		main.goToNextPage("employee_view/EmployeeHome.fxml", "Employee Home");
 	}
 
 	@FXML
@@ -39,7 +40,7 @@ public class WhatsOnEmpController extends WhatsOnCustController {
 
 		// TAKES USER TO ALL BOOKINGS PAGE FROM MENU ITEM
 		CinemaMain main = new CinemaMain();
-		main.goToNextPage("view/AllBookings.fxml", "All Bookings");
+		main.goToNextPage("employee_view/AllBookings.fxml", "All Bookings");
 
 	}
 	
@@ -61,7 +62,7 @@ public class WhatsOnEmpController extends WhatsOnCustController {
 			grid.getChildren().remove(7);
 
 			bookingInfo = new Button("Booking Info");
-			bookingInfo.setId(filmIDs.get(i));
+		//	bookingInfo.setId(filmIDs.get(i));
 			
 			bookingInfo.setOnAction(super.buttonHandler);
 			bookingInfo.setPrefSize(120, 20);

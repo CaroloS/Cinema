@@ -1,4 +1,4 @@
-package cinema.control;
+package cinema.employee_controllers;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -222,7 +222,7 @@ public class AllBookingsController implements Initializable {
 	@FXML
 	private void goToHome(ActionEvent event) {
 		CinemaMain main = new CinemaMain();
-		main.goToNextPage("view/EmployeeHome.fxml", "Employee Home");
+		main.goToNextPage("employee_view/EmployeeHome.fxml", "Employee Home");
 	}
 
 	@FXML
@@ -231,7 +231,7 @@ public class AllBookingsController implements Initializable {
 		// TAKES USER TO 'WhatsOnEmployee' PAGE WHEN 'WHATS ON' MENU ITEM
 		// CLICKED
 		CinemaMain main = new CinemaMain();
-		main.goToNextPage("view/WhatsOnEmployee.fxml", "What's On");
+		main.goToNextPage("employee_view/WhatsOnEmployee.fxml", "What's On");
 	}
 
 	@FXML
@@ -240,7 +240,7 @@ public class AllBookingsController implements Initializable {
 		// TAKES USER BACK TO 'Cinema Login' PAGE WHEN 'LOG OUT' MENU ITEM
 		// CLICKED
 		CinemaMain main = new CinemaMain();
-		main.goToNextPage("view/LoginScreen.fxml", "Cinema Login");
+		main.goToNextPage("shared_view/LoginScreen.fxml", "Cinema Login");
 
 	}
 

@@ -1,4 +1,4 @@
-package cinema.control;
+package cinema.employee_controllers;
 
 import java.io.File;
 import java.net.URL;
@@ -12,7 +12,7 @@ import java.util.ResourceBundle;
 import org.jdom2.Element;
 
 import cinema.CinemaMain;
-import cinema.XML.CreateBookingsXML;
+import cinema.XML.CreateFilmBookingsXML;
 import cinema.XML.CreateFilmXML;
 import cinema.XML.ReadXMLFile;
 import javafx.event.ActionEvent;
@@ -196,7 +196,7 @@ public class EmployeeHomeController implements Initializable {
 			filmXML.getsRoot();
 			filmXML.createsFilm();
 
-			CreateBookingsXML bookingsXML = new CreateBookingsXML("filmBookings.xml", "bookings");
+			CreateFilmBookingsXML bookingsXML = new CreateFilmBookingsXML("filmBookings.xml", "bookings");
 
 			String[] arrDateTimes = dateTimes.toString().split(",");
 			for (int i = 0; i < arrDateTimes.length; i++) {
@@ -219,7 +219,7 @@ public class EmployeeHomeController implements Initializable {
 		// TAKES USER TO 'WhatsOnEmployee' PAGE WHEN 'WHATS ON' MENU ITEM
 		// CLICKED
 		CinemaMain main = new CinemaMain();
-		main.goToNextPage("view/WhatsOnEmployee.fxml", "What's On");
+		main.goToNextPage("employee_view/WhatsOnEmployee.fxml", "What's On");
 	}
 
 	@FXML
@@ -228,7 +228,7 @@ public class EmployeeHomeController implements Initializable {
 		// TAKES USER BACK TO 'Cinema Login' PAGE WHEN 'LOG OUT' MENU ITEM
 		// CLICKED
 		CinemaMain main = new CinemaMain();
-		main.goToNextPage("view/LoginScreen.fxml", "Cinema Login");
+		main.goToNextPage("shared_view/LoginScreen.fxml", "Cinema Login");
 
 	}
 	
@@ -237,7 +237,7 @@ public class EmployeeHomeController implements Initializable {
 
 		// TAKES USER TO ALL BOOKINGS PAGE FROM MENU ITEM
 		CinemaMain main = new CinemaMain();
-		main.goToNextPage("view/AllBookings.fxml", "All Bookings");
+		main.goToNextPage("employee_view/AllBookings.fxml", "All Bookings");
 
 	}
 

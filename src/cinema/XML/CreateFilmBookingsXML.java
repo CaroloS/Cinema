@@ -8,9 +8,9 @@ import org.jdom2.Element;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
-public class CreateBookingsXML extends CreateXML {
+public class CreateFilmBookingsXML extends CreateXML {
 
-	public CreateBookingsXML(String inputFile, String rootElement) {
+	public CreateFilmBookingsXML(String inputFile, String rootElement) {
 		super(inputFile, rootElement);
 	}
 

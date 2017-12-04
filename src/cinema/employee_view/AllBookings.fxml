@@ -11,7 +11,8 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="810.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cinema.control.AllBookingsController">
+<BorderPane prefHeight="810.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" 
+fx:controller="cinema.employee_controllers.AllBookingsController">
    <top>
       <AnchorPane prefHeight="83.0" prefWidth="615.0" BorderPane.alignment="CENTER">
          <children>

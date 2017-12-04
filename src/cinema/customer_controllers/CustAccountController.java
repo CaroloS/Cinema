@@ -1,4 +1,4 @@
-package cinema.control;
+package cinema.customer_controllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -28,20 +28,20 @@ public class CustAccountController implements Initializable {
 	private void goToWhatsOn(ActionEvent event) {
 		//TAKES YOU TO 'WhatsOn' PAGE WHEN 'ALL FILM' BUTTON OR 'WHATS ON' MENU ITEM PRESSED
 		CinemaMain main = new CinemaMain();
-		main.goToNextPage("view/WhatsOn.fxml", "What's On");
+		main.goToNextPage("customer_view/WhatsOnCustomer.fxml", "What's On");
 	}
 	
 	@FXML
 	private void logsOut(ActionEvent event) {
 		//TAKES YOU TO 'WhatsOn' PAGE WHEN 'ALL FILM' BUTTON OR 'WHATS ON' MENU ITEM PRESSED
 		CinemaMain main = new CinemaMain();
-		main.goToNextPage("view/LoginScreen.fxml", "Cinema Login");
+		main.goToNextPage("shared_view/LoginScreen.fxml", "Cinema Login");
 	}
 	
 	@FXML 
 	private void goToHome() {
 		CinemaMain main = new CinemaMain();
-		main.goToNextPage("view/CustomerHome.fxml", "Customer Home");
+		main.goToNextPage("customer_view/CustomerHome.fxml", "Customer Home");
 	}
 
 }

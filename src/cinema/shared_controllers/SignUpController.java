@@ -1,4 +1,4 @@
-package Users;
+package cinema.shared_controllers;
 
 import java.net.URL;
 import java.util.List;
@@ -9,6 +9,7 @@ import org.jdom2.Element;
 import java.io.File;
 
 import cinema.CinemaMain;
+import cinema.XML.CreateUsersXML;
 import cinema.XML.ReadXMLFile;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,7 +22,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 
-public class UserAddController implements Initializable {
+public class SignUpController implements Initializable {
 
 	// DECLARES THE FXML TEXTFIELD VARIABLES TO COLLECT THE INPUT FROM
 	@FXML
@@ -210,7 +211,7 @@ public class UserAddController implements Initializable {
 		
 		// TAKES YOU BACK TO LOGIN PAGE WHEN SIGN UP COMPLETED
 		CinemaMain main = new CinemaMain();
-		main.goToNextPage("view/LoginScreen.fxml", "Cinema Login");
+		main.goToNextPage("shared_view/LoginScreen.fxml", "Cinema Login");
 	}
 	
 	@FXML
@@ -218,7 +219,7 @@ public class UserAddController implements Initializable {
 		
 		// TAKES YOU BACK TO LOGIN PAGE WHEN CANCEL PRESSED
 		CinemaMain main = new CinemaMain();
-		main.goToNextPage("view/LoginScreen.fxml", "Cinema Login");
+		main.goToNextPage("shared_view/LoginScreen.fxml", "Cinema Login");
 	}
 	
 

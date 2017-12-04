@@ -1,4 +1,4 @@
-package cinema.control;
+package cinema.customer_controllers;
 
 import java.net.URL;
 import java.text.ParseException;
@@ -278,7 +278,7 @@ public class WhatsOnCustController implements Initializable {
 			} else {
 				pageTitle = selectedName.getText() + " " + selectedDateTime;
 				CinemaMain main = new CinemaMain();
-				main.goToNextPage("view/BookingPage.fxml", pageTitle);
+				main.goToNextPage("shared_view/BookingPage.fxml", pageTitle);
 			}
 
 		}
@@ -290,20 +290,20 @@ public class WhatsOnCustController implements Initializable {
 	@FXML
 	private void logsOut(ActionEvent event) {
 		CinemaMain main = new CinemaMain();
-		main.goToNextPage("view/LoginScreen.fxml", "Cinema Login");
+		main.goToNextPage("shared_view/LoginScreen.fxml", "Cinema Login");
 	}
 
 	// TAKES USER BACK TO 'Customer Home' PAGE WHEN 'HOME' MENU ITEM CLICKED
 	@FXML
 	private void goBackHome(ActionEvent event) {
 		CinemaMain main = new CinemaMain();
-		main.goToNextPage("view/CustomerHome.fxml", "Customer Home");
+		main.goToNextPage("customer_view/CustomerHome.fxml", "Customer Home");
 	}
 	
 	@FXML 
 	private void goToMyAccount() {
 		CinemaMain main = new CinemaMain();
-		main.goToNextPage("view/CustomerAccount.fxml", "My Account");
+		main.goToNextPage("customer_view/CustomerAccount.fxml", "My Account");
 	}
 
 }

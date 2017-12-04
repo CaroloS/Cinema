@@ -3,7 +3,7 @@ package cinema;
 import java.io.IOException;
 import java.util.logging.Logger;
 
-import Users.CreateUsersXML;
+import cinema.XML.CreateUsersXML;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -45,7 +45,7 @@ public class CinemaMain extends Application {
 		// LOADS 'LoginScreen.fxml' AND SETS THIS AS THE FIRST SCENE
 
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("view/LoginScreen.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("shared_view/LoginScreen.fxml"));
 
 			Scene scene = new Scene(root, 480, 300);
 			primaryStage.setTitle("Cinema Login");
