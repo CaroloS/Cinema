@@ -48,7 +48,7 @@ public class WhatsOnEmpController extends WhatsOnCustController {
 				grid.getChildren().remove(7);
 
 				bookingInfo = new Button("Booking Info");
-
+				bookingInfo.setId("book");
 				bookingInfo.setOnAction(super.buttonHandler);
 				bookingInfo.setPrefSize(120, 20);
 

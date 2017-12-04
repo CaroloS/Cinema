@@ -1,8 +1,8 @@
 [
 
-Scary Movie 21-12-17 1900: Seats Booked: A1 A2 B1 C5 D1 D2 D6 Number Booked: 10 Number Available: 26, 
+Scary Movie 21-12-17 1900: Seats Booked: A1 A2 B1 C5 D1 D2 D6 A7 D5 Number Booked: 12 Number Available: 24, 
 
-Scary Movie 22-12-17 1700: Seats Booked:  Number Booked: 0 Number Available: 36, 
+Scary Movie 22-12-17 1700: Seats Booked: D3 B8 Number Booked: 2 Number Available: 34, 
 
 Bladerunner 2049 23-12-17 2000: Seats Booked: A3 A1 Number Booked: 2 Number Available: 34, 
 

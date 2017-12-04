@@ -6,9 +6,9 @@
     <unBookedNumber>24</unBookedNumber>
   </filmBooking>
   <filmBooking name="Scary Movie 22-12-17 1700">
-    <bookedSeats>D3 B8</bookedSeats>
-    <bookedNumber>2</bookedNumber>
-    <unBookedNumber>34</unBookedNumber>
+    <bookedSeats>D3 B8 B9</bookedSeats>
+    <bookedNumber>3</bookedNumber>
+    <unBookedNumber>33</unBookedNumber>
   </filmBooking>
   <filmBooking name="Bladerunner 2049 23-12-17 2000">
     <bookedSeats>A3 A1</bookedSeats>

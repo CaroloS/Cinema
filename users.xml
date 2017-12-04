@@ -45,5 +45,13 @@
     <UserName>smith1</UserName>
     <Password>123456</Password>
   </User>
-  
+  <User id="906">
+    <FirstName>dfgafgdf</FirstName>
+    <LastName>dafgdfg</LastName>
+    <EmailAddress>dfgda@dhsdgh</EmailAddress>
+    <PhoneNumber>123456789</PhoneNumber>
+    <UserProfile>customer</UserProfile>
+    <UserName>smith3</UserName>
+    <Password>123456</Password>
+  </User>
 </users>
