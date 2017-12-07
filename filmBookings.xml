@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bookings>
   <filmBooking name="Scary Movie 21-12-17 1900">
-    <bookedSeats>A1 A2 B1 C5 D1 D2 D6 A7 D5</bookedSeats>
-    <bookedNumber>12</bookedNumber>
-    <unBookedNumber>24</unBookedNumber>
+    <bookedSeats>A1 A2 B1 C5 D1 D2 D6 A7 D5 B7</bookedSeats>
+    <bookedNumber>13</bookedNumber>
+    <unBookedNumber>23</unBookedNumber>
   </filmBooking>
   <filmBooking name="Scary Movie 22-12-17 1700">
-    <bookedSeats>D3 B8 B9</bookedSeats>
-    <bookedNumber>3</bookedNumber>
-    <unBookedNumber>33</unBookedNumber>
+    <bookedSeats>D3 B8 B9 C9</bookedSeats>
+    <bookedNumber>4</bookedNumber>
+    <unBookedNumber>32</unBookedNumber>
   </filmBooking>
   <filmBooking name="Bladerunner 2049 23-12-17 2000">
     <bookedSeats>A3 A1</bookedSeats>
@@ -49,5 +49,10 @@
     <bookedSeats>B8</bookedSeats>
     <bookedNumber>1</bookedNumber>
     <unBookedNumber>35</unBookedNumber>
+  </filmBooking>
+  <filmBooking name="a film 29-12-17 1600">
+    <bookedSeats />
+    <bookedNumber>0</bookedNumber>
+    <unBookedNumber>36</unBookedNumber>
   </filmBooking>
 </bookings>

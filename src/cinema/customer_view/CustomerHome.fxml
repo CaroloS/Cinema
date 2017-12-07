@@ -6,36 +6,15 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="borderPane" prefHeight="810.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cinema.customer_controllers.CustomerHomeController">
-   <center>
-      <AnchorPane fx:id="homeAnchor" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label layoutX="68.0" layoutY="37.0" text="NOW SHOWING" textFill="#c92222" />
-            <Button fx:id="allFilmsButton" layoutX="518.0" layoutY="487.0" mnemonicParsing="false" onAction="#loadfilms" prefHeight="85.0" prefWidth="148.0" text="EXPLORE ALL FILMS AND BOOK" textAlignment="CENTER" wrapText="true" />
-            <AnchorPane fx:id="carouselAnchor" layoutX="189.0" layoutY="74.0" prefHeight="345.0" prefWidth="403.0" />
-            <Button fx:id="forwardButton" layoutX="611.0" layoutY="73.0" mnemonicParsing="false" onAction="#scrollsForward" prefHeight="346.0" prefWidth="50.0" />
-            <Button fx:id="backButton" layoutX="102.0" layoutY="73.0" mnemonicParsing="false" onAction="#scrollsBack" prefHeight="346.0" prefWidth="54.0" />
-            <Label layoutX="91.0" layoutY="510.0" prefHeight="39.0" prefWidth="374.0" text="We show only the best pictures from the Oscars! " wrapText="true">
-               <font>
-                  <Font name="System Italic" size="16.0" />
-               </font></Label>
-            <Label layoutX="91.0" layoutY="487.0" prefHeight="27.0" prefWidth="197.0" text="Welcome to our Cinema!">
-               <font>
-                  <Font name="System Bold Italic" size="16.0" />
-               </font></Label>
-            <Label layoutX="91.0" layoutY="544.0" prefHeight="29.0" prefWidth="353.0" text="Explore what's on and book to come a visit us!">
-               <font>
-                  <Font size="16.0" />
-               </font></Label>
-         </children>
-      </AnchorPane>
-   </center>
+<BorderPane fx:id="borderPane" prefHeight="1520.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cinema.customer_controllers.CustomerHomeController">
    <top>
       <AnchorPane fx:id="menuAnchor" prefHeight="78.0" prefWidth="699.0" BorderPane.alignment="CENTER">
          <children>
@@ -96,4 +75,50 @@
          </children>
       </AnchorPane>
    </top>
+   <center>
+      <ScrollPane prefHeight="896.0" prefWidth="770.0" BorderPane.alignment="CENTER">
+         <content>
+            <AnchorPane fx:id="homeAnchor" prefHeight="1445.0" prefWidth="775.0">
+               <children>
+                  <Label layoutX="68.0" layoutY="37.0" prefHeight="23.0" prefWidth="149.0" text="NOW SHOWING" textFill="#c92222">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="allFilmsButton" layoutX="611.0" layoutY="468.0" mnemonicParsing="false" onAction="#loadfilms" prefHeight="106.0" prefWidth="85.0" text="BOOK A FILM" textAlignment="CENTER" wrapText="true" />
+                  <AnchorPane fx:id="carouselAnchor" layoutX="189.0" layoutY="74.0" prefHeight="345.0" prefWidth="403.0" />
+                  <Button fx:id="forwardButton" layoutX="611.0" layoutY="73.0" mnemonicParsing="false" onAction="#scrollsForward" prefHeight="346.0" prefWidth="50.0" />
+                  <Button fx:id="backButton" layoutX="102.0" layoutY="73.0" mnemonicParsing="false" onAction="#scrollsBack" prefHeight="346.0" prefWidth="54.0" />
+                  <Label layoutX="68.0" layoutY="608.0" prefHeight="23.0" prefWidth="575.0" text="WATCH OUR RECENT LIVE Q&amp;As " textFill="#c92222">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <VBox fx:id="vBox1" layoutX="80.0" layoutY="653.0" prefHeight="350.0" prefWidth="593.0" />
+                  <VBox fx:id="vBox2" layoutX="80.0" layoutY="1031.0" prefHeight="350.0" prefWidth="593.0" />
+                  <AnchorPane layoutX="185.0" layoutY="457.0" prefHeight="129.0" prefWidth="405.0">
+                     <children>
+                        <Label layoutX="86.0" layoutY="22.0" prefHeight="27.0" prefWidth="197.0" text="Welcome to our Cinema!">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="20.0" layoutY="49.0" prefHeight="39.0" prefWidth="374.0" text="We show only the best pictures from the Oscars! " wrapText="true">
+                           <font>
+                              <Font name="System Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="22.0" layoutY="88.0" prefHeight="29.0" prefWidth="353.0" text="Explore what's on and book to come a visit us!">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <Button fx:id="freeTicket" layoutX="68.0" layoutY="468.0" mnemonicParsing="false" onAction="#goesToQuestionnaire" prefHeight="106.0" prefWidth="85.0" text="WIN A FREE TICKET!" textAlignment="CENTER" wrapText="true" />
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+   </center>
 </BorderPane>

@@ -45,7 +45,7 @@ public class WhatsOnEmpController extends WhatsOnCustController {
 			for (int i = 0; i < super.centreAnchor.getChildren().size(); i++) {
 
 				GridPane grid = (GridPane) super.centreAnchor.getChildren().get(i);
-				grid.getChildren().remove(7);
+				grid.getChildren().remove(6);
 
 				bookingInfo = new Button("Booking Info");
 				bookingInfo.setId("book");

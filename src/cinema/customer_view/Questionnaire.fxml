@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane prefHeight="810.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cinema.customer_controllers.QuestionnaireController">
+   <top>
+      <AnchorPane prefHeight="76.0" prefWidth="760.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button layoutX="-1.0" layoutY="49.0" mnemonicParsing="false" onAction="#goesBackHome" prefHeight="27.0" prefWidth="160.0" text="Back Home" />
+         </children>
+      </AnchorPane>
+   </top>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="13.0" layoutY="46.0" prefHeight="32.0" prefWidth="460.0" text="Question 1" />
+            <Label layoutX="13.0" layoutY="218.0" prefHeight="32.0" prefWidth="460.0" text="Question 2" />
+            <Label layoutX="13.0" layoutY="433.0" prefHeight="32.0" prefWidth="460.0" text="Question 3" />
+            <RadioButton fx:id="radio1_1" layoutX="30.0" layoutY="87.0" mnemonicParsing="false" text="RadioButton" />
+            <RadioButton fx:id="radio1_2" layoutX="30.0" layoutY="120.0" mnemonicParsing="false" text="RadioButton" />
+            <RadioButton fx:id="radio1_3" layoutX="30.0" layoutY="154.0" mnemonicParsing="false" text="RadioButton" />
+            <RadioButton fx:id="radio1_4" layoutX="30.0" layoutY="185.0" mnemonicParsing="false" text="RadioButton" />
+            <RadioButton fx:id="radio2_1" layoutX="30.0" layoutY="266.0" mnemonicParsing="false" text="RadioButton" />
+            <RadioButton fx:id="radio2_2" layoutX="30.0" layoutY="307.0" mnemonicParsing="false" text="RadioButton" />
+            <RadioButton fx:id="radio2_3" layoutX="30.0" layoutY="341.0" mnemonicParsing="false" text="RadioButton" />
+            <RadioButton fx:id="radio2_4" layoutX="30.0" layoutY="376.0" mnemonicParsing="false" text="RadioButton" />
+            <RadioButton fx:id="radio3_1" layoutX="39.0" layoutY="483.0" mnemonicParsing="false" text="RadioButton" />
+            <RadioButton fx:id="radio3_2" layoutX="39.0" layoutY="517.0" mnemonicParsing="false" text="RadioButton" />
+            <RadioButton fx:id="radio3_3" layoutX="39.0" layoutY="555.0" mnemonicParsing="false" text="RadioButton" />
+            <RadioButton fx:id="radio3_4" layoutX="39.0" layoutY="596.0" mnemonicParsing="false" text="RadioButton" />
+            <Button fx:id="submit1" layoutX="597.0" layoutY="190.0" mnemonicParsing="false" onAction="#submit" prefHeight="25.0" prefWidth="109.0" text="Submit" />
+            <Label layoutX="236.0" layoutY="14.0" prefHeight="42.0" prefWidth="397.0" text="Win a free ticket for each question you get right!" />
+            <Button fx:id="submit2" layoutX="606.0" layoutY="381.0" mnemonicParsing="false" onAction="#submit" prefHeight="25.0" prefWidth="109.0" text="Submit" />
+            <Button fx:id="submit3" layoutX="606.0" layoutY="601.0" mnemonicParsing="false" onAction="#submit" prefHeight="25.0" prefWidth="109.0" text="Submit" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

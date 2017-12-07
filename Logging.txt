@@ -1,2 +1,0 @@
-Dec 03, 2017 11:34:52 PM cinema.CinemaMain start
-WARNING: Couldn't load scene1

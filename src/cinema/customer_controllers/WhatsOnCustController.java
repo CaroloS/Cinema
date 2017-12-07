@@ -73,7 +73,7 @@ public class WhatsOnCustController implements Initializable {
 		gridList = new ArrayList<>();
 
 		// SETS UP THE GENRE COMBOBOX
-		filterGenre.getItems().addAll("", "Horror", "Comedy", "Children's", "Action", "Love");
+		filterGenre.getItems().addAll("Horror", "Comedy", "Children's", "Action", "Love");
 
 		// CREATES INSTANCE OF 'ReadXMLFile', PARSES 'film.XML' AND RETURNS THE
 		// ROOT NODE
@@ -103,38 +103,30 @@ public class WhatsOnCustController implements Initializable {
 				filmDateTimes = node.getChildText("dateTimes");
 
 				ArrayList<String> datesForCombo = new ArrayList<String>();
-				List<String> allDates = new ArrayList<String>();
 
 				for (String element : filmDateTimes.split(",")) {
-					datesForCombo.add(element);
-					String date = element.substring(0, 8);
-					allDates.add(date);
-				}
+					String filmDate = element.substring(0, 8);
 
-				// COMPARES THE DATES OF THIS FILM TO THE CURRENT DATE, REMOVING
-				// DATES FROM ALLDATES IF PAST
-				SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy");
-				Date today = new Date();
-
-				Iterator<String> it = allDates.iterator();
-				while (it.hasNext()) {
-					String element = it.next();
+					SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy");
+					Date today = new Date();
 
 					Date date = null;
 					try {
-						date = sdf.parse(element);
+						date = sdf.parse(filmDate);
 					} catch (ParseException e) {
 						e.printStackTrace();
 					}
-					if (today.compareTo(date) > 0)
-						it.remove();
+					if (today.compareTo(date) < 0) {
+						datesForCombo.add(element);
+					}
+
 				}
 
 				// ONLY PROCEEDS TO PARSE THE XML FOR THIS FILM NODE IF SOME OF
 				// THE
 				// DATES ARE TODAY OR FUTURE
 				// i.e. DOESN'T DISPLAY FILMS WITH WHERE ALL DATES HAVE PASSED
-				if (allDates.size() > 0) {
+				if (datesForCombo.size() > 0) {
 
 					filmID = node.getAttributeValue("id");
 					filmIDs.add(filmID);
@@ -162,12 +154,6 @@ public class WhatsOnCustController implements Initializable {
 					Label description = new Label(filmDescription);
 					description.setWrapText(true);
 
-					Button moreInfo = new Button("more info..");
-					moreInfo.setId("trailer");
-					moreInfo.setOnAction(buttonHandler);
-
-					// moreInfo.setStyle(value);
-					// Label moreInfo = new Label("more info..");
 					Label blank = new Label(" ");
 
 					ObservableList<String> obList = FXCollections.observableList(datesForCombo);
@@ -189,9 +175,9 @@ public class WhatsOnCustController implements Initializable {
 					gridPane.add(runningTime, 1, 3, 2, 1);
 					gridPane.add(description, 1, 4, 2, 1);
 
-					gridPane.add(moreInfo, 1, 4, 2, 1);
-					gridPane.setValignment(moreInfo, VPos.BOTTOM);
-					gridPane.setHalignment(moreInfo, HPos.RIGHT);
+				//	gridPane.add(moreInfo, 1, 4, 2, 1);
+				//	gridPane.setValignment(moreInfo, VPos.BOTTOM);
+				//	gridPane.setHalignment(moreInfo, HPos.RIGHT);
 
 					gridPane.add(dateList, 4, 3, 1, 1);
 					gridPane.add(book, 4, 4, 1, 1);
@@ -210,7 +196,6 @@ public class WhatsOnCustController implements Initializable {
 				}
 			}
 
-			// System.out.println(gridList.toString());
 			centreAnchor.getChildren().setAll(gridList);
 
 		} else {
@@ -223,23 +208,32 @@ public class WhatsOnCustController implements Initializable {
 
 	public void filtersDates() {
 
-		if (gridList.size() > 0) {
+		filterGenre.getSelectionModel().clearSelection();
+
+		if (filterDates.getValue() == null) {
+			backtoAllFilms();
+		} else if (gridList.size() > 0) {
 			String selectedDate = filterDates.getValue().format(DateTimeFormatter.ofPattern("dd-MM-YY"));
 			dateList = new ArrayList<>();
 
 			for (int i = 0; i < gridList.size(); i++) {
 				GridPane grid = gridList.get(i);
-				ComboBox filmDateTimes = (ComboBox) grid.getChildren().get(6);
+				ComboBox filmDateTimes = (ComboBox) grid.getChildren().get(5);
 
 				ObservableList<String> obList3 = FXCollections.observableList(filmDateTimes.getItems());
 				ArrayList<String> arrJustDates = new ArrayList<String>();
 
+				int y = 0;
 				for (String element : obList3) {
 					String justDate = element.substring(0, 8);
 					arrJustDates.add(justDate);
 					if (selectedDate.equalsIgnoreCase(justDate))
-						dateList.add(grid);
+						y = 1;
 				}
+
+				if (y == 1)
+					dateList.add(grid);
+
 			}
 
 			centreAnchor.getChildren().clear();
@@ -250,7 +244,13 @@ public class WhatsOnCustController implements Initializable {
 
 	public void filtersGenre() {
 
-		if (gridList.size() > 0) {
+		filterDates.getEditor().clear();
+
+		if (filterGenre.getSelectionModel().isEmpty()) {
+			backtoAllFilms();
+		}
+
+		else if (gridList.size() > 0) {
 			String selectedGenre = filterGenre.getSelectionModel().getSelectedItem().toString();
 			genreList = new ArrayList<>();
 
@@ -271,6 +271,8 @@ public class WhatsOnCustController implements Initializable {
 	public void backtoAllFilms() {
 
 		if (gridList.size() > 0) {
+			filterGenre.getSelectionModel().clearSelection();
+			filterDates.getEditor().clear();
 			centreAnchor.getChildren().clear();
 			centreAnchor.getChildren().setAll(gridList);
 		}
@@ -291,7 +293,7 @@ public class WhatsOnCustController implements Initializable {
 				List childList = grid.getChildren();
 
 				Label selectedName = (Label) childList.get(1);
-				ComboBox<String> c = (ComboBox) childList.get(6);
+				ComboBox<String> c = (ComboBox) childList.get(5);
 				String selectedDateTime = c.getSelectionModel().getSelectedItem();
 
 				if (selectedDateTime == null) {
@@ -305,33 +307,6 @@ public class WhatsOnCustController implements Initializable {
 					CinemaMain main = new CinemaMain();
 					main.goToNextPage("shared_view/BookingPage.fxml", pageTitle);
 				}
-			}
-
-			else if (btn.getId().equalsIgnoreCase("trailer")) {
-
-				final Stage dialog = new Stage();
-				dialog.initModality(Modality.APPLICATION_MODAL);
-				dialog.initOwner(CinemaMain.thestage);
-				VBox dialogVbox = new VBox();
-
-				//String content_Url = "<iframe width=\"560\" height=\"315\" src=\"http://www.youtube.com/embed/9bZkp7q19f0\" frameborder=\"0\" allowfullscreen></iframe>";
-
-				
-				String content_Url = "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/52x5HJ9H8DM\" frameborder=\"0\" allowfullscreen></iframe>";
-				
-				WebView webView = new WebView();
-				WebEngine webEngine = webView.getEngine();
-				webEngine.loadContent(content_Url);
-
-				webView.prefWidthProperty().bind(dialogVbox.widthProperty());
-				webView.prefHeightProperty().bind(dialogVbox.heightProperty());
-
-				dialogVbox.getChildren().add(webView);
-
-				Scene dialogScene = new Scene(dialogVbox, 650, 380);
-				dialog.setScene(dialogScene);
-				dialog.show();
-
 			}
 
 		}

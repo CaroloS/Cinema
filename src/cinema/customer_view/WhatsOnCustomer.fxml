@@ -57,7 +57,7 @@
                <children>
                   <HBox prefHeight="34.0" prefWidth="705.0">
                      <children>
-                        <DatePicker fx:id="filterDates" onAction="#filtersDates" promptText="filter by date">
+                        <DatePicker fx:id="filterDates" editable="false" onAction="#filtersDates" promptText="filter by date">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin></DatePicker>

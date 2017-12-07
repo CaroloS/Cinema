@@ -45,4 +45,13 @@
     <image>images/IT.png</image>
     <rating>15</rating>
   </film>
+  <film id="207">
+    <title>a film</title>
+    <genre>Love</genre>
+    <description>a love film</description>
+    <length>1 hour</length>
+    <dateTimes>29-12-17 1600,</dateTimes>
+    <image>images/greencamera.png</image>
+    <rating>U</rating>
+  </film>
 </films>

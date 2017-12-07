@@ -2,7 +2,11 @@ package cinema.customer_controllers;
 
 import java.io.File;
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.ResourceBundle;
@@ -19,6 +23,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 
 public class CustomerHomeController implements Initializable {
 
@@ -27,7 +35,9 @@ public class CustomerHomeController implements Initializable {
 	@FXML
 	private BorderPane borderPane;
 	@FXML
-	private Button forwardButton, backButton;
+	private Button forwardButton, backButton, freeTicket;
+	@FXML
+	private VBox vBox1, vBox2;
 
 	Element root;
 	List list;
@@ -38,6 +48,12 @@ public class CustomerHomeController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+
+		String content_Url1 = "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/19jGdktyGgk\" frameborder=\"0\" gesture=\"media\" allow=\"encrypted-media\" allowfullscreen></iframe>";
+		String content_Url2 = "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/8O6eQBjDWDM\" frameborder=\"0\" gesture=\"media\" allow=\"encrypted-media\" allowfullscreen></iframe>";
+		loadVideo(content_Url1, vBox1);
+		loadVideo(content_Url2, vBox2);
+		
 
 		File xmlFile = new File("film.xml");
 
@@ -57,7 +73,32 @@ public class CustomerHomeController implements Initializable {
 			for (int i = 0; i < list.size(); i++) {
 
 				Element node = (Element) list.get(i);
-				imageList.add(node.getChildText("image"));
+				String filmDateTimes = node.getChildText("dateTimes");
+
+				List<String> allDates = new ArrayList<String>();
+
+				for (String element : filmDateTimes.split(",")) {
+					String date = element.substring(0, 8);
+					allDates.add(date);
+				}
+				SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy");
+				Date today = new Date();
+				Iterator<String> it = allDates.iterator();
+				while (it.hasNext()) {
+					String element = it.next();
+
+					Date date = null;
+					try {
+						date = sdf.parse(element);
+					} catch (ParseException e) {
+						e.printStackTrace();
+					}
+					if (today.compareTo(date) > 0)
+						it.remove();
+				}
+
+				if (allDates.size() > 0)
+					imageList.add(node.getChildText("image"));
 			}
 		}
 
@@ -126,6 +167,19 @@ public class CustomerHomeController implements Initializable {
 
 	}
 
+	
+	public void loadVideo(String content, VBox vbox) {
+
+		WebView webView = new WebView();
+		WebEngine webEngine = webView.getEngine();
+		webEngine.loadContent(content);
+		vbox.getChildren().add(webView);
+
+	}
+	
+	
+	
+
 	//////// NAVIGATION FUNCTIONS///////
 	@FXML
 	private void loadfilms(ActionEvent event) {
@@ -146,6 +200,12 @@ public class CustomerHomeController implements Initializable {
 	private void goToMyAccount() {
 		CinemaMain main = new CinemaMain();
 		main.goToNextPage("customer_view/CustomerAccount.fxml", "My Account");
+	}
+	
+	@FXML 
+	public void goesToQuestionnaire() {
+		CinemaMain main = new CinemaMain();
+		main.goToNextPage("customer_view/Questionnaire.fxml", "Questionnaire");
 	}
 
 }
