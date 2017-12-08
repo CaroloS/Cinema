@@ -15,6 +15,7 @@ import org.jdom2.Element;
 
 import cinema.CinemaMain;
 import cinema.XML.ReadXMLFile;
+import cinema.shared_controllers.LoginController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -49,6 +50,8 @@ public class WhatsOnCustController implements Initializable {
 	public DatePicker filterDates;
 	public ComboBox filterGenre;
 	public Button allFilms;
+	@FXML
+	private Label helloUser;
 
 	// DECALRES THE ROOT ELEMENT TO BE SET BY PARSING film.XML
 	Element root;
@@ -69,6 +72,8 @@ public class WhatsOnCustController implements Initializable {
 	// THE XML FILE WHEN PAGE IS LOADED
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
+		helloUser.setText("Hello, " + LoginController.usersName);
 
 		gridList = new ArrayList<>();
 

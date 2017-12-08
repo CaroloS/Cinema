@@ -15,10 +15,12 @@ import org.jdom2.Element;
 
 import cinema.CinemaMain;
 import cinema.XML.ReadXMLFile;
+import cinema.shared_controllers.LoginController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -38,6 +40,8 @@ public class CustomerHomeController implements Initializable {
 	private Button forwardButton, backButton, freeTicket;
 	@FXML
 	private VBox vBox1, vBox2;
+	@FXML
+	private Label helloUser;
 
 	Element root;
 	List list;
@@ -48,6 +52,8 @@ public class CustomerHomeController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
+		helloUser.setText("Hello, " + LoginController.usersName);
 
 		String content_Url1 = "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/19jGdktyGgk\" frameborder=\"0\" gesture=\"media\" allow=\"encrypted-media\" allowfullscreen></iframe>";
 		String content_Url2 = "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/8O6eQBjDWDM\" frameborder=\"0\" gesture=\"media\" allow=\"encrypted-media\" allowfullscreen></iframe>";

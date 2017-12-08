@@ -47,6 +47,7 @@
                 </Menu>
               </menus>
             </MenuBar>
+            <Label fx:id="helloUser" layoutX="51.0" layoutY="7.0" prefHeight="46.0" prefWidth="244.0" />
          </children>
       </AnchorPane>
    </top>
