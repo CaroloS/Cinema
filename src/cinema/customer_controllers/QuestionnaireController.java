@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.ResourceBundle;
 
+import org.jdom2.Attribute;
 import org.jdom2.Element;
 
 import cinema.CinemaMain;
@@ -17,6 +18,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 
 public class QuestionnaireController implements Initializable {
+	
+	public String questionText;
+//	public Attribute testAttribute;
 
 	@FXML
 	private Label questionNumber, question;
@@ -24,6 +28,8 @@ public class QuestionnaireController implements Initializable {
 	private RadioButton optionA, optionB, optionC, optionD;
 	@FXML
 	private Button nextQuestion;
+	
+	
 
 	// DECALRES THE ROOT ELEMENT TO BE SET BY PARSING 'quiz.xml'
 	Element root;
@@ -34,12 +40,10 @@ public class QuestionnaireController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		
-
 		File xmlFile = new File("quiz.xml");
 
 		if (xmlFile.exists()) {
-			 System.out.println("file exists");
+			System.out.println("file exists");
 
 			try {
 				ReadXMLFile read = new ReadXMLFile("quiz.xml");
@@ -47,22 +51,36 @@ public class QuestionnaireController implements Initializable {
 			} catch (Exception e) {
 				CinemaMain.LOGGER.warning("Couldn't parse users.XML");
 			}
-			list = root.getChildren("Test");
-			System.out.println("Question" + root.getChildText("Question"));
 			
-//			questionNumber.setText("1");
-//			question.setText(String.valueOf(root.getChildren("Question")));
+			list = root.getChildren("Test");
+
+			for (int i = 0; i < list.size(); i++) {
+
+				Element node = (Element) list.get(i);
+
+				// SPLITS THE FILMDATES FROM XML AND CREATES AN ARRAYLIST TO
+				// PASS TO
+				// COMBOBOX
+				
+				Random rand = new Random();
+				int n = rand.nextInt(2);
+//				Attribute testAttribute = node.getAttributes();
+				questionText = node.getChildText("Question");
+				System.out.println("Question: " + questionText);
+
+				// questionNumber.setText("1");
+				// question.setText(String.valueOf(root.getChildren("Question")));
+			}
+
 		}
-		
-		
 
 	}
-	
-//	private void populateQuestion () {
-		// GENERATE RANDOM NUMBER FOR Question
-//				Random rand = new Random();
-//				int n = rand.nextInt(2);
-				
-//	}
+
+	// private void populateQuestion () {
+	// GENERATE RANDOM NUMBER FOR Question
+	// Random rand = new Random();
+	// int n = rand.nextInt(2);
+
+	// }
 
 }

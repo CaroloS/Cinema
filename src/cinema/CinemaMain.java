@@ -36,7 +36,7 @@ public class CinemaMain extends Application {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource(pathToFXML));
 
-			Scene scene = new Scene(root,480, 300);
+			Scene scene = new Scene(root,800, 500);
 			thestage.setTitle(pageTitle);
 			thestage.setScene(scene);
 			thestage.show();
