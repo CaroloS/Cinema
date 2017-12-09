@@ -8,6 +8,7 @@
     <UserProfile>customer</UserProfile>
     <UserName>daianab</UserName>
     <Password>password</Password>
+    <profilePic>images/greencamera.png</profilePic>
   </User>
   <User id="294">
     <FirstName>Daiana2</FirstName>
@@ -17,6 +18,7 @@
     <UserProfile>employee</UserProfile>
     <UserName>daianab2</UserName>
     <Password>123456</Password>
+    <profilePic>images/greencamera.png</profilePic>
   </User>
   <User id="326">
     <FirstName>Daiana</FirstName>
@@ -26,8 +28,9 @@
     <UserProfile>customer</UserProfile>
     <UserName>daianab3</UserName>
     <Password>123456</Password>
+    <profilePic>images/greencamera.png</profilePic>
   </User>
-  <User id="68">
+  <User id="804">
     <FirstName>Caroline</FirstName>
     <LastName>Smith</LastName>
     <EmailAddress>smith.caroline87@gmail.com</EmailAddress>
@@ -35,23 +38,16 @@
     <UserProfile>customer</UserProfile>
     <UserName>smith2</UserName>
     <Password>123456</Password>
+    <profilePic>images/greencamera.png</profilePic>
   </User>
-  <User id="467">
+  <User id="231">
     <FirstName>Caroline</FirstName>
     <LastName>Smith</LastName>
-    <EmailAddress>smith.caroline87@gmailcom</EmailAddress>
-    <PhoneNumber>07791366277</PhoneNumber>
+    <EmailAddress>smithtiksjdn@live.com</EmailAddress>
+    <PhoneNumber>23456786</PhoneNumber>
     <UserProfile>employee</UserProfile>
     <UserName>smith1</UserName>
     <Password>123456</Password>
-  </User>
-  <User id="906">
-    <FirstName>dfgafgdf</FirstName>
-    <LastName>dafgdfg</LastName>
-    <EmailAddress>dfgda@dhsdgh</EmailAddress>
-    <PhoneNumber>123456789</PhoneNumber>
-    <UserProfile>customer</UserProfile>
-    <UserName>smith3</UserName>
-    <Password>123456</Password>
+    <profilePic>images/greencamera.png</profilePic>
   </User>
 </users>

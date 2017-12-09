@@ -7,7 +7,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
-import org.jdom2.Attribute;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
@@ -16,20 +15,18 @@ import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
 import cinema.CinemaMain;
-import cinema.customer_controllers.WhatsOnCustController;
-import cinema.shared_controllers.BookingController;
+import cinema.customer_controllers.CustAccountController;
 import cinema.shared_controllers.LoginController;
 import cinema.shared_controllers.SignUpController;
 
-public class EditUserXML {
-
+public class EditUserBookingsXML {
 	// CREATES INSTANCE VARIABLES WHICH WILL BE SET BY THE CONTRUCTOR
 	protected String inputFile;
 	protected String rootElement;
 
 	// CONSTRUCTOR - NEED TO SPECIFY AN INPUT FILE AND ROOT ELEMENT FOR XML WHEN
 	// CREATING AN INSTANCE
-	public EditUserXML(String inputFile, String rootElement) {
+	public EditUserBookingsXML(String inputFile, String rootElement) {
 		this.inputFile = inputFile;
 		this.rootElement = rootElement;
 	}
@@ -38,7 +35,7 @@ public class EditUserXML {
 	protected Document document = null;
 
 
-	public void editsBookingXML() {
+	public void editsUserBooking() {
 
 		File xmlFile = new File(inputFile);
 		FileInputStream fis = null;
@@ -73,23 +70,14 @@ public class EditUserXML {
 				e.printStackTrace();
 			}
 
-			List list = root.getChildren("User");
+			List list = root.getChildren("booking");
 
 			for (int i = 0; i < list.size(); i++) {
 
 				Element node = (Element) list.get(i);
 
-
-				if (node.getAttributeValue("id").equalsIgnoreCase(LoginController.userID)) {
-					//node.setAttribute(new Attribute("id", Integer.toString(n)));
-					
-					node.getChild("FirstName").setText(SignUpController.editFirstName);
-					node.getChild("LastName").setText(SignUpController.editLastName);
-					node.getChild("EmailAddress").setText(SignUpController.editEmailAddress);
-					node.getChild("PhoneNumber").setText(SignUpController.editPhoneNumber);
-					node.getChild("UserName").setText(SignUpController.editUserName);
-					node.getChild("Password").setText(SignUpController.editPassword);
-					node.getChild("profilePic").setText(SignUpController.filePicName);
+				if (node.getAttributeValue("bookingID").equalsIgnoreCase(CustAccountController.ID)) {
+					root.removeContent(node);
 					
 				}
 			}
@@ -118,5 +106,4 @@ public class EditUserXML {
 		}
 
 	}
-
 }

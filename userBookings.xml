@@ -1,159 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <userBookings>
-  <booking id="same id as user.xml">
-    <filmName>Scary Movie</filmName>
-    <filmDate>21-12-17</filmDate>
-    <filmTime>1700</filmTime>
-    <seatBooked>A1</seatBooked>
-  </booking>
-  <booking userID="999">
+  <booking userID="999" bookingID="80">
     <filmName>Scary Movie</filmName>
     <filmDate>21-12-17</filmDate>
     <filmTime>1700</filmTime>
     <seatBooked>A2</seatBooked>
   </booking>
-  <booking userID="999">
+  <booking userID="999" bookingID="91">
     <filmName>Scary Movie</filmName>
     <filmDate>21-12-17</filmDate>
     <filmTime>1700</filmTime>
     <seatBooked>B1</seatBooked>
   </booking>
-  <booking userID="999">
+  <booking userID="999" bookingID="100">
     <filmName>Scary Movie</filmName>
     <filmDate>21-12-17</filmDate>
     <filmTime>1900</filmTime>
     <seatBooked>C5</seatBooked>
   </booking>
-  <booking userID="999">
-    <filmName>Scary Movie</filmName>
-    <filmDate>21-12-17</filmDate>
-    <filmTime>1900</filmTime>
-    <seatBooked>D1</seatBooked>
-  </booking>
-  <booking userID="999">
-    <filmName>Scary Movie</filmName>
-    <filmDate>21-12-17</filmDate>
-    <filmTime>1900</filmTime>
-    <seatBooked>D2</seatBooked>
-  </booking>
-  <booking userID="999">
-    <filmName>Paddington 2</filmName>
-    <filmDate>21-12-17</filmDate>
-    <filmTime>1700</filmTime>
-    <seatBooked>D3</seatBooked>
-  </booking>
-  <booking userID="999">
-    <filmName>Bladerunner 2049</filmName>
-    <filmDate>23-12-17</filmDate>
-    <filmTime>1900</filmTime>
-    <seatBooked>A3</seatBooked>
-  </booking>
-  <booking userID="999">
-    <filmName>Bladerunner 2049</filmName>
-    <filmDate>23-12-17</filmDate>
-    <filmTime>1900</filmTime>
-    <seatBooked>A1</seatBooked>
-  </booking>
-  <booking userID="999">
-    <filmName>Wonder Woman</filmName>
-    <filmDate>24-12-17</filmDate>
-    <filmTime>1900</filmTime>
-    <seatBooked>A3</seatBooked>
-  </booking>
-  <booking userID="999">
-    <filmName>Wonder Woman</filmName>
-    <filmDate>24-12-17</filmDate>
-    <filmTime>1900</filmTime>
-    <seatBooked>B8</seatBooked>
-  </booking>
-  <booking userID="999">
-    <filmName>I.T.</filmName>
-    <filmDate>25-12-17</filmDate>
-    <filmTime>1200</filmTime>
-    <seatBooked>D4</seatBooked>
-  </booking>
-  <booking userID="999">
-    <filmName>Scary Movie</filmName>
-    <filmDate>22-12-17</filmDate>
-    <filmTime>1700</filmTime>
-    <seatBooked>C7</seatBooked>
-  </booking>
-  <booking userID="999">
+  <booking userID="999" bookingID="200">
     <filmName>Paddington 2</filmName>
     <filmDate>10-12-17</filmDate>
     <filmTime>1600</filmTime>
     <seatBooked>B8</seatBooked>
   </booking>
-  <booking userID="999">
+  <booking userID="999" bookingID="202">
     <filmName>Paddington 2</filmName>
     <filmDate>03-12-17</filmDate>
     <filmTime>1800</filmTime>
     <seatBooked>C1</seatBooked>
   </booking>
-  <booking userID="999">
+  <booking userID="999" bookingID="390">
     <filmName>Scary Movie</filmName>
     <filmDate>21-12-17</filmDate>
     <filmTime>1900</filmTime>
     <seatBooked>D6</seatBooked>
   </booking>
-  <booking userID="999">
+  <booking userID="999" bookingID="405">
     <filmName>Paddington 2</filmName>
     <filmDate>26-12-17</filmDate>
     <filmTime>1800</filmTime>
     <seatBooked>C8</seatBooked>
   </booking>
-  <booking userID="999">
-    <filmName>Paddington 2</filmName>
-    <filmDate>26-12-17</filmDate>
-    <filmTime>1800</filmTime>
-    <seatBooked>B7</seatBooked>
-  </booking>
-  <booking userID="68">
+  <booking userID="68" bookingID="999">
     <filmName>Paddington 2</filmName>
     <filmDate>26-12-17</filmDate>
     <filmTime>1600</filmTime>
     <seatBooked>B7</seatBooked>
   </booking>
-  <booking userID="68">
+  <booking userID="68" bookingID="902">
     <filmName>Scary Movie</filmName>
     <filmDate>21-12-17</filmDate>
     <filmTime>1900</filmTime>
     <seatBooked>A7</seatBooked>
   </booking>
-  <booking userID="68">
+  <booking userID="68" bookingID="73">
     <filmName>Scary Movie</filmName>
     <filmDate>22-12-17</filmDate>
     <filmTime>1700</filmTime>
     <seatBooked>D3</seatBooked>
   </booking>
-  <booking userID="68">
-    <filmName>Scary Movie</filmName>
-    <filmDate>22-12-17</filmDate>
-    <filmTime>1700</filmTime>
+  <booking userID="804" bookingID="30">
+    <filmName>I.T.</filmName>
+    <filmDate>25-11-17</filmDate>
+    <filmTime>1200</filmTime>
+    <seatBooked>D4</seatBooked>
+  </booking>
+  <booking userID="804" bookingID="771">
+    <filmName>Paddington 2</filmName>
+    <filmDate>26-12-17</filmDate>
+    <filmTime>1800</filmTime>
+    <seatBooked>A9</seatBooked>
+  </booking>
+  <booking userID="804" bookingID="960">
+    <filmName>I.T.</filmName>
+    <filmDate>25-12-17</filmDate>
+    <filmTime>1200</filmTime>
     <seatBooked>B8</seatBooked>
   </booking>
-  <booking userID="68">
-    <filmName>Scary Movie</filmName>
-    <filmDate>21-12-17</filmDate>
-    <filmTime>1900</filmTime>
-    <seatBooked>D5</seatBooked>
-  </booking>
-  <booking userID="68">
-    <filmName>Scary Movie</filmName>
-    <filmDate>22-12-17</filmDate>
-    <filmTime>1700</filmTime>
-    <seatBooked>B9</seatBooked>
-  </booking>
-  <booking userID="68">
-    <filmName>Scary Movie</filmName>
-    <filmDate>22-12-17</filmDate>
-    <filmTime>1700</filmTime>
-    <seatBooked>C9</seatBooked>
-  </booking>
-  <booking userID="68">
-    <filmName>Scary Movie</filmName>
-    <filmDate>21-12-17</filmDate>
-    <filmTime>1900</filmTime>
+  <booking userID="804" bookingID="50">
+    <filmName>Paddington 2</filmName>
+    <filmDate>26-12-17</filmDate>
+    <filmTime>1800</filmTime>
     <seatBooked>B7</seatBooked>
+  </booking>
+  <booking userID="804" bookingID="253">
+    <filmName>Scary Movie</filmName>
+    <filmDate>22-12-17</filmDate>
+    <filmTime>1700</filmTime>
+    <seatBooked>A8</seatBooked>
   </booking>
 </userBookings>

@@ -13,9 +13,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" 
-minWidth="-Infinity" prefHeight="560.0" prefWidth="720.0" 
-xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cinema.shared_controllers.SignUpController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cinema.shared_controllers.SignUpController">
    <children>
       <GridPane hgap="10.0" vgap="15.0">
         <columnConstraints>
@@ -64,7 +62,7 @@ xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:
             <Label text="Phone Number:" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
             <Label text="Password:" GridPane.halignment="RIGHT" GridPane.rowIndex="8" />
             <Label text="Confirm Password:" GridPane.halignment="RIGHT" GridPane.rowIndex="9" />
-            <Button fx:id="addUserButton" mnemonicParsing="false" onAction="#addUser" text="Submit" GridPane.halignment="RIGHT" GridPane.rowIndex="10" />
+            <Button fx:id="addUserButton" mnemonicParsing="false" onAction="#addUser" text="Submit" GridPane.halignment="RIGHT" GridPane.rowIndex="11" />
             <TextField fx:id="firstName" maxWidth="-Infinity" prefWidth="300.0" promptText="Enter First Name" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TextField fx:id="lastName" maxWidth="-Infinity" prefWidth="300.0" promptText="Enter Last Name" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <TextField fx:id="emailAddress" maxWidth="-Infinity" prefWidth="300.0" promptText="Enter Email" GridPane.columnIndex="1" GridPane.rowIndex="4" />
@@ -82,6 +80,17 @@ xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:
                      </toggleGroup>
                   </RadioButton>
                   <RadioButton fx:id="employeeProfile" mnemonicParsing="false" text="Employee Profile" toggleGroup="$user_profile" />
+               </children>
+            </HBox>
+            <Label prefHeight="17.0" prefWidth="200.0" text="                  Pick a profile picture:" textAlignment="RIGHT" GridPane.rowIndex="10" />
+            <HBox prefHeight="40.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="10">
+               <children>
+                  <Button fx:id="imageButton" mnemonicParsing="false" onAction="#selectsProfilePic" prefHeight="27.0" prefWidth="201.0" text="Select Image" />
+                  <Label fx:id="picLabel" alignment="BOTTOM_RIGHT" contentDisplay="RIGHT" prefHeight="34.0" prefWidth="270.0">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Label>
                </children>
             </HBox>
          </children>

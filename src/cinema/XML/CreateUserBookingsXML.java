@@ -2,6 +2,7 @@ package cinema.XML;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Random;
 
 import org.jdom2.Attribute;
 import org.jdom2.Element;
@@ -64,10 +65,15 @@ public class CreateUserBookingsXML extends CreateXML {
 
 	public void CreateUserBooking() {
 		
+		// GENERATE RANDOM NUMBER FOR FILM ID
+				Random rand = new Random();
+				int n = rand.nextInt(1000);
+		
 		
 		//CREATES A FILM ELEMENT AND SETS THE INSTANCE VARIABLES AS THE CHILD ELEMENTS OF FILM 
 				Element booking = new Element("booking");
 				booking.setAttribute(new Attribute("userID", LoginController.userID));
+				booking.setAttribute(new Attribute("bookingID", Integer.toString(n)));
 				booking.addContent(new Element("filmName").setText(filmName));
 				booking.addContent(new Element("filmDate").setText(filmDate));
 				booking.addContent(new Element("filmTime").setText(filmTime));

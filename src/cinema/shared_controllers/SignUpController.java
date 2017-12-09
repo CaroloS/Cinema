@@ -1,26 +1,27 @@
 package cinema.shared_controllers;
 
+import java.io.File;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
 import org.jdom2.Element;
 
-import java.io.File;
-
 import cinema.CinemaMain;
 import cinema.XML.CreateUsersXML;
+import cinema.XML.EditUserXML;
 import cinema.XML.ReadXMLFile;
+import cinema.employee_controllers.EmployeeHomeController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.HPos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
+import javafx.stage.FileChooser;
 
 public class SignUpController implements Initializable {
 
@@ -37,15 +38,17 @@ public class SignUpController implements Initializable {
 	@FXML
 	private RadioButton employeeProfile;
 
+	@FXML
+	private Label picLabel;
+
+	public static String filePicName, editFirstName, editLastName, editEmailAddress, editPhoneNumber, editUserName,
+			editPassword, editConfirmPassword;
+
 	Alert alert = new Alert(AlertType.WARNING);
 
-	// ITERATES THROUGH ALL THE USERNAMEs AND CHECKS FOR DUPLICATES
-
-	File xmlFile = new File("users.xml");
-
 	// DECALRES THE ROOT ELEMENT TO BE SET BY PARSING 'users.xml'
-	Element root;
-	List list;
+	Element root, root2;
+	List list, list2;
 
 	/**
 	 * Adds a user to the 'user.XML' file uses the user input to text-fields to
@@ -58,7 +61,7 @@ public class SignUpController implements Initializable {
 
 	@FXML
 	public void initialize() {
-		// addUserButton.setDisable(true);
+
 	}
 
 	@FXML
@@ -68,6 +71,7 @@ public class SignUpController implements Initializable {
 
 			// CREATES AN INSTANCE OF 'CreateXML'
 			CreateUsersXML usersXML = new CreateUsersXML("users.xml", "users");
+			EditUserXML editXML = new EditUserXML("users.xml", "users");
 
 			// GETS THE USER INPUT FROM TEXTFIELDS AND SETS INSTANCE VARIABLES
 			// OF
@@ -77,19 +81,28 @@ public class SignUpController implements Initializable {
 
 			if (!firstName.getText().trim().isEmpty()) {
 				usersXML.setFirstName(firstName.getText());
+				editFirstName = firstName.getText();
 			} else {
 				x = 1;
 			}
 
 			if (!lastName.getText().trim().isEmpty()) {
 				usersXML.setLastName(lastName.getText());
+				editLastName = lastName.getText();
 			} else {
 				x = 1;
+			}
+
+			if (!picLabel.getText().trim().isEmpty()) {
+				usersXML.setProfilePic(picLabel.getText());
+			} else {
+				usersXML.setProfilePic("images/greencamera.png");
 			}
 
 			if (!emailAddress.getText().trim().isEmpty()) {
 				if (emailAddress.getText().contains("@")) {
 					usersXML.setEmailAddress(emailAddress.getText());
+					editEmailAddress = emailAddress.getText();
 				} else {
 					x = 2;
 					alert.setTitle("E-Mail Address");
@@ -104,6 +117,7 @@ public class SignUpController implements Initializable {
 			if (!phoneNumber.getText().trim().isEmpty()) {
 				if (phoneNumber.getText().matches("[0-9]+") && (phoneNumber.getText().length() > 5)) {
 					usersXML.setPhoneNumber(phoneNumber.getText());
+					editPhoneNumber = phoneNumber.getText();
 				} else {
 					x = 2;
 					alert.setTitle("Phone Number");
@@ -116,31 +130,29 @@ public class SignUpController implements Initializable {
 				x = 1;
 			}
 
-			if (xmlFile.exists()) {
-				try {
-					ReadXMLFile read = new ReadXMLFile("users.xml");
-					root = read.readsXML();
-				} catch (Exception e) {
-					CinemaMain.LOGGER.warning("Couldn't parse users.XML");
-				}
-				list = root.getChildren("User");
-				// System.out.println(list.size());
-			}
+			/*
+			 * if (xmlFile.exists()) { try { ReadXMLFile read = new
+			 * ReadXMLFile("users.xml"); root = read.readsXML(); } catch
+			 * (Exception e) {
+			 * CinemaMain.LOGGER.warning("Couldn't parse users.XML"); } list =
+			 * root.getChildren("User"); }
+			 */
 
 			if (!userName.getText().trim().isEmpty()) {
 				if (userName.getText().length() > 4) {
-					if (list != null) {
-						for (int i = 0; i < list.size(); i++) {
-							Element node = (Element) list.get(i);
-							String xmlusername = node.getChildText("UserName");
-							// System.out.println(xmlusername);
+					if (LoginController.userID == null) {
+						if (list != null) {
+							for (int i = 0; i < list.size(); i++) {
+								Element node = (Element) list.get(i);
+								String xmlusername = node.getChildText("UserName");
 
-							if (xmlusername.equals(userName.getText())) {
-								x = 2;
-								alert.setTitle("Username");
-								alert.setHeaderText("Invalid Username");
-								alert.setContentText("Username already exists!");
-								alert.showAndWait();
+								if (xmlusername.equals(userName.getText())) {
+									x = 2;
+									alert.setTitle("Username");
+									alert.setHeaderText("Invalid Username");
+									alert.setContentText("Username already exists!");
+									alert.showAndWait();
+								}
 							}
 						}
 					}
@@ -151,12 +163,12 @@ public class SignUpController implements Initializable {
 					alert.setContentText("Ensure to enter a username that is larger than 5 digits!");
 					alert.showAndWait();
 				}
-				
+
 				usersXML.setUserName(userName.getText());
+				editUserName = userName.getText();
 			} else {
 				x = 1;
 			}
-
 
 			if (customerProfile.isSelected()) {
 				usersXML.setUserProfile("customer");
@@ -168,6 +180,7 @@ public class SignUpController implements Initializable {
 				if (password.getText().equals(confirmPassword.getText())) {
 					if (password.getText().length() > 5) {
 						usersXML.setPassword(password.getText());
+						editPassword = password.getText();
 					} else {
 						x = 2;
 						alert.setTitle("User Password");
@@ -196,39 +209,111 @@ public class SignUpController implements Initializable {
 				break;
 			case (0):
 				// CALLS THE 'getsRoot' AND 'createsUser' METHODS TO WRITE THE
-				// NEW USER INFORMATION TO 'users.XML' FILE. 
-				usersXML.getsRoot();
-				usersXML.createUser();
-				backToLogin();
+				// NEW USER INFORMATION TO 'users.XML' FILE.
+				if (LoginController.userID == null) {
+					usersXML.getsRoot();
+					usersXML.createUser();
+					backToLogin();
+				} else {
+					editXML.editsBookingXML();
+
+					if (EmployeeHomeController.editEmployee == true) {
+						CinemaMain main = new CinemaMain();
+						main.goToNextPage("employee_view/EmployeeHome.fxml", "Employee Home");
+					} else {
+						CinemaMain main = new CinemaMain();
+						main.goToNextPage("customer_view/CustomerAccount.fxml", "Customer Account");
+					}
+
+				}
+
 			}
 
 		}
 
 	}
-	
+
+	public void selectsProfilePic() {
+		final FileChooser fileChooser = new FileChooser();
+		File file = fileChooser.showOpenDialog(CinemaMain.thestage);
+
+		filePicName = "images/" + file.getName();
+		picLabel.setText(filePicName);
+
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+
+		File xmlFile = new File("users.xml");
+
+		if (xmlFile.exists()) {
+			try {
+				ReadXMLFile read = new ReadXMLFile("users.xml");
+				root = read.readsXML();
+			} catch (Exception e) {
+				CinemaMain.LOGGER.warning("Couldn't parse users.XML");
+			}
+			list = root.getChildren("User");
+
+			// PARSES XML: ITERATES THROUGH THE 'FILM' LIST, GETS
+			// ELEMENT/ATTRIBUTES
+			// AND PASSES IT TO FILM VARIABLES
+			list = root.getChildren("User");
+
+			if (LoginController.userID != null) {
+
+				for (int i = 0; i < list.size(); i++) {
+
+					Element node = (Element) list.get(i);
+
+					if (node.getAttributeValue("id").equalsIgnoreCase(LoginController.userID)) {
+
+						firstName.setText(node.getChildText("FirstName"));
+						lastName.setText(node.getChildText("LastName"));
+						emailAddress.setText(node.getChildText("EmailAddress"));
+						phoneNumber.setText(node.getChildText("PhoneNumber"));
+						userName.setText(node.getChildText("UserName"));
+						password.setText(node.getChildText("Password"));
+						confirmPassword.setText(node.getChildText("Password"));
+						picLabel.setText(node.getChildText("profilePic"));
+						filePicName = node.getChildText("profilePic");
+
+						if (node.getChildText("UserProfile").equalsIgnoreCase("customer"))
+							employeeProfile.setDisable(true);
+						else if (node.getChildText("UserProfile").equalsIgnoreCase("employee"))
+							customerProfile.setDisable(true);
+
+					}
+				}
+			}
+
+		}
+	}
+
 	@FXML
 	private void backToLogin() {
-		
+
 		// TAKES YOU BACK TO LOGIN PAGE WHEN SIGN UP COMPLETED
 		CinemaMain main = new CinemaMain();
 		main.goToLoginPage("shared_view/LoginScreen.fxml", "Cinema Login");
 	}
-	
+
 	@FXML
 	private void cancelsSignUp() {
-		
-		// TAKES YOU BACK TO LOGIN PAGE WHEN CANCEL PRESSED
-		CinemaMain main = new CinemaMain();
-		main.goToLoginPage("shared_view/LoginScreen.fxml", "Cinema Login");
+
+		if (LoginController.userID == null) {
+			// TAKES YOU BACK TO LOGIN PAGE WHEN CANCEL PRESSED
+			CinemaMain main = new CinemaMain();
+			main.goToLoginPage("shared_view/LoginScreen.fxml", "Cinema Login");
+		} else if (EmployeeHomeController.editEmployee == true) {
+			CinemaMain main = new CinemaMain();
+			main.goToNextPage("employee_view/EmployeeHome.fxml", "Employee Home");
+		} else {
+			CinemaMain main = new CinemaMain();
+			main.goToNextPage("customer_view/CustomerAccount.fxml", "Customer Account");
+		}
+
 	}
-	
-
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-	}
-
-	
-
-	
 
 }

@@ -179,11 +179,6 @@ public class WhatsOnCustController implements Initializable {
 					gridPane.add(genre, 1, 2, 2, 1);
 					gridPane.add(runningTime, 1, 3, 2, 1);
 					gridPane.add(description, 1, 4, 2, 1);
-
-				//	gridPane.add(moreInfo, 1, 4, 2, 1);
-				//	gridPane.setValignment(moreInfo, VPos.BOTTOM);
-				//	gridPane.setHalignment(moreInfo, HPos.RIGHT);
-
 					gridPane.add(dateList, 4, 3, 1, 1);
 					gridPane.add(book, 4, 4, 1, 1);
 					gridPane.add(blank, 0, 5, 1, 1);

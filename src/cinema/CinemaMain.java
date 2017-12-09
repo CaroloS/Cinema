@@ -3,12 +3,12 @@ package cinema;
 import java.io.IOException;
 import java.util.logging.Logger;
 
-import cinema.XML.CreateUsersXML;
+import cinema.shared_controllers.LoginController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 public class CinemaMain extends Application {
 
@@ -33,6 +33,11 @@ public class CinemaMain extends Application {
 	}
 	
 	public void goToLoginPage(String pathToFXML, String pageTitle) {
+		
+		LoginController.userID = null;
+		LoginController.loggedInUser = null;
+		LoginController.usersName = null;
+		
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource(pathToFXML));
 

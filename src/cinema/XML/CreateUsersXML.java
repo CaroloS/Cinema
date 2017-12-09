@@ -13,9 +13,18 @@ import org.jdom2.output.XMLOutputter;
 public class CreateUsersXML extends CreateXML{
 	
 	//DECLARES INSTANCE VARIABLES TO WRITE TO XML
-	private String firstName, lastName, emailAddress, phoneNumber, userProfile, userName, password;
+	private String firstName, lastName, emailAddress, phoneNumber, userProfile, userName, password, profilePic;
 
-//	CALLS THE PARENT CONSTRUCTOR 
+	public String getProfilePic() {
+			return profilePic;
+		}
+
+
+	public void setProfilePic(String profilePic) {
+		this.profilePic = profilePic;
+	}
+
+	//	CALLS THE PARENT CONSTRUCTOR 
 	public CreateUsersXML (String inputFile, String rootElement) {
 		super(inputFile, rootElement);
 	}
@@ -96,6 +105,7 @@ public class CreateUsersXML extends CreateXML{
 		user.addContent(new Element("UserProfile").setText(userProfile));
 		user.addContent(new Element("UserName").setText(userName));
 		user.addContent(new Element("Password").setText(password));
+		user.addContent(new Element("profilePic").setText(profilePic));
 		root.addContent(user);
 		document.setContent(root);
 

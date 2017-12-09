@@ -15,6 +15,7 @@ import cinema.CinemaMain;
 import cinema.XML.CreateFilmBookingsXML;
 import cinema.XML.CreateFilmXML;
 import cinema.XML.ReadXMLFile;
+import cinema.shared_controllers.LoginController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -40,6 +41,8 @@ public class EmployeeHomeController implements Initializable {
 	private DatePicker datePicker;
 	@FXML
 	private ComboBox filmRating, timePicker, genrePicker;
+	
+	public static Boolean editEmployee;
 
 	String fileName;
 	// ArrayList<String> dateTimes = new ArrayList<String>();
@@ -210,6 +213,13 @@ public class EmployeeHomeController implements Initializable {
 			
 		}
 
+	}
+	
+	@FXML
+	public void editsEmployeeProfile() {
+		editEmployee = true;
+		CinemaMain main = new CinemaMain();
+		main.goToNextPage("shared_view/SignUpPage.fxml", "Edit Information for Employee: " + LoginController.userID);
 	}
 
 	@FXML
