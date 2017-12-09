@@ -9,16 +9,29 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cinema.customer_controllers.WhatsOnCustController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: #D3D3D3;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cinema.customer_controllers.WhatsOnCustController">
    <top>
-      <AnchorPane prefHeight="99.0" prefWidth="614.0" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" prefHeight="125.0" style="-fx-background-color: FBBA42;" BorderPane.alignment="CENTER">
          <children>
-            <MenuBar layoutX="1.0" layoutY="47.0" prefHeight="40.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <Pane prefHeight="75.0" style="-fx-background-color: #EEEEEE;">
+               <children>
+                  <ImageView fitHeight="75.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="images/oscar-award-512.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="153.0" layoutY="27.0" />
+               </children>
+            </Pane>
+            <MenuBar prefHeight="50.0" styleClass="menubar">
               <menus>
                 <Menu fx:id="backHome" mnemonicParsing="false" onAction="#goBackHome" text="HOME">
                   <items>
@@ -30,66 +43,84 @@
                     <MenuItem mnemonicParsing="false" text="WHAT'S ON" />
                   </items>
                 </Menu>
-                  <Menu fx:id="myAccountMenu" mnemonicParsing="false" onAction="#goToMyAccount" text="MY ACCOUNT">
-                     <items>
+                <Menu fx:id="myAccountMenu" mnemonicParsing="false" onAction="#goToMyAccount" text="MY ACCOUNT">
+					<items>
                         <MenuItem mnemonicParsing="false" text="MY ACCOUNT" />
-                     </items>
-                  </Menu>
-                 <Menu disable="true" mnemonicParsing="false" text="                                                                          ">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="                                                                                          " />
-                  </items>
+                    </items>
                 </Menu>
-                <Menu fx:id="logOut" mnemonicParsing="false" onAction="#logsOut" text="LOG OUT">
-                  <items>
+                  <Menu fx:id="logOut" mnemonicParsing="false" onAction="#logsOut" text="LOG OUT">
+                    <items>
                     <MenuItem fx:id="logOut" mnemonicParsing="false" onAction="#logsOut" text="LOG OUT" />
                   </items>
-                </Menu>
+                  </Menu>
               </menus>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets left="150.0" />
+               </padding>
             </MenuBar>
-            <Label fx:id="helloUser" layoutX="51.0" layoutY="7.0" prefHeight="46.0" prefWidth="244.0" />
          </children>
-      </AnchorPane>
+      </VBox>
    </top>
+   <left>
+      <Pane prefWidth="150.0" style="-fx-background-color: #EEEEEE;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="800.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="images/oscar_flat_4.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </left>
+   <right>
+      <Pane prefWidth="150.0" style="-fx-background-color: #EEEEEE;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="800.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="images/oscar_flat_4.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </right>
    <center>
-      <ScrollPane fx:id="scrollPane" prefHeight="200.0" prefWidth="480.0" BorderPane.alignment="CENTER">
-         <content>
-            <VBox fx:id="outerAnchor" prefHeight="610.0" prefWidth="705.0">
+      <VBox alignment="TOP_CENTER" style="-fx-background-color: linen;" BorderPane.alignment="CENTER">
+         <children>
+            <FlowPane alignment="CENTER_LEFT" columnHalignment="CENTER" orientation="VERTICAL" prefHeight="50.0" prefWrapLength="200.0" style="-fx-background-color: #EEEEEE;">
                <children>
-                  <HBox prefHeight="34.0" prefWidth="705.0">
-                     <children>
-                        <DatePicker fx:id="filterDates" editable="false" onAction="#filtersDates" promptText="filter by date">
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin></DatePicker>
-                        <ComboBox fx:id="filterGenre" onAction="#filtersGenre" prefWidth="150.0" promptText="filter by genre">
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin></ComboBox>
-                        <Button fx:id="allFilms" mnemonicParsing="false" onAction="#backtoAllFilms" prefHeight="27.0" prefWidth="167.0" text="All Films">
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin></Button>
-                     </children>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox prefHeight="72.0" prefWidth="705.0">
-                     <children>
-                        <Label prefHeight="28.0" prefWidth="696.0" text="                                                                                                                                                                                            " />
-                     </children>
-                  </HBox>
-                  <VBox fx:id="centreAnchor" prefHeight="556.0" prefWidth="705.0">
-                     <VBox.margin>
-                        <Insets top="20.0" />
-                     </VBox.margin>
-                     <padding>
-                        <Insets top="10.0" />
-                     </padding></VBox>
+                  <DatePicker fx:id="filterDates" editable="false" onAction="#filtersDates" prefHeight="30.0" prefWidth="220.0" promptText="Filter By Date" styleClass="date-picker" />
+                  <ComboBox fx:id="filterGenre" onAction="#filtersGenre" prefWidth="220.0" promptText="Filter by Genre">
+                     <FlowPane.margin>
+                        <Insets left="10.0" />
+                     </FlowPane.margin>
+                  </ComboBox>
+                  <Button fx:id="allFilms" mnemonicParsing="false" onAction="#backtoAllFilms" prefWidth="220.0" text="All Films">
+                     <FlowPane.margin>
+                        <Insets left="10.0" />
+                     </FlowPane.margin>
+                  </Button>
                </children>
-            </VBox>
-         </content>
-      </ScrollPane>
+            </FlowPane>
+            <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" prefHeight="500.0" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS">
+               <content>
+                  <VBox fx:id="outerAnchor" prefHeight="100.0" prefWidth="700.0" style="-fx-background-color: indianred;">
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: blue;">
+                           <children>
+                              <VBox fx:id="centreAnchor" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #F9F9F9;">
+                                 <padding>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </padding></VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </content>
+            </ScrollPane>
+         </children>
+      </VBox>
    </center>
 </BorderPane>

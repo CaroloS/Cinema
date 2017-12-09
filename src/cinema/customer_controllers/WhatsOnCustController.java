@@ -56,6 +56,9 @@ public class WhatsOnCustController implements Initializable {
 	// DECALRES THE ROOT ELEMENT TO BE SET BY PARSING film.XML
 	Element root;
 	List list;
+	
+	//Loads the style sheet
+//	String style = getClass().getResource("style.css").toExternalForm();
 
 	// DECALRES FILM VARIABLES TO STORE VALUES FROM XML PARSING
 	// Attribute filmID;
@@ -73,7 +76,6 @@ public class WhatsOnCustController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
-		helloUser.setText("Hello, " + LoginController.usersName);
 
 		gridList = new ArrayList<>();
 
@@ -148,7 +150,7 @@ public class WhatsOnCustController implements Initializable {
 					GridPane gridPane = new GridPane();
 					gridPane.setPrefSize(680, 800);
 
-					Image filmPic = new Image(filmImage, 200, 200, false, false);
+					Image filmPic = new Image(filmImage, 189, 280, false, false);
 					ImageView viewPic = new ImageView(filmPic);
 
 					Label title = new Label(filmTitle);
@@ -166,6 +168,7 @@ public class WhatsOnCustController implements Initializable {
 					dateList.getItems().clear();
 					dateList.setItems(obList);
 					dateList.setPromptText("Pick a Date");
+					dateList.setPrefSize(220, 35);
 
 					// BOOKING BUTTON WITH A 'buttonHandler' EVENTHANDLER
 					Button book = new Button("Book");
@@ -178,19 +181,23 @@ public class WhatsOnCustController implements Initializable {
 					gridPane.add(title, 1, 1, 2, 1);
 					gridPane.add(genre, 1, 2, 2, 1);
 					gridPane.add(runningTime, 1, 3, 2, 1);
-					gridPane.add(description, 1, 4, 2, 1);
+					gridPane.add(description, 1, 4, 2, 2);
 					gridPane.add(dateList, 4, 3, 1, 1);
 					gridPane.add(book, 4, 4, 1, 1);
 					gridPane.add(blank, 0, 5, 1, 1);
+					
+					
 
 					// SETS SOME COLUMN WIDTH CONSTRAINTS FOR PROPER LAYOUT
 					ColumnConstraints col1 = new ColumnConstraints();
 					ColumnConstraints col2 = new ColumnConstraints();
 					ColumnConstraints col3 = new ColumnConstraints();
-					col1.setPercentWidth(2);
-					col2.setPercentWidth(2);
-					col3.setPercentWidth(2);
+					col1.setPercentWidth(3);
+					col2.setPercentWidth(3);
+					col3.setPercentWidth(3);
 					gridPane.getColumnConstraints().addAll(col1, col2, col3);
+					gridPane.setHgap(10);
+
 
 					gridList.add(gridPane);
 				}

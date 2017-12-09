@@ -50,4 +50,14 @@
     <Password>123456</Password>
     <profilePic>images/greencamera.png</profilePic>
   </User>
+  <User id="941">
+    <FirstName>Sadmin</FirstName>
+    <LastName>Sadmin</LastName>
+    <EmailAddress>sadmin@sadmin</EmailAddress>
+    <PhoneNumber>123456789</PhoneNumber>
+    <UserProfile>customer</UserProfile>
+    <UserName>sadmin</UserName>
+    <Password>sadmin</Password>
+    <profilePic>images/oscar-award-512.png</profilePic>
+  </User>
 </users>
