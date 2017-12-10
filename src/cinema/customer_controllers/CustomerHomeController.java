@@ -186,7 +186,7 @@ public class CustomerHomeController implements Initializable {
 		WebEngine webEngine = webView.getEngine();
 		webEngine.loadContent(content);
 		vbox.getChildren().add(webView);
-		
+		vbox.setPrefSize(560, 350);
 
 	}
 	
