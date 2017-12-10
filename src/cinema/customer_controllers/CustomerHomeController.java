@@ -37,8 +37,6 @@ public class CustomerHomeController implements Initializable {
 
 	@FXML
 	private ScrollPane homeAnchor;
-//	@FXML
-//	private VBox menuAnchor;
 	@FXML
 	private Pane carouselAnchor;
 	@FXML
@@ -187,7 +185,6 @@ public class CustomerHomeController implements Initializable {
 		webEngine.loadContent(content);
 		vbox.getChildren().add(webView);
 		vbox.setPrefSize(560, 350);
-
 	}
 	
 	

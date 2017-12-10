@@ -18,7 +18,7 @@
 
 <BorderPane fx:id="borderPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: #F9F9F9;;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cinema.customer_controllers.CustomerHomeController">
    <top>
-      <VBox fx:id="menuAnchor" alignment="CENTER" prefHeight="125.0" style="-fx-background-color: FBBA42;" BorderPane.alignment="CENTER">
+      <VBox fx:id="menuAnchor" alignment="CENTER" prefHeight="125.0" BorderPane.alignment="CENTER">
          <children>
             <Pane prefHeight="75.0" style="-fx-background-color: #EEEEEE;">
                <children>
@@ -47,13 +47,6 @@
                         <MenuItem mnemonicParsing="false" text="MY ACCOUNT" />
                     </items>
                 </Menu>
-                
-                <Menu disable="true" mnemonicParsing="false" text="                                                                                                   ">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="                                                                                       " />
-                  </items>
-                </Menu>
-                
                   <Menu fx:id="logOut" mnemonicParsing="false" onAction="#logsOut" text="LOG OUT">
                     <items>
                     <MenuItem mnemonicParsing="false" text="LOG OUT" />
@@ -100,7 +93,7 @@
          <content>
             <VBox alignment="CENTER" style="-fx-background-color: #F9F9F9;">
                <children>
-                  <Label styleClass="mainlabel" stylesheets="@styles.css" text="FILMS OF THE MONTH">
+                  <Label styleClass="mainlabel" text="FILMS OF THE MONTH">
                      <font>
                         <Font name="Corbel Bold" size="36.0" />
                      </font>
@@ -108,11 +101,11 @@
                         <Insets bottom="15.0" top="15.0" />
                      </VBox.margin>
                   </Label>
-                  <VBox alignment="TOP_CENTER" prefWidth="100.0" style="-fx-background-color: PALEGOLDENROD;" VBox.vgrow="ALWAYS">
+                  <VBox alignment="TOP_CENTER" prefWidth="100.0" VBox.vgrow="ALWAYS">
                      <children>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #F9F9F9;" VBox.vgrow="ALWAYS">
                            <children>
-                              <Button fx:id="backButton" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#scrollsBack" prefHeight="400.0" prefWidth="50.0" styleClass="carouselbuttonleft" stylesheets="@styles.css" textAlignment="CENTER" HBox.hgrow="ALWAYS">
+                              <Button fx:id="backButton" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#scrollsBack" prefHeight="400.0" prefWidth="50.0" styleClass="carouselbuttonleft" textAlignment="CENTER" HBox.hgrow="ALWAYS">
                                  <HBox.margin>
                                     <Insets left="100.0" />
                                  </HBox.margin>
@@ -122,7 +115,7 @@
                                     <Insets left="50.0" right="50.0" />
                                  </HBox.margin>
                               </Pane>
-                              <Button fx:id="forwardButton" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#scrollsForward" prefHeight="400.0" prefWidth="50.0" styleClass="carouselbuttonright" stylesheets="@styles.css" textAlignment="CENTER" HBox.hgrow="ALWAYS">
+                              <Button fx:id="forwardButton" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#scrollsForward" prefHeight="400.0" prefWidth="50.0" styleClass="carouselbuttonright" textAlignment="CENTER" HBox.hgrow="ALWAYS">
                                  <HBox.margin>
                                     <Insets right="100.0" />
                                  </HBox.margin>
@@ -140,7 +133,7 @@
                         </Button>
                         <VBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="3.0" style="-fx-background-color: #F9F9F9;" HBox.hgrow="ALWAYS">
                            <children>
-                              <Label styleClass="mainlabel" stylesheets="@styles.css" text="Welcome to our cinema" textAlignment="CENTER">
+                              <Label styleClass="mainlabel" text="Welcome to our cinema" textAlignment="CENTER">
                                  <font>
                                     <Font name="Corbel" size="28.0" />
                                  </font></Label>
@@ -167,7 +160,7 @@
                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                      </VBox.margin>
                   </HBox>
-                  <VBox alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefWidth="100.0" style="-fx-background-color: #F9F9F9;" VBox.vgrow="NEVER">
+                  <VBox maxHeight="-Infinity" minHeight="-Infinity" prefWidth="100.0" style="-fx-background-color: #F9F9F9;" VBox.vgrow="NEVER">
                      <children>
                         <Label styleClass="mainlabel" text="SEE OUR LATEST QA'S WITH OUR FAVOURITE OSCAR WINNING DIRECTORS">
                            <font>
@@ -178,8 +171,8 @@
                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                      </VBox.margin>
                   </VBox>
-                  <VBox fx:id="vBox1" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" style="-fx-background-color: lightblue;" VBox.vgrow="ALWAYS" />
-                  <VBox fx:id="vBox2" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" nodeOrientation="RIGHT_TO_LEFT" style="-fx-background-color: pink;" VBox.vgrow="ALWAYS" />
+                  <VBox fx:id="vBox1" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" VBox.vgrow="ALWAYS" />
+                  <VBox fx:id="vBox2" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" nodeOrientation="RIGHT_TO_LEFT" VBox.vgrow="ALWAYS" />
                </children>
             </VBox>
          </content>
