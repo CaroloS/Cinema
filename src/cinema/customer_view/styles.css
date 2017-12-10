@@ -157,3 +157,68 @@
 	-fx-fill: white;
 }
 
+.scroll-pane>*.viewpoint {
+	-fx-region-background: #F9F9F9;  
+	-fx-background-color: #F9F9F9;
+}
+
+.root {
+	-fx-base: #F9F9F9;
+}
+
+.mainlabel {
+	-fx-padding: 0px 10px 0px 10px;
+	-fx-border-width: 0px 3px 0px 3px;
+	-fx-border-color: #B7A261;	
+}
+
+.mainlabel .text {
+	-fx-fill: #B7A261;	
+}
+
+.carouselbuttonleft {
+	-fx-font: 16px Corbel;
+	-fx-background-color: #D9DADB;
+	-fx-background-insets: 0px;
+	-fx-background-radius: 0px; 
+	-fx-border-insets: 0px;
+	-fx-border-color: #B7A261;
+	-fx-border-width: 0px 0px 0px 5px;
+	-fx-border-radius: 0px;	
+}
+
+.carouselbuttonleft:hover {
+	-fx-font: 16px Corbel;
+	-fx-background-color: #B7A261;
+	-fx-background-insets: 0px;
+	-fx-background-radius: 0px; 
+	-fx-border-insets: 0px;
+	-fx-border-color: #D9DADB;
+	-fx-border-width: 0px 0px 0px 5px;
+	-fx-border-radius: 0px;	
+}
+
+.carouselbuttonright {
+	-fx-font: 16px Corbel;
+	-fx-background-color: #D9DADB;
+	-fx-background-insets: 0px;
+	-fx-background-radius: 0px; 
+	-fx-border-insets: 0px;
+	-fx-border-color: #B7A261;
+	-fx-border-width: 0px 5px 0px 0px;
+	-fx-border-radius: 0px;	
+}
+
+.carouselbuttonright:hover {
+	-fx-font: 16px Corbel;
+	-fx-background-color: #B7A261;
+	-fx-background-insets: 0px;
+	-fx-background-radius: 0px; 
+	-fx-border-insets: 0px;
+	-fx-border-color: #D9DADB;
+	-fx-border-width: 0px 5px 0px 0px;
+	-fx-border-radius: 0px;	
+}
+
+
+

@@ -104,11 +104,11 @@
                   </Button>
                </children>
             </FlowPane>
-            <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" prefHeight="500.0" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS">
+            <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" prefHeight="500.0" style="-fx-background-color: #F9F9F9;" stylesheets="@styles.css" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS">
                <content>
-                  <VBox fx:id="outerAnchor" prefHeight="100.0" prefWidth="700.0" style="-fx-background-color: indianred;">
+                  <VBox fx:id="outerAnchor" prefHeight="100.0" prefWidth="700.0">
                      <children>
-                        <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: blue;">
+                        <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #F9F9F9;">
                            <children>
                               <VBox fx:id="centreAnchor" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #F9F9F9;">
                                  <padding>

@@ -21,11 +21,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
@@ -33,15 +36,18 @@ import javafx.scene.web.WebView;
 public class CustomerHomeController implements Initializable {
 
 	@FXML
-	private AnchorPane carouselAnchor, menuAnchor, homeAnchor;
+	private ScrollPane homeAnchor;
+//	@FXML
+//	private VBox menuAnchor;
+	@FXML
+	private Pane carouselAnchor;
 	@FXML
 	private BorderPane borderPane;
 	@FXML
 	private Button forwardButton, backButton, freeTicket;
 	@FXML
-	private VBox vBox1, vBox2;
-	@FXML
-	private Label helloUser;
+	private VBox menuAnchor, vBox1, vBox2;
+	
 
 	Element root;
 	List list;
@@ -53,7 +59,7 @@ public class CustomerHomeController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
-		helloUser.setText("Hello, " + LoginController.usersName);
+		
 
 		String content_Url1 = "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/19jGdktyGgk\" frameborder=\"0\" gesture=\"media\" allow=\"encrypted-media\" allowfullscreen></iframe>";
 		String content_Url2 = "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/8O6eQBjDWDM\" frameborder=\"0\" gesture=\"media\" allow=\"encrypted-media\" allowfullscreen></iframe>";
@@ -109,14 +115,14 @@ public class CustomerHomeController implements Initializable {
 		}
 
 		if (imageList.size() > 0) {
-			Image filmPic = new Image(imageList.get(0), 200, 200, false, false);
+			Image filmPic = new Image(imageList.get(0), 270, 400, false, false);
 			viewPic = new ImageView(filmPic);
 			viewPic.setId("0");
 
 			carouselAnchor.getChildren().add(viewPic);
 			viewPic.fitWidthProperty().bind(carouselAnchor.widthProperty());
 			viewPic.fitHeightProperty().bind(carouselAnchor.heightProperty());
-			viewPic.setPreserveRatio(true);
+			viewPic.setPreserveRatio(false);
 		}
 
 	}
@@ -140,7 +146,7 @@ public class CustomerHomeController implements Initializable {
 					carouselAnchor.getChildren().add(viewPic);
 					viewPic.fitWidthProperty().bind(carouselAnchor.widthProperty());
 					viewPic.fitHeightProperty().bind(carouselAnchor.heightProperty());
-					viewPic.setPreserveRatio(true);
+					viewPic.setPreserveRatio(false);
 				}
 			}
 		}
@@ -166,7 +172,7 @@ public class CustomerHomeController implements Initializable {
 					carouselAnchor.getChildren().add(viewPic);
 					viewPic.fitWidthProperty().bind(carouselAnchor.widthProperty());
 					viewPic.fitHeightProperty().bind(carouselAnchor.heightProperty());
-					viewPic.setPreserveRatio(true);
+					viewPic.setPreserveRatio(false);
 				}
 			}
 		}
@@ -180,6 +186,7 @@ public class CustomerHomeController implements Initializable {
 		WebEngine webEngine = webView.getEngine();
 		webEngine.loadContent(content);
 		vbox.getChildren().add(webView);
+		
 
 	}
 	
