@@ -3,6 +3,7 @@ package cinema;
 import java.io.IOException;
 import java.util.logging.Logger;
 
+import cinema.employee_controllers.EmployeeHomeController;
 import cinema.shared_controllers.LoginController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -55,6 +56,7 @@ public class CinemaMain extends Application {
 		LoginController.userID = null; 
 		LoginController.loggedInUser = null;
 		LoginController.usersName = null;
+		EmployeeHomeController.editEmployee = false;
 		
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource(pathToFXML)); 

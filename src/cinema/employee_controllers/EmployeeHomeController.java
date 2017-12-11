@@ -28,6 +28,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 
+/**
+ * Controller class for Employee Home page. Defines functions and fields that allow an employee
+ * to add a new film to the cinema. Checks the new film information against 'film.xml' file to 
+ * ensure showings in the cinema don't overlap, and that films are only added for future dates. 
+ * @author carolinesmith, daianabassi
+ *
+ */
 public class EmployeeHomeController implements Initializable {
 
 	//DECLARES ALL THE FXML ELEMENTS USED BY THIS CONTROLLER
@@ -45,7 +52,7 @@ public class EmployeeHomeController implements Initializable {
 	//DECALRES A STATIC VARIABLE THAT IS SET TO TRUE WHEN EMPLOYEE SELECTS TO EDIT
 	//THEIR PROFILE INFORMATION. IT IS CHECKED BY THE SIGN UP CONTROLLER TO DIFFERENTIATE
 	//AN EMPLOYEE EDITING THEIR INFORMATION FROM A CUSTOMER.
-	public static Boolean editEmployee;
+	public static Boolean editEmployee = false;
 
 	String fileName;
 	StringBuffer dateTimes = new StringBuffer();    //A STRINGBUFFER TO COLLECT DATE/TIME INFORMATION FOR A NEW FILM
@@ -54,7 +61,35 @@ public class EmployeeHomeController implements Initializable {
 	List list = null;      //A LIST TO PASS THE XML NODES TO FROM XML PARSING
 
 	Alert alert = new Alert(AlertType.WARNING);
+	
 
+	/**
+	 * Called to initialize a controller after its root element has been completely processed.
+	 * Populates the ComboBoxes with values and parses the 'film.xml' file.
+	 */
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+
+		// POPULATES THE RATINGS COMBOBOX WITH VALUES ON PAGE INITIALISATION
+		filmRating.getItems().addAll("U", "PG", "12", "15", "18");
+
+		timePicker.getItems().addAll("1200", "1300", "1400", "1500", "1600", "1700", "1800", "1900", "2000");
+
+		genrePicker.getItems().addAll("Horror", "Comedy", "Children's", "Action", "Love");
+
+		File xmlFile = new File("film.xml");
+
+		if (xmlFile.exists()) {
+			try {
+				ReadXMLFile read = new ReadXMLFile("film.xml");
+				root = read.readsXML();
+			} catch (Exception e) {
+				CinemaMain.LOGGER.warning("Couldn't parse film.XML");
+			}
+			list = root.getChildren("film");
+		}
+	}
+	
 	/**
 	 * Adds a list of selected dates and times for a new film to a StringBuffer - won't add date/time if date is in the past 
 	 * or if another film is already being shown on that date/time. 
@@ -224,6 +259,13 @@ public class EmployeeHomeController implements Initializable {
 	}
 	
 /////NAVIGATION FUNCTIONS/////
+	
+	/**
+	 * Loads the Sign Up page when edit profile information button clicked.
+	 * Sets <code>edtiEmployee</code> to true to differentiate employee from customer editing.
+	 * Calls <code>goToNextPage</code> function from <code>cinema.CinemaMain</code>
+	 * @param event the button click event
+	 */
 	@FXML
 	public void editsEmployeeProfile() {
 		editEmployee = true;
@@ -231,57 +273,44 @@ public class EmployeeHomeController implements Initializable {
 		main.goToNextPage("shared_view/SignUpPage.fxml", "Edit Information for Employee: " + LoginController.userID);
 	}
 
+	/**
+	 * Loads the employee what's on page when menu item selected.
+	 * Calls <code>goToNextPage</code> function from <code>cinema.CinemaMain</code>
+	 * @param event the menu item click event
+	 */
 	@FXML
 	private void goToWhatsOn(ActionEvent event) {
 
-		// TAKES USER TO 'WhatsOnEmployee' PAGE WHEN 'WHATS ON' MENU ITEM
-		// CLICKED
 		CinemaMain main = new CinemaMain();
 		main.goToNextPage("employee_view/WhatsOnEmployee.fxml", "What's On");
 	}
 
+	/**
+	 * Takes use back to login page when log out menu item selected.
+	 * Calls <code>goToLoginPage</code> function from <code>cinema.CinemaMain</code>
+	 * @param event the menu item click event
+	 */
 	@FXML
 	private void logsOut(ActionEvent event) {
 
-		// TAKES USER BACK TO 'Cinema Login' PAGE WHEN 'LOG OUT' MENU ITEM
-		// CLICKED
 		CinemaMain main = new CinemaMain();
 		main.goToLoginPage("shared_view/LoginScreen.fxml", "Cinema Login");
 
 	}
 	
+	/**
+	 * Loads the employee 'all bookings' page when menu item selected.
+	 * Calls <code>goToNextPage</code> function from <code>cinema.CinemaMain</code>
+	 * @param event the menu item click event
+	 */
 	@FXML
 	private void goToAllBookings(ActionEvent event) {
 
-		// TAKES USER TO ALL BOOKINGS PAGE FROM MENU ITEM
 		CinemaMain main = new CinemaMain();
 		main.goToNextPage("employee_view/AllBookings.fxml", "All Bookings");
 
 	}
 
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-
-		// POPULATES THE RATINGS COMBOBOX WITH VALUES ON PAGE INITIALISATION
-		filmRating.getItems().addAll("U", "PG", "12", "15", "18");
-
-		timePicker.getItems().addAll("1200", "1300", "1400", "1500", "1600", "1700", "1800", "1900", "2000");
-
-		genrePicker.getItems().addAll("Horror", "Comedy", "Children's", "Action", "Love");
-
-		File xmlFile = new File("film.xml");
-
-		if (xmlFile.exists()) {
-			try {
-				ReadXMLFile read = new ReadXMLFile("film.xml");
-				root = read.readsXML();
-			} catch (Exception e) {
-				CinemaMain.LOGGER.warning("Couldn't parse film.XML");
-			}
-			list = root.getChildren("film");
-		}
-
-	}
 
 	
 }

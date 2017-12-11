@@ -27,15 +27,18 @@ import javafx.scene.layout.AnchorPane;
 
 public class AllBookingsController implements Initializable {
 
+	//DECLARES ALL THE FXML ELEMENTS USED BY THIS CONTROLLER//
 	@FXML
 	private Label futureBookingLabel, pastBookingLabel;
 	@FXML
 	private AnchorPane futurePieAnchor, pastPieAnchor;
-
+	
 	File xmlFile = new File("filmBookings.xml");
-	Element root = null;
-	List list = null;
-
+	
+	Element root = null; //AN XML ROOT ELEMENT TO SET WHEN PARSING XML DOCUMENTS
+	List list = null;    //A LIST TO PASS THE XML NODES TO FROM XML PARSING
+ 
+	//STRING FIELDS TO HOLD THE BOOKING INFORMATION FROM 'filmBookings.xml'
 	String seatsBooked = null;
 	String booked = null;
 	String available = null;
@@ -51,72 +54,37 @@ public class AllBookingsController implements Initializable {
 
 	Date today = new Date();
 
-	public void exportsFutureBookings() {
-
-		if (futureBookings.size() > 0) {
-			writesToFile("FutureBookings.txt", futureBookings.toString());
-			futureBookingLabel.setWrapText(true);
-			futureBookingLabel.setText("Done! Check your computer for FutureBookings.txt");
-
-		} else {
-			futureBookingLabel.setText("No past bookings to export!");
-		}
-
-	}
-
-	public void exportsPastBookings() {
-
-		if (pastBookings.size() > 0) {
-			writesToFile("PastBookings.txt", pastBookings.toString());
-			pastBookingLabel.setWrapText(true);
-			pastBookingLabel.setText("Done! Check your computer for PastBookings.txt");
-
-		} else {
-			pastBookingLabel.setText("No past bookings to export!");
-		}
-
-	}
-
-	public void writesToFile(String filename, String content) {
-
-		try (BufferedWriter bw = new BufferedWriter(new FileWriter(filename))) {
-
-			bw.write(content);
-			System.out.println("Done");
-
-		} catch (IOException e) {
-			CinemaMain.LOGGER.warning("Couldn't write to file");
-			e.printStackTrace();
-		}
-
-	}
-
+	/**
+	 * Called to initialize a controller after its root element has been completely processed.
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
+		//IF 'filmBookings.xml' EXSISTS PARSES IT BY CALLING 'readsXML' FROM 'cinema.XML.ReadXMLFile'
 		if (xmlFile.exists()) {
 			try {
 				ReadXMLFile read = new ReadXMLFile("filmBookings.xml");
-				root = read.readsXML();
+				root = read.readsXML();			//RETURNS THE ROOT NODE
 			} catch (Exception e) {
 				CinemaMain.LOGGER.warning("Couldn't parse users.XML");
 			}
 			list = root.getChildren("filmBooking");
 		}
 
+		//ITERATES THROUGH THE LIST OF XML NODES TO EXRTACT FILM BOOKING INFORMATION
 		if (list != null) {
 			for (int i = 0; i < list.size(); i++) {
 
 				Element node = (Element) list.get(i);
 
-				String titleDateTime = node.getAttributeValue("name");
+				String titleDateTime = node.getAttributeValue("name");   //GETS THE ATTRIBUTE WHICH IS THE FILM NAME + DATE + TIME
 				Date filmDate = null;
 				String[] arr = titleDateTime.split(" ");
-				String strFilmDate = arr[arr.length - 2];
+				String strFilmDate = arr[arr.length - 2];    			 //GETS JUST THE FILM DATE FROM THE ATTRIBUTE
 
-				SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy");
+				SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy"); //ITERATES THROUGH THE LIST OF XML NODES TO EXRTACT FILM DATE/TIME INFORMATION 
 				try {
-					filmDate = sdf.parse(strFilmDate);
+					filmDate = sdf.parse(strFilmDate);					 //PARSES EACH STRING FILM DATE TO A DATE
 				} catch (ParseException e) {
 					e.printStackTrace();
 				}
@@ -213,6 +181,49 @@ public class AllBookingsController implements Initializable {
 		}
 		
 		
+
+	}
+	
+	/**
+	 * 
+	 */
+	public void exportsFutureBookings() {
+
+		if (futureBookings.size() > 0) {
+			writesToFile("FutureBookings.txt", futureBookings.toString());
+			futureBookingLabel.setWrapText(true);
+			futureBookingLabel.setText("Done! Check your computer for FutureBookings.txt");
+
+		} else {
+			futureBookingLabel.setText("No past bookings to export!");
+		}
+
+	}
+
+	public void exportsPastBookings() {
+
+		if (pastBookings.size() > 0) {
+			writesToFile("PastBookings.txt", pastBookings.toString());
+			pastBookingLabel.setWrapText(true);
+			pastBookingLabel.setText("Done! Check your computer for PastBookings.txt");
+
+		} else {
+			pastBookingLabel.setText("No past bookings to export!");
+		}
+
+	}
+
+	public void writesToFile(String filename, String content) {
+
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter(filename))) {
+
+			bw.write(content);
+			System.out.println("Done");
+
+		} catch (IOException e) {
+			CinemaMain.LOGGER.warning("Couldn't write to file");
+			e.printStackTrace();
+		}
 
 	}
 
