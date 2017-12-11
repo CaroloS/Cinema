@@ -94,5 +94,7 @@ public class WhatsOnEmpController extends WhatsOnCustController {
 		main.goToNextPage("employee_view/AllBookings.fxml", "All Bookings");
 
 	}
+	
+	
 
 }

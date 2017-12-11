@@ -17,8 +17,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: #D3D3D3;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" 
-fx:controller="cinema.employee_controllers.WhatsOnEmpController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: #D3D3D3;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cinema.employee_controllers.WhatsOnEmpController">
    <top>
       <VBox alignment="CENTER" prefHeight="125.0" style="-fx-background-color: FBBA42;" BorderPane.alignment="CENTER">
          <children>
@@ -49,6 +48,11 @@ fx:controller="cinema.employee_controllers.WhatsOnEmpController">
                         <MenuItem mnemonicParsing="false" text="MY ACCOUNT" />
                     </items>
                 </Menu>
+                  <Menu mnemonicParsing="false" onAction="#goToAllBookings" text="ALL BOOKINGS">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="ALL BOOKINGS" />
+                     </items>
+                  </Menu>
                   <Menu fx:id="logOut" mnemonicParsing="false" onAction="#logsOut" text="LOG OUT">
                     <items>
                     <MenuItem fx:id="logOut" mnemonicParsing="false" onAction="#logsOut" text="LOG OUT" />

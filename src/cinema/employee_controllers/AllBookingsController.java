@@ -254,5 +254,16 @@ public class AllBookingsController implements Initializable {
 		main.goToLoginPage("shared_view/LoginScreen.fxml", "Cinema Login");
 
 	}
+	
+	/**
+	 * Loads the customer/employee account page when account menu item selected.
+	 * Calls <code>goToNextPage</code> function from <code>cinema.CinemaMain</code>
+	 * @param event the menu item click event
+	 */
+	@FXML
+	private void goToMyAccount() {
+		CinemaMain main = new CinemaMain();
+		main.goToNextPage("customer_view/CustomerAccount.fxml", "My Account");
+	}
 
 }

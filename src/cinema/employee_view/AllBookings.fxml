@@ -11,8 +11,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="810.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" 
-fx:controller="cinema.employee_controllers.AllBookingsController">
+<BorderPane prefHeight="810.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cinema.employee_controllers.AllBookingsController">
    <top>
       <AnchorPane prefHeight="83.0" prefWidth="615.0" BorderPane.alignment="CENTER">
          <children>
@@ -28,12 +27,17 @@ fx:controller="cinema.employee_controllers.AllBookingsController">
                         <MenuItem mnemonicParsing="false" text="WHAT'S ON" />
                      </items>
                   </Menu>
-                  <Menu fx:id="allBookings" mnemonicParsing="false" text="ALL BOOKINGS">
+                  <Menu mnemonicParsing="false" onAction="#goToMyAccount" text="MY ACCOUNT">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="MY ACCOUNT" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="ALL BOOKINGS">
                      <items>
                         <MenuItem mnemonicParsing="false" text="ALL BOOKINGS" />
                      </items>
                   </Menu>
-                  <Menu disable="true" mnemonicParsing="false" text="                                                                                              ">
+                  <Menu disable="true" mnemonicParsing="false" text="                                                                  ">
                      <items>
                         <MenuItem mnemonicParsing="false" text="                                                                                          " />
                      </items>

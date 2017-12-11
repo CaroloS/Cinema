@@ -32,7 +32,12 @@
                         <MenuItem mnemonicParsing="false" text="MY ACCOUNT" />
                      </items>
                   </Menu>
-                  <Menu disable="true" mnemonicParsing="false" text="                                                                                               ">
+                  <Menu fx:id="allBookings" mnemonicParsing="false" onAction="#goToAllBookings" text="ALL BOOKINGS">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#goToAllBookings" text="ALL BOOKINGS" />
+                     </items>
+                  </Menu>
+                  <Menu disable="true" mnemonicParsing="false" text="                                                                       ">
                      <items>
                         <MenuItem mnemonicParsing="false" text="                                                                                       " />
                      </items>
@@ -76,7 +81,7 @@
                         </AnchorPane>
                         <Label fx:id="welcomeLabel" layoutX="332.0" layoutY="50.0" prefHeight="40.0" prefWidth="255.0" />
                         <Button fx:id="editButton" layoutX="48.0" layoutY="302.0" mnemonicParsing="false" onAction="#allowsEdit" prefHeight="27.0" prefWidth="197.0" text="Edit my profile information" />
-                        <Label layoutX="15.0" layoutY="407.0" prefHeight="30.0" prefWidth="263.0" text="YOUR BOOKING HISTORY:" />
+                        <Label fx:id="bookingHistory" layoutX="15.0" layoutY="407.0" prefHeight="30.0" prefWidth="263.0" text="YOUR BOOKING HISTORY:" />
                      </children></AnchorPane>
                   <VBox fx:id="bottomAnchor" prefHeight="504.0" prefWidth="758.0" />
                </children>

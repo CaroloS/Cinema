@@ -374,7 +374,7 @@ public class WhatsOnCustController implements Initializable {
 	}
 
 	/**
-	 * Loads the customer account page when account menu item selected.
+	 * Loads the customer/employee account page when account menu item selected.
 	 * Calls <code>goToNextPage</code> function from <code>cinema.CinemaMain</code>
 	 * @param event the menu item click event
 	 */
