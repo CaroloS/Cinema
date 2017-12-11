@@ -45,9 +45,9 @@
                     <MenuItem mnemonicParsing="false" text="WHAT'S ON" />
                   </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="MY ACCOUNT">
+                <Menu mnemonicParsing="false" onAction="#goesToEmpAccount" text="MY ACCOUNT">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="About" visible="false" />
+                    <MenuItem mnemonicParsing="false" text="MY ACCOUNT" visible="true" />
                   </items>
                 </Menu>
                   <Menu fx:id="allBookings" mnemonicParsing="false" onAction="#goToAllBookings" text="ALL BOOKINGS">

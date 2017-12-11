@@ -41,9 +41,18 @@ import javafx.scene.web.WebView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+/**
+ * Controller class for the customer what's on page. On initialization, it parses 'film.xml' and lays out
+ * all the film information in a list of GridPanes which are displayed in a central VBox. 
+ * Defines functions to filter the page content based on date and genre. Defines a button handler event
+ * for the booking button. Defines navigation functions to other pages. 
+ * 
+ * @author carolinesmith, daianabassi
+ *
+ */
 public class WhatsOnCustController implements Initializable {
 
-	// DECALRES THE FXML ELEMENT TO SET THE NEW FILMS TO
+    //DECLARES ALL THE FXML ELEMENTS USED BY THIS CONTROLLER
 	@FXML
 	public VBox centreAnchor;
 	@FXML
@@ -53,90 +62,86 @@ public class WhatsOnCustController implements Initializable {
 	@FXML
 	private Label helloUser;
 
-	// DECALRES THE ROOT ELEMENT TO BE SET BY PARSING film.XML
-	Element root;
-	List list;
-	
+	Element root; //AN XML ROOT ELEMENT TO SET WHEN PARSING XML DOCUMENTS
+	List list;    //A LIST TO PASS THE XML NODES TO FROM XML PARSING
+	 
 	//Loads the style sheet
-//	String style = getClass().getResource("style.css").toExternalForm();
+    //	String style = getClass().getResource("style.css").toExternalForm();
 
 	// DECALRES FILM VARIABLES TO STORE VALUES FROM XML PARSING
-	// Attribute filmID;
 	public static String pageTitle;
 	String filmID, filmTitle, filmGenre, filmDescription, filmStart, filmLength, filmDateTimes, filmRating, filmImage;
 
-	ArrayList<String> filmIDs = new ArrayList<String>();
+	ArrayList<String> filmIDs = new ArrayList<String>();     //AN ARRAYLIST FOR THE FILM IDs
 
-	protected List<GridPane> gridList;
-	protected List<GridPane> genreList;
-	protected List<GridPane> dateList;
+	//DECLARES LISTS TO ADD FILM GRIDPANES TO: THE CENTRAL VBOX IS SET WITH DIFFERENT LISTS OF GRIDPANES (DIFFERENT FILMS)
+	//DEPENDING ON WHAT FILTERS ARE SELECTED BY THE USER
+	protected List<GridPane> gridList;      //THIS LIST IS FOR ALL FILMS
+	protected List<GridPane> genreList;     //THIS IS FOR FILMS THAT MATCH THE USER'S SELECTED GENRE
+	protected List<GridPane> dateList;      //THIS IS FOR FILMS THAT MATCH THE USER'S SELECTED DATE
 
 	// USES THE INITIALIZE METHOD TO PARSE XML AND LAYOUT THE FILMS CURRENTLY IN
 	// THE XML FILE WHEN PAGE IS LOADED
+	/**
+	 * Called to initialize a controller after its root element has been completely processed.
+	 * Parses 'film.xml' and lays out the information for each film in a gridpane. Sets the central
+	 * VBox with a vertical list of gridpanes (films).
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
+		gridList = new ArrayList<>();   //INITIALISES THE LIST OF GRIDPANES FOR 'ALL FILMS'
 
-		gridList = new ArrayList<>();
+		filterGenre.getItems().addAll("Horror", "Comedy", "Children's", "Action", "Love");   // SETS UP THE GENRE COMBOBOX
 
-		// SETS UP THE GENRE COMBOBOX
-		filterGenre.getItems().addAll("Horror", "Comedy", "Children's", "Action", "Love");
-
-		// CREATES INSTANCE OF 'ReadXMLFile', PARSES 'film.XML' AND RETURNS THE
-		// ROOT NODE
-
+		//PASSES 'film.xml' TO FILE
 		File xmlFile = new File("film.xml");
 
+		//IF 'film.xml' EXSISTS PARSES IT BY CALLING 'readsXML' FROM 'cinema.XML.ReadXMLFile'
 		if (xmlFile.exists()) {
 			try {
 				ReadXMLFile read = new ReadXMLFile("film.xml");
-				root = read.readsXML();
+				root = read.readsXML();       //RETURNS THE ROOT NODE
 			} catch (Exception e) {
 				CinemaMain.LOGGER.warning("Couldn't parse film.XML");
 			}
 
-			// PARSES XML: ITERATES THROUGH THE 'FILM' LIST, GETS
-			// ELEMENT/ATTRIBUTES
-			// AND PASSES IT TO FILM VARIABLES
+			// GETS LIST OF CHILD NODES OF THE ROOT ELEMENT IN 'film.xml'
 			list = root.getChildren("film");
 
+			//ITERATES THROUGH THE LIST OF XML NODES TO EXTRACT ALL THE INFORMATION ABOUT THE FILM 
 			for (int i = 0; i < list.size(); i++) {
 
 				Element node = (Element) list.get(i);
+				
+				filmDateTimes = node.getChildText("dateTimes"); 
 
-				// SPLITS THE FILMDATES FROM XML AND CREATES AN ARRAYLIST TO
-				// PASS TO
-				// COMBOBOX
-				filmDateTimes = node.getChildText("dateTimes");
+				ArrayList<String> datesForCombo = new ArrayList<String>();   //AN ARRAYLIST OF DATES FOR THIS FILM TO PASS TO COMBOBOX
 
-				ArrayList<String> datesForCombo = new ArrayList<String>();
+				for (String element : filmDateTimes.split(",")) {    
+					String filmDate = element.substring(0, 8);               //EXTRACTS JUST THE DATE (NOT THE TIME)
 
-				for (String element : filmDateTimes.split(",")) {
-					String filmDate = element.substring(0, 8);
-
-					SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy");
+					SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy"); //CREATES INSTANCE OF 'SimpleDateFormat' TO PARSE STRING TO DATES
 					Date today = new Date();
 
 					Date date = null;
 					try {
-						date = sdf.parse(filmDate);
-					} catch (ParseException e) {
+						date = sdf.parse(filmDate);							//PARSES EACH STRING IN allDates TO A DATE
+					} catch (ParseException e) {							//CATCHES PARSE EXCEPTION
 						e.printStackTrace();
 					}
-					if (today.compareTo(date) < 0) {
-						datesForCombo.add(element);
+					if (today.compareTo(date) < 0) {						//IF THE DATE IS AFTER TODAY'S DATE ADDS IT TO THE LIST FOR THE COMBOBOX
+						datesForCombo.add(element);							//THEREFORE REMOVES VIEWINGS THAT HAVE PAST
 					}
 
 				}
 
-				// ONLY PROCEEDS TO PARSE THE XML FOR THIS FILM NODE IF SOME OF
-				// THE
-				// DATES ARE TODAY OR FUTURE
-				// i.e. DOESN'T DISPLAY FILMS WITH WHERE ALL DATES HAVE PASSED
+				// ONLY PROCEEDS TO PARSE THE XML FOR THIS FILM NODE IF SOME OF THE DATES ARE TODAY OR FUTURE
+				// i.e. DOESN'T DISPLAY ON WHATS ON PAGE WHERE ALL DATES HAVE PASSED
 				if (datesForCombo.size() > 0) {
 
 					filmID = node.getAttributeValue("id");
-					filmIDs.add(filmID);
+					filmIDs.add(filmID);                                 
 
 					filmTitle = node.getChildText("title");
 					filmGenre = node.getChildText("genre");
@@ -144,8 +149,7 @@ public class WhatsOnCustController implements Initializable {
 					// filmRating = node.getChildText("rating");
 					filmImage = node.getChildText("image");
 
-					// CREATES A NEW GRIDPANE AND POPULATES IT WITH THE FILM
-					// INFORMATION
+					// CREATES A NEW GRIDPANE AND POPULATES IT WITH THE FILM INFORMATION
 					// FROM THE XML PARSING
 					GridPane gridPane = new GridPane();
 					gridPane.setPrefSize(680, 800);
@@ -198,95 +202,120 @@ public class WhatsOnCustController implements Initializable {
 					gridPane.getColumnConstraints().addAll(col1, col2, col3);
 					gridPane.setHgap(10);
 
-
+					//ADDS THIS FILM'S GRIDPANE TO THE LIST OF GRIDPANES FOR 'ALL FILMS'
 					gridList.add(gridPane);
 				}
 			}
 
+			//DISPLAYS ALL THE FILMS BY ADDING THEM THE THE CENTRAL VBOX
 			centreAnchor.getChildren().setAll(gridList);
 
 		} else {
-			Label labelNoFilms = new Label();
+			//IF NO FILMS IN THE FUTURE CURRENTLY, DISPLAYS A LABEL TO EXPLAIN THIS
+			Label labelNoFilms = new Label();            
 			labelNoFilms.setText("No films scheduled yet!");
 			centreAnchor.getChildren().add(labelNoFilms);
 		}
 
 	}
 
+/**
+ * Filters the films displayed on the page by date. Gets the user date selection from the DatePicker. Iterates through the
+ * showing dates for each film and adds it to a new ArrayList of GridPanes only if the film has a showing on a date that matches
+ * the selected date. Resets the page using these GridPanes.
+ * 
+ */
 	public void filtersDates() {
 
-		filterGenre.getSelectionModel().clearSelection();
+		filterGenre.getSelectionModel().clearSelection();     //CLEARS THE GENRE SELECTION AS THE PAGE DOES NOT FILTER BY BOTH GENRE AND DATE
 
 		if (filterDates.getValue() == null) {
-			backtoAllFilms();
+			backtoAllFilms();								 //LOADS ALL FILMS TO THE PAGE IF NO DATE IS SELECTED
 		} else if (gridList.size() > 0) {
-			String selectedDate = filterDates.getValue().format(DateTimeFormatter.ofPattern("dd-MM-YY"));
-			dateList = new ArrayList<>();
+			String selectedDate = filterDates.getValue().format(DateTimeFormatter.ofPattern("dd-MM-YY"));    //FORMATS SELECTED DATE
+			
+			dateList = new ArrayList<>();					 //INITIALISES THE LIST OF GRIDPANES TO SET WITH FILMS THAT MATCH SELECTED DATE
 
-			for (int i = 0; i < gridList.size(); i++) {
+			for (int i = 0; i < gridList.size(); i++) {      //ITERATES THROUGH THE LIST OF GRIDPANES FOR 'ALL FILMS' 
 				GridPane grid = gridList.get(i);
-				ComboBox filmDateTimes = (ComboBox) grid.getChildren().get(5);
+				ComboBox filmDateTimes = (ComboBox) grid.getChildren().get(5);    //GETS THE 5TH CHILD ELEMENT - THE DATE COMBOBOX
 
-				ObservableList<String> obList3 = FXCollections.observableList(filmDateTimes.getItems());
-				ArrayList<String> arrJustDates = new ArrayList<String>();
+				ObservableList<String> obList3 = FXCollections.observableList(filmDateTimes.getItems());   //GETS THE ITEMS FROM THE COMBOBOX
+			
+				ArrayList<String> arrJustDates = new ArrayList<String>();         //A LIST TO ADD JUST THE DATES (NOT TIMES) TO
 
 				int y = 0;
-				for (String element : obList3) {
-					String justDate = element.substring(0, 8);
+				for (String element : obList3) {               	   //ITERATES THROUGH FILM DATES
+					String justDate = element.substring(0, 8);     //GETS THE DATE (IGNORES THE TIME) 
 					arrJustDates.add(justDate);
-					if (selectedDate.equalsIgnoreCase(justDate))
-						y = 1;
+					if (selectedDate.equalsIgnoreCase(justDate))   //IF THE DATE MATCHES THE SELECTED DATE SET Y EQUAL TO 1
+						y = 1;									    
 				}
 
-				if (y == 1)
+				if (y == 1)                                        //IF Y==1 ADDS THE FILM GRIDPANE TO THE 'DATELIST' LIST OF GRIDPANES
 					dateList.add(grid);
 
 			}
 
-			centreAnchor.getChildren().clear();
-			centreAnchor.getChildren().setAll(dateList);
+			centreAnchor.getChildren().clear(); 				   //CLEARS THE FILMS DISPLAYED ON THE PAGE
+			centreAnchor.getChildren().setAll(dateList);           //RESETS THE VBOX WITH THE 'DATELIST' LIST OF GRIDPANES
 		}
 
 	}
 
+	/**
+	 * Filters the films displayed on the page by genre. Gets the user genre selection from the Genre ComboBox. Iterates through the
+	 * genres for each film and adds it to a new ArrayList of GridPanes only if the film is a genre that matches
+	 * the selected genre. Resets the page using these GridPanes.
+	 * 
+	 */
 	public void filtersGenre() {
 
-		filterDates.getEditor().clear();
+		filterDates.getEditor().clear();                     //CLEARS THE DATE SELECTION AS THE PAGE DOES NOT FILTER BY BOTH GENRE AND DATE
 
-		if (filterGenre.getSelectionModel().isEmpty()) {
+		if (filterGenre.getSelectionModel().isEmpty()) {    //IF NO GENRE SELECTED DISPLAYS ALL FILMS
 			backtoAllFilms();
 		}
 
 		else if (gridList.size() > 0) {
-			String selectedGenre = filterGenre.getSelectionModel().getSelectedItem().toString();
-			genreList = new ArrayList<>();
+			String selectedGenre = filterGenre.getSelectionModel().getSelectedItem().toString();   //GETS THE SELECTED GENRE
+			
+			genreList = new ArrayList<>();                   //INITIALISES THE LIST OF GRIDPANES TO SET WITH FILMS THAT MATCH SELECTED GENRE
 
-			for (int i = 0; i < gridList.size(); i++) {
+			for (int i = 0; i < gridList.size(); i++) {     //ITERATES THROUGH THE LIST OF GRIDPANES FOR 'ALL FILMS' 
 				GridPane grid = gridList.get(i);
-				Label filmGenre = (Label) grid.getChildren().get(2);
+				Label filmGenre = (Label) grid.getChildren().get(2);   //GETS THE GENRE FOR THE FILM
 
-				if (filmGenre.getText().equalsIgnoreCase(selectedGenre)) {
+				if (filmGenre.getText().equalsIgnoreCase(selectedGenre)) {     //IF GENRE EQUALS SELECTED GENRE ADDS THIS FILM TO THE NEW GRIDPANE LISE
 					genreList.add(grid);
 				}
 			}
-			centreAnchor.getChildren().clear();
-			centreAnchor.getChildren().setAll(genreList);
+			centreAnchor.getChildren().clear();              //CLEARS THE FILMS DISPLAYED ON THE PAGE
+			centreAnchor.getChildren().setAll(genreList);    //RESETS THE VBOX WITH THE 'GENRELIST' LIST OF GRIDPANES
 		}
 
 	}
 
+	/**
+	 * Resets the list of films displayed on the page back to all films - by resetting the central VBox with the list of GridPanes for all films
+	 * which was populated at initialization.
+	 */
 	public void backtoAllFilms() {
 
 		if (gridList.size() > 0) {
-			filterGenre.getSelectionModel().clearSelection();
-			filterDates.getEditor().clear();
+			filterGenre.getSelectionModel().clearSelection();   //CLEARS THE GENRE BOX
+			filterDates.getEditor().clear();			        //CLEARS THE DATEPICKER
 			centreAnchor.getChildren().clear();
 			centreAnchor.getChildren().setAll(gridList);
 		}
 
 	}
 
-	// EVENTHANDLER FOR THE BOOKNG BUTTON - WILL TAKE YOU TO THE BOOKING PAGE
+	
+/**
+ * Event handler for the booking button for each film. Takes customer to booking page and uses the 
+ * film name and date/time information to create the unique page title for that booking.
+ */
 	final static public EventHandler<ActionEvent> buttonHandler = new EventHandler<ActionEvent>() {
 
 		@Override
@@ -297,22 +326,22 @@ public class WhatsOnCustController implements Initializable {
 			if (btn.getId().equalsIgnoreCase("book")) {
 
 				GridPane grid = (GridPane) btn.getParent();
-				List childList = grid.getChildren();
+				List childList = grid.getChildren(); 				//GETS THE CONTENTS OF THE GRIDPANE
 
-				Label selectedName = (Label) childList.get(1);
-				ComboBox<String> c = (ComboBox) childList.get(5);
-				String selectedDateTime = c.getSelectionModel().getSelectedItem();
+				Label selectedName = (Label) childList.get(1);      //GETS THE FILM NAME SELECTED FOR BOOKING
+				ComboBox<String> c = (ComboBox) childList.get(5);	
+				String selectedDateTime = c.getSelectionModel().getSelectedItem();	 //GETS THE FILM DATE/TIME SELECTED
 
-				if (selectedDateTime == null) {
+				if (selectedDateTime == null) { 					//SHOWS AN ALERT IF NO DATE/TIME SELECTED AS MUST SELECT ONE
 					Alert alert = new Alert(AlertType.WARNING);
 					alert.setTitle("Warning");
 					alert.setHeaderText("Date not selected!");
 					alert.setContentText("Please select a date/time for this film");
 					alert.showAndWait();
 				} else {
-					pageTitle = selectedName.getText() + " " + selectedDateTime;
+					pageTitle = selectedName.getText() + " " + selectedDateTime;    //CREATES THE UNIQUE PAGE TITLE AND PASSES IT TO STATIC FIELD
 					CinemaMain main = new CinemaMain();
-					main.goToNextPage("shared_view/BookingPage.fxml", pageTitle);
+					main.goToNextPage("shared_view/BookingPage.fxml", pageTitle);  //OPENS BOOKING PAGE
 				}
 			}
 
@@ -320,22 +349,35 @@ public class WhatsOnCustController implements Initializable {
 
 	};
 
-	/////////// NAVIGATION FUNCTIONS ////////////
+/////////// NAVIGATION FUNCTIONS ////////////
 
-	// TAKES USER BACK TO 'Cinema Login' PAGE WHEN 'LOG OUT' MENU ITEM CLICKED
+	/**
+	 * Takes use back to login page when log out menu item selected.
+	 * Calls <code>goToLoginPage</code> function from <code>cinema.CinemaMain</code>
+	 * @param event the menu item click event
+	 */
 	@FXML
 	private void logsOut(ActionEvent event) {
 		CinemaMain main = new CinemaMain();
 		main.goToLoginPage("shared_view/LoginScreen.fxml", "Cinema Login");
 	}
 
-	// TAKES USER BACK TO 'Customer Home' PAGE WHEN 'HOME' MENU ITEM CLICKED
+	/**
+	 * Loads the customer home page when home menu item selected.
+	 * Calls <code>goToNextPage</code> function from <code>cinema.CinemaMain</code>
+	 * @param event the menu item click event
+	 */
 	@FXML
 	private void goBackHome(ActionEvent event) {
 		CinemaMain main = new CinemaMain();
 		main.goToNextPage("customer_view/CustomerHome.fxml", "Customer Home");
 	}
 
+	/**
+	 * Loads the customer/employee account page when account menu item selected.
+	 * Calls <code>goToNextPage</code> function from <code>cinema.CinemaMain</code>
+	 * @param event the menu item click event
+	 */
 	@FXML
 	private void goToMyAccount() {
 		CinemaMain main = new CinemaMain();

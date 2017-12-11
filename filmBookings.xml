@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bookings>
   <filmBooking name="Scary Movie 21-12-17 1900">
-    <bookedSeats>A1 A2 B1 C5 D1 D2 D6 A7 D5 B7</bookedSeats>
-    <bookedNumber>13</bookedNumber>
-    <unBookedNumber>23</unBookedNumber>
+    <bookedSeats>A1 A2 B1 C5 D1 D2 D6 A7 D5 B7 D7</bookedSeats>
+    <bookedNumber>14</bookedNumber>
+    <unBookedNumber>22</unBookedNumber>
   </filmBooking>
   <filmBooking name="Scary Movie 22-12-17 1700">
     <bookedSeats>D3 B8 B9 C9 A8 C7</bookedSeats>

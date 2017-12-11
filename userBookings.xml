@@ -96,4 +96,10 @@
     <filmTime>1700</filmTime>
     <seatBooked>C7</seatBooked>
   </booking>
+  <booking userID="804" bookingID="431">
+    <filmName>Scary Movie</filmName>
+    <filmDate>21-12-17</filmDate>
+    <filmTime>1900</filmTime>
+    <seatBooked>D7</seatBooked>
+  </booking>
 </userBookings>
