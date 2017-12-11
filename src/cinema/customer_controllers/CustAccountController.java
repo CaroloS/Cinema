@@ -120,22 +120,8 @@ public class CustAccountController implements Initializable {
 
 				Element node = (Element) list.get(i);
 
-				if (node.getAttributeValue("id").equalsIgnoreCase(LoginController.userID)) { // ONLY
-																								// EXTRACTS
-																								// INFORMATION
-																								// FOR
-																								// THE
-																								// LOGGED
-																								// IN
-																								// USER
-																								// THE
-																								// STATIC
-																								// 'userID'
-																								// WAS
-																								// SET
-																								// ON
-																								// LOGIN
-																								// IN
+				if (node.getAttributeValue("id").equalsIgnoreCase(LoginController.userID)) { // ONLY EXRTACTS INFORMATION FOR THE 
+																							// LOGGED IN USER - STATIC FIELD WAS SET ON LOGIN
 					String picImage = node.getChildText("profilePic");
 					Image profilePic = new Image(picImage, 200, 200, false, false);
 					ImageView viewProfilePic = new ImageView(profilePic);
@@ -175,114 +161,56 @@ public class CustAccountController implements Initializable {
 
 					if (node.getAttributeValue("userID").equalsIgnoreCase(LoginController.userID)) {
 
-						GridPane gridBooking = new GridPane(); // INITIALISES A
-																// GRIDPANE TO
-																// LAYOUT THE
-																// BOOKING
-																// INFORMATION
-																// FOR EACH FILM
+						GridPane gridBooking = new GridPane(); // INITIALISES A GRIDPANE TO LAYOUT BOOKING INFORMATION
+															
 						gridBooking.setPrefSize(760, 100);
 						gridBooking.setId(node.getAttributeValue("bookingID"));
 
-						Label filmName = new Label(node.getChildText("filmName")); // LAYS
-																					// OUT
-																					// THE
-																					// BOOKING
-																					// INFORMATION
-																					// IN
-																					// THE
-																					// GRIDPANE
+						Label filmName = new Label(node.getChildText("filmName")); // LAYS OUT THE BOOKING INFORMATION IN THE GRIDPANE
 						Label filmDate = new Label(node.getChildText("filmDate"));
 						Label filmTime = new Label(node.getChildText("filmTime"));
 						Label seatBooked = new Label("Seat Booked: " + node.getChildText("seatBooked"));
 
-						gridBooking.add(filmName, 0, 0); // ADDS THE INFORMATION
-															// TO THE GRIDPANE
+						gridBooking.add(filmName, 0, 0); 							// ADDS THE INFORMATION TO THE GRIDPANE
 						gridBooking.add(filmDate, 1, 0);
 						gridBooking.add(filmTime, 2, 0);
 						gridBooking.add(seatBooked, 0, 1);
 
-						gridBooking.getColumnConstraints().add(new ColumnConstraints(160)); // SETS
-																							// SOME
-																							// COLUMN
-																							// CONSTRAINTS
-																							// FOR
-																							// BETTER
-																							// LAYOUT
+						gridBooking.getColumnConstraints().add(new ColumnConstraints(160)); // SETS SOME COLUMN CONSTRANTS 
 						gridBooking.getColumnConstraints().add(new ColumnConstraints(100));
 						gridBooking.getColumnConstraints().add(new ColumnConstraints(160));
 						gridBooking.getRowConstraints().add(new RowConstraints(40));
 
-						SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy"); // CREATES
-																					// INSTANCE
-																					// OF
-																					// 'SimpleDateFormat'
-																					// TO
-																					// PARSE
-																					// STRING
-																					// TO
-																					// DATES
+						SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy"); // CREATES INSTANCE OF 'SimpleDateFormat' TO PARSE STRING TO DATES
+																				
 						Date today = new Date();
 
 						Date date = null;
 						try {
-							date = sdf.parse(node.getChildText("filmDate")); // PARSES
-																				// THE
-																				// STRING
-																				// DATE
-																				// FOR
-																				// THIS
-																				// BOOKING
-																				// TO
-																				// A
-																				// DATE
+							date = sdf.parse(node.getChildText("filmDate")); // PARSES THE STRING DATE FOR THIS BOOKING TO A DATE
+																		
 						} catch (ParseException e) {
 							e.printStackTrace();
 						}
 
-						if (today.compareTo(date) < 0) { // IF THE BOOKING DATE
-															// IS IN THE FUTURE
-							Button delete = new Button("cancel booking"); // ADDS
-																			// A
-																			// DELETE
-																			// BOOKING
-																			// BUTTON
-																			// TO
-																			// IT'S
-																			// GRIDPANE
+						if (today.compareTo(date) < 0) { 						// IF THE BOOKING DATE IS IN THE FUTURE
+							Button delete = new Button("cancel booking"); 		// ADDS A DELETE BOOKING BUTTON 
 							delete.setPrefSize(150, 20);
-							delete.setId(node.getAttributeValue("bookingID")); // SETS
-																				// THE
-																				// DELETE
-																				// BOOKING
-																				// BUTTON
-																				// A
-																				// UNIQUE
-																				// ID
-							delete.setOnAction(buttonHandler); // THAT IS THE
-																// SAME AS THE
-																// BOOKING ID
-																// AND
-							gridBooking.add(delete, 1, 1, 2, 1); // ADDS A
-																	// BUTTON
-																	// HANDLER
-																	// EVENT
+							delete.setId(node.getAttributeValue("bookingID"));  // SETS THE DELETE BOOKING BUTTON A UNIQUE ID
+							delete.setOnAction(buttonHandler); 					// THAT IS THE SAME AS THE BOOKING ID 
+							gridBooking.add(delete, 1, 1, 2, 1); 				// ADDS A BUTTON HANDLER EVENT
 
 						}
-						bookingList.add(gridBooking); // ADDS THIS FILM BOOKING
-														// TO THE LIST OF
-														// BOOKINGS
+						bookingList.add(gridBooking); 						// ADDS THIS FILM BOOKING TO THE LIST OF BOOKINGS
 					}
 
 				}
 			}
 
 			if (bookingList.size() > 0) {
-				bottomAnchor.getChildren().setAll(bookingList); // SETS THE LIST
-																// OF ALL
-																// BOOKINGS FOR
-																// THIS USER TO
-			} // THE BOTTOM VBOX
+				bottomAnchor.getChildren().setAll(bookingList); 			// SETS THE LIST OF ALL BOOKINGS FOR THIS USER TO THE BOTTOM VBOX
+														
+			} 
 
 			bottomAnchor.setPadding(new Insets(0, 0, 0, 170));
 		}
@@ -307,10 +235,7 @@ public class CustAccountController implements Initializable {
 			Button btn = (Button) event.getSource();
 			ID = btn.getId(); // GETS THE UNIQUE BUTTON ID WHICH IS THE BOOKING
 								// ID
-			GridPane selectedGrid = (GridPane) btn.getParent(); // GETS THE
-																// PARENT
-																// GRIDPANE FOR
-																// THIS BOOKING
+			GridPane selectedGrid = (GridPane) btn.getParent(); // GETS THE PARENT GRIDPANE FOR THIS BOOKING
 
 			// GETS THE INFORMATION ABOUT THIS BOOKING FROM THE GRIDPANE
 			Label selectedName = (Label) selectedGrid.getChildren().get(0);
@@ -336,8 +261,7 @@ public class CustAccountController implements Initializable {
 			Optional<ButtonType> result = alert.showAndWait();
 			if (result.get() == ButtonType.OK) {
 
-				// DELETES THE BOOKING FROM 'userBookings.xml'
-				// BY CREATING AN INSTANCE OF 'EditUserBookingsXML' and CALLING
+				// DELETES THE BOOKING FROM 'userBookings.xml' BY CREATING AN INSTANCE OF 'EditUserBookingsXML' and CALLING
 				// THE INSTANCE METHOD TO EDIT THE FILE
 				EditUserBookingsXML deleteBooking = new EditUserBookingsXML("userBookings.xml", "userBookings");
 				deleteBooking.editsUserBooking();
@@ -358,17 +282,13 @@ public class CustAccountController implements Initializable {
 
 					for (int i = 0; i < list3.size(); i++) {
 
-						// GETS EACH NODE IN 'filmBookings' AND SELECTS THE NODE
-						// THAT MATCHES THE UNIQUE PAGETITLE
-						// WHICH WAS SET WITH THE INFORMATION OF THE FILM
-						// SELECTED FOR DELETION
+						// GETS EACH NODE IN 'filmBookings' AND SELECTS THE NODE THAT MATCHES THE UNIQUE PAGE TITLE
+						// WHICH WAS SET WITH THE INFORMATION OF THE FILM SELECTED FOR DELETION
 						Element node = (Element) list3.get(i);
 						if (node.getAttributeValue("name").equalsIgnoreCase(WhatsOnCustController.pageTitle)) {
 
-							// GETS THE SEAT BOOKINGS FOR THIS FILM, AND APPENDS
-							// EACH SEAT BOOKING TO A STRINGBUFFER
-							// EXCEPT FOR THE SEAT IN THE BOOKINGS SELECTED FOR
-							// DELETION (SO DELETES THE SEAT FROM THE BOOKINGS)
+							// GETS THE SEAT BOOKINGS FOR THIS FILM, AND APPENDS EACH SEAT BOOKING TO A STRINGBUFFER
+							// EXCEPT FOR THE SEAT IN THE BOOKINGS SELECTED FOR DELETION (SO DELETES THE SEAT FROM THE BOOKINGS)
 							StringBuffer sb = new StringBuffer();
 							String[] oldSeats = node.getChildText("bookedSeats").split(" ");
 
@@ -386,23 +306,19 @@ public class CustAccountController implements Initializable {
 							String oldBooked = node.getChildText("bookedNumber");
 							String oldUnBooked = node.getChildText("unBookedNumber");
 
-							// GETS THE NUMBER OF BOOKED SEATS FOR THIS FILM AND
-							// DECREMENTS BY ONE
+							// GETS THE NUMBER OF BOOKED SEATS FOR THIS FILM ANd DECREMENTS BY ONE
 							int booked = Integer.parseInt(oldBooked);
 							BookingController.totalBooked = Integer.toString(--booked);
 
-							// GETS THE NUMBER OF UNBOOKED SEATS FOR THIS FILM
-							// AND INCREMENTS BY ONE
+							// GETS THE NUMBER OF UNBOOKED SEATS FOR THIS FILM AND INCREMENTS BY ONE
 							int unbooked = Integer.parseInt(oldUnBooked);
 							BookingController.totalUnBooked = Integer.toString(++unbooked);
 
 						}
 					}
 
-					// UPDATES THE BOOKING INFORMATION FOR THIS FILM IN
-					// 'filmBookings.xml'
-					// BY CREATING AN INSTANCE OF 'EditBookingsXML' and CALLING
-					// THE INSTANCE METHOD TO EDIT THE FILE
+					// UPDATES THE BOOKING INFORMATION FOR THIS FILM IN 'filmBookings.xml'
+					// BY CREATING AN INSTANCE OF 'EditBookingsXML' and CALLING THE INSTANCE METHOD TO EDIT THE FILE
 					EditBookingsXML editBooking = new EditBookingsXML("filmBookings.xml", "bookings");
 					editBooking.editsBookingXML();
 
