@@ -61,7 +61,7 @@ public class CinemaMain extends Application {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource(pathToFXML)); 
 
-			Scene scene = new Scene(root,1000, 800);  //SETS A NEW SCENE WITH THE LOADED FXML AND DEFINES THE WDITH/HEIGHT 
+			Scene scene = new Scene(root,800, 500);  //SETS A NEW SCENE WITH THE LOADED FXML AND DEFINES THE WDITH/HEIGHT 
 			thestage.setTitle(pageTitle);
 			thestage.setScene(scene);   //SETS THE SCENE TO THE STAGE 
 			thestage.show();

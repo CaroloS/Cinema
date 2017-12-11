@@ -60,4 +60,14 @@
     <Password>sadmin</Password>
     <profilePic>images/oscar-award-512.png</profilePic>
   </User>
+  <User id="65">
+    <FirstName>Lorelai</FirstName>
+    <LastName>Gilmore</LastName>
+    <EmailAddress>lorelai@gilmore.com</EmailAddress>
+    <PhoneNumber>123456</PhoneNumber>
+    <UserProfile>employee</UserProfile>
+    <UserName>lorelaig</UserName>
+    <Password>123456</Password>
+    <profilePic>images/facebook.png</profilePic>
+  </User>
 </users>
