@@ -264,8 +264,7 @@ public class EmployeeHomeController implements Initializable {
 																		
 			for (int i = 0; i < arrDateTimes.length; i++) { 			// ITERATES THROUGH THIS LIST TO CREATE A BOOKING XML NODE FOR EACH SHOWING
 				String attribute = filmTitle.getText() + " " + arrDateTimes[i];
-				bookingsXML.setBookingAttribute(attribute); 			// ATTRIBUTE IS A RANDOM INTEGER (PARSED TO STRING)
-																		// STRING) SET IN 'CreateFilmBookingsXML'
+				bookingsXML.setBookingAttribute(attribute); 			// ATTRIBUTE IS A RANDOM INTEGER (PARSED TO STRING) SET IN 'CreateFilmBookingsXML'
 				bookingsXML.setBookedSeats(""); 						// BOOKED SEATS IS INITIALLY EMPTY
 				bookingsXML.setBookedNumber("0"); 						// NUMNBER BOOKED IS INITIALLY 0
 				bookingsXML.setUnBookedNumber("36"); 					// NUMBER AVAILABLE IS INITIALLY 36

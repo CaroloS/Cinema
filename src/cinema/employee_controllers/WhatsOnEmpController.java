@@ -82,7 +82,7 @@ public class WhatsOnEmpController extends WhatsOnCustController {
 	}
 
 	/**
-	 * Loads the customer 'all bookings' page when menu item selected.
+	 * Loads the employee 'all bookings' page when menu item selected.
 	 * Calls <code>goToNextPage</code> function from <code>cinema.CinemaMain</code>
 	 * @param event the menu item click event
 	 */

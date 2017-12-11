@@ -230,7 +230,7 @@ public class CustomerHomeController implements Initializable {
 	}
 	
 	/**
-	 * Takes use back to login page when log out menu item selected.
+	 * Takes user back to login page when log out menu item selected.
 	 * Calls <code>goToLoginPage</code> function from <code>cinema.CinemaMain</code>
 	 * @param event the menu item click event
 	 */
