@@ -128,6 +128,7 @@ public class WhatsOnCustController implements Initializable {
 					try {
 						date = sdf.parse(filmDate);							//PARSES EACH STRING IN allDates TO A DATE
 					} catch (ParseException e) {							//CATCHES PARSE EXCEPTION
+						CinemaMain.LOGGER.warning("Couldn't parse filmDate to Date");
 						e.printStackTrace();
 					}
 					if (today.compareTo(date) < 0) {						//IF THE DATE IS AFTER TODAY'S DATE ADDS IT TO THE LIST FOR THE COMBOBOX

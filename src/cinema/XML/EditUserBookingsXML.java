@@ -19,6 +19,12 @@ import cinema.customer_controllers.CustAccountController;
 import cinema.shared_controllers.LoginController;
 import cinema.shared_controllers.SignUpController;
 
+/**
+ * A class that defines methods and variables to edit a user's booking XML. Function in this class is 
+ * called from the customer account page when a customer deletes a film booking in the future.
+ * @author carolinesmith, daianabassi
+ *
+ */
 public class EditUserBookingsXML {
 	// CREATES INSTANCE VARIABLES WHICH WILL BE SET BY THE CONTRUCTOR
 	protected String inputFile;
@@ -40,14 +46,17 @@ public class EditUserBookingsXML {
 		File xmlFile = new File(inputFile);
 		FileInputStream fis = null;
 
+		//CREATES A FILE INPUT STREAM FROM THE FILE IF IT EXISTS
 		if (xmlFile.exists()) {
 
 			try {
 				fis = new FileInputStream(xmlFile);
 			} catch (FileNotFoundException e1) {
+				CinemaMain.LOGGER.warning("Couldn't find file");
 				e1.printStackTrace();
 			}
 
+			//CREATES AN INSTANCE OF SAXBUILDER TO PARSE THE FILE
 			SAXBuilder sb = new SAXBuilder();
 
 			// PARSE THE XML CONTENT PROVIDED BY THE FILE INPUT STREAM AND
@@ -67,15 +76,21 @@ public class EditUserBookingsXML {
 			try {
 				fis.close();
 			} catch (IOException e) {
+				CinemaMain.LOGGER.warning("Couldn't close file input stream");
 				e.printStackTrace();
 			}
 
+			//GETS THE LIST OF CHILD 'BOOKING' NODES OF THE ROOT ELEMENT
 			List list = root.getChildren("booking");
 
+			//ITETRATES THROUGH THE LIST OF NODES 
 			for (int i = 0; i < list.size(); i++) {
 
 				Element node = (Element) list.get(i);
 
+				//IF THE NODE'S ATTRIBUTE MATCHES THE ID OF THE FILM TO BE DELETED - 
+				//(WHICH IS SET USING THE STATIC FIELD IN 'CustAccountController')
+				//THE NODE IS DELETED FROM THE XML
 				if (node.getAttributeValue("bookingID").equalsIgnoreCase(CustAccountController.ID)) {
 					root.removeContent(node);
 					
@@ -95,6 +110,7 @@ public class EditUserBookingsXML {
 				writer.close();
 
 			} catch (IOException e) {
+				CinemaMain.LOGGER.warning("Couldn't write to file");
 				e.printStackTrace();
 			}
 

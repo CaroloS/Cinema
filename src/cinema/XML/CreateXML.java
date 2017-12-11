@@ -12,6 +12,13 @@ import org.jdom2.input.SAXBuilder;
 
 import cinema.CinemaMain;
 
+/**
+ * This class defines a function and fields to create an XML file - assigning the new file the filename and root
+ * element passed in the constructor. If the file already exists, the function in this class parses the 
+ * file using SAXBuilder and gets the document object and root element.
+ * @author carolinesmith, daianabassi
+ *
+ */
 public class CreateXML {
 
 	//CREATES INSTANCE VARIABLES WHICH WILL BE SET BY THE CONTRUCTOR
@@ -27,6 +34,11 @@ public class CreateXML {
 	protected Element root = null;
 	protected Document document = null;
 	
+	/**
+	 * Checks if input file exists, creates a file input stream, uses SAXBuilder to parse the 
+	 * input XML file and create a document object. Gets the root of the document object. Creates
+	 * a new document and root element if file doesn't exist.
+	 */
 	public void getsRoot() {
 
 		// CHECK IF INPUT FILE EXISTS
@@ -61,9 +73,12 @@ public class CreateXML {
 				try {
 					fis.close();
 				} catch (IOException e) {
+					CinemaMain.LOGGER.warning("Couldn't close file input stream");
 					e.printStackTrace();
 				}
 			} catch (FileNotFoundException e) {
+				CinemaMain.LOGGER.warning("Couldn't find the file");
+
 				e.printStackTrace();
 			}
 

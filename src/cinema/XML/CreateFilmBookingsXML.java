@@ -8,6 +8,8 @@ import org.jdom2.Element;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
+import cinema.CinemaMain;
+
 public class CreateFilmBookingsXML extends CreateXML {
 
 	public CreateFilmBookingsXML(String inputFile, String rootElement) {
@@ -77,6 +79,7 @@ public class CreateFilmBookingsXML extends CreateXML {
 			writer.close();
 
 		} catch (IOException e) {
+			CinemaMain.LOGGER.warning("Couldn't write to file");
 			e.printStackTrace();
 		}
 	}
@@ -106,6 +109,7 @@ public class CreateFilmBookingsXML extends CreateXML {
 			writer.close();
 
 		} catch (IOException e) {
+			CinemaMain.LOGGER.warning("Couldn't write to file");
 			e.printStackTrace();
 		}
 	}

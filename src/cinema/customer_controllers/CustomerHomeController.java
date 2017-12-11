@@ -117,6 +117,7 @@ public class CustomerHomeController implements Initializable {
 					try {
 						date = sdf.parse(element);     //PARSES EACH STRING IN allDates TO A DATE
 					} catch (ParseException e) {       //CATCHES PARSE EXCEPTION
+						CinemaMain.LOGGER.warning("Couldn't parse element to Date");
 						e.printStackTrace();
 					}
 					if (today.compareTo(date) > 0)     //IF THE DATE IS BEFORE TODAY'S DATE REMOVES THE DATE FROM THE LIST

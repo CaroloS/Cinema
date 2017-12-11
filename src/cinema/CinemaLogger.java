@@ -6,10 +6,21 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
+/**
+ * This class sets up the logger for the application.
+ * @author carolinesmith, daianabassi
+ *
+ */
 public class CinemaLogger {
 	static private FileHandler fileTxt;
 	static private SimpleFormatter formatterTxt;
 
+	/**
+	 * Sets up the logger. Creates a file-handler and formatter. 
+	 * Either sets this to a new file 'Logging.txt' or sets it to the
+	 * logging file that already exists. 
+	 * @throws IOException If problems opening the file
+	 */
 	static public void setup() throws IOException {
 
 		//GETS THE GLOBAL LOGGER

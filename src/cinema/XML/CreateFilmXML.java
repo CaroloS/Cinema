@@ -9,66 +9,132 @@ import org.jdom2.Element;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
+import cinema.CinemaMain;
+
+/**
+ * This class extends <code>cinema.shared_view.CreateXML</code>.
+ * It has instance variables that define all the information of a film. It defines
+ * getters and setters for these private variables. It defines a function to write the film 
+ * information to an XML file using the filename and root passed in the constructor. 
+ * @see <code>cinema.shared_view.CreateXML</code>.
+ * @author carolinesmith, daianabassi
+ *
+ */
 public class CreateFilmXML extends CreateXML {
 
 	//DECLARES INSTANCE VARIABLES TO WRITE TO XML
 	private String title, genre, description, start, length, dateTimes, image, rating;
 
 
-	//CALLS THE PARENT CONSTRUCTOR 
+	//CALLS THE PARENT CONSTRUCTOR - SETS THE VARIABLES PASSED TO THE 
+	//INSTANCE VARIABLES OF THE CLASS (INPUT FILE AND ROOT ELEMENT)
 	public CreateFilmXML(String inputFile, String rootElement) {
 		super(inputFile, rootElement);
 	}
 
 	// GETTERS AND SETTERS FOR THE PRIVATE VARIABLES
+	/**
+	 * Gets the instance variable film title
+	 * @return the film title String
+	 */
 	public String getTitle() {
 		return title;
 	}
 
+	/**
+	 * Sets the instance variable film title
+	 * @param title the title to set
+	 */
 	public void setTitle(String title) {
 		this.title = title;
 	}
-
+	
+	/**
+	 * Gets the instance variable film genre
+	 * @return the genre String
+	 */
 	public String getGenre() {
 		return genre;
 	}
 
+	/**
+	 * Sets the instance variable film genre
+	 * @param genre the genre to set
+	 */
 	public void setGenre(String genre) {
 		this.genre = genre;
 	}
 
+	/**
+	 * Gets the instance variable film description
+	 * @return the film description String
+	 */
 	public String getDescription() {
 		return description;
 	}
 
+	/**
+	 * Sets the instance variable film description
+	 * @param description the description to set
+	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
+	/**
+	 * Gets the instance variable DateTimes
+	 * @return the dateTimes String
+	 */
 	public String getDateTimes() {
 		return dateTimes;
 	}
 
+	/**
+	 * Sets the instance variable dateTimes
+	 * @param dateTimes the String datTimes to set
+	 */
 	public void setDateTimes(String dateTimes) {
 		this.dateTimes = dateTimes;
 	}
 	
+	/**
+	 * Gets the instance variable image
+	 * @return the String image
+	 */
 	public String getImage() {
 		return image;
 	}
-
+	
+	/**
+	 * Sets the instance variable image
+	 * @param image the String image to set
+	 */
 	public void setImage(String image) {
 		this.image = image;
 	}
 
+	/**
+	 * Gets the instance variable film rating
+	 * @return the String rating
+	 */
 	public String getRating() {
 		return rating;
 	}
 
+	/**
+	 * Sets the instance variable rating
+	 * @param rating the String rating to set
+	 */
 	public void setRating(String rating) {
 		this.rating = rating;
 	}
 
+	/**
+	 * Creates a new film element and sets the film instance variables as the child elements
+	 * of the film element. Defines a random number ID attribute. Adds the new film element
+	 * to the document root and sets the root to the document. Writes the XML to the file
+	 * specified in the constructor.
+	 */
 	public void createsFilm() {
 
 		// GENERATE RANDOM NUMBER FOR FILM ID
@@ -102,6 +168,7 @@ public class CreateFilmXML extends CreateXML {
 			writer.close();
 
 		} catch (IOException e) {
+			CinemaMain.LOGGER.warning("Couldn't write to file");
 			e.printStackTrace();
 		}
 	}

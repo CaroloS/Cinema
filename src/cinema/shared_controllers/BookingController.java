@@ -25,34 +25,46 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
+/**
+ * Controller class for the booking page. Lays out the cinema with empty or orange chair
+ * icons based on information from parsing the 'filmBookings.xml' file. Defines a function that
+ * allows only a customer to make a seat booking if the seat is available. Updates xml files 
+ * with booking information. 
+ * @author carolinesmith, daianabassi
+ *
+ */
 public class BookingController extends WhatsOnEmpController implements Initializable {
 
+	//DECLARES ALL THE FXML ELEMENTS USED BY THIS CONTROLLER//
 	@FXML
 	protected AnchorPane seatAnchor;
 	@FXML
 	protected Label filmSelection, bookingPrompt, confirmLabel1, confirmLabel2, bookingInfo1, bookingInfo2,
 			bookingInfo3, bookingInfo4;
 
-	// THE PAGE TITLE IS UNIQUE FOR EACH FILM/DATE/TIME. IT WAS SET IN THE
-	// BUTTON HANDLER
+	// THE PAGE TITLE IS UNIQUE FOR EACH FILM/DATE/TIME. IT WAS SET IN THE BUTTON HANDLER
 	// METHOD IN THE WHATS ON PAGE WHEN A USER SELECTS A DATE AND FILM.
 	protected String strPageTitle = WhatsOnCustController.pageTitle;
 
-	// DECLARES STATIC VARIABLES TO BE SET WHEN THE 'filmBookings.xml' FILE IS
-	// READ
-	// THESE ARE ALTERED WHEN A USER BOOKS A SEAT AND TO
-	// 'EditBookingsXML.editsBookingXML' METHOD TO EDIT THE XML
+	// DECLARES STATIC VARIABLES TO BE SET WHEN THE 'filmBookings.xml' FILE IS READ
+	// THESE ARE ALTERED WHEN A USER BOOKS A SEAT AND  
+	// 'EditBookingsXML.editsBookingXML' IS CALLED TO EDIT THE XML WITH NEW VALUES
 	public static String bookedSeats = null;
 	public static String totalBooked = null;
 	public static String totalUnBooked = null;
 
 	// DECALRES THE ROOT ELEMENT TO BE SET BY PARSING 'filmBookings.xml'
 	Element root;
+	//A LIST TO PASS THE XML NODES TO FROM XML PARSING
 	List list;
 
-	// ON INITIALIZATION ALL SEATS ARE ALLOCATED AN EMPTY SEAT ICON
-	// THEN 'filmBookings.xml' IS PARSED AND ANY BOOKED SEATS ARE SET TO AN
-	// ORANGE ICON
+
+	/**
+	 * Called to initialize a controller after its root element has been completely processed.
+	 * Parses 'filmBookings.xml' and sets the seats on the page to empty icon if available and
+	 * orange icon if booked. Displays information about number of booked/available seats to the 
+	 * employee. 
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
@@ -81,7 +93,7 @@ public class BookingController extends WhatsOnEmpController implements Initializ
 
 		// GETS THE SEAT BOOKING INFORMATION FROM THE 'filmBookings.xml' FILE
 		// WHERE THE FILM ATTRIBUTE EQUALS THE FILM CURRENTLY BEING DISPLAYED ON
-		// THE PAGE
+		// THE PAGE (i.e. ATTRIBUTE MATCHES UNIQUE PAGE TITLE
 		for (int i = 0; i < list.size(); i++) {
 
 			Element node = (Element) list.get(i);
@@ -95,8 +107,7 @@ public class BookingController extends WhatsOnEmpController implements Initializ
 			}
 		}
 
-		// ITERATES THROUGH A LIST OF SEATS BOOKED AND THE SEATS IN THE CINEMA
-		// LAYOUT
+		// ITERATES THROUGH A LIST OF SEATS BOOKED AND THE SEATS IN THE CINEMA LAYOUT
 		// WHERE THE SEAT BOOKED MATCHES THE SEAT ID - CHANGES THE SEAT IMAGE TO
 		// ORANGE CHAIR
 		if (bookedSeats.length() > 0) {
@@ -117,11 +128,9 @@ public class BookingController extends WhatsOnEmpController implements Initializ
 			}
 		}
 
-		// IF THE LOGGED IN USER IS AN EMPLOYEE DISPLAYS INFORMATION ABOUT THE
-		// BOOKINGS
+		// IF THE LOGGED IN USER IS AN EMPLOYEE DISPLAYS INFORMATION ABOUT THE BOOKINGS
+		// PRINTS THE SEAT BOOKING INFORMATION TO THE LABELS IN THE VBOX BELOW THE CINEMA LAYOUT
 		if (LoginController.loggedInUser.equalsIgnoreCase("employee")) {
-			// PRINTS THE SEAT BOOKING INFORMATION TO THE LABELS IN THE VBOX
-			// BELOW THE CINEMA LAYOUT
 			if (bookedSeats.length() > 0)
 				bookingInfo1.setText("Seats Booked: " + bookedSeats);
 			else
@@ -138,9 +147,16 @@ public class BookingController extends WhatsOnEmpController implements Initializ
 
 	}
 
-	// METHOD FOR BOOKING A SEAT - ONLY APPLIES TO CUSTOMERS
+	/**
+	 * Allows a customer to book a seat. Alerts customer if seat is already taken - can't book. 
+	 * Otherwise alerts customer to confirm or cancel their booking after reviewing the booking information.
+	 * Adds a new node to 'userBookings.xml' to reflect this booking. And edits 'filmBookings.xml; with
+	 * new values about booked and available seats. 
+	 * @param event
+	 */
 	public void seatSelected(ActionEvent event) {
 
+		//CHECKS IF THE USER IS A CUSTOMER - EMPPLOYEE CAN'T BOOK A SEAT VIA EMPLOYEE SIDE
 		if (LoginController.loggedInUser.equalsIgnoreCase("customer")) {
 
 			// GETS INFORMATION ABOUT THE SEAT SELECTED
@@ -158,7 +174,7 @@ public class BookingController extends WhatsOnEmpController implements Initializ
 				alert.showAndWait();
 			} else {
 
-				// SETS THE FILM INFORMATION TO USE IN THE CONFIRMATION ALERT
+				// PARSES THE FILM INFORMATION TO USE IN THE CONFIRMATION ALERT
 				// USING THE UNIQUE PAGE TITLE
 				String[] confirmInfo = strPageTitle.split(" ");
 				StringBuffer confirmName = new StringBuffer("");
@@ -168,8 +184,7 @@ public class BookingController extends WhatsOnEmpController implements Initializ
 				for (int i = 0; i < confirmInfo.length - 2; i++)
 					confirmName.append(confirmInfo[i] + " ");
 
-				// PRESENTS AN ALERT TO ASK THEM TO CONFIRM THEIR BOOKING OR
-				// CANCEL
+				// PRESENTS AN ALERT TO ASK THEM TO CONFIRM THEIR BOOKING OR CANCEL
 				Alert alert = new Alert(AlertType.CONFIRMATION);
 				alert.setTitle("Confirmation");
 				alert.setHeaderText("Great choice, that seat is free - go ahead and book!");
@@ -177,17 +192,14 @@ public class BookingController extends WhatsOnEmpController implements Initializ
 						+ " at " + confirmTime + " in seat " + seatNumber
 						+ ". Or click cancel and pick another seat. \n\n " + "ARE YOU SURE YOU WANT TO BOOK?");
 
-				// IF THEY SELECT OK - ADDS THE USER'S BOOKING TO THE
-				// 'userBookings.xml' FILE
-				// AND EDITS THE 'filmBookings.xml' FILE WITH THE NEW VALUES
-				// AFTER BOOKING A SEAT
+				
+				// IF THEY SELECT OK - ADDS THE USER'S BOOKING TO THE 'userBookings.xml' FILE
+				// AND EDITS THE 'filmBookings.xml' FILE WITH THE NEW VALUES AFTER BOOKING A SEAT
 				Optional<ButtonType> result = alert.showAndWait();
 				if (result.get() == ButtonType.OK) {
 
-					// CREATES A NEW ENTRY IN 'userBookings.xml' FOR THE LOGGED
-					// IN USER
-					// SETS THE CHILD ELEMENTS TO THE INFORMATION FOR THE FILM
-					// THEY BOOKED
+					// CREATES A NEW ENTRY IN 'userBookings.xml' FOR THE LOGGED IN USER
+					// SETS THE CHILD ELEMENTS TO THE INFORMATION FOR THE FILM THEY BOOKED
 					CreateUserBookingsXML newBooking = new CreateUserBookingsXML("userBookings.xml", "userBookings");
 					newBooking.setFilmName(confirmName.toString());
 					newBooking.setFilmDate(confirmDate);
@@ -197,22 +209,21 @@ public class BookingController extends WhatsOnEmpController implements Initializ
 					newBooking.getsRoot();
 					newBooking.CreateUserBooking();
 
-					// UPDATES 'filmBookingXML' WITH NEW TOTALS FOR BOOKED AND
-					// UNBOOKED
+					// UPDATES 'filmBookingXML' WITH NEW TOTALS FOR BOOKED AND UNBOOKED
 					// AND APPENDS THE SEAT NUMBER TO THE SEATS BOOKED ELEMENT
 					int booked = Integer.parseInt(totalBooked);
-					totalBooked = Integer.toString(++booked);
+					totalBooked = Integer.toString(++booked);    	//INCREMENTS BOOKED SEAT NUMBER BY ONE
 
 					int unbooked = Integer.parseInt(totalUnBooked);
-					totalUnBooked = Integer.toString(--unbooked);
+					totalUnBooked = Integer.toString(--unbooked);  //DECREMENTS AVAILABLE SEAT NUMBER BY ONE
 
 					StringBuffer sb = new StringBuffer("");
-					sb.append(bookedSeats);
-					sb.append(" " + seatNumber);
-					bookedSeats = sb.toString();
-
-					EditBookingsXML alter = new EditBookingsXML("filmBookings.xml", "bookings");
-					alter.editsBookingXML();
+					sb.append(bookedSeats);							//ADDS THE PREVIOUSLY BOOKED SEATS TO A STRING BUFFER
+					sb.append(" " + seatNumber);  					//APPENDS THE NEW BOOKED SEAT TO THE STRING BUFFER
+					bookedSeats = sb.toString();					//RESETS 'bookedSeats' STATIC FIELD WITH PREVIOUS SEATS AND NEW SEAT BOOKED
+					
+					EditBookingsXML alter = new EditBookingsXML("filmBookings.xml", "bookings");  
+					alter.editsBookingXML();						//ALTERS THE XML WITH NEW BOOKING VALUES
 
 					// CHANGES THE CHAIR TO ORANGE ON CONFIRMATION OF BOOKING
 					Image orangeChair = new Image("images/orangechair.png", 20, 20, true, true);
@@ -220,8 +231,7 @@ public class BookingController extends WhatsOnEmpController implements Initializ
 					bookedChair.setId("orange");
 					btn2.setGraphic(bookedChair);
 
-					// SETS SOME TEXT CONFIRMING BOOKINGS DETAILS UNDER THE
-					// CINEMA LAYOUT
+					// SETS SOME TEXT CONFIRMING BOOKINGS DETAILS UNDER THE CINEMA LAYOUT
 					confirmLabel1.setText("Thanks " + LoginController.usersName + " you're all booked!");
 					confirmLabel2.setText("Your ticket will be sent to you by email");
 					bookingInfo4.setText("Your film details:");
@@ -237,6 +247,11 @@ public class BookingController extends WhatsOnEmpController implements Initializ
 	}
 
 	// TAKES EMPLOYEE BACK TO THE WHATS ON PAGE
+	/**
+	 * Loads the customer or employee what's on page when back to what's on button pressed. 
+	 * Calls <code>goToNextPage</code> function from <code>cinema.CinemaMain</code>
+	 * @param event the button/menu item click event
+	 */
 	public void goesBack(ActionEvent event) {
 
 		if (LoginController.loggedInUser.equalsIgnoreCase("employee")) {

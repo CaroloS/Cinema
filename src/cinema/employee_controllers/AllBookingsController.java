@@ -99,6 +99,7 @@ public class AllBookingsController implements Initializable {
 				try {
 					filmDate = sdf.parse(strFilmDate);					 //PARSES THE STRING FILM DATE TO A DATE
 				} catch (ParseException e) {
+					CinemaMain.LOGGER.warning("Couldn't parse strFilmDate to Date");
 					e.printStackTrace();
 				}
 
