@@ -85,7 +85,7 @@ public class CustomerHomeController implements Initializable {
 		if (xmlFile.exists()) {
 			try {
 				ReadXMLFile read = new ReadXMLFile("film.xml");
-				root = read.readsXML();
+				root = read.readsXML();     //RETURNS THE ROOT NODE
 			} catch (Exception e) {
 				CinemaMain.LOGGER.warning("Couldn't parse film.XML");
 			}

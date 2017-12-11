@@ -41,6 +41,15 @@ import javafx.scene.web.WebView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+/**
+ * Controller class for the customer what's on page. On initialization, it parses 'film.xml' and lays out
+ * all the film information in a list of GridPanes which are displayed in a central VBox. 
+ * Defines functions to filter the page content based on date and genre. Defines a button handler event
+ * for the booking button. Defines navigation functions to other pages. 
+ * 
+ * @author carolinesmith, daianabassi
+ *
+ */
 public class WhatsOnCustController implements Initializable {
 
     //DECLARES ALL THE FXML ELEMENTS USED BY THIS CONTROLLER
@@ -302,10 +311,10 @@ public class WhatsOnCustController implements Initializable {
 
 	}
 
-	// EVENTHANDLER FOR THE BOOKNG BUTTON - WILL TAKE YOU TO THE BOOKING PAGE
 	
 /**
- * 
+ * Event handler for the booking button for each film. Takes customer to booking page and uses the 
+ * film name and date/time information to create the unique page title for that booking.
  */
 	final static public EventHandler<ActionEvent> buttonHandler = new EventHandler<ActionEvent>() {
 
@@ -317,22 +326,22 @@ public class WhatsOnCustController implements Initializable {
 			if (btn.getId().equalsIgnoreCase("book")) {
 
 				GridPane grid = (GridPane) btn.getParent();
-				List childList = grid.getChildren();
+				List childList = grid.getChildren(); 				//GETS THE CONTENTS OF THE GRIDPANE
 
-				Label selectedName = (Label) childList.get(1);
-				ComboBox<String> c = (ComboBox) childList.get(5);
-				String selectedDateTime = c.getSelectionModel().getSelectedItem();
+				Label selectedName = (Label) childList.get(1);      //GETS THE FILM NAME SELECTED FOR BOOKING
+				ComboBox<String> c = (ComboBox) childList.get(5);	
+				String selectedDateTime = c.getSelectionModel().getSelectedItem();	 //GETS THE FILM DATE/TIME SELECTED
 
-				if (selectedDateTime == null) {
+				if (selectedDateTime == null) { 					//SHOWS AN ALERT IF NO DATE/TIME SELECTED AS MUST SELECT ONE
 					Alert alert = new Alert(AlertType.WARNING);
 					alert.setTitle("Warning");
 					alert.setHeaderText("Date not selected!");
 					alert.setContentText("Please select a date/time for this film");
 					alert.showAndWait();
 				} else {
-					pageTitle = selectedName.getText() + " " + selectedDateTime;
+					pageTitle = selectedName.getText() + " " + selectedDateTime;    //CREATES THE UNIQUE PAGE TITLE AND PASSES IT TO STATIC FIELD
 					CinemaMain main = new CinemaMain();
-					main.goToNextPage("shared_view/BookingPage.fxml", pageTitle);
+					main.goToNextPage("shared_view/BookingPage.fxml", pageTitle);  //OPENS BOOKING PAGE
 				}
 			}
 
@@ -342,20 +351,33 @@ public class WhatsOnCustController implements Initializable {
 
 /////////// NAVIGATION FUNCTIONS ////////////
 
-	// TAKES USER BACK TO 'Cinema Login' PAGE WHEN 'LOG OUT' MENU ITEM CLICKED
+	/**
+	 * Takes use back to login page when log out menu item selected.
+	 * Calls <code>goToLoginPage</code> function from <code>cinema.CinemaMain</code>
+	 * @param event the menu item click event
+	 */
 	@FXML
 	private void logsOut(ActionEvent event) {
 		CinemaMain main = new CinemaMain();
 		main.goToLoginPage("shared_view/LoginScreen.fxml", "Cinema Login");
 	}
 
-	// TAKES USER BACK TO 'Customer Home' PAGE WHEN 'HOME' MENU ITEM CLICKED
+	/**
+	 * Loads the customer home page when home menu item selected.
+	 * Calls <code>goToNextPage</code> function from <code>cinema.CinemaMain</code>
+	 * @param event the menu item click event
+	 */
 	@FXML
 	private void goBackHome(ActionEvent event) {
 		CinemaMain main = new CinemaMain();
 		main.goToNextPage("customer_view/CustomerHome.fxml", "Customer Home");
 	}
 
+	/**
+	 * Loads the customer account page when account menu item selected.
+	 * Calls <code>goToNextPage</code> function from <code>cinema.CinemaMain</code>
+	 * @param event the menu item click event
+	 */
 	@FXML
 	private void goToMyAccount() {
 		CinemaMain main = new CinemaMain();
