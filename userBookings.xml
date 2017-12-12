@@ -102,4 +102,52 @@
     <filmTime>1900</filmTime>
     <seatBooked>D7</seatBooked>
   </booking>
+  <booking userID="804" bookingID="618">
+    <filmName>Bladerunner 2049</filmName>
+    <filmDate>23-12-17</filmDate>
+    <filmTime>2000</filmTime>
+    <seatBooked>B4</seatBooked>
+  </booking>
+  <booking userID="804" bookingID="699">
+    <filmName>Paddington 2</filmName>
+    <filmDate>26-12-17</filmDate>
+    <filmTime>1600</filmTime>
+    <seatBooked>A5</seatBooked>
+  </booking>
+  <booking userID="804" bookingID="948">
+    <filmName>Paddington 2</filmName>
+    <filmDate>26-12-17</filmDate>
+    <filmTime>1600</filmTime>
+    <seatBooked>C3</seatBooked>
+  </booking>
+  <booking userID="804" bookingID="812">
+    <filmName>I.T.</filmName>
+    <filmDate>25-12-17</filmDate>
+    <filmTime>1200</filmTime>
+    <seatBooked>D5</seatBooked>
+  </booking>
+  <booking userID="804" bookingID="112">
+    <filmName>Paddington 2</filmName>
+    <filmDate>26-12-17</filmDate>
+    <filmTime>1600</filmTime>
+    <seatBooked>B5</seatBooked>
+  </booking>
+  <booking userID="804" bookingID="522">
+    <filmName>I.T.</filmName>
+    <filmDate>25-12-17</filmDate>
+    <filmTime>1200</filmTime>
+    <seatBooked>D6</seatBooked>
+  </booking>
+  <booking userID="804" bookingID="848">
+    <filmName>I.T.</filmName>
+    <filmDate>25-12-17</filmDate>
+    <filmTime>1200</filmTime>
+    <seatBooked>D8</seatBooked>
+  </booking>
+  <booking userID="804" bookingID="420">
+    <filmName>Scary Movie</filmName>
+    <filmDate>22-12-17</filmDate>
+    <filmTime>1700</filmTime>
+    <seatBooked>D8</seatBooked>
+  </booking>
 </userBookings>

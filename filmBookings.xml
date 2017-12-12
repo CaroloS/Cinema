@@ -6,14 +6,14 @@
     <unBookedNumber>22</unBookedNumber>
   </filmBooking>
   <filmBooking name="Scary Movie 22-12-17 1700">
-    <bookedSeats>D3 B8 B9 C9 A8 C7</bookedSeats>
-    <bookedNumber>6</bookedNumber>
-    <unBookedNumber>30</unBookedNumber>
+    <bookedSeats>D3 B8 B9 C9 A8 C7 D8</bookedSeats>
+    <bookedNumber>7</bookedNumber>
+    <unBookedNumber>29</unBookedNumber>
   </filmBooking>
   <filmBooking name="Bladerunner 2049 23-12-17 2000">
-    <bookedSeats>A3 A1</bookedSeats>
-    <bookedNumber>2</bookedNumber>
-    <unBookedNumber>34</unBookedNumber>
+    <bookedSeats>A3 A1 B4</bookedSeats>
+    <bookedNumber>3</bookedNumber>
+    <unBookedNumber>33</unBookedNumber>
   </filmBooking>
   <filmBooking name="Wonder Woman 24-12-17 1900">
     <bookedSeats>A3 A9 B3</bookedSeats>
@@ -21,9 +21,9 @@
     <unBookedNumber>33</unBookedNumber>
   </filmBooking>
   <filmBooking name="I.T. 25-12-17 1200">
-    <bookedSeats>D4 B8</bookedSeats>
-    <bookedNumber>2</bookedNumber>
-    <unBookedNumber>34</unBookedNumber>
+    <bookedSeats>D4 B8 D5 D6 D8</bookedSeats>
+    <bookedNumber>5</bookedNumber>
+    <unBookedNumber>31</unBookedNumber>
   </filmBooking>
   <filmBooking name="Paddington 2 26-12-17 1800">
     <bookedSeats>C1 C8 B7 A9</bookedSeats>
@@ -31,9 +31,9 @@
     <unBookedNumber>32</unBookedNumber>
   </filmBooking>
   <filmBooking name="Paddington 2 26-12-17 1600">
-    <bookedSeats>B8 B7</bookedSeats>
-    <bookedNumber>2</bookedNumber>
-    <unBookedNumber>34</unBookedNumber>
+    <bookedSeats>B8 B7 A5 C3 B5</bookedSeats>
+    <bookedNumber>5</bookedNumber>
+    <unBookedNumber>31</unBookedNumber>
   </filmBooking>
   <filmBooking name="Paddington 2 26-12-16 1600">
     <bookedSeats>B8</bookedSeats>
