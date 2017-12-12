@@ -25,9 +25,12 @@ public class CreateFilmXML extends CreateXML {
 	//DECLARES INSTANCE VARIABLES TO WRITE TO XML
 	private String title, genre, description, start, length, dateTimes, image, rating;
 
-
-	//CALLS THE PARENT CONSTRUCTOR - SETS THE VARIABLES PASSED TO THE 
-	//INSTANCE VARIABLES OF THE CLASS (INPUT FILE AND ROOT ELEMENT)
+	/**
+	 * This constructor calls the parent and takes the String name of the 
+	 * input file to create or write to, and the String XML root element of the file.
+	 * @param inputFile the input file.
+	 * @param rootElement the XML root element.
+	 */
 	public CreateFilmXML(String inputFile, String rootElement) {
 		super(inputFile, rootElement);
 	}

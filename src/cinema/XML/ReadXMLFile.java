@@ -22,7 +22,10 @@ public class ReadXMLFile {
 	Document document = null;
 	Element rootNode = null;
 	
-	//CONSTRUCTOR SETS THE FILE PASSED TO IT AS THE INSTANCE VARIABLE INPUT FILE
+	/**
+	 * This constructor takes the String name of the input file to read from.
+	 * @param inputFile the input file.
+	 */
 	public ReadXMLFile(String inputFile) {
 		this.inputFile = inputFile;
 	}

@@ -102,4 +102,16 @@
     <filmTime>1900</filmTime>
     <seatBooked>D7</seatBooked>
   </booking>
+  <booking userID="804" bookingID="828">
+    <filmName>Wonder Woman</filmName>
+    <filmDate>24-12-17</filmDate>
+    <filmTime>1900</filmTime>
+    <seatBooked>A9</seatBooked>
+  </booking>
+  <booking userID="804" bookingID="150">
+    <filmName>Wonder Woman</filmName>
+    <filmDate>24-12-17</filmDate>
+    <filmTime>1900</filmTime>
+    <seatBooked>B3</seatBooked>
+  </booking>
 </userBookings>

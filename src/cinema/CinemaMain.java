@@ -28,7 +28,6 @@ public class CinemaMain extends Application {
 	 * Navigates to the next page. Loads the FXML passed to it and applies the page title specified. 
 	 * @param pathToFXML String relative path to FXML document to load
 	 * @param pageTitle String page title for the scene
-	 * @exception catches <code>javafx.fxml.LoadException</code> if unable to load FXML
 	 */
 	public void goToNextPage(String pathToFXML, String pageTitle) {
 		try {
@@ -48,7 +47,6 @@ public class CinemaMain extends Application {
 	 * Navigates to the log-in page. Loads the FXML passed to it and applies the page title specified. 
 	 * @param pathToFXML String relative path to FXML document to load
 	 * @param pageTitle String page title for the scene
-	 * @exception catches <code>javafx.fxml.LoadException</code> if unable to load FXML
 	 */
 	public void goToLoginPage(String pathToFXML, String pageTitle) {
 		
@@ -91,7 +89,6 @@ public class CinemaMain extends Application {
 	/**
 	 * The starting method for the application. Sets up the Logger from <code>cinema.CinemaLogger</code> and launches <code>cinema.CinemaMain.start</code>
 	 * @param args the array of arguments passed on launching the program
-	 * @exception catches IOException if an input or output exception occurred
 	 */
 	public static void main(String[] args) {
 
