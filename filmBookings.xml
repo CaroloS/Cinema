@@ -11,9 +11,9 @@
     <unBookedNumber>30</unBookedNumber>
   </filmBooking>
   <filmBooking name="Bladerunner 2049 23-12-17 2000">
-    <bookedSeats>A3 A1</bookedSeats>
-    <bookedNumber>2</bookedNumber>
-    <unBookedNumber>34</unBookedNumber>
+    <bookedSeats>A3 A1 D6</bookedSeats>
+    <bookedNumber>3</bookedNumber>
+    <unBookedNumber>33</unBookedNumber>
   </filmBooking>
   <filmBooking name="Wonder Woman 24-12-17 1900">
     <bookedSeats>A3 A9 B3</bookedSeats>
@@ -31,9 +31,9 @@
     <unBookedNumber>32</unBookedNumber>
   </filmBooking>
   <filmBooking name="Paddington 2 26-12-17 1600">
-    <bookedSeats>B8 B7</bookedSeats>
-    <bookedNumber>2</bookedNumber>
-    <unBookedNumber>34</unBookedNumber>
+    <bookedSeats>B8 B7 B3</bookedSeats>
+    <bookedNumber>3</bookedNumber>
+    <unBookedNumber>33</unBookedNumber>
   </filmBooking>
   <filmBooking name="Paddington 2 26-12-16 1600">
     <bookedSeats>B8</bookedSeats>

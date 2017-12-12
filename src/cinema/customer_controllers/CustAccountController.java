@@ -34,6 +34,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
 
@@ -52,11 +53,11 @@ public class CustAccountController implements Initializable {
 
 	// DECLARES ALL THE FXML ELEMENTS USED BY THIS CONTROLLER
 	@FXML
-	private AnchorPane topAnchor;
+	private VBox topAnchor;
 	@FXML
 	private Label firstNameLabel, lastNameLabel, emailLabel, numberLabel, usernameLabel, bookingHistory;
 	@FXML
-	private VBox picBox;
+	private Pane picBox;
 	@FXML
 	private VBox bottomAnchor;
 	@FXML
