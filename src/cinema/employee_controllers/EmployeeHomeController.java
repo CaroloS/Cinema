@@ -123,6 +123,7 @@ public class EmployeeHomeController implements Initializable {
 			try {
 				selectedDate = sdf.parse(date); 								// PARSES THE STRING DATE SELECTED TO A DATE
 			} catch (ParseException e) { 										// CATCHES PARSE EXCEPTION
+				CinemaMain.LOGGER.warning("Couldn't parse String date to Date");
 				e.printStackTrace();
 			}
 

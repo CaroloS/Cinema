@@ -1,80 +1,230 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="707.0" prefWidth="638.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" 
-fx:controller="cinema.shared_controllers.BookingController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #D3D3D3;" stylesheets="@bookings_styles.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cinema.shared_controllers.BookingController">
    <top>
-      <AnchorPane prefHeight="72.0" prefWidth="638.0" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" prefHeight="125.0" style="-fx-background-color: FBBA42;" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="goBack" layoutY="63.0" mnemonicParsing="false" onAction="#goesBack" prefHeight="27.0" prefWidth="151.0" text="Go back to what's on" />
-         </children>
-      </AnchorPane>
-   </top>
-   <center>
-    <AnchorPane fx:id="cinemaLayout" minHeight="0.0" minWidth="0.0" prefHeight="544.0" prefWidth="638.0" BorderPane.alignment="CENTER">
-         <children>
-            <VBox fx:id="bookingBox" layoutX="335.0" layoutY="359.0" prefHeight="172.0" prefWidth="282.0">
+            <Pane prefHeight="75.0" style="-fx-background-color: #EEEEEE;">
                <children>
-                  <Label fx:id="bookingInfo4" prefHeight="33.0" prefWidth="325.0" />
-                  <Label fx:id="bookingInfo1" prefHeight="55.0" prefWidth="284.0" />
-                  <Label fx:id="bookingInfo2" prefHeight="33.0" prefWidth="325.0" />
-                  <Label fx:id="bookingInfo3" prefHeight="33.0" prefWidth="327.0" />
+                  <ImageView fitHeight="75.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="images/oscar-award-512.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="153.0" layoutY="27.0" />
+               </children>
+            </Pane>
+            <MenuBar prefHeight="50.0" styleClass="menubar" stylesheets="@styles.css">
+              <menus>
+                <Menu mnemonicParsing="false" style="-fx-fill: green;" text="HOME" visible="false">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Close" visible="false" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="WHAT'S ON" visible="false">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Delete" visible="false" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="MY ACCOUNT" visible="false">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="About" visible="false" />
+                  </items>
+                </Menu>
+                  <Menu mnemonicParsing="false" text="ALL BOOKINGS" visible="false">
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="All Bookings" />
+                    </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="LOG OUT" visible="false">
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="Action 1" visible="false" />
+                    </items>
+                  </Menu>
+              </menus>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets left="150.0" />
+               </padding>
+            </MenuBar>
+         </children>
+      </VBox>
+   </top>
+   <left>
+      <Pane prefWidth="150.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="800.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="images/oscar_flat_4.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </left>
+   <right>
+      <Pane prefWidth="150.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="800.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="images/oscar_flat_4.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </right>
+   <center>
+      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #F9F9F9;" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="bookingPrompt" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="750.0" styleClass="mainlabel">
+               <font>
+                  <Font name="Corbel Bold" size="24.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="15.0" top="15.0" />
+               </VBox.margin>
+            </Label>
+            <VBox fx:id="cinemaLayout" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" VBox.vgrow="NEVER">
+               <children>
+                  <Label fx:id="filmSelection" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="500.0" styleClass="minorlabel" textFill="#b7a261">
+                     <font>
+                        <Font name="Corbel Bold" size="32.0" />
+                     </font></Label>
+                  <HBox fx:id="bookingBox" alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                        <AnchorPane fx:id="seatAnchor" HBox.hgrow="NEVER">
+                           <children>
+                            <Label fx:id="seatLabel111" alignment="TOP_LEFT" layoutY="50.0" prefHeight="25.0" prefWidth="700.0" text="D1              D2                    D3             D4              D5              D6              D7                   D8              D9">
+                                 <padding>
+                                    <Insets left="15.0" right="15.0" />
+                                 </padding>
+                              </Label>
+                              <Label fx:id="seatLabel11" alignment="TOP_LEFT" layoutY="125.0" prefHeight="25.0" prefWidth="700.0" text="C1              C2                     C3              C4              C5              C6              C7                    C8              C9">
+                                 <padding>
+                                    <Insets left="15.0" right="15.0" />
+                                 </padding>
+                              </Label>
+                              <Label fx:id="seatLabel1" alignment="TOP_LEFT" layoutY="200.0" prefHeight="25.0" prefWidth="700.0" text=" B1              B2                    B3              B4               B5              B6              B7                    B8              B9">
+                                 <padding>
+                                    <Insets left="15.0" right="15.0" />
+                                 </padding>
+                              </Label>
+                              <Label fx:id="seatLabel" alignment="TOP_LEFT" layoutY="275.0" prefHeight="25.0" prefWidth="700.0" text="A1              A2                     A3             A4              A5              A6              A7                    A8              A9">
+                                 <padding>
+                                    <Insets left="15.0" right="15.0" />
+                                 </padding>
+                              </Label>
+                              <Button fx:id="D1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#seatSelected" prefHeight="50.0" prefWidth="50.0" />
+                              <Button fx:id="D2" layoutX="75.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#seatSelected" prefHeight="50.0" prefWidth="50.0" />
+                              <Button fx:id="D3" layoutX="175.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#seatSelected" prefHeight="50.0" prefWidth="50.0" />
+                              <Button fx:id="D4" layoutX="250.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#seatSelected" prefHeight="50.0" prefWidth="50.0" />
+                              <Button fx:id="D9" layoutX="650.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#seatSelected" prefHeight="50.0" prefWidth="50.0" />
+                              <Button fx:id="D5" layoutX="325.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#seatSelected" prefHeight="50.0" prefWidth="50.0" />
+                              <Button fx:id="D6" layoutX="400.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#seatSelected" prefHeight="50.0" prefWidth="50.0" />
+                              <Button fx:id="D7" layoutX="475.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#seatSelected" prefHeight="50.0" prefWidth="50.0" />
+                              <Button fx:id="D8" layoutX="575.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#seatSelected" prefHeight="50.0" prefWidth="50.0" />
+                              <Button fx:id="C1" layoutY="75.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#seatSelected" prefHeight="50.0" prefWidth="50.0" />
+                              <Button fx:id="C2" layoutX="75.0" layoutY="75.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#seatSelected" prefHeight="50.0" prefWidth="50.0" />
+                              <Button fx:id="C3" layoutX="175.0" layoutY="75.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#seatSelected" prefHeight="50.0" prefWidth="50.0" />
+                              <Button fx:id="C4" layoutX="250.0" layoutY="75.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#seatSelected" prefHeight="50.0" prefWidth="50.0" />
+                              <Button fx:id="C5" layoutX="325.0" layoutY="75.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#seatSelected" prefHeight="50.0" prefWidth="50.0" />
+                              <Button fx:id="C6" layoutX="400.0" layoutY="75.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#seatSelected" prefHeight="50.0" prefWidth="50.0" />
+                              <Button fx:id="C7" layoutX="475.0" layoutY="75.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#seatSelected" prefHeight="50.0" prefWidth="50.0" />
+                              <Button fx:id="C8" layoutX="575.0" layoutY="75.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#seatSelected" prefHeight="50.0" prefWidth="50.0" />
+                              <Button fx:id="C9" layoutX="650.0" layoutY="75.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#seatSelected" prefHeight="50.0" prefWidth="50.0" />
+                              <Button fx:id="B1" layoutY="150.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#seatSelected" prefHeight="50.0" prefWidth="50.0" />
+                              <Button fx:id="B2" layoutX="75.0" layoutY="150.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#seatSelected" prefHeight="50.0" prefWidth="50.0" />
+                              <Button fx:id="B3" layoutX="175.0" layoutY="150.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#seatSelected" prefHeight="50.0" prefWidth="50.0" />
+                              <Button fx:id="B4" layoutX="250.0" layoutY="150.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#seatSelected" prefHeight="50.0" prefWidth="50.0" />
+                              <Button fx:id="B5" layoutX="325.0" layoutY="150.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#seatSelected" prefHeight="50.0" prefWidth="50.0" />
+                              <Button fx:id="B6" layoutX="400.0" layoutY="150.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#seatSelected" prefHeight="50.0" prefWidth="50.0" />
+                              <Button fx:id="B7" layoutX="475.0" layoutY="150.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#seatSelected" prefHeight="50.0" prefWidth="50.0" />
+                              <Button fx:id="B8" layoutX="575.0" layoutY="150.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#seatSelected" prefHeight="50.0" prefWidth="50.0" />
+                              <Button fx:id="B9" layoutX="650.0" layoutY="150.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#seatSelected" prefHeight="50.0" prefWidth="50.0" />
+                              <Button fx:id="A1" layoutY="225.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#seatSelected" prefHeight="50.0" prefWidth="50.0" />
+                              <Button fx:id="A2" layoutX="75.0" layoutY="225.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#seatSelected" prefHeight="50.0" prefWidth="50.0" />
+                              <Button fx:id="A3" layoutX="175.0" layoutY="225.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#seatSelected" prefHeight="50.0" prefWidth="50.0" />
+                              <Button fx:id="A4" layoutX="250.0" layoutY="225.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#seatSelected" prefHeight="50.0" prefWidth="50.0" />
+                              <Button fx:id="A5" layoutX="325.0" layoutY="225.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#seatSelected" prefHeight="50.0" prefWidth="50.0" />
+                              <Button fx:id="A6" layoutX="400.0" layoutY="225.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#seatSelected" prefHeight="50.0" prefWidth="50.0" />
+                              <Button fx:id="A7" layoutX="475.0" layoutY="225.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#seatSelected" prefHeight="50.0" prefWidth="50.0" />
+                              <Button fx:id="A8" layoutX="575.0" layoutY="225.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#seatSelected" prefHeight="50.0" prefWidth="50.0" />
+                              <Button fx:id="A9" layoutX="650.0" layoutY="225.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#seatSelected" prefHeight="50.0" prefWidth="50.0" />
+                           </children>
+                        </AnchorPane>
+                        <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="25.0" top="25.0" />
+                     </VBox.margin>
+                  </HBox>
                </children>
             </VBox>
-            <Label fx:id="filmSelection" layoutX="43.0" layoutY="14.0" prefHeight="37.0" prefWidth="409.0" />
-            <AnchorPane fx:id="seatAnchor" layoutX="24.0" layoutY="79.0" prefHeight="280.0" prefWidth="578.0">
+            <GridPane alignment="CENTER" hgap="15.0" vgap="5.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+              </rowConstraints>
                <children>
-                  <Label fx:id="seatLabel111" layoutX="54.0" layoutY="60.0" prefHeight="21.0" prefWidth="514.0" text="D1       D2                D3          D4          D5        D6        D7                   D8       D9" />
-                  <Label fx:id="seatLabel11" layoutX="54.0" layoutY="119.0" prefHeight="21.0" prefWidth="514.0" text="C1       C2                C3          C4          C5        C6        C7                   C8       C9" />
-                  <Label fx:id="seatLabel1" layoutX="59.0" layoutY="177.0" prefHeight="21.0" prefWidth="519.0" text="B1       B2                B3          B4          B5        B6        B7                   B8       B9" />
-                  <Label fx:id="seatLabel" layoutX="54.0" layoutY="236.0" prefHeight="21.0" prefWidth="514.0" text="A1       A2                A3          A4          A5        A6        A7                   A8       A9" />
-                  <Button fx:id="A1" layoutX="48.0" layoutY="209.0" mnemonicParsing="false" onAction="#seatSelected" prefHeight="27.0" prefWidth="27.0" />
-                  <Button fx:id="A2" layoutX="89.0" layoutY="209.0" mnemonicParsing="false" onAction="#seatSelected" prefHeight="27.0" prefWidth="27.0" />
-                  <Button fx:id="A3" layoutX="168.0" layoutY="209.0" mnemonicParsing="false" onAction="#seatSelected" prefHeight="27.0" prefWidth="27.0" />
-                  <Button fx:id="A4" layoutX="219.0" layoutY="209.0" mnemonicParsing="false" onAction="#seatSelected" prefHeight="27.0" prefWidth="27.0" />
-                  <Button fx:id="A5" layoutX="273.0" layoutY="209.0" mnemonicParsing="false" onAction="#seatSelected" prefHeight="27.0" prefWidth="27.0" />
-                  <Button fx:id="A6" layoutX="321.0" layoutY="209.0" mnemonicParsing="false" onAction="#seatSelected" prefHeight="27.0" prefWidth="27.0" />
-                  <Button fx:id="A7" layoutX="368.0" layoutY="209.0" mnemonicParsing="false" onAction="#seatSelected" prefHeight="27.0" prefWidth="27.0" />
-                  <Button fx:id="A8" layoutX="452.0" layoutY="209.0" mnemonicParsing="false" onAction="#seatSelected" prefHeight="27.0" prefWidth="27.0" />
-                  <Button fx:id="A9" layoutX="497.0" layoutY="209.0" mnemonicParsing="false" onAction="#seatSelected" prefHeight="27.0" prefWidth="27.0" />
-                  <Button fx:id="B1" layoutX="48.0" layoutY="150.0" mnemonicParsing="false" onAction="#seatSelected" prefHeight="27.0" prefWidth="27.0" />
-                  <Button fx:id="B2" layoutX="89.0" layoutY="150.0" mnemonicParsing="false" onAction="#seatSelected" prefHeight="27.0" prefWidth="27.0" />
-                  <Button fx:id="B3" layoutX="168.0" layoutY="150.0" mnemonicParsing="false" onAction="#seatSelected" prefHeight="27.0" prefWidth="27.0" />
-                  <Button fx:id="B4" layoutX="219.0" layoutY="150.0" mnemonicParsing="false" onAction="#seatSelected" prefHeight="27.0" prefWidth="27.0" />
-                  <Button fx:id="B5" layoutX="273.0" layoutY="150.0" mnemonicParsing="false" onAction="#seatSelected" prefHeight="27.0" prefWidth="27.0" />
-                  <Button fx:id="B6" layoutX="321.0" layoutY="150.0" mnemonicParsing="false" onAction="#seatSelected" prefHeight="27.0" prefWidth="27.0" />
-                  <Button fx:id="B7" layoutX="368.0" layoutY="150.0" mnemonicParsing="false" onAction="#seatSelected" prefHeight="27.0" prefWidth="27.0" />
-                  <Button fx:id="B8" layoutX="452.0" layoutY="150.0" mnemonicParsing="false" onAction="#seatSelected" prefHeight="27.0" prefWidth="27.0" />
-                  <Button fx:id="B9" layoutX="497.0" layoutY="150.0" mnemonicParsing="false" onAction="#seatSelected" prefHeight="27.0" prefWidth="27.0" />
-                  <Button fx:id="C1" layoutX="48.0" layoutY="92.0" mnemonicParsing="false" onAction="#seatSelected" prefHeight="27.0" prefWidth="27.0" />
-                  <Button fx:id="C2" layoutX="89.0" layoutY="92.0" mnemonicParsing="false" onAction="#seatSelected" prefHeight="27.0" prefWidth="27.0" />
-                  <Button fx:id="C3" layoutX="168.0" layoutY="92.0" mnemonicParsing="false" onAction="#seatSelected" prefHeight="27.0" prefWidth="27.0" />
-                  <Button fx:id="C4" layoutX="219.0" layoutY="92.0" mnemonicParsing="false" onAction="#seatSelected" prefHeight="27.0" prefWidth="27.0" />
-                  <Button fx:id="C5" layoutX="273.0" layoutY="92.0" mnemonicParsing="false" onAction="#seatSelected" prefHeight="27.0" prefWidth="27.0" />
-                  <Button fx:id="C6" layoutX="321.0" layoutY="92.0" mnemonicParsing="false" onAction="#seatSelected" prefHeight="27.0" prefWidth="27.0" />
-                  <Button fx:id="C7" layoutX="368.0" layoutY="92.0" mnemonicParsing="false" onAction="#seatSelected" prefHeight="27.0" prefWidth="27.0" />
-                  <Button fx:id="C8" layoutX="452.0" layoutY="92.0" mnemonicParsing="false" onAction="#seatSelected" prefHeight="27.0" prefWidth="27.0" />
-                  <Button fx:id="C9" layoutX="497.0" layoutY="92.0" mnemonicParsing="false" onAction="#seatSelected" prefHeight="27.0" prefWidth="27.0" />
-                  <Button fx:id="D1" layoutX="48.0" layoutY="33.0" mnemonicParsing="false" onAction="#seatSelected" prefHeight="27.0" prefWidth="27.0" />
-                  <Button fx:id="D2" layoutX="89.0" layoutY="33.0" mnemonicParsing="false" onAction="#seatSelected" prefHeight="27.0" prefWidth="27.0" />
-                  <Button fx:id="D3" layoutX="168.0" layoutY="33.0" mnemonicParsing="false" onAction="#seatSelected" prefHeight="27.0" prefWidth="27.0" />
-                  <Button fx:id="D4" layoutX="219.0" layoutY="33.0" mnemonicParsing="false" onAction="#seatSelected" prefHeight="27.0" prefWidth="27.0" />
-                  <Button fx:id="D5" layoutX="273.0" layoutY="33.0" mnemonicParsing="false" onAction="#seatSelected" prefHeight="27.0" prefWidth="27.0" />
-                  <Button fx:id="D6" layoutX="321.0" layoutY="33.0" mnemonicParsing="false" onAction="#seatSelected" prefHeight="27.0" prefWidth="27.0" />
-                  <Button fx:id="D7" layoutX="368.0" layoutY="33.0" mnemonicParsing="false" onAction="#seatSelected" prefHeight="27.0" prefWidth="27.0" />
-                  <Button fx:id="D8" layoutX="452.0" layoutY="33.0" mnemonicParsing="false" onAction="#seatSelected" prefHeight="27.0" prefWidth="27.0" />
-                  <Button fx:id="D9" layoutX="497.0" layoutY="33.0" mnemonicParsing="false" onAction="#seatSelected" prefHeight="27.0" prefWidth="27.0" />
+                  <Label fx:id="confirmLabel1" alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="400.0" GridPane.halignment="RIGHT" GridPane.hgrow="NEVER" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
+                     <font>
+                        <Font name="Corbel Bold" size="24.0" />
+                     </font></Label>
+                  <Label fx:id="bookingInfo4" alignment="CENTER_RIGHT" layoutX="60.0" layoutY="10.0" prefHeight="30.0" prefWidth="400.0" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="Corbel" size="18.0" />
+                     </font></Label>
+                  <Label fx:id="confirmLabel2" layoutX="60.0" layoutY="40.0" prefHeight="30.0" prefWidth="400.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="Corbel Bold" size="24.0" />
+                     </font></Label>
+                  <Label fx:id="bookingInfo1" layoutX="485.0" layoutY="10.0" prefHeight="30.0" prefWidth="400.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="Corbel" size="18.0" />
+                     </font></Label>
+                  <Label fx:id="bookingInfo2" layoutX="485.0" layoutY="10.0" prefHeight="30.0" prefWidth="400.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="Corbel" size="18.0" />
+                     </font></Label>
+                  <Label fx:id="bookingInfo3" layoutX="485.0" layoutY="40.0" prefHeight="30.0" prefWidth="400.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="Corbel" size="16.0" />
+                     </font></Label>
+                  <Button fx:id="goBack" mnemonicParsing="false" onAction="#goesBack" styleClass="button" stylesheets="@styles.css" text="Back" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                     <GridPane.margin>
+                        <Insets right="25.0" />
+                     </GridPane.margin>
+                  </Button>
                </children>
-            </AnchorPane>
-            <Label fx:id="bookingPrompt" layoutX="43.0" layoutY="49.0" prefHeight="37.0" prefWidth="409.0" />
-            <Label fx:id="confirmLabel1" layoutX="14.0" layoutY="359.0" prefHeight="42.0" prefWidth="320.0" />
-            <Label fx:id="confirmLabel2" layoutX="14.0" layoutY="401.0" prefHeight="42.0" prefWidth="320.0" />
+            </GridPane>
          </children>
-      </AnchorPane>
+      </VBox>
    </center>
 </BorderPane>

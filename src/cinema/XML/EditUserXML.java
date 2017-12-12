@@ -21,6 +21,12 @@ import cinema.shared_controllers.BookingController;
 import cinema.shared_controllers.LoginController;
 import cinema.shared_controllers.SignUpController;
 
+/**
+ * A class that defines methods and variables to edit the user XML. Function in this class is 
+ * called from the SignUp page when a customer or employee edits their profile information.
+ * @author carolinesmith, daianabassi
+ *
+ */
 public class EditUserXML {
 
 	// CREATES INSTANCE VARIABLES WHICH WILL BE SET BY THE CONTRUCTOR
@@ -43,14 +49,17 @@ public class EditUserXML {
 		File xmlFile = new File(inputFile);
 		FileInputStream fis = null;
 
+		//CREATES A FILE INPUT STREAM FROM THE FILE IF IT EXISTS
 		if (xmlFile.exists()) {
 
 			try {
 				fis = new FileInputStream(xmlFile);
 			} catch (FileNotFoundException e1) {
+				CinemaMain.LOGGER.warning("Couldn't find file");
 				e1.printStackTrace();
 			}
-
+			
+			//CREATES AN INSTANCE OF SAXBUILDER TO PARSE THE FILE
 			SAXBuilder sb = new SAXBuilder();
 
 			// PARSE THE XML CONTENT PROVIDED BY THE FILE INPUT STREAM AND
@@ -70,18 +79,23 @@ public class EditUserXML {
 			try {
 				fis.close();
 			} catch (IOException e) {
+				CinemaMain.LOGGER.warning("Couldn't close file input stream");
 				e.printStackTrace();
 			}
-
+			
+			//GETS THE LIST OF CHILD 'USER' NODES OF THE ROOT ELEMENT
 			List list = root.getChildren("User");
 
+			//ITETRATES THROUGH THE LIST OF NODES 
 			for (int i = 0; i < list.size(); i++) {
 
 				Element node = (Element) list.get(i);
 
 
+				//IF THE NODE ATTRIBUTE MATCHES THE LOGGED IN USER ID
+				//THE CHILD ELEMENTS OF THE NODE ARE RESET USING THE INFORMATION FROM THE 
+				//SIGN UP PAGE INPUT FIELDS. 
 				if (node.getAttributeValue("id").equalsIgnoreCase(LoginController.userID)) {
-					//node.setAttribute(new Attribute("id", Integer.toString(n)));
 					
 					node.getChild("FirstName").setText(SignUpController.editFirstName);
 					node.getChild("LastName").setText(SignUpController.editLastName);
@@ -107,6 +121,7 @@ public class EditUserXML {
 				writer.close();
 
 			} catch (IOException e) {
+				CinemaMain.LOGGER.warning("Couldn't write to file");
 				e.printStackTrace();
 			}
 

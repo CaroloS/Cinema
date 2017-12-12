@@ -9,8 +9,18 @@ import org.jdom2.Element;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
+import cinema.CinemaMain;
 import cinema.shared_controllers.LoginController;
 
+/**
+ * This class extends <code>cinema.shared_view.CreateXML</code>.
+ * It has instance variables that define all the information about a customer booking.
+ * It defines getters and setters for these private variables. It defines a function to write the film 
+ * information to an XML file using the filename and root passed in the constructor. 
+ * @see <code>cinema.shared_view.CreateXML</code>.
+ * @author carolinesmith, daianabassi
+ *
+ */
 public class CreateUserBookingsXML extends CreateXML {
 	
 	//DECLARES INSTANCE VARIABLES TO WRITE TO XML
@@ -21,48 +31,93 @@ public class CreateUserBookingsXML extends CreateXML {
 			super(inputFile, rootElement);
 		}
 	
-	public String getFilmName() {
-			return filmName;
-		}
+		/**
+		 * Gets the instance variable filmName
+		 * @return the String filmName
+		 */
+		public String getFilmName() {
+				return filmName;
+			}
 
+		/**
+		 * Sets the instance variable filmName
+		 * @param filmName the String to set it to
+		 */
 		public void setFilmName(String filmName) {
 			this.filmName = filmName;
 		}
 
+		/**
+		 * Gets the instance variable FilmDate
+		 * @return the String filmDate
+		 */ 
 		public String getFilmDate() {
 			return filmDate;
 		}
 
-
+		/**
+		 * Sets the instance variable filmDate
+		 * @param filmDate the String to set it to
+		 */
 		public void setFilmDate(String filmDate) {
 			this.filmDate = filmDate;
 		}
 
+		/**
+		 * Gets the instance variable filmTime
+		 * @return the String filmTime
+		 */
 		public String getFilmTime() {
 			return filmTime;
 		}
-
+		
+		/**
+		 * Sets the instance variable filmTime
+		 * @param filmTime the String to set it to
+		 */
 		public void setFilmTime(String filmTime) {
 			this.filmTime = filmTime;
 		}
 
+		/**
+		 * Gets the instance variable seatBooked
+		 * @return the String seatBooked
+		 */
 		public String getSeatBooked() {
 			return seatBooked;
 		}
 
+		/**
+		 * Sets the instance variable seatBooked
+		 * @param seatBooked the String to set it to
+		 */
 		public void setSeatBooked(String seatBooked) {
 			this.seatBooked = seatBooked;
 		}
 
+		/**
+		 * Gets the instance variable userID
+		 * @return the Strin userID
+		 */
 		public String getUserID() {
 			return userID;
 		}
-
+		
+		/**
+		 * Sets the instance variable userID
+		 * @param userID the String to set it to
+		 */
 		public void setUserID(String userID) {
 			this.userID = userID;
 		}
 
-
+		
+		/**
+		 * Creates a new booking element and sets the user booking instance variables as the child elements
+		 * of the booking element. Defines the booking attribute using the ID of the logged in user. 
+		 * Adds the new booking element to the document root and sets the root to the document. 
+		 * Writes the XML to the file specified in the constructor.
+		 */
 	public void CreateUserBooking() {
 		
 		// GENERATE RANDOM NUMBER FOR FILM ID
@@ -94,6 +149,7 @@ public class CreateUserBookingsXML extends CreateXML {
 					writer.close();
 
 				} catch (IOException e) {
+					CinemaMain.LOGGER.warning("Couldn't write to file");
 					e.printStackTrace();
 				}
 	}

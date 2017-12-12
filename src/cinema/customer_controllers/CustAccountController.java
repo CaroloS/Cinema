@@ -190,6 +190,7 @@ public class CustAccountController implements Initializable {
 							date = sdf.parse(node.getChildText("filmDate")); // PARSES THE STRING DATE FOR THIS BOOKING TO A DATE
 																		
 						} catch (ParseException e) {
+							CinemaMain.LOGGER.warning("Couldn't parse filmDate");
 							e.printStackTrace();
 						}
 

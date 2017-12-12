@@ -23,21 +23,25 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 
+/**
+ * This class has methods and fields to create a new user from the sign up page or 
+ * to edit a user's information from inside the cinema application. 
+ * It implements initialise to parse the 'user.xml' file on loading and to populate
+ * the input fields with the current user information if editing their profile. 
+ * @author carolinesmith, daianabassi.
+ *
+ */
 public class SignUpController implements Initializable {
 
-	// DECLARES THE FXML TEXTFIELD VARIABLES TO COLLECT THE INPUT FROM
+	//DECLARES ALL THE FXML ELEMENTS USED BY THIS CONTROLLER
 	@FXML
 	private TextField firstName, lastName, emailAddress, phoneNumber, userName, password, confirmPassword;
-
 	@FXML
 	private Button addUserButton, cancel;
-
 	@FXML
 	private RadioButton customerProfile;
-
 	@FXML
 	private RadioButton employeeProfile;
-
 	@FXML
 	private Label picLabel;
 
@@ -46,36 +50,29 @@ public class SignUpController implements Initializable {
 
 	Alert alert = new Alert(AlertType.WARNING);
 
-	// DECALRES THE ROOT ELEMENT TO BE SET BY PARSING 'users.xml'
-	Element root, root2;
-	List list, list2;
+	Element root, root2;	//XML ROOT ELEMENTS TO SET WHEN PARSING XML DOCUMENTS
+	List list, list2;		//LISTS TO PASS XML NODES TO FROM XML PARSING
 
 	/**
-	 * Adds a user to the 'user.XML' file uses the user input to text-fields to
-	 * set the user variables. Calls 'createsUser' method from 'CreateUserXML'
-	 * class
-	 * 
-	 * @param event
-	 *            : event created from button click
+	 * Gets the information from the input fields and either creates a new user in user.xml or 
+	 * edits a user depending on where the user has navigated to the sign up page from 
+	 * (new sign up or edit profile). 
+	 * @param event the button click event for sign up form submission.
 	 */
-
-	@FXML
-	public void initialize() {
-
-	}
-
 	@FXML
 	private void addUser(ActionEvent event) {
 
 		if (event.getSource().equals(addUserButton)) {
 
-			// CREATES AN INSTANCE OF 'CreateXML'
+			// CREATES INSTANCES OF 'CreateXML' AND 'editUserCML'
 			CreateUsersXML usersXML = new CreateUsersXML("users.xml", "users");
 			EditUserXML editXML = new EditUserXML("users.xml", "users");
 
-			// GETS THE USER INPUT FROM TEXTFIELDS AND SETS INSTANCE VARIABLES
-			// OF
+			// GETS THE USER INPUT FROM TEXTFIELDS AND SETS INSTANCE VARIABLES OF
 			// 'CreateUsersXML' WITH IT
+			// CHECKS IF INPUT FIELDS ARE EMPTY AND CREATES ALERTS IF THEY ARE
+			// ALSO PASSES THE INPUT TO THE STATIC VARIABLES OF THIS CLASS WHICH
+			// ARE USED TO EDIT THE XML IF A USER IS EDITING THEIR PROFILE.
 
 			int x = 0;
 
@@ -96,11 +93,11 @@ public class SignUpController implements Initializable {
 			if (!picLabel.getText().trim().isEmpty()) {
 				usersXML.setProfilePic(picLabel.getText());
 			} else {
-				usersXML.setProfilePic("images/greencamera.png");
+				usersXML.setProfilePic("images/greencamera.png");    //USES A DUMMY INAGE IF USER DOESN'T SET A PROFILE PICTURE
 			}
 
 			if (!emailAddress.getText().trim().isEmpty()) {
-				if (emailAddress.getText().contains("@")) {
+				if (emailAddress.getText().contains("@")) {           //CREATES AN ALERT IF EMAIL DOESN'T CONTAIN '@'
 					usersXML.setEmailAddress(emailAddress.getText());
 					editEmailAddress = emailAddress.getText();
 				} else {
@@ -114,9 +111,9 @@ public class SignUpController implements Initializable {
 				x = 1;
 			}
 
-			if (!phoneNumber.getText().trim().isEmpty()) {
-				if (phoneNumber.getText().matches("[0-9]+") && (phoneNumber.getText().length() > 5)) {
-					usersXML.setPhoneNumber(phoneNumber.getText());
+			if (!phoneNumber.getText().trim().isEmpty()) {    
+				if (phoneNumber.getText().matches("[0-9]+") && (phoneNumber.getText().length() > 5)) {     //PHONE NUMBER MUST BE >5 NUMBERS
+					usersXML.setPhoneNumber(phoneNumber.getText());											//AND ONLY CONTAIN 0-9 DIGITS
 					editPhoneNumber = phoneNumber.getText();
 				} else {
 					x = 2;
@@ -130,18 +127,11 @@ public class SignUpController implements Initializable {
 				x = 1;
 			}
 
-			/*
-			 * if (xmlFile.exists()) { try { ReadXMLFile read = new
-			 * ReadXMLFile("users.xml"); root = read.readsXML(); } catch
-			 * (Exception e) {
-			 * CinemaMain.LOGGER.warning("Couldn't parse users.XML"); } list =
-			 * root.getChildren("User"); }
-			 */
-
+		
 			if (!userName.getText().trim().isEmpty()) {
-				if (userName.getText().length() > 4) {
-					if (LoginController.userID == null) {
-						if (list != null) {
+				if (userName.getText().length() > 4) {   		//USERNAME MUST BE OVER 4 CHARACTERS LONG
+					if (LoginController.userID == null) {       //IF THE SIGN UP PAGE IS BEING ACCESSED BY A NEW USER
+						if (list != null) {						//CHECKS THROUGH THE 'user.xml' TO CHECK USERNAME INPUT IS NOT ALREADY IN USE
 							for (int i = 0; i < list.size(); i++) {
 								Element node = (Element) list.get(i);
 								String xmlusername = node.getChildText("UserName");
@@ -164,7 +154,7 @@ public class SignUpController implements Initializable {
 					alert.showAndWait();
 				}
 
-				usersXML.setUserName(userName.getText());
+				usersXML.setUserName(userName.getText());				
 				editUserName = userName.getText();
 			} else {
 				x = 1;
@@ -177,8 +167,8 @@ public class SignUpController implements Initializable {
 			}
 
 			if (!password.getText().trim().isEmpty() && !confirmPassword.getText().trim().isEmpty()) {
-				if (password.getText().equals(confirmPassword.getText())) {
-					if (password.getText().length() > 5) {
+				if (password.getText().equals(confirmPassword.getText())) { 		//CHECKS BOTH PASSWORDS FIELDS MATCH
+					if (password.getText().length() > 5) {							//AND PASSWORD IS OVER 5 CHARACTERS
 						usersXML.setPassword(password.getText());
 						editPassword = password.getText();
 					} else {
@@ -215,8 +205,11 @@ public class SignUpController implements Initializable {
 					usersXML.createUser();
 					backToLogin();
 				} else {
+					//ELSE IF THE USER IS ALREADY KNOWN AND IS EDITNG THEIR PROFILE
+					//CALLS 'editsBookingXML()' TO EDIT THEIR INFORMATION
 					editXML.editsBookingXML();
 
+					//NAVIGATES BACK TO EMPLOYEE OR CUSTOMER PAGE DEPENDING ON WHO IS LOGGED IN 
 					if (EmployeeHomeController.editEmployee == true) {
 						CinemaMain main = new CinemaMain();
 						main.goToNextPage("employee_view/EmployeeHome.fxml", "Employee Home");
@@ -233,6 +226,11 @@ public class SignUpController implements Initializable {
 
 	}
 
+	/**
+	 * Opens a file chooser for a user to pick a profile picture. 
+	 * Adds 'images/' to the filename to set the correct relative path to the image.
+	 * Writes the image path to a label for use in add user method.
+	 */
 	public void selectsProfilePic() {
 		final FileChooser fileChooser = new FileChooser();
 		File file = fileChooser.showOpenDialog(CinemaMain.thestage);
@@ -242,11 +240,18 @@ public class SignUpController implements Initializable {
 
 	}
 
+	/**
+	 * Called to initialize a controller after its root element has been completely processed.
+	 * Parses the 'user.xml' file and gets the list of child elements of user root node.
+	 * If the user is known already (and logged in) - they are editing their profile - so 
+	 * sets the input fields on the page with the current user profile informatin ready for editing. 
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
 		File xmlFile = new File("users.xml");
 
+		//IF 'users.xml' EXSISTS PARSES IT BY CALLING 'readsXML' FROM 'cinema.XML.ReadXMLFile'
 		if (xmlFile.exists()) {
 			try {
 				ReadXMLFile read = new ReadXMLFile("users.xml");
@@ -279,6 +284,7 @@ public class SignUpController implements Initializable {
 						picLabel.setText(node.getChildText("profilePic"));
 						filePicName = node.getChildText("profilePic");
 
+						//A CUSTOMER OR EMPLOYEE CANNOT EDIT THEIR PROFILE TO SWITCH ROLES
 						if (node.getChildText("UserProfile").equalsIgnoreCase("customer"))
 							employeeProfile.setDisable(true);
 						else if (node.getChildText("UserProfile").equalsIgnoreCase("employee"))
@@ -291,6 +297,13 @@ public class SignUpController implements Initializable {
 		}
 	}
 
+
+
+	/**
+	 * Takes user back to login page when sign up completed.
+	 * Calls <code>goToLoginPage</code> function from <code>cinema.CinemaMain</code>
+	 * @param event the button click event.
+	 */
 	@FXML
 	private void backToLogin() {
 
@@ -299,6 +312,12 @@ public class SignUpController implements Initializable {
 		main.goToLoginPage("shared_view/LoginScreen.fxml", "Cinema Login");
 	}
 
+	/**
+	 * Takes user back to either log in page or customer account or employee account
+	 * depending on who is logged in or if it is a new user.
+	 * Calls <code>goToNextPage</code> function from <code>cinema.CinemaMain</code>
+	 * @param event the button click event
+	 */
 	@FXML
 	private void cancelsSignUp() {
 

@@ -18,6 +18,12 @@ import cinema.CinemaMain;
 import cinema.customer_controllers.WhatsOnCustController;
 import cinema.shared_controllers.BookingController;
 
+/**
+ * A class that defines methods and variables to edit film bookings XML. Function in this class is 
+ * called from the booking page when a customer makes a booking.
+ * @author carolinesmith, daianabassi
+ *
+ */
 public class EditBookingsXML {
 
 	// CREATES INSTANCE VARIABLES WHICH WILL BE SET BY THE CONTRUCTOR
@@ -34,24 +40,32 @@ public class EditBookingsXML {
 	protected Element root = null;
 	protected Document document = null;
 
-
+	/**
+	 * Parses the input file and gets the root element and list of child nodes - i.e. the list
+	 * of film bookings. If the film booking node attribute matches the unique page title on the 
+	 * bookings page (i.e. matches the film being booked) - the XML is updated with the new 
+	 * booking information and written back to the XML file. 
+	 */
 	public void editsBookingXML() {
-
+		
 		File xmlFile = new File(inputFile);
 		FileInputStream fis = null;
 
 		if (xmlFile.exists()) {
 
+			//CREATES A FILE INPUT STREAM FROM THE FILE IF IT EXISTS
 			try {
 				fis = new FileInputStream(xmlFile);
 			} catch (FileNotFoundException e1) {
+				CinemaMain.LOGGER.warning("Couldn't find file");
 				e1.printStackTrace();
 			}
 
+			//CREATES AN INSTANCE OF SAXBUILDER TO PARSE THE FILE
 			SAXBuilder sb = new SAXBuilder();
 
-			// PARSE THE XML CONTENT PROVIDED BY THE FILE INPUT STREAM AND
-			// CREATE A DOCUMENT OBJECT
+			// PARSES THE XML CONTENT PROVIDED BY THE FILE INPUT STREAM AND
+			// CREATES A DOCUMENT OBJECT
 			try {
 				document = sb.build(fis);
 			} catch (JDOMException e) {
@@ -62,21 +76,26 @@ public class EditBookingsXML {
 				e.printStackTrace();
 			}
 
-			// GET THE ROOT ELEMENT OF THE DOCUMENT OBJECT
+			// GETS THE ROOT ELEMENT OF THE DOCUMENT OBJECT
 			root = document.getRootElement();
 			try {
 				fis.close();
 			} catch (IOException e) {
+				CinemaMain.LOGGER.warning("Couldn't close file");
 				e.printStackTrace();
 			}
 
+			//GETS THE LIST OF CHILD 'FILMBOOKING' NODES OF THE ROOT ELEMENT
 			List list = root.getChildren("filmBooking");
 
+			//ITETRATES THROUGH THE LIST OF NODES 
 			for (int i = 0; i < list.size(); i++) {
 
 				Element node = (Element) list.get(i);
 
-
+				//IF THE NODE'S ATTRIBUTE IS THE SAME AS THE UNIQUE PAGE TITLE FOR THE BOOKING PAGE 
+				//i.e. IF THE FILM SELECTED FOR BOOKING IS THAT SAME AS THIS FILM NODE IN THE XML
+				//SET THE XML WITH THE NEW BOOKING INFORMATION AFTER A CUSTOMER BOOKS A FILM
 				if (node.getAttributeValue("name").equalsIgnoreCase(WhatsOnCustController.pageTitle)) {
 					node.getChild("bookedSeats").setText(BookingController.bookedSeats);
 					node.getChild("bookedNumber").setText(BookingController.totalBooked);
@@ -98,6 +117,7 @@ public class EditBookingsXML {
 				writer.close();
 
 			} catch (IOException e) {
+				CinemaMain.LOGGER.warning("Couldn't write to file");
 				e.printStackTrace();
 			}
 
