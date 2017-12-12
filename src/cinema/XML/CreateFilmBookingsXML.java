@@ -10,8 +10,23 @@ import org.jdom2.output.XMLOutputter;
 
 import cinema.CinemaMain;
 
+/**
+ * This class extends <code>cinema.shared_view.CreateXML</code>.
+ * It has instance variables that define all the information about a film booking (seat booked, number available etc).
+ * It defines getters and setters for these private variables. It defines a function to write the film 
+ * information to an XML file using the filename and root passed in the constructor. 
+ * @see <code>cinema.shared_view.CreateXML</code>.
+ * @author carolinesmith, daianabassi
+ *
+ */
 public class CreateFilmBookingsXML extends CreateXML {
 
+	/**
+	 * This constructor calls the parent and takes the String name of the 
+	 * input file to create or write to, and the String XML root element of the file.
+	 * @param inputFile the input file.
+	 * @param rootElement the XML root element.
+	 */
 	public CreateFilmBookingsXML(String inputFile, String rootElement) {
 		super(inputFile, rootElement);
 	}
@@ -53,6 +68,11 @@ public class CreateFilmBookingsXML extends CreateXML {
 		this.unBookedNumber = unBookedNumber;
 	}
 
+	/**
+	 * Creates a new film booking element and sets the film booking instance variables as the child elements.
+	 * Adds the new film booking element to the document root and sets the root to the document. 
+	 * Writes the XML to the file specified in the constructor.
+	 */
 	public void createsBookings() {
 
 		Element filmBooking = new Element("filmBooking");
@@ -85,53 +105,9 @@ public class CreateFilmBookingsXML extends CreateXML {
 	}
 	
 	
-	public void editsBookings() {
-
-		
-
-		selectedFilmNode.getChild("bookedSeats").setText("poo");
-		selectedFilmNode.getChild("bookedNumber").setText("ten");
-		selectedFilmNode.getChild("unBookedNumber").setText("eleven");
-
-		root.addContent(selectedFilmNode);
-		document.setContent(root);
-
-		// WRITE THE XML TO FILE SPECIFIED IN THE CONSTRUCTOR
-		try {
-			FileWriter writer = new FileWriter(inputFile);
-			XMLOutputter outputter = new XMLOutputter();
-
-			outputter.setFormat(Format.getPrettyFormat());
-			outputter.output(document, writer);
-			// outputter.output(document, System.out);
-
-			// CLOSE FILE 'film.xml'
-			writer.close();
-
-		} catch (IOException e) {
-			CinemaMain.LOGGER.warning("Couldn't write to file");
-			e.printStackTrace();
-		}
-	}
-	
-	
 	
 	
 	
 	
 }
 
-/*
- * 
- * public void editsBookings() {
- * 
- * selectedFilmNode.getChild("bookedSeats").setText("poo");
- * selectedFilmNode.getChild("booked").setText("ten");
- * selectedFilmNode.getChild("unbooked").setText("eleven");
- * 
- * }
- * 
- * public void writesToXML() {
- * 
- * }
- */

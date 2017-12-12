@@ -25,7 +25,12 @@ public class CreateXML {
 	protected String inputFile;
 	protected String rootElement;
 
-	//CONSTRUCTOR - NEED TO SPECIFY AN INPUT FILE AND ROOT ELEMENT FOR XML WHEN CREATING AN INSTANCE
+	/**
+	 * This constructor takes the String name of the input file to create or write to, and 
+	 * the String XML root element of the file.
+	 * @param inputFile the input file.
+	 * @param rootElement the XML root element.
+	 */
 	public CreateXML(String inputFile, String rootElement) {
 		this.inputFile = inputFile;
 		this.rootElement = rootElement;

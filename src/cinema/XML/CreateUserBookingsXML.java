@@ -26,7 +26,12 @@ public class CreateUserBookingsXML extends CreateXML {
 	//DECLARES INSTANCE VARIABLES TO WRITE TO XML
 		private String filmName, filmDate, filmTime, seatBooked, userID;
 
-	//	CALLS THE PARENT CONSTRUCTOR 
+		/**
+		 * This constructor calls the parent and takes the String name of the 
+		 * input file to create or write to, and the String XML root element of the file.
+		 * @param inputFile the input file.
+		 * @param rootElement the XML root element.
+		 */
 		public CreateUserBookingsXML (String inputFile, String rootElement) {
 			super(inputFile, rootElement);
 		}

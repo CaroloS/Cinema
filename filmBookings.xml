@@ -16,9 +16,9 @@
     <unBookedNumber>34</unBookedNumber>
   </filmBooking>
   <filmBooking name="Wonder Woman 24-12-17 1900">
-    <bookedSeats>A3</bookedSeats>
-    <bookedNumber>1</bookedNumber>
-    <unBookedNumber>35</unBookedNumber>
+    <bookedSeats>A3 A9 B3</bookedSeats>
+    <bookedNumber>3</bookedNumber>
+    <unBookedNumber>33</unBookedNumber>
   </filmBooking>
   <filmBooking name="I.T. 25-12-17 1200">
     <bookedSeats>D4 B8</bookedSeats>
