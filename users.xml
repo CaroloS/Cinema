@@ -8,7 +8,7 @@
     <UserProfile>customer</UserProfile>
     <UserName>daianab</UserName>
     <Password>password</Password>
-    <profilePic>images/greencamera.png</profilePic>
+    <profilePic>images/greencamera.jpeg</profilePic>
   </User>
   <User id="294">
     <FirstName>Daiana2</FirstName>
@@ -18,7 +18,7 @@
     <UserProfile>employee</UserProfile>
     <UserName>daianab2</UserName>
     <Password>123456</Password>
-    <profilePic>images/greencamera.png</profilePic>
+    <profilePic>images/greencamera.jpeg</profilePic>
   </User>
   <User id="326">
     <FirstName>Daiana</FirstName>
@@ -28,7 +28,7 @@
     <UserProfile>customer</UserProfile>
     <UserName>daianab3</UserName>
     <Password>123456</Password>
-    <profilePic>images/greencamera.png</profilePic>
+    <profilePic>images/greencamera.jpeg</profilePic>
   </User>
   <User id="804">
     <FirstName>Caroline</FirstName>
@@ -38,7 +38,7 @@
     <UserProfile>customer</UserProfile>
     <UserName>smith2</UserName>
     <Password>123456</Password>
-    <profilePic>images/greencamera.png</profilePic>
+    <profilePic>images/greencamera.jpeg</profilePic>
   </User>
   <User id="231">
     <FirstName>Caroline</FirstName>
@@ -48,7 +48,7 @@
     <UserProfile>employee</UserProfile>
     <UserName>smith1</UserName>
     <Password>123456</Password>
-    <profilePic>images/greencamera.png</profilePic>
+    <profilePic>images/greencamera.jpeg</profilePic>
   </User>
   <User id="941">
     <FirstName>Sadmin</FirstName>
@@ -58,7 +58,7 @@
     <UserProfile>customer</UserProfile>
     <UserName>sadmin</UserName>
     <Password>sadmin</Password>
-    <profilePic>images/oscar-award-512.png</profilePic>
+    <profilePic>images/greencamera.jpeg</profilePic>
   </User>
   <User id="65">
     <FirstName>Lorelai</FirstName>
@@ -68,6 +68,6 @@
     <UserProfile>employee</UserProfile>
     <UserName>lorelaig</UserName>
     <Password>123456</Password>
-    <profilePic>images/facebook.png</profilePic>
+    <profilePic>images/greencamera.jpeg</profilePic>
   </User>
 </users>
