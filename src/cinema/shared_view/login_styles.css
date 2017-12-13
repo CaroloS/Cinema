@@ -29,3 +29,9 @@
 	-fx-border-radius: 0;
 	-fx-background-radius: 0,0,0,0;
 }
+
+.loginlabelicon {
+  -fx-background-color: #B74F5E;
+  -fx-graphic: url('C:\Users\daian\Desktop\lock.png');
+ 
+}

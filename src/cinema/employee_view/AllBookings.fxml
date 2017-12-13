@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1300.0" style="-fx-background-color: #D3D3D3;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cinema.employee_controllers.AllBookingsController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: #D3D3D3;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cinema.employee_controllers.AllBookingsController">
    <top>
       <VBox alignment="CENTER" prefHeight="125.0" style="-fx-background-color: FBBA42;" BorderPane.alignment="CENTER">
          <children>
@@ -29,31 +29,31 @@
             </Pane>
             <MenuBar prefHeight="50.0" styleClass="menubar">
               <menus>
-                <Menu mnemonicParsing="false" style="-fx-fill: green;" text="HOME">
+                <Menu mnemonicParsing="false" onAction="#goToHome" text="HOME">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Close" visible="false" />
+                    <MenuItem mnemonicParsing="false" text="HOME" />
                   </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="WHAT'S ON">
+                <Menu fx:id="whatsOnMenu" mnemonicParsing="false" onAction="#goToWhatsOn" text="WHAT'S ON">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Delete" visible="false" />
+                    <MenuItem mnemonicParsing="false" text="WHAT'S ON" />
                   </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="MY ACCOUNT">
+                <Menu mnemonicParsing="false" onAction="#goToMyAccount" text="MY ACCOUNT">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="About" visible="false" />
+                    <MenuItem mnemonicParsing="false" text="MY ACCOUNT" visible="true" />
                   </items>
                 </Menu>
-                  <Menu mnemonicParsing="false" text="ALL BOOKINGS">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="All Bookings" />
-                    </items>
+                  <Menu fx:id="allBookings" mnemonicParsing="false" text="ALL BOOKINGS">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="ALL BOOKINGS" />
+                     </items>
                   </Menu>
-                  <Menu mnemonicParsing="false" text="LOG OUT">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="Action 1" visible="false" />
-                    </items>
-                  </Menu>
+                  <Menu fx:id="logOut" mnemonicParsing="false" onAction="#logsOut" text="LOG OUT">
+                  <items>
+                    <MenuItem fx:id="logOut" mnemonicParsing="false" onAction="#logsOut" text="LOG OUT" />
+                  </items>
+                </Menu>
               </menus>
                <VBox.margin>
                   <Insets />
@@ -90,9 +90,9 @@
    <center>
       <HBox alignment="TOP_CENTER" fillHeight="false" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #F9F9F9;" BorderPane.alignment="CENTER">
          <children>
-            <VBox alignment="TOP_CENTER" fillWidth="false" prefHeight="675.0" prefWidth="350.0" HBox.hgrow="NEVER">
+            <VBox alignment="TOP_CENTER" fillWidth="false" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="350.0" HBox.hgrow="NEVER">
                <children>
-                  <Pane fx:id="pastPieAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="400.0" />
+                  <Pane fx:id="pastPieAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="350.0" />
                   <Button fx:id="pastExportButton" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#exportsPastBookings" prefHeight="90.0" prefWidth="180.0" text="Export all past film booking details" textAlignment="CENTER" wrapText="true">
                      <VBox.margin>
                         <Insets bottom="25.0" top="25.0" />
@@ -104,10 +104,10 @@
                   <Insets top="15.0" />
                </padding>
             </VBox>
-            <Pane prefHeight="200.0" prefWidth="10.0" HBox.hgrow="NEVER" />
-            <VBox alignment="TOP_CENTER" fillWidth="false" prefHeight="200.0" prefWidth="350.0" HBox.hgrow="NEVER">
+            <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="0.0" HBox.hgrow="ALWAYS" />
+            <VBox alignment="TOP_CENTER" fillWidth="false" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="350.0" HBox.hgrow="NEVER">
                <children>
-                  <Pane fx:id="futurePieAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="400.0" />
+                  <Pane fx:id="futurePieAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="350.0" />
                   <Button fx:id="futureExportButton" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#exportsFutureBookings" prefHeight="90.0" prefWidth="180.0" text="Export all future film booking details" textAlignment="CENTER" wrapText="true">
                      <VBox.margin>
                         <Insets bottom="25.0" top="25.0" />
@@ -120,6 +120,12 @@
                </padding>
             </VBox>
          </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <padding>
+            <Insets top="25.0" />
+         </padding>
       </HBox>
    </center>
 </BorderPane>
