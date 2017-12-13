@@ -171,11 +171,15 @@ public class CustAccountController implements Initializable {
 						Label filmDate = new Label(node.getChildText("filmDate"));
 						Label filmTime = new Label(node.getChildText("filmTime"));
 						Label seatBooked = new Label("Seat Booked: " + node.getChildText("seatBooked"));
+						Label empty = new Label("");
+						Label empty2 = new Label("");
 
 						gridBooking.add(filmName, 0, 0); 							// ADDS THE INFORMATION TO THE GRIDPANE
 						gridBooking.add(filmDate, 1, 0);
 						gridBooking.add(filmTime, 2, 0);
 						gridBooking.add(seatBooked, 0, 1);
+						gridBooking.add(empty,0, 3);
+						gridBooking.add(empty2, 0, 4);
 
 						gridBooking.getColumnConstraints().add(new ColumnConstraints(160)); // SETS SOME COLUMN CONSTRANTS 
 						gridBooking.getColumnConstraints().add(new ColumnConstraints(100));
