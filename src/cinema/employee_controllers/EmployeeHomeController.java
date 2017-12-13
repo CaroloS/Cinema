@@ -114,7 +114,7 @@ public class EmployeeHomeController implements Initializable {
 		if (datePicker.getValue() == null)										//CHECKS IF A DATE HAS BEEN SELECTED
 			x = 3;
 		else {
-			date = datePicker.getValue().format(DateTimeFormatter.ofPattern("dd-MM-YY")); // GETS THE DATE SELECTED
+			date = datePicker.getValue().format(DateTimeFormatter.ofPattern("dd-MM-YY")); // GETS THE STRING DATE SELECTED
 
 			SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy"); // CREATES INTANCE OF 'SimpleDateFormat' TO PARSE STRING TO DATE
 			Date selectedDate = null;
@@ -147,6 +147,17 @@ public class EmployeeHomeController implements Initializable {
 					} 													// FOR USE IN THE ALERT IF OVERLAPPING TIMES
 				}
 			}
+			
+			
+			if (dateTimes.length() > 0){
+				String[] spdateTimes = dateTimes.toString().split(",");
+				for (String element: spdateTimes) {
+					if (element.equalsIgnoreCase(dateTime)) {
+						x = 4;
+					}
+				}
+			}
+			
 		}
 
 		switch (x) {
@@ -167,6 +178,12 @@ public class EmployeeHomeController implements Initializable {
 			alert.setTitle("Warning"); 				// ALERT IF NO TIME SELECTED
 			alert.setHeaderText("Empty Fields!");
 			alert.setContentText("Please select a date and a time!");
+			alert.showAndWait();
+			break;
+		case (4):
+			alert.setTitle("Warning"); 				// ALERT IF THAT DATE/ TIME ALREADY CHOSEN
+			alert.setHeaderText("You already added that showing!");
+			alert.setContentText("This cinema only has one screen, pick another showing time!");
 			alert.showAndWait();
 			break;
 		case (0): 									// OTHERWISE - SET THE LABEL WITH THE SELECTED DATE/TIME
