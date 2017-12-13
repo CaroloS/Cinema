@@ -50,7 +50,7 @@ public class EmployeeHomeController implements Initializable {
 	@FXML
 	private DatePicker datePicker;
 	@FXML
-	private ComboBox filmRating, timePicker, genrePicker;
+	private ComboBox timePicker, genrePicker;
 
 	// DECALRES A STATIC VARIABLE THAT IS SET TO TRUE WHEN EMPLOYEE SELECTS TO EDIT
 	// THEIR PROFILE INFORMATION. IT IS CHECKED BY THE SIGN UP CONTROLLER TO DIFFERENTIATE
@@ -73,8 +73,7 @@ public class EmployeeHomeController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		// POPULATES THE RATINGS COMBOBOX WITH VALUES ON PAGE INITIALISATION
-		filmRating.getItems().addAll("U", "PG", "12", "15", "18");
+		// POPULATES THE COMBOBOXES WITH VALUES ON PAGE INITIALISATION
 		timePicker.getItems().addAll("1200", "1300", "1400", "1500", "1600", "1700", "1800", "1900", "2000");
 		genrePicker.getItems().addAll("Horror", "Comedy", "Children's", "Action", "Love");
 
@@ -219,8 +218,7 @@ public class EmployeeHomeController implements Initializable {
 			// CHECKS IF ALL REQUIRED INPUT FIELDS ARE FILLED IN
 			if (filmTitle.getText().length() == 0 || genrePicker.getSelectionModel().getSelectedItem() == null
 					|| date1.getText().length() == 0 || filmDescription.getText().length() == 0
-					|| pictureLabel.getText().length() == 0
-					|| filmRating.getSelectionModel().getSelectedItem() == null) {
+					|| pictureLabel.getText().length() == 0) {
 				b = 2;
 			}
 
@@ -250,8 +248,6 @@ public class EmployeeHomeController implements Initializable {
 			filmXML.setDateTimes(dateTimes.toString());
 			filmXML.setImage(pictureLabel.getText());
 
-			String rating = (String) filmRating.getSelectionModel().getSelectedItem();
-			filmXML.setRating(rating);
 
 			// CALLS THE 'getsRoot' AND 'createsFilm' METHODS TO WRITE THE NEW FILM
 			// INFORMATION TO 'film.XML' FILE

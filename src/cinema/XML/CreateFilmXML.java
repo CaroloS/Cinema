@@ -23,7 +23,7 @@ import cinema.CinemaMain;
 public class CreateFilmXML extends CreateXML {
 
 	//DECLARES INSTANCE VARIABLES TO WRITE TO XML
-	private String title, genre, description, start, length, dateTimes, image, rating;
+	private String title, genre, description, start, length, dateTimes, image;
 
 	/**
 	 * This constructor calls the parent and takes the String name of the 
@@ -116,21 +116,6 @@ public class CreateFilmXML extends CreateXML {
 		this.image = image;
 	}
 
-	/**
-	 * Gets the instance variable film rating
-	 * @return the String rating
-	 */
-	public String getRating() {
-		return rating;
-	}
-
-	/**
-	 * Sets the instance variable rating
-	 * @param rating the String rating to set
-	 */
-	public void setRating(String rating) {
-		this.rating = rating;
-	}
 
 	/**
 	 * Creates a new film element and sets the film instance variables as the child elements
@@ -154,7 +139,6 @@ public class CreateFilmXML extends CreateXML {
 		film.addContent(new Element("length").setText("1 hour"));
 		film.addContent(new Element("dateTimes").setText(dateTimes));
 		film.addContent(new Element("image").setText(image));
-		film.addContent(new Element("rating").setText(rating));
 		root.addContent(film);
 		document.setContent(root);
 
