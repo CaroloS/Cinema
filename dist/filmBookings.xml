@@ -81,14 +81,14 @@
     <unBookedNumber>35</unBookedNumber>
   </filmBooking>
   <filmBooking name="The Producers 11-02-18 1400">
-    <bookedSeats>C7 C4 C2 D1 D3</bookedSeats>
-    <bookedNumber>5</bookedNumber>
-    <unBookedNumber>31</unBookedNumber>
+    <bookedSeats>C7 C4 C2</bookedSeats>
+    <bookedNumber>3</bookedNumber>
+    <unBookedNumber>33</unBookedNumber>
   </filmBooking>
   <filmBooking name="Spirited Away 07-02-18 1500">
-    <bookedSeats>B7</bookedSeats>
-    <bookedNumber>1</bookedNumber>
-    <unBookedNumber>35</unBookedNumber>
+    <bookedSeats />
+    <bookedNumber>0</bookedNumber>
+    <unBookedNumber>36</unBookedNumber>
   </filmBooking>
   <filmBooking name="Spirited Away 12-02-18 1800">
     <bookedSeats>B5 C7 D2 A9</bookedSeats>
@@ -111,16 +111,6 @@
     <unBookedNumber>36</unBookedNumber>
   </filmBooking>
   <filmBooking name="American Beauty 03-02-18 1200">
-    <bookedSeats />
-    <bookedNumber>0</bookedNumber>
-    <unBookedNumber>36</unBookedNumber>
-  </filmBooking>
-  <filmBooking name="Snow White 21-12-17 1500">
-    <bookedSeats />
-    <bookedNumber>0</bookedNumber>
-    <unBookedNumber>36</unBookedNumber>
-  </filmBooking>
-  <filmBooking name="Snow White 01-02-18 1300">
     <bookedSeats />
     <bookedNumber>0</bookedNumber>
     <unBookedNumber>36</unBookedNumber>

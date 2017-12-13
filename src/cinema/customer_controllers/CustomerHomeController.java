@@ -71,6 +71,7 @@ public class CustomerHomeController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
+		//ADDS THE BACK AND FORWARD ICONS TO THE CAROUSEL BUTTON
 		Image forwardArrow = new Image("images/leftAsset1.png");
 		forwardButton.setGraphic(new ImageView(forwardArrow));
 		

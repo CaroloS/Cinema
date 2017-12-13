@@ -108,22 +108,4 @@
     <filmTime>1600</filmTime>
     <seatBooked>B5</seatBooked>
   </booking>
-  <booking userID="455" bookingID="44">
-    <filmName>The Producers</filmName>
-    <filmDate>11-02-18</filmDate>
-    <filmTime>1400</filmTime>
-    <seatBooked>D1</seatBooked>
-  </booking>
-  <booking userID="82" bookingID="303">
-    <filmName>The Producers</filmName>
-    <filmDate>11-02-18</filmDate>
-    <filmTime>1400</filmTime>
-    <seatBooked>D3</seatBooked>
-  </booking>
-  <booking userID="82" bookingID="953">
-    <filmName>Spirited Away</filmName>
-    <filmDate>07-02-18</filmDate>
-    <filmTime>1500</filmTime>
-    <seatBooked>B7</seatBooked>
-  </booking>
 </userBookings>

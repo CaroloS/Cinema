@@ -64,12 +64,5 @@
     <dateTimes>03-02-18 2000,06-02-18 1200,08-02-18 1900,</dateTimes>
     <image>images/hurtlocker.jpeg</image>
   </film>
-  <film id="970">
-    <title>Snow White</title>
-    <genre>Children's</genre>
-    <description>A nice film</description>
-    <length>1 hour</length>
-    <dateTimes>21-12-17 1500,01-02-18 1300,</dateTimes>
-    <image>images/snow_white.jpg</image>
-  </film>
+ 
 </films>

@@ -110,8 +110,8 @@
             <GridPane vgap="5.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="210.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="200.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="250.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="196.0" minWidth="-Infinity" prefWidth="156.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="294.0" minWidth="-Infinity" prefWidth="294.0" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
@@ -159,32 +159,32 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="firstNameLabel" prefHeight="40.0" prefWidth="225.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+                  <Label fx:id="firstNameLabel" prefHeight="39.0" prefWidth="265.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lastNameLabel" layoutX="470.0" layoutY="10.0" prefHeight="40.0" prefWidth="225.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <Label fx:id="lastNameLabel" layoutX="470.0" layoutY="10.0" prefHeight="39.0" prefWidth="267.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="emailLabel" layoutX="470.0" layoutY="10.0" prefHeight="40.0" prefWidth="225.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                  <Label fx:id="emailLabel" layoutX="470.0" layoutY="10.0" prefHeight="39.0" prefWidth="268.0" wrapText="true" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="numberLabel" layoutX="470.0" layoutY="100.0" prefHeight="40.0" prefWidth="225.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                  <Label fx:id="numberLabel" layoutX="470.0" layoutY="100.0" prefHeight="40.0" prefWidth="266.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="usernameLabel" layoutX="470.0" layoutY="145.0" prefHeight="40.0" prefWidth="225.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                  <Label fx:id="usernameLabel" layoutX="470.0" layoutY="145.0" prefHeight="40.0" prefWidth="264.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="passwordLabel" layoutX="470.0" layoutY="190.0" prefHeight="40.0" prefWidth="225.0" text="********" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                  <Label fx:id="passwordLabel" layoutX="470.0" layoutY="190.0" prefHeight="40.0" prefWidth="264.0" text="********" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="5" GridPane.valignment="CENTER">
                      <font>
                         <Font size="18.0" />
                      </font>
