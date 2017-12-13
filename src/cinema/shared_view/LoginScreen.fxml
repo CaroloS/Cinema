@@ -20,7 +20,7 @@
          <children>
             <ImageView fitHeight="500.0" fitWidth="400.0" layoutX="5.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <image>
-                  <Image url="@../../../../../../../../Desktop/oscar_login.jpg" />
+                  <Image url="images/oscar_login.jpg" />
                </image>
             </ImageView>
          </children></AnchorPane>
@@ -84,7 +84,7 @@
                         </PasswordField>
                         <ImageView pickOnBounds="true" smooth="false" GridPane.columnIndex="1" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.rowSpan="2" GridPane.vgrow="NEVER">
                            <image>
-                              <Image url="@../../../../../../../../Desktop/user.png" />
+                              <Image url="images/user.png" />
                            </image>
                            <GridPane.margin>
                               <Insets />
@@ -92,7 +92,7 @@
                         </ImageView>
                         <ImageView layoutX="60.0" layoutY="135.0" pickOnBounds="true" smooth="false" GridPane.columnIndex="1" GridPane.rowIndex="4">
                            <image>
-                              <Image url="@../../../../../../../../Desktop/lock.png" />
+                              <Image url="images/lock.png" />
                            </image>
                         </ImageView>
                      </children>
