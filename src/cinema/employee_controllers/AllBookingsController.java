@@ -123,8 +123,8 @@ public class AllBookingsController implements Initializable {
 					booked = node.getChildText("bookedNumber");
 					available = node.getChildText("unBookedNumber");
 
-					String filmInfo = titleDateTime + ": Seats Booked: " + seatsBooked + " Number Booked: " + booked
-							+ " Number Available: " + available + ", ";
+					String filmInfo = "\n\n" + titleDateTime + ": Seats Booked: " + seatsBooked + " Number Booked: " + booked
+							+ " Number Available: " + available;
 
 					//ADDS INFORMATION TO THE PAST ARRAYLISTS
 					pastBookings.add(filmInfo);

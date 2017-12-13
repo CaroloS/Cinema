@@ -1,21 +1,41 @@
 [
 
-Scary Movie 21-12-17 1900: Seats Booked: A1 A2 B1 C5 D1 D2 D6 A7 D5 B7 D7 Number Booked: 14 Number Available: 22, 
+I.T. 01-02-18 1700: Seats Booked: A1 B3 C9 Number Booked: 3 Number Available: 33, 
 
-Scary Movie 22-12-17 1700: Seats Booked: D3 B8 B9 C9 A8 C7 D8 Number Booked: 7 Number Available: 29, 
+Titanic 02-02-18 1900: Seats Booked:  Number Booked: 0 Number Available: 36, 
 
-Bladerunner 2049 23-12-17 2000: Seats Booked: A3 A1 D6 Number Booked: 3 Number Available: 33, 
+Titanic 04-02-18 1700: Seats Booked:  Number Booked: 0 Number Available: 36, 
 
-Wonder Woman 24-12-17 1900: Seats Booked: A3 A9 B3 Number Booked: 3 Number Available: 33, 
+The Hurt Locker 03-02-18 2000: Seats Booked:  Number Booked: 0 Number Available: 36, 
 
-I.T. 25-12-17 1200: Seats Booked: D4 B8 D5 D6 D8 Number Booked: 5 Number Available: 31, 
+The Hurt Locker 06-02-18 1200: Seats Booked:  Number Booked: 0 Number Available: 36, 
 
-Paddington 2 26-12-17 1800: Seats Booked: C1 C8 B7 A9 Number Booked: 4 Number Available: 32, 
+The Hurt Locker 08-02-18 1900: Seats Booked:  Number Booked: 0 Number Available: 36, 
 
-Paddington 2 26-12-17 1600: Seats Booked: B8 B7 B3 Number Booked: 3 Number Available: 33, 
+La La Land 29-01-18 1700: Seats Booked: D2 C8 B6 Number Booked: 3 Number Available: 33, 
 
-a film 29-12-17 1600: Seats Booked:  Number Booked: 0 Number Available: 36, 
+La La Land 30-01-18 1900: Seats Booked:  Number Booked: 0 Number Available: 36, 
 
-Snow White 14-12-17 1500: Seats Booked:  Number Booked: 0 Number Available: 36, 
+La La Land 31-01-18 2000: Seats Booked:  Number Booked: 0 Number Available: 36, 
 
-Snow White 25-12-17 1500: Seats Booked:  Number Booked: 0 Number Available: 36]
+Jaws 08-02-18 1200: Seats Booked:  Number Booked: 0 Number Available: 36, 
+
+Jaws 09-02-18 1400: Seats Booked: C7 B4 D4 D9 Number Booked: 4 Number Available: 32, 
+
+Jaws 10-02-18 1800: Seats Booked:  Number Booked: 0 Number Available: 36, 
+
+The Producers 11-02-18 1600: Seats Booked:  Number Booked: 0 Number Available: 36, 
+
+The Producers 11-02-18 1400: Seats Booked: C7 C4 C2 Number Booked: 3 Number Available: 33, 
+
+Spirited Away 07-02-18 1500: Seats Booked:  Number Booked: 0 Number Available: 36, 
+
+Spirited Away 12-02-18 1800: Seats Booked: B5 C7 D2 A9 Number Booked: 4 Number Available: 32, 
+
+Spirited Away 09-02-18 2000: Seats Booked:  Number Booked: 0 Number Available: 36, 
+
+American Beauty 01-02-18 1200: Seats Booked:  Number Booked: 0 Number Available: 36, 
+
+American Beauty 02-02-18 1200: Seats Booked:  Number Booked: 0 Number Available: 36, 
+
+American Beauty 03-02-18 1200: Seats Booked:  Number Booked: 0 Number Available: 36]

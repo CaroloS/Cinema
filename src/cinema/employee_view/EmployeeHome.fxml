@@ -167,18 +167,12 @@
                      </font>
                   </Label>
                   <TextField fx:id="filmDescription" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="115.0" prefWidth="400.0" styleClass="form-text-field" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="7" GridPane.rowSpan="3" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS" />
-                  <Label text="Film Rating:" GridPane.halignment="RIGHT" GridPane.rowIndex="10" GridPane.valignment="CENTER">
+                  <Label fx:id="pictureLabel" text="Film Poster:" GridPane.halignment="RIGHT" GridPane.rowIndex="10" GridPane.valignment="CENTER">
                      <font>
                         <Font name="Corbel" size="18.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="filmRating" prefWidth="225.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-                  <Label fx:id="pictureLabel" text="Film Poster:" GridPane.halignment="RIGHT" GridPane.rowIndex="11" GridPane.valignment="CENTER">
-                     <font>
-                        <Font name="Corbel" size="18.0" />
-                     </font>
-                  </Label>
-                  <Button fx:id="imageButton" mnemonicParsing="false" onAction="#selectImage" text="Pick a Poster" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                  <Button fx:id="imageButton" mnemonicParsing="false" onAction="#selectImage" text="Pick a Poster" GridPane.columnIndex="1" GridPane.rowIndex="10" />
                   <Button fx:id="addFilmButton" mnemonicParsing="false" onAction="#addFilm" text="ADD FILM" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="12" GridPane.rowSpan="2" GridPane.valignment="CENTER" />
                </children>
             </GridPane>
