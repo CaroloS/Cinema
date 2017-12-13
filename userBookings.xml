@@ -6,23 +6,11 @@
     <filmTime>1200</filmTime>
     <seatBooked>D4</seatBooked>
   </booking>
-  <booking userID="804" bookingID="554">
-    <filmName>Titanic</filmName>
-    <filmDate>01-02-18</filmDate>
-    <filmTime>1700</filmTime>
-    <seatBooked>D3</seatBooked>
-  </booking>
   <booking userID="804" bookingID="892">
     <filmName>Titanic</filmName>
     <filmDate>01-02-18</filmDate>
     <filmTime>1700</filmTime>
     <seatBooked>C7</seatBooked>
-  </booking>
-  <booking userID="804" bookingID="232">
-    <filmName>Titanic</filmName>
-    <filmDate>01-02-18</filmDate>
-    <filmTime>1700</filmTime>
-    <seatBooked>B8</seatBooked>
   </booking>
   <booking userID="804" bookingID="6">
     <filmName>Titanic</filmName>
