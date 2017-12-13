@@ -71,6 +71,12 @@ public class CustomerHomeController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
+		Image forwardArrow = new Image("images/leftAsset1.png");
+		forwardButton.setGraphic(new ImageView(forwardArrow));
+		
+		Image backArrow = new Image("images/rightAsset1.png");
+		backButton.setGraphic(new ImageView(backArrow));
+		
 		//URLS FOR EMBEDDED YOUTUBE VIDEOS 
 		String content_Url1 = "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/19jGdktyGgk\" frameborder=\"0\" gesture=\"media\" allow=\"encrypted-media\" allowfullscreen></iframe>";
 		String content_Url2 = "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/8O6eQBjDWDM\" frameborder=\"0\" gesture=\"media\" allow=\"encrypted-media\" allowfullscreen></iframe>";
