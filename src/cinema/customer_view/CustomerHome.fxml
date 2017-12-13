@@ -20,14 +20,13 @@
    <top>
       <VBox fx:id="menuAnchor" alignment="CENTER" prefHeight="125.0" BorderPane.alignment="CENTER">
          <children>
-            <Pane prefHeight="75.0" style="-fx-background-color: #EEEEEE;">
+            <Pane prefHeight="75.0" style="-fx-background-color: #EEEEEE;" VBox.vgrow="NEVER">
                <children>
-                  <ImageView fitHeight="75.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="75.0" fitWidth="200.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="images/oscar-award-512.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="153.0" layoutY="27.0" />
                </children>
             </Pane>
             <MenuBar prefHeight="50.0" styleClass="menubar">
@@ -126,46 +125,43 @@
                   </VBox>
                   <HBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="allFilmsButton" mnemonicParsing="false" onAction="#loadfilms" prefHeight="100.0" prefWidth="125.0" text="Book a Film" textAlignment="CENTER">
-                           <HBox.margin>
-                              <Insets left="25.0" />
-                           </HBox.margin>
-                        </Button>
-                        <VBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="3.0" style="-fx-background-color: #F9F9F9;" HBox.hgrow="ALWAYS">
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #F9F9F9;" HBox.hgrow="ALWAYS">
                            <children>
                               <Label styleClass="mainlabel" text="Welcome to our cinema" textAlignment="CENTER">
                                  <font>
-                                    <Font name="Corbel" size="28.0" />
-                                 </font></Label>
-                              <Label text="Where we show Oscar winning movies" wrapText="true">
+                                    <Font name="Corbel" size="32.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin></Label>
+                              <Label text="The Home of Oscar Winning Films" wrapText="true">
                                  <font>
                                     <Font name="Corbel Bold" size="20.0" />
-                                 </font></Label>
-                              <Label text="Book a ticket now!" textAlignment="CENTER" wrapText="true">
+                                 </font>
                                  <VBox.margin>
-                                    <Insets left="10.0" right="10.0" />
+                                    <Insets bottom="15.0" top="15.0" />
+                                 </VBox.margin></Label>
+                              <Button fx:id="allFilmsButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#loadfilms" prefHeight="45.0" prefWidth="150.0" text="Book a Ticket Now!" textAlignment="CENTER">
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" />
                                  </VBox.margin>
-                                 <font>
-                                    <Font name="Corbel" size="18.0" />
-                                 </font></Label>
+                              </Button>
                            </children>
                         </VBox>
-                        <Button fx:id="freeTicket" mnemonicParsing="false" onAction="#goesToQuestionnaire" prefHeight="100.0" prefWidth="125.0" text="Win a Free Ticket" textAlignment="CENTER" wrapText="true">
-                           <HBox.margin>
-                              <Insets right="25.0" />
-                           </HBox.margin>
-                        </Button>
                      </children>
                      <VBox.margin>
                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                      </VBox.margin>
                   </HBox>
-                  <VBox maxHeight="-Infinity" minHeight="-Infinity" prefWidth="100.0" style="-fx-background-color: #F9F9F9;" VBox.vgrow="NEVER">
+                  <VBox alignment="TOP_CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefWidth="100.0" style="-fx-background-color: #F9F9F9;" VBox.vgrow="NEVER">
                      <children>
                         <Label styleClass="mainlabel" text="SEE OUR LATEST QA'S WITH OUR FAVOURITE OSCAR WINNING DIRECTORS">
                            <font>
                               <Font name="Corbel Bold" size="18.0" />
-                           </font></Label>
+                           </font>
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin></Label>
                      </children>
                      <VBox.margin>
                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
