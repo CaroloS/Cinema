@@ -144,7 +144,7 @@ public class BookingController extends WhatsOnEmpController implements Initializ
 
 		// IF USER IS A CUSTOMER DISPLAYS A PROMPT TO PICK A SEAT
 		if (LoginController.loggedInUser.equalsIgnoreCase("customer")) {
-			bookingPrompt.setText("Don't miss the chance to see this film! Click on a seat to book it!");
+			bookingPrompt.setText("Don't miss the chance to see this film! Click on a seat to book");
 		}
 
 	}
