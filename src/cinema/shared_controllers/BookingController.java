@@ -112,7 +112,7 @@ public class BookingController extends WhatsOnEmpController implements Initializ
 		// ITERATES THROUGH A LIST OF SEATS BOOKED AND THE SEATS IN THE CINEMA LAYOUT
 		// WHERE THE SEAT BOOKED MATCHES THE SEAT ID - CHANGES THE SEAT IMAGE TO
 		// ORANGE CHAIR
-		if (bookedSeats.length() > 0) {
+		if (bookedSeats != null) {
 			String[] arrBookedSeats = bookedSeats.split(" ");
 
 			for (int a = 0; a < arrBookedSeats.length; a++) {
