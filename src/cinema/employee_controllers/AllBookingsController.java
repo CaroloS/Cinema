@@ -24,6 +24,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 
 /**
  * Controller class for the Employee 'All Bookings' page. On initialization, parses 'filmBookings.xml'
@@ -38,7 +39,7 @@ public class AllBookingsController implements Initializable {
 	@FXML
 	private Label futureBookingLabel, pastBookingLabel;
 	@FXML
-	private AnchorPane futurePieAnchor, pastPieAnchor;
+	private Pane futurePieAnchor, pastPieAnchor;
 	
 	File xmlFile = new File("filmBookings.xml");
 	

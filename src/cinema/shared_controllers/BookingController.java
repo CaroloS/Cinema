@@ -139,7 +139,7 @@ public class BookingController extends WhatsOnEmpController implements Initializ
 				bookingInfo1.setText("Seats Booked: None yet!");
 			bookingInfo2.setText("Total seats booked: " + totalBooked);
 			bookingInfo3.setText("Total seats unbooked: " + totalUnBooked);
-			bookingInfo4.setText("Booking Information for this film:");
+			confirmLabel2.setText("Booking Information for this film:");
 		}
 
 		// IF USER IS A CUSTOMER DISPLAYS A PROMPT TO PICK A SEAT
@@ -236,9 +236,9 @@ public class BookingController extends WhatsOnEmpController implements Initializ
 					// SETS SOME TEXT CONFIRMING BOOKINGS DETAILS UNDER THE CINEMA LAYOUT
 					confirmLabel1.setText("Thanks " + LoginController.usersName + " you're all booked!");
 					confirmLabel2.setText("Your ticket will be sent to you by email");
-					bookingInfo4.setText("Your film details:");
-					bookingInfo1.setText(confirmName + " on " + confirmDate + " at " + confirmTime);
-					bookingInfo2.setText("Seat: " + seatNumber);
+					bookingInfo1.setText("Your film details:");
+					bookingInfo2.setText(confirmName + " on " + confirmDate + " at " + confirmTime);
+					bookingInfo3.setText("Seat: " + seatNumber);
 
 				} else {
 					// ... user chose CANCEL or closed the dialog

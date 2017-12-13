@@ -6,77 +6,120 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="810.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cinema.employee_controllers.AllBookingsController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1300.0" style="-fx-background-color: #D3D3D3;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cinema.employee_controllers.AllBookingsController">
    <top>
-      <AnchorPane prefHeight="83.0" prefWidth="615.0" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" prefHeight="125.0" style="-fx-background-color: FBBA42;" BorderPane.alignment="CENTER">
          <children>
-            <MenuBar layoutY="46.0" prefHeight="36.0" prefWidth="760.0">
-               <menus>
-                  <Menu fx:id="home" mnemonicParsing="false" onAction="#goToHome" text="HOME">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="HOME" />
-                     </items>
-                  </Menu>
-                  <Menu fx:id="whatsOn" mnemonicParsing="false" onAction="#goToWhatsOn" text="WHAT'S ON">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="WHAT'S ON" />
-                     </items>
-                  </Menu>
-                  <Menu mnemonicParsing="false" onAction="#goToMyAccount" text="MY ACCOUNT">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="MY ACCOUNT" />
-                     </items>
-                  </Menu>
+            <Pane prefHeight="75.0" style="-fx-background-color: #EEEEEE;">
+               <children>
+                  <ImageView fitHeight="75.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="images/oscar-award-512.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="153.0" layoutY="27.0" />
+               </children>
+            </Pane>
+            <MenuBar prefHeight="50.0" styleClass="menubar">
+              <menus>
+                <Menu mnemonicParsing="false" style="-fx-fill: green;" text="HOME">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Close" visible="false" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="WHAT'S ON">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Delete" visible="false" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="MY ACCOUNT">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="About" visible="false" />
+                  </items>
+                </Menu>
                   <Menu mnemonicParsing="false" text="ALL BOOKINGS">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="ALL BOOKINGS" />
-                     </items>
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="All Bookings" />
+                    </items>
                   </Menu>
-                  <Menu disable="true" mnemonicParsing="false" text="                                                                  ">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="                                                                                          " />
-                     </items>
+                  <Menu mnemonicParsing="false" text="LOG OUT">
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="Action 1" visible="false" />
+                    </items>
                   </Menu>
-                  <Menu fx:id="logOut" mnemonicParsing="false" onAction="#logsOut" text="LOG OUT">
-                     <items>
-                        <MenuItem fx:id="logOut" mnemonicParsing="false" onAction="#logsOut" text="LOG OUT" />
-                     </items>
-                  </Menu>
-               </menus>
-               <opaqueInsets>
+              </menus>
+               <VBox.margin>
                   <Insets />
-               </opaqueInsets>
+               </VBox.margin>
+               <padding>
+                  <Insets left="150.0" />
+               </padding>
             </MenuBar>
          </children>
-      </AnchorPane>
+      </VBox>
    </top>
+   <left>
+      <Pane prefWidth="150.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="800.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="images/oscar_flat_4.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </left>
+   <right>
+      <Pane prefWidth="150.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="800.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="images/oscar_flat_4.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </right>
    <center>
-      <ScrollPane prefHeight="614.0" prefWidth="643.0" BorderPane.alignment="CENTER">
-         <content>
-            <AnchorPane prefHeight="724.0" prefWidth="758.0">
+      <HBox alignment="TOP_CENTER" fillHeight="false" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #F9F9F9;" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="TOP_CENTER" fillWidth="false" prefHeight="675.0" prefWidth="350.0" HBox.hgrow="NEVER">
                <children>
-                  <Label fx:id="pastBookingLabel" layoutX="131.0" layoutY="602.0" prefHeight="68.0" prefWidth="208.0" wrapText="true" />
-                  <AnchorPane fx:id="pastPieAnchor" layoutY="64.0" prefHeight="407.0" prefWidth="417.0" />
-                  <AnchorPane fx:id="futurePieAnchor" layoutX="303.0" layoutY="65.0" prefHeight="406.0" prefWidth="455.0" />
-                  <Button fx:id="pastExportButton" layoutX="131.0" layoutY="519.0" mnemonicParsing="false" onAction="#exportsPastBookings" prefHeight="54.0" prefWidth="156.0" text="Export all past film booking details" textAlignment="CENTER" wrapText="true">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
+                  <Pane fx:id="pastPieAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="400.0" />
+                  <Button fx:id="pastExportButton" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#exportsPastBookings" prefHeight="90.0" prefWidth="180.0" text="Export all past film booking details" textAlignment="CENTER" wrapText="true">
+                     <VBox.margin>
+                        <Insets bottom="25.0" top="25.0" />
+                     </VBox.margin>
                   </Button>
-                  <Button fx:id="futureExportButton" layoutX="437.0" layoutY="519.0" mnemonicParsing="false" onAction="#exportsFutureBookings" prefHeight="54.0" prefWidth="160.0" text="Export all future film booking details" textAlignment="CENTER" wrapText="true">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Button>
-                  <Label fx:id="futureBookingLabel" layoutX="440.0" layoutY="600.0" prefHeight="72.0" prefWidth="217.0" wrapText="true" />
+                  <Label fx:id="pastBookingLabel" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="250.0" textAlignment="CENTER" />
                </children>
-            </AnchorPane>
-         </content>
-      </ScrollPane>
+               <padding>
+                  <Insets top="15.0" />
+               </padding>
+            </VBox>
+            <Pane prefHeight="200.0" prefWidth="10.0" HBox.hgrow="NEVER" />
+            <VBox alignment="TOP_CENTER" fillWidth="false" prefHeight="200.0" prefWidth="350.0" HBox.hgrow="NEVER">
+               <children>
+                  <Pane fx:id="futurePieAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="400.0" />
+                  <Button fx:id="futureExportButton" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#exportsFutureBookings" prefHeight="90.0" prefWidth="180.0" text="Export all future film booking details" textAlignment="CENTER" wrapText="true">
+                     <VBox.margin>
+                        <Insets bottom="25.0" top="25.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Label fx:id="futureBookingLabel" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="250.0" textAlignment="CENTER" />
+               </children>
+               <padding>
+                  <Insets top="15.0" />
+               </padding>
+            </VBox>
+         </children>
+      </HBox>
    </center>
 </BorderPane>

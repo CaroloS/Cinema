@@ -1,17 +1,21 @@
 [
 
-Scary Movie 21-12-17 1900: Seats Booked: A1 A2 B1 C5 D1 D2 D6 A7 D5 B7 Number Booked: 13 Number Available: 23, 
+Scary Movie 21-12-17 1900: Seats Booked: A1 A2 B1 C5 D1 D2 D6 A7 D5 B7 D7 Number Booked: 14 Number Available: 22, 
 
-Scary Movie 22-12-17 1700: Seats Booked: D3 B8 B9 C9 Number Booked: 4 Number Available: 32, 
+Scary Movie 22-12-17 1700: Seats Booked: D3 B8 B9 C9 A8 C7 D8 Number Booked: 7 Number Available: 29, 
 
-Bladerunner 2049 23-12-17 2000: Seats Booked: A3 A1 Number Booked: 2 Number Available: 34, 
+Bladerunner 2049 23-12-17 2000: Seats Booked: A3 A1 D6 Number Booked: 3 Number Available: 33, 
 
-Wonder Woman 24-12-17 1900: Seats Booked: A3 B8 Number Booked: 2 Number Available: 34, 
+Wonder Woman 24-12-17 1900: Seats Booked: A3 A9 B3 Number Booked: 3 Number Available: 33, 
 
-I.T. 25-12-17 1200: Seats Booked: D4 Number Booked: 1 Number Available: 35, 
+I.T. 25-12-17 1200: Seats Booked: D4 B8 D5 D6 D8 Number Booked: 5 Number Available: 31, 
 
-Paddington 2 26-12-17 1800: Seats Booked: C1 C8 B7 Number Booked: 3 Number Available: 33, 
+Paddington 2 26-12-17 1800: Seats Booked: C1 C8 B7 A9 Number Booked: 4 Number Available: 32, 
 
-Paddington 2 26-12-17 1600: Seats Booked: B8 B7 Number Booked: 2 Number Available: 34, 
+Paddington 2 26-12-17 1600: Seats Booked: B8 B7 B3 Number Booked: 3 Number Available: 33, 
 
-a film 29-12-17 1600: Seats Booked:  Number Booked: 0 Number Available: 36]
+a film 29-12-17 1600: Seats Booked:  Number Booked: 0 Number Available: 36, 
+
+Snow White 14-12-17 1500: Seats Booked:  Number Booked: 0 Number Available: 36, 
+
+Snow White 25-12-17 1500: Seats Booked:  Number Booked: 0 Number Available: 36]

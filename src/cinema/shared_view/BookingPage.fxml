@@ -10,11 +10,8 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -114,22 +111,22 @@
                         <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
                         <AnchorPane fx:id="seatAnchor" HBox.hgrow="NEVER">
                            <children>
-                            <Label fx:id="seatLabel111" alignment="TOP_LEFT" layoutY="50.0" prefHeight="25.0" prefWidth="700.0" text="D1              D2                    D3             D4              D5              D6              D7                   D8              D9">
+                            <Label fx:id="seatLabel111" alignment="TOP_LEFT" layoutY="50.0" prefHeight="25.0" prefWidth="700.0" text="D1                 D2                       D3                D4               D5                D6               D7                     D8               D9">
                                  <padding>
                                     <Insets left="15.0" right="15.0" />
                                  </padding>
                               </Label>
-                              <Label fx:id="seatLabel11" alignment="TOP_LEFT" layoutY="125.0" prefHeight="25.0" prefWidth="700.0" text="C1              C2                     C3              C4              C5              C6              C7                    C8              C9">
+                              <Label fx:id="seatLabel11" alignment="TOP_LEFT" layoutY="125.0" prefHeight="25.0" prefWidth="700.0" text="C1                C2                       C3                C4                C5                C6                C7                    C8                C9">
                                  <padding>
                                     <Insets left="15.0" right="15.0" />
                                  </padding>
                               </Label>
-                              <Label fx:id="seatLabel1" alignment="TOP_LEFT" layoutY="200.0" prefHeight="25.0" prefWidth="700.0" text=" B1              B2                    B3              B4               B5              B6              B7                    B8              B9">
+                              <Label fx:id="seatLabel1" alignment="TOP_LEFT" layoutY="200.0" prefHeight="25.0" prefWidth="700.0" text="B1                B2                      B3                B4                 B5                B6                B7                      B8                B9">
                                  <padding>
                                     <Insets left="15.0" right="15.0" />
                                  </padding>
                               </Label>
-                              <Label fx:id="seatLabel" alignment="TOP_LEFT" layoutY="275.0" prefHeight="25.0" prefWidth="700.0" text="A1              A2                     A3             A4              A5              A6              A7                    A8              A9">
+                              <Label fx:id="seatLabel" alignment="TOP_LEFT" layoutY="275.0" prefHeight="25.0" prefWidth="700.0" text="A1                A2                       A3               A4                A5                A6                A7                       A8                A9">
                                  <padding>
                                     <Insets left="15.0" right="15.0" />
                                  </padding>
@@ -180,50 +177,41 @@
                   </HBox>
                </children>
             </VBox>
-            <GridPane alignment="CENTER" hgap="15.0" vgap="5.0">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
-              </rowConstraints>
+            <AnchorPane prefHeight="232.0" prefWidth="900.0">
                <children>
-                  <Label fx:id="confirmLabel1" alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="400.0" GridPane.halignment="RIGHT" GridPane.hgrow="NEVER" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
+                  <Label fx:id="confirmLabel1" layoutX="231.0" prefHeight="30.0" prefWidth="430.0">
                      <font>
                         <Font name="Corbel Bold" size="24.0" />
-                     </font></Label>
-                  <Label fx:id="bookingInfo4" alignment="CENTER_RIGHT" layoutX="60.0" layoutY="10.0" prefHeight="30.0" prefWidth="400.0" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     </font>
+                  </Label>
+                  <Label fx:id="bookingInfo4" layoutX="236.0" layoutY="196.0" prefHeight="30.0" prefWidth="414.0">
                      <font>
                         <Font name="Corbel" size="18.0" />
-                     </font></Label>
-                  <Label fx:id="confirmLabel2" layoutX="60.0" layoutY="40.0" prefHeight="30.0" prefWidth="400.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+                     </font>
+                  </Label>
+                  <Label fx:id="confirmLabel2" layoutX="232.0" layoutY="42.0" prefHeight="30.0" prefWidth="487.0">
                      <font>
                         <Font name="Corbel Bold" size="24.0" />
-                     </font></Label>
-                  <Label fx:id="bookingInfo1" layoutX="485.0" layoutY="10.0" prefHeight="30.0" prefWidth="400.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     </font>
+                  </Label>
+                  <Label fx:id="bookingInfo1" layoutX="233.0" layoutY="85.0" prefHeight="30.0" prefWidth="417.0">
                      <font>
                         <Font name="Corbel" size="18.0" />
-                     </font></Label>
-                  <Label fx:id="bookingInfo2" layoutX="485.0" layoutY="10.0" prefHeight="30.0" prefWidth="400.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                     </font>
+                  </Label>
+                  <Label fx:id="bookingInfo2" layoutX="235.0" layoutY="122.0" prefHeight="30.0" prefWidth="415.0">
                      <font>
                         <Font name="Corbel" size="18.0" />
-                     </font></Label>
-                  <Label fx:id="bookingInfo3" layoutX="485.0" layoutY="40.0" prefHeight="30.0" prefWidth="400.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                     </font>
+                  </Label>
+                  <Label fx:id="bookingInfo3" layoutX="236.0" layoutY="157.0" prefHeight="30.0" prefWidth="414.0">
                      <font>
                         <Font name="Corbel" size="16.0" />
-                     </font></Label>
-                  <Button fx:id="goBack" mnemonicParsing="false" onAction="#goesBack" styleClass="button" stylesheets="@styles.css" text="Back" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
-                     <GridPane.margin>
-                        <Insets right="25.0" />
-                     </GridPane.margin>
-                  </Button>
+                     </font>
+                  </Label>
+                  <Button fx:id="goBack" layoutX="827.0" layoutY="152.0" mnemonicParsing="false" onAction="#goesBack" styleClass="button" stylesheets="@styles.css" text="Back" />
                </children>
-            </GridPane>
+            </AnchorPane>
          </children>
       </VBox>
    </center>
