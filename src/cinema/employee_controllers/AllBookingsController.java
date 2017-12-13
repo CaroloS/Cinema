@@ -157,6 +157,7 @@ public class AllBookingsController implements Initializable {
 			futurePieAnchor.getChildren().add(futurePie);
 			futurePie.prefWidthProperty().bind(futurePieAnchor.widthProperty());
 			futurePie.prefHeightProperty().bind(futurePieAnchor.heightProperty());
+			futurePie.setLabelsVisible(false);
 			
 		} else {
 			Label label = new Label();
@@ -188,7 +189,7 @@ public class AllBookingsController implements Initializable {
 			pastPieAnchor.getChildren().add(pastPie);
 			pastPie.prefWidthProperty().bind(pastPieAnchor.widthProperty());
 			pastPie.prefHeightProperty().bind(pastPieAnchor.heightProperty());
-			
+			pastPie.setLabelsVisible(false);
 		} else {
 			Label label2 = new Label();
 			label2.setText("No past booking data to display!");
