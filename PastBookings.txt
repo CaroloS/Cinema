@@ -1,7 +1,0 @@
-[
-
-Titanic 22-11-17 1900: Seats Booked: D3 C7 B8 A3 Number Booked: 4 Number Available: 32, 
-
-The Producers 23-11-17 2000: Seats Booked: C7 C4 C2 Number Booked: 3 Number Available: 33, 
-
-Spirited Away 01-12-17 1200: Seats Booked: D3 C7 B8 A3 Number Booked: 4 Number Available: 32]
