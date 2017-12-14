@@ -201,5 +201,59 @@ public class CreateUsersXML extends CreateXML{
 			e.printStackTrace();
 		}
 	}
+	
+	
+	/**
+	 * Creates initial user elements in users.xml when the program is first run. 
+	 * It is called from <code>cinema.CinemaMain</code> to provide a user with a 
+	 * customer and employee account to sign in with - parameters passed for the user details
+	 * @param initID String unique ID for the user
+	 * @param initFirstName String first name
+	 * @param initLastName String last name
+	 * @param initEmail String email
+	 * @param initNumber String phone number
+	 * @param initProfile String profile (customer or employee)
+	 * @param initUserName String username
+	 * @param initPassword String password
+	 * @param initProfilePic String relative path to profile picture
+	 */
+	public void createInitialUser(String initID, String initFirstName, String initLastName, String initEmail, String initNumber, String initProfile,
+			String initUserName, String initPassword, String initProfilePic) {
+
+		// GENERATE RANDOM NUMBER FOR FILM ID
+	//	Random rand = new Random();
+	//	int n = rand.nextInt(1000);
+		
+		//CREATES A FILM ELEMENT AND SETS THE INSTANCE VARIABLES AS THE CHILD ELEMENTS OF FILM 
+		Element user = new Element("User");
+		user.setAttribute(new Attribute("id", initID));
+		user.addContent(new Element("FirstName").setText(initFirstName));
+		user.addContent(new Element("LastName").setText(initLastName));
+		user.addContent(new Element("EmailAddress").setText(initEmail));
+		user.addContent(new Element("PhoneNumber").setText(initNumber));
+		user.addContent(new Element("UserProfile").setText(initProfile));
+		user.addContent(new Element("UserName").setText(initUserName));
+		user.addContent(new Element("Password").setText(initPassword));
+		user.addContent(new Element("profilePic").setText(initProfilePic));
+		root.addContent(user);
+		document.setContent(root);
+
+		//WRITE THE XML TO FILE SPECIFIED IN THE CONSTRUCTOR
+		try {
+			FileWriter writer = new FileWriter(inputFile);
+			XMLOutputter outputter = new XMLOutputter();
+
+			outputter.setFormat(Format.getPrettyFormat());
+			outputter.output(document, writer);
+			// outputter.output(document, System.out);
+
+			// CLOSE FILE 'users.xml'
+			writer.close();
+
+		} catch (IOException e) {
+			CinemaMain.LOGGER.warning("Couldn't write to file");
+			e.printStackTrace();
+		}
+	}
 
 }

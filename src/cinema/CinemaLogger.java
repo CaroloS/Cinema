@@ -1,5 +1,6 @@
 package cinema;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
@@ -22,7 +23,9 @@ public class CinemaLogger {
 	 * @throws IOException If problems opening the file
 	 */
 	static public void setup() throws IOException {
-
+		
+		File file = new File("Logging.txt");
+		
 		//GETS THE GLOBAL LOGGER
 		Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
@@ -30,13 +33,15 @@ public class CinemaLogger {
 		logger.setLevel(Level.INFO);
 
 		//CREATES NEW FILEHANDLER TO HANDLE THE LOG FILES
-		if (fileTxt == null) {
+	//	if (fileTxt == null) {
+		if (!file.exists()) {
 			fileTxt = new FileHandler("Logging.txt");
 			formatterTxt = new SimpleFormatter();
 			fileTxt.setFormatter(formatterTxt);
 			logger.addHandler(fileTxt);
 		}
 		else {
+			fileTxt = new FileHandler("Logging.txt");
 			formatterTxt = new SimpleFormatter();
 			fileTxt.setFormatter(formatterTxt);
 			logger.addHandler(fileTxt);

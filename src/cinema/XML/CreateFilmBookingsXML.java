@@ -36,34 +36,66 @@ public class CreateFilmBookingsXML extends CreateXML {
 
 	public static Element selectedFilmNode;
 
+	/**
+	 * Gets the instance variable of the booking attribute 
+	 * @return String booking attribute (film name + date + time)
+	 */
 	public String getBookingAttribute() {
 		return bookingAttribute;
 	}
 
+	/**
+	 * Sets the instance variable of booking attribute
+	 * @param bookingAttribute String of booking attribute (film name + date + time)
+	 */
 	public void setBookingAttribute(String bookingAttribute) {
 		this.bookingAttribute = bookingAttribute;
 	}
 
+	/**
+	 * Gets the instance variable of the booked seats
+	 * @return String booked seats
+	 */
 	public String getBookedSeats() {
 		return bookedSeats;
 	}
 
+	/**
+	 * Sets the instance variable of booked seats
+	 * @param bookingAttribute String of booked seats
+	 */
 	public void setBookedSeats(String bookedSeats) {
 		this.bookedSeats = bookedSeats;
 	}
 
+	/**
+	 * Gets the instance variable of the booked number of seats
+	 * @return String booked number
+	 */
 	public String getBookedNumber() {
 		return bookedNumber;
 	}
 
+	/**
+	 * Sets the instance variable of number booked seats
+	 * @param bookingAttribute String of number booked seats
+	 */
 	public void setBookedNumber(String bookedNumber) {
 		this.bookedNumber = bookedNumber;
 	}
-
+	
+	/**
+	 * Gets the instance variable of the number of available seats 
+	 * @return String available
+	 */
 	public String getUnBookedNumber() {
 		return unBookedNumber;
 	}
 
+	/**
+	 * Sets the instance variable of available
+	 * @param bookingAttribute String of available seats
+	 */
 	public void setUnBookedNumber(String unBookedNumber) {
 		this.unBookedNumber = unBookedNumber;
 	}
@@ -104,8 +136,45 @@ public class CreateFilmBookingsXML extends CreateXML {
 		}
 	}
 	
-	
-	
+	/**
+	 * Creates initial film booking elements in filmBookings.xml when the program is first run. 
+	 * It is called from <code>cinema.CinemaMain</code> with parameters passed for the film bookings
+	 * to initially load the program with. 
+	 * @param initAttribute String attribute is the film name + date + time
+	 * @param initBookedSeats String of seats booked
+	 * @param initBookedNumber String representation of number seats booked
+	 * @param initAvailable String representation of number seats available
+	 */
+	public void createsInitialBookings(String initAttribute, String initBookedSeats, String initBookedNumber, String initAvailable) {
+
+		Element filmBooking = new Element("filmBooking");
+
+		filmBooking.setAttribute(new Attribute("name", initAttribute));
+
+		filmBooking.addContent(new Element("bookedSeats").setText(initBookedSeats));
+		filmBooking.addContent(new Element("bookedNumber").setText(initBookedNumber));
+		filmBooking.addContent(new Element("unBookedNumber").setText(initAvailable));
+
+		root.addContent(filmBooking);
+		document.setContent(root);
+
+		// WRITE THE XML TO FILE SPECIFIED IN THE CONSTRUCTOR
+		try {
+			FileWriter writer = new FileWriter(inputFile);
+			XMLOutputter outputter = new XMLOutputter();
+
+			outputter.setFormat(Format.getPrettyFormat());
+			outputter.output(document, writer);
+			// outputter.output(document, System.out);
+
+			// CLOSE FILE 'film.xml'
+			writer.close();
+
+		} catch (IOException e) {
+			CinemaMain.LOGGER.warning("Couldn't write to file");
+			e.printStackTrace();
+		}
+	}
 	
 	
 	

@@ -187,8 +187,8 @@ public class WhatsOnCustController implements Initializable {
 					gridPane.add(genre, 1, 2, 2, 1);
 					gridPane.add(runningTime, 1, 3, 2, 1);
 					gridPane.add(description, 1, 4, 2, 2);
-					gridPane.add(dateList, 4, 3, 1, 1);
-					gridPane.add(book, 4, 4, 1, 1);
+					gridPane.add(dateList, 4, 3, 2, 1);
+					gridPane.add(book, 4, 4, 2, 1);
 					gridPane.add(blank, 0, 5, 1, 1);
 					
 					
@@ -198,7 +198,7 @@ public class WhatsOnCustController implements Initializable {
 					ColumnConstraints col2 = new ColumnConstraints();
 					ColumnConstraints col3 = new ColumnConstraints();
 					col1.setPercentWidth(3);
-					col2.setPercentWidth(3);
+					col2.setPercentWidth(5);
 					col3.setPercentWidth(3);
 					gridPane.getColumnConstraints().addAll(col1, col2, col3);
 					gridPane.setHgap(10);

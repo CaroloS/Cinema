@@ -93,7 +93,7 @@ public class SignUpController implements Initializable {
 			if (!picLabel.getText().trim().isEmpty()) {
 				usersXML.setProfilePic(picLabel.getText());
 			} else {
-				usersXML.setProfilePic("images/greencamera.png");    //USES A DUMMY INAGE IF USER DOESN'T SET A PROFILE PICTURE
+				x = 1;    //USES A DUMMY INAGE IF USER DOESN'T SET A PROFILE PICTURE
 			}
 
 			if (!emailAddress.getText().trim().isEmpty()) {

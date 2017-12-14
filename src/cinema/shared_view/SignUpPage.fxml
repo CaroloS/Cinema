@@ -169,13 +169,14 @@
                      </font>
                   </Label>
                   <PasswordField fx:id="confirmPassword" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="250.0" promptText="confirm" styleClass="form-text-field" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                  <Label fx:id="picLabel" text="Pick a Profile Picture:" GridPane.halignment="RIGHT" GridPane.rowIndex="9" GridPane.valignment="CENTER">
+                  <Label text="Pick a Profile Picture:" GridPane.halignment="RIGHT" GridPane.rowIndex="9" GridPane.valignment="CENTER">
                      <font>
                         <Font name="Corbel" size="18.0" />
                      </font>
                   </Label>
                   <Button fx:id="imageButton" mnemonicParsing="false" onAction="#selectsProfilePic" text="Select Image" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-                  <Button fx:id="addUserButton" mnemonicParsing="false" onAction="#addUser" text="SUBMIT" GridPane.columnIndex="1" GridPane.rowIndex="10" GridPane.rowSpan="2" />
+                  <Button fx:id="addUserButton" mnemonicParsing="false" onAction="#addUser" text="SUBMIT" GridPane.columnIndex="1" GridPane.rowIndex="11" GridPane.rowSpan="2" />
+                  <Label fx:id="picLabel" prefHeight="35.0" prefWidth="234.0" GridPane.rowIndex="10" />
                </children>
             </GridPane>
          </children>

@@ -158,5 +158,52 @@ public class CreateUserBookingsXML extends CreateXML {
 					e.printStackTrace();
 				}
 	}
+		
+
+	/**
+	 * Creates initial user booking elements in userBookings.xml when the program is first run. 
+	 * It is called from <code>cinema.CinemaMain</code> to provide the default customer with 
+	 * some past bookings to see on their account page.
+	 * @param initID String ID to match the ID of the default customer
+	 * @param initFilmName String film name booked
+	 * @param initDate String date booked
+	 * @param initTime String time booked
+	 * @param initSeat String seat booked
+	 */
+	public void CreateInitUserBooking(String initID, String initFilmName, String initDate, String initTime, String initSeat) {
+		
+		// GENERATE RANDOM NUMBER FOR FILM ID
+				Random rand = new Random();
+				int n = rand.nextInt(1000);
+		
+		
+		//CREATES A FILM ELEMENT AND SETS THE INSTANCE VARIABLES AS THE CHILD ELEMENTS OF FILM 
+				Element booking = new Element("booking");
+				booking.setAttribute(new Attribute("userID", initID));
+				booking.setAttribute(new Attribute("bookingID", Integer.toString(n)));
+				booking.addContent(new Element("filmName").setText(initFilmName));
+				booking.addContent(new Element("filmDate").setText(initDate));
+				booking.addContent(new Element("filmTime").setText(initTime));
+				booking.addContent(new Element("seatBooked").setText(initSeat));
+				root.addContent(booking);
+				document.setContent(root);
+	
+				//WRITE THE XML TO FILE SPECIFIED IN THE CONSTRUCTOR
+				try {
+					FileWriter writer = new FileWriter(inputFile);
+					XMLOutputter outputter = new XMLOutputter();
+	
+					outputter.setFormat(Format.getPrettyFormat());
+					outputter.output(document, writer);
+					// outputter.output(document, System.out);
+	
+					// CLOSE FILE 'film.xml'
+					writer.close();
+	
+				} catch (IOException e) {
+					CinemaMain.LOGGER.warning("Couldn't write to file");
+					e.printStackTrace();
+				}
+	}
 
 }

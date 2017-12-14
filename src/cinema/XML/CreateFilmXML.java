@@ -159,5 +159,53 @@ public class CreateFilmXML extends CreateXML {
 			e.printStackTrace();
 		}
 	}
+	
+
+	
+	/**
+	 * Creates initial film elements in film.xml when the program is first run. 
+	 * It is called from <code>cinema.CinemaMain</code> with parameters passed for the films
+	 * to initially load the program with. 
+	 * @param initTitle the String film title
+	 * @param initGenre the String film Genre
+	 * @param initDescription the String film description
+	 * @param initDateTimes the String of dates and times
+	 * @param initImage the String image relative path
+	 */
+	public void createsInitialFilm(String initTitle, String initGenre, String initDescription, String initDateTimes, String initImage) {
+
+		// GENERATE RANDOM NUMBER FOR FILM ID
+		Random rand = new Random();
+		int n = rand.nextInt(1000);
+		
+		//CREATES A FILM ELEMENT AND SETS THE INSTANCE VARIABLES AS THE CHILD ELEMENTS OF FILM 
+		Element film = new Element("film");
+		film.setAttribute(new Attribute("id", Integer.toString(n)));
+		film.addContent(new Element("title").setText(initTitle));
+		film.addContent(new Element("genre").setText(initGenre));
+		film.addContent(new Element("description").setText(initDescription));
+		film.addContent(new Element("length").setText("1 hour"));
+		film.addContent(new Element("dateTimes").setText(initDateTimes));
+		film.addContent(new Element("image").setText(initImage));
+		root.addContent(film);
+		document.setContent(root);
+
+		//WRITE THE XML TO FILE SPECIFIED IN THE CONSTRUCTOR
+		try {
+			FileWriter writer = new FileWriter(inputFile);
+			XMLOutputter outputter = new XMLOutputter();
+
+			outputter.setFormat(Format.getPrettyFormat());
+			outputter.output(document, writer);
+			// outputter.output(document, System.out);
+
+			// CLOSE FILE 'film.xml'
+			writer.close();
+
+		} catch (IOException e) {
+			CinemaMain.LOGGER.warning("Couldn't write to file");
+			e.printStackTrace();
+		}
+	}
 
 }
