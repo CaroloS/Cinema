@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="ASCII"?>
-<anttasks:AntTask xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:anttasks="http://org.eclipse.fx.ide.jdt/1.0" buildDirectory="${project}/build">
-  <deploy packagingFormat="all">
-    <application name="Tester" mainclass="cinema.CinemaMain" version="1.0"/>
-    <info title="Group9Cinema" vendor="uk.ac.ucl"/>
-  </deploy>
-  <signjar/>
-</anttasks:AntTask>
