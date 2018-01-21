@@ -29,7 +29,7 @@ Click Java Build Path.</li>
 <li>To add an external dependency, click Add External JARs, select the JAR file that you want to add, then click 
 Open.</li>
 <ul>
-<br>
+
 For further information see: see: https://www.wikihow.com/Add-JARs-to-Project-Build-Paths-in-Eclipse-(Java)
 
 ### Getting executable JAR file
