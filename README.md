@@ -1,13 +1,13 @@
 # Java_Cinema
 
-A cinema management GUI (graphical user interface) application written in Java/JavaFX with data persistence maintained using XML. 
+A cinema management GUI (graphical user interface) application written in Java/JavaFX.
 Allows customer and employee sign up and navigation to different sides of the application based on role. Employees can add films, 
 view data about bookings & seating plans and edit their own data. Customers can view a home page, view what's on, filter by date/genre, book for 
 specific showings and maintain their account. 
 
-For a demonstration of the application, see the following video:
+For a demonstration of the application:
 
-https://www.youtube.com/watch?v=1HJkomzQejE&feature=youtu.be
+https://youtu.be/atP1cQxy4oc
 
 ### Prerequisites
 
